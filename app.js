@@ -56,5 +56,12 @@ app.use(function(err, req, res, next) {
   });
 });
 
+app.set('port', (process.env.PORT || 8080))
+
+var server = app.listen(process.env.PORT || app.get('port'), function() {
+    var host = server.address().address
+    var port = server.address().port
+    console.log('App listening at http://%s:%s', host, port)
+})
 
 module.exports = app;
