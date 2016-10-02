@@ -1,0 +1,13 @@
+extends layout
+
+block content
+    h1= title
+    p This is Sequelize greeting you :)
+
+    h2  Project
+
+    ul
+    each project in projects
+        li #{project.name}
+
+
