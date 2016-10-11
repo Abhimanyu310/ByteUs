@@ -1,0 +1,226 @@
+
+
+/* Display HTML5 structural elements as blocks */
+
+article, aside, figure, figcaption, footer, hgroup, header, 
+section, nav {
+   display: block;
+}
+
+
+/* Set the default page element styles */
+
+
+
+* {
+	margin: 0px; 
+	padding: 0px;
+	line-height: 1.5em;
+	font-family: 'Trebuchet MS', Arial, Verdana, sans-serif
+}
+
+body {
+	background: black;
+}
+
+
+header {
+	position: absolute;
+	top: 0px; 
+	left: 40px;
+}
+
+header img {
+	border-width: 0px;
+}
+
+nav {
+	position: relative;
+	top: 200px;
+	left: 0px;
+    list-style-type: none;	
+	vertical-align: left;
+}
+						  
+nav li {
+	line-height: 2em;
+}
+
+nav a {
+	font-size: 16px; 
+	color: rgb(128,128,128); 
+	text-decoration: none;
+}
+						  
+nav a:hover {
+	color: rgb(29,0,252);
+}
+
+section {
+	position: absolute;
+	top: 20px;
+	left: 250px;
+	width: 1000px;
+	
+}
+
+ h1 {
+	top: 100px;
+	left: 250px;
+	background: black;
+	color: rgb(204,185,120);
+	font-family: 'Trebuchet MS', Arial, Verdana, sans-serif
+	  
+}
+
+table{
+	color: white; 
+}
+
+table.style1 {
+    width: 25%;
+	color: white; 
+}
+
+table.style2 {
+    width: 40%;
+	color: white; 
+}
+
+/*Fieldset set styles*/
+
+fieldset{
+	border: 0px; 
+	display: block;
+	margin: 5px; 
+}
+
+
+/*telephone number */
+fieldset input{ 
+	
+	width: 40px; 
+}
+
+
+/*Legend Styles*/
+legend{
+	background-color: black; 
+	color: rgb(204,185,120);
+	font-size: 1.9em; 
+	margin-top: 50px; 
+	margin-bottom: 20px; 
+	text-indent: 20px; 
+	width: 100%; 
+	
+}
+
+
+/*Label styles*/
+
+label{
+	
+	color: white; 
+	clear: left; 
+	float: left; 
+	font-size: 1.25em; 
+	margin-top: 2px; 
+	margin-bottom: 6px; 
+	margin-left: 0px; 
+	margin-right: 0px; 
+	width: 30%; 
+}
+
+/*Input Styles*/
+
+input{
+	display: block; 
+	float: left; 
+	color: white;
+	font-size: 0.9em; 
+	margin-top: 4px;
+	margin-right:0px;
+	margin-bottom: 4px;
+	margin-left: 0px; 
+	width: 70%; 
+}
+
+
+
+input[type="Save"] {
+	background-color: rgb(128,128,128);
+	border: black; 
+	float: none;
+	width: 150px;
+	height: 30px;
+}
+
+input[type="Save"]:hover {
+	background-color: rgb(29,0,252);
+	border: white; 
+	float: none;
+	width: 150px;
+	height: 30px;
+}
+
+input[type="Reset"] {
+	background-color: rgb(128,128,128);
+	border: black; 
+	float: none;
+	width: 150px;
+	height: 30px;
+}
+
+input[type="Reset"]:hover {
+	background-color: rgb(29,0,252);
+	border: white;
+	float: none;
+	width: 150px;
+	height: 30px;
+}
+
+input[type="Submit"] {
+	background-color: rgb(128,128,128);
+	border: black; 
+	float: none;
+	width: 150px;
+	height: 30px;
+}
+
+input[type="Submit"]:hover {
+	background-color: rgb(29,0,252);
+	border: white;
+	float: none;
+	width: 150px;
+	height: 30px;
+}
+
+
+/*Select Styles*/
+
+select{
+	display: block; 
+	float: left; 
+	font-size: 0.9em; 
+	margin-top: 5px;
+	margin-right:0px;
+	margin-bottom: 5px;
+	margin-left: 0px; 
+}
+
+
+textarea{
+	display: block; 
+	float: left; 
+	font-size: 0.9em; 
+	margin-top: 4px;
+	margin-right:0px;
+	margin-bottom: 4px;
+	margin-left: 0px; 
+	width: 60%; 
+}
+
+	
+
+
+
