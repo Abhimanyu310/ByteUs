@@ -7,84 +7,82 @@ section, nav {
    display: block;
 }
 
-
 /* Set the default page element styles */
-
-
-
 * {
 	margin: 0px; 
 	padding: 0px;
-	line-height: 1.5em;
-	font-family: 'Trebuchet MS', Arial, Verdana, sans-serif
+	line-height: 2.0em;
+	font-family: "Tahoma", Geneva, sans-serif;
 }
 
 body {
+	background: fixed; 
 	background: black;
 }
 
 
-header {
+header h {
+	font-size: 40px; 
+	font-weight: bold; 
 	position: absolute;
-	top: 0px; 
-	left: 40px;
+	top: 65px;
+	left: 265px;
+	width: 1000px; 
+	background: black;
+	color: white;
+}
+header h5{
+	color: rgb(0,123,200); ; 
+	position: absolute;
+	font-size: 14px; 
+	top: 153px;
+	left: 275px;
+	background: black;
 }
 
 header img {
 	border-width: 0px;
+	position: absolute;
+	top: 0px; 
+	left: 50px;
 }
 
-nav {
-	position: relative;
-	top: 200px;
-	left: 0px;
+/*Navigation Styles*/
+nav ul {
+	position: absolute;
+	list-style-type: none;  
+	border-radius: 5px; 
+	top: 207px;
+	left: 40px;
     list-style-type: none;	
 	vertical-align: left;
-}
-						  
-nav li {
-	line-height: 2em;
-}
-
-nav a {
-	font-size: 16px; 
-	color: rgb(128,128,128); 
-	text-decoration: none;
-}
-						  
-nav a:hover {
-	color: rgb(29,0,252);
-}
-
-section {
-	position: absolute;
-	top: 20px;
-	left: 250px;
-	width: 1000px;
 	
 }
 
- h1 {
-	top: 100px;
-	left: 250px;
-	background: black;
-	color: rgb(204,185,120);
-	font-family: 'Trebuchet MS', Arial, Verdana, sans-serif
-	  
+nav li a {
+	display: block;  
+	color: white; 
+	background-color: rgb(31,49,59);
+	border: 1px solid black; 
+	border-radius: 5px; 
+	font-size: 22px;
+	padding: 8px 16px; 	
+	text-decoration: none;
 }
-
-table{
+				  
+nav li a:hover {
+	background: rgb(0,123,200); 
 	color: white; 
 }
 
-table.style1 {
-    width: 25%;
-	color: white; 
-}
 
-table.style2 {
-    width: 40%;
-	color: white; 
+section {
+	position: absolute; 
+	background-color: black; 
+	margin-top: 0px;
+	top: 178px;
+	left: 290px;
+	width: 950px;
 }
 
 /*Fieldset set styles*/
@@ -92,107 +90,67 @@ table.style2 {
 fieldset{
 	border: 0px; 
 	display: block;
-	margin: 5px; 
+	margin-left: 5px; 
+	margin-top: 0px;
 }
 
-
-/*telephone number */
-fieldset input{ 
-	
-	width: 40px; 
-}
-
-
-/*Legend Styles*/
-legend{
-	background-color: black; 
+fieldset legend{
+	background-color: black;
+	border-bottom: 2px solid rgb(204,185,120);
+	padding: 0px; 
 	color: rgb(204,185,120);
 	font-size: 1.9em; 
-	margin-top: 50px; 
+	margin-top: 0px; 
 	margin-bottom: 20px; 
-	text-indent: 20px; 
-	width: 100%; 
+	text-indent: 0px; 
+	width: 800px; 
 	
 }
 
-
-/*Label styles*/
-
-label{
-	
+fieldset label{
 	color: white; 
 	clear: left; 
 	float: left; 
-	font-size: 1.25em; 
+	font-size: 1em; 
 	margin-top: 2px; 
 	margin-bottom: 6px; 
 	margin-left: 0px; 
 	margin-right: 0px; 
-	width: 30%; 
+	width: 290px; 
 }
 
-/*Input Styles*/
-
-input{
+fieldset input{ 
+	background-color: rgb(31,49,59);
+	color: white; 
+	font-size: .9em; 
 	display: block; 
-	float: left; 
-	color: white;
-	font-size: 0.9em; 
+	border-radius: 5px;
+	float: left;
 	margin-top: 4px;
 	margin-right:0px;
 	margin-bottom: 4px;
 	margin-left: 0px; 
-	width: 70%; 
-}
-
-
-
-input[type="Save"] {
-	background-color: rgb(128,128,128);
-	border: black; 
-	float: none;
-	width: 150px;
+	border: none;
 	height: 30px;
 }
 
-input[type="Save"]:hover {
-	background-color: rgb(29,0,252);
-	border: white; 
-	float: none;
-	width: 150px;
-	height: 30px;
+/*Table Style*/
+
+/*Yes-No Radio Button Style*/
+table.style1{
+    width: 230px;
+	color: white; 
 }
 
-input[type="Reset"] {
-	background-color: rgb(128,128,128);
-	border: black; 
-	float: none;
-	width: 150px;
-	height: 30px;
+/*brief description, url, list of requirements, long description*/
+table.style2 {
+	color: white; 
 }
 
-input[type="Reset"]:hover {
-	background-color: rgb(29,0,252);
-	border: white;
-	float: none;
-	width: 150px;
-	height: 30px;
-}
-
-input[type="Submit"] {
-	background-color: rgb(128,128,128);
-	border: black; 
-	float: none;
-	width: 150px;
-	height: 30px;
-}
-
-input[type="Submit"]:hover {
-	background-color: rgb(29,0,252);
-	border: white;
-	float: none;
-	width: 150px;
-	height: 30px;
+/*checkbox and long radio button font color*/
+table.style3{
+	color: white;
+	width: 550px;	
 }
 
 
@@ -201,24 +159,160 @@ input[type="Submit"]:hover {
 select{
 	display: block; 
 	float: left; 
+	background-color: rgb(31,49,59);
+	color: white; 
 	font-size: 0.9em; 
+	height: 28px; 
+	border-radius: 5px;
 	margin-top: 5px;
 	margin-right:0px;
 	margin-bottom: 5px;
-	margin-left: 0px; 
+	margin-left: 2px;
+	border: none;	
 }
 
-
+/*Textarea (such as description) Height*/
 textarea{
+	background-color: rgb(31,49,59);
+	color: white; 
 	display: block; 
+	border-radius: 5px;
 	float: left; 
-	font-size: 0.9em; 
-	margin-top: 4px;
-	margin-right:0px;
-	margin-bottom: 4px;
-	margin-left: 0px; 
-	width: 60%; 
+	font-size: 0.9em;  
+	width: 340px;
+	height: 60px;
+	border-color: black;
 }
+
+/*Textbox Styles for names and other checkbox*/
+
+input[type="text"]{
+	margin-top: 5px;
+	margin-right:0px;
+	margin-bottom: 5px;
+	margin-left: 2px;
+	width: 340px;
+}
+
+/*Email textbox style*/
+
+input[type="email"]{
+	margin-top: 5px;
+	margin-right:0px;
+	margin-bottom: 5px;
+	margin-left: 2px;
+	width: 340px;
+}
+
+/*URL Styles*/
+
+input[type="url"] {
+	margin-top: 5px;
+	margin-right:0px;
+	margin-bottom: 5px;
+	margin-left: 2px;
+	width: 340px;
+}
+
+/*Button Styles*/
+
+input[type="Save"] {
+	background-color:  rgb(0,123,200); 
+	color: white; 
+	font-size: 16px; 
+	font-weight: bold;
+	text-align: center; 
+	border-radius: 25px;
+	border: none; 
+	float: left;
+	margin: 0 15px 0 65px;
+	overflow: hidden;
+	width: 200px;
+	height: 40px;
+	display: inline-block;
+}
+
+input[type="Save"]:hover {
+	background-color: rgb(31,49,59);
+	font-size: 16px;
+	font-weight: bold; 
+	text-align: center; 
+	border-radius: 25px;
+	border: none; 
+	float: left;
+	margin: 0 15px 0 65px;
+	overflow: hidden;
+	width: 200px;
+	height: 40px;
+	display: inline-block;
+}
+
+input[type="Reset"] {
+	background-color:  rgb(0,123,200); 
+	color: white; 
+	font-size: 16px; 
+	font-weight: bold;
+	text-align: center; 
+	border: none; 
+	border-radius: 25px;
+	float: left;
+	margin: 0 15px 0 65px;
+	overflow: hidden;
+	width: 200px;
+	height: 40px;
+	display: inline-block;
+}
+
+input[type="Reset"]:hover {
+	background-color: rgb(31,49,59);
+	font-size: 16px; 
+	font-weight: bold;
+	text-align: center;
+	border: none; 	
+	border-radius: 25px;
+	float: left;
+	margin: 0 15px 0 65px;
+	overflow: hidden;
+	width: 200px;
+	height: 40px;
+	display: inline-block;
+}
+
+input[type="Submit"] {
+	background-color:  rgb(0,123,200); 
+	color: white; 
+	font-size: 16px; 
+	font-weight: bold;
+	text-align: center; 
+	border: none; 
+	border-radius: 25px;
+	float: left;
+	margin: 0 15px 0 65px;
+	overflow: hidden;
+	width: 200px;
+	height: 40px;
+	display: inline-block;
+}
+
+input[type="Submit"]:hover {
+	background-color: rgb(31,49,59);
+	font-size: 16px; 
+	font-weight: bold;
+	text-align: center; 
+	border: none; 
+	border-radius: 25px; 
+	float: left;
+	margin: 0 15px 0 65px;
+	overflow: hidden;
+	width: 200px;
+	height: 40px; 
+	display: inline-block;
+}
+
+
+
+
+
 
 	
 
