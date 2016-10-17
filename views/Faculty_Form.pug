@@ -1,400 +1,386 @@
 html
 	head
-		title DLA Faculty Form
-		script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa', crossorigin='anonymous')
-		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', crossorigin='anonymous')
+		title Faculty Form
 		link(rel='stylesheet', href='/stylesheets/forms.css')
 	body
 		header
+			h Faculty Apprenticeship Submission
+			h5 *Required Fields
 			img(src='/images/culogo.jpg', alt='Colorado University')
-			header
-				nav
-					ul
-						li.newgroup
-							a(href='/') Home
-						li
-							a(href='/submit-project') Project Submission
-						li
-							a(href='/projects') Project List
-				.container
-					.row
-						.col-md-8.col-md-offser-2
-							section
-								h1 Discovery Learning Apprenticeship Submission
-								form#faculty-form(method='post', action='/submit-project', role='form')
-									form
-										br
-										br
-										fieldset#PrimaryFacultyInfo
-											legend Faculty Member Information
-											label(for='form_name') * Faculty Name:
-											table.style1
-												tr
-													td
-														input#form_name.form-control(type='text', name='name', placeholder='First Last', required='required', data-error='Faculty Name is required.')
-														.help-block.with-errors
-											label(for='form_phone') * Faculty Phone Number:
-											table.style1
-												tr
-													td
-														input#form_phone1.required(name='phone1', type='tel', placeholder='(###)',required='required', pattern='^[0-9]{3}', maxlength='3', size='1')
-														input#form_phone2.required(name='phone2', type='tel', placeholder='###',required='required', pattern='^[0-9]{3}', maxlength='3', size='1')
-														input#form_phone3.required(name='phone3', type='tel', placeholder='####',required='required', pattern='^[0-9]{4}', maxlength='4', size='1.33')
-														.help-block.with-errors
-											label(for='form_email') * Faculty Email Address:
-											table.style1
-												tr
-													td
-														input#form_email.form-control(type='email', name='email', placeholder='First.Last@Colorado.edu', required='required', data-error='Valid email is required.')
-														.help-block.with-errors
-											label(for='faculty_department') * Faculty_Department/Program:
-											select#faculty_department(name='faculty_department', required='required')
-												option(value='', disabled='disabled', selected='selected') Please Select
-												option(value='AES') Aerospace Engineering Sciences
-												option(value='AM') Applied Math
-												option(value='C&BE') Chemical & Biological Engineering
-												option(value='CE&A') Civil, Environmental and Architectural Engineering
-												option(value='CS') Computer Science
-												option(value='ECEE') Electrical, Computer and Energy Engineering
-												option(value='PHY') Physics
-												option(value='EE') Environmental Engineering
-												option(value='ME') Mechanical Engineering
-												option(value='CSG') Colorado Space Grant
-												option(value='EEd') Engineering Education
-												option(value='ATLAS') ATLAS
-											br
-											label(for='form_EDC') Does this project have a focus on Engineering for Developing Communities? 
-											br
-											table.style1
-												tr
-													td
-														input#edc1(type='radio', name='edc', value='Yes')
-														|  Yes
-													td
-														input#edc(type='radio', name='edc', value='No')
-														|  No
-										fieldset#SecondaryFacultyInfo
-											legend Optional Secondary Faculty Member
-											label(for='secondary_name')  Faculty Name:
-											table.style1
-												tr
-													td
-														input#form_name.form-control(type='text', name='secondary_name', placeholder='First Last', data-error='Faculty Name is required.')
-														.help-block.with-errors
-											label(for='form_phone')  Faculty Phone Number:
-											table.style1
-												tr
-													td
-														input#form_phone1(name='secondary_phone1', type='tel', placeholder='(###)', pattern='^[0-9]{3}', maxlength='3', size='1')
-														input#form_phone2(name='secondary_phone2', type='tel', placeholder='###', pattern='^[0-9]{3}', maxlength='3', size='1')
-														input#form_phone3(name='secondary_phone3', type='tel', placeholder='####', pattern='^[0-9]{4}', maxlength='4', size='1.33')
-														.help-block.with-errors
-											label(for='form_email')  Faculty Email Address:
-											table.style1
-												tr
-													td
-														input#form_email.form-control(type='email', name='secondary_email', placeholder='First.Last@Colorado.edu', data-error='Valid email is required.')
-														.help-block.with-errors
-											label(for='secondary_faculty_department')  Faculty Department/Program:
-											select#secondary_faculty_department(name='secondary_faculty_department')
-												option(value='', disabled='disabled', selected='selected') Please Select
-												option(value='AES') Aerospace Engineering Sciences
-												option(value='AM') Applied Math
-												option(value='C&BE') Chemical & Biological Engineering
-												option(value='CE&A') Civil, Environmental and Architectural Engineering
-												option(value='CS') Computer Science
-												option(value='ECEE') Electrical, Computer and Energy Engineering
-												option(value='PHY') Physics
-												option(value='EE') Environmental Engineering
-												option(value='ME') Mechanical Engineering
-												option(value='CSG') Colorado Space Grant
-												option(value='EEd') Engineering Education
-												option(value='ATLAS') ATLAS
-											br
-											br
-											br
-										fieldset#GradStudentPostDoc
-											legend Optional Graduate Student/Post Doctorate Information
-											label(for='post_doc_name')  Name:
-											table.style1
-												tr
-													td
-														input#form_name.form-control(type='text', name='post_doc_name', placeholder='First Last', data-error='Faculty Name is required.')
-														.help-block.with-errors
-											label(for='post_doc_phone')  Phone Number:
-											table.style1
-												tr
-													td
-														input#form_phone1(name='post_doc_phone1', type='tel', placeholder='(###)', pattern='^[0-9]{3}', maxlength='3', size='1')
-														input#form_phone2(name='post_doc_phone2', type='tel', placeholder='###', pattern='^[0-9]{3}', maxlength='3', size='1')
-														input#form_phone3(name='post_doc_phone3', type='tel', placeholder='####', pattern='^[0-9]{4}', maxlength='4', size='1.33')
-														.help-block.with-errors
-											label(for='form_email')  Email Address:
-											table.style1
-												tr
-													td
-														input#form_email.form-control(type='email', name='post_doc_email', placeholder='First.Last@Colorado.edu', data-error='Valid email is required.')
-														.help-block.with-errors
-														br
-														br
-										fieldset#info
-											legend  Apprenticeship Information
-											label(for='description') * Title or Brief Description of Apprenticeship:
-											table.style2
-												tr
-													td
-														textarea#description.form-control(name='description', rows='2', required='required', maxlength='80', data-error='Please, provide a description.')
-														.help-block.with-errors
-											label(for='url')
-												br
-												| Website URL to Provide Additional Information:
-											br
-											table.style2
-												tr
-													td
-														input#URL.form-control(type='url', name='url', placeholder='https://www.website.com')
-														br
-														br
-											label(for='requirements')
-												br
-												| Special Requirements for Applicants: 
-												fieldset.requirements  
-											br
-											br
-											table.style2
-												tr
-													td
-														textarea#requirements.form-control(name='requirements1', placeholder='1)', maxlength='200')
-														br
-												tr
-													td
-														textarea#requirements.form-control(name='requirements2', placeholder='2)', maxlength='200')
-														br
-												tr
-													td
-														textarea#requirements.form-control(name='requirements3', placeholder='3)', maxlength='200')
-														br
-												tr
-													td
-														textarea#requirements.form-control(name='requirements4', placeholder='4)', maxlength='200')
-														br
-												tr
-													td
-														textarea#requirements.form-control(name='requirements5', placeholder='5)', maxlength='200')
-											br
-											label(for='longdescription')
-												br
-												| * Longer Description of Apprenticeship:
-											br
-											table.style2
-												tr
-													td
-														textarea#longdescription.form-control(name='longdescription', rows='2', required='required', maxlength='1200', data-error='Please, provide a description.')
-														.help-block.with-errors
-														br
-											label(for='areas')
-												br
-												br
-												| * Areas to Recruit Students From: (Only students from the areas you select will be able to apply.)
-											br
-											br
-											br
-											table
-												tr
-													td
-														input(type='checkbox', name='areas', value='aerospace')
-														|  Aerospace Engineering
-													td
-														input(type='checkbox', name='areas', value='electrical')
-														|  Electrical Engineering
-												tr
-													td
-														input(type='checkbox', name='areas', value='mathematics')
-														|  Applied Mathematics
-													td
-														input(type='checkbox', name='areas', value='electrical_computer')
-														|  Electrical and Computer Engineering
-												tr
-													td
-														input(type='checkbox', name='areas', value='architectural')
-														|  Architectural Engineering
-													td
-														input(type='checkbox', name='areas', value='engineering_physics')
-														|  Engineering Physics
-												tr
-													td
-														input(type='checkbox', name='areas', value='chemical')
-														|  Chemical Engineering
-													td
-														input(type='checkbox', name='areas', value='environmental')
-														|  Environmental Engineering
-												tr
-													td
-														input(type='checkbox', name='areas', value='chemical_biological')
-														|  Chemical & Biological Engineering
-													td
-														input(type='checkbox', name='areas', value='engineering_plus')
-														|  Engineering Plus
-												tr
-													td
-														input(type='checkbox', name='areas', value='civil')
-														|  Civil Engineering
-													td
-														input(type='checkbox', name='areas', value='mechanical')
-														|  Mechanical Engineering
-												tr
-													td
-														input(type='checkbox', name='areas', value='computer_science')
-														|  Computer Science
-													td
-														input(type='checkbox', name='areas', value='tech_arts_media')
-														|  Technology, Arts and Media
-											br
-											label(for='supervision_req') * Amount of Supervision Required / Inteaction Available:
-											table
-												tr
-													td
-														input#amountofsup(type='radio', name='supervision_req', value='Little')
-														| 	Very little supervision; student will need to work largely independently
-												tr
-													td
-														input#amountofsup(type='radio', name='supervision_req', value='Moderate')
-														| 	Moderate amount of supervision and interaction with others
-												tr
-													td
-														input#amountofsup(type='radio', name='supervision_req', value='Large')
-														| 	A great deal of supervision and interaction with others
-											br
-											br
-											label(for='supervision_provided') * Supervision Provided By:
-											table
-												tr
-													td
-														input#supprov(type='radio', name='supervision_provided', value='Faculty')
-														| 	Supervision primarily by faculty supervisor
-												tr
-													td
-														input#supprov(type='radio', name='supervision_provided', value='Graduate')
-														| 	Supervision primarily by graduate students
-												tr
-													td
-														input#supprov(type='radio', name='supervision_provided', value='Combo')
-														| 	Supervision primarily a combination of faculty and graduate students
-											br
-											label(for='nature_of_work') * Nature of Work:
-											table
-												tr
-													td
-														input#nature(type='radio', name='nature_of_work', value='Theoretical')
-														| 	Nature of work is primarily theoretical, most work on paper/electronic medium
-												tr
-													td
-														input#nature(type='radio', name='nature_of_work', value='Experimental')
-														| 	Nature of work is primarily experimental, requiring hands-on work in a lab
-												tr
-													td
-														input#nature(type='radio', name='nature_of_work', value='FieldBased')
-														| 	Nature of work is primarily field based, requiring hands-on work in the field
-												tr
-													td
-														input#nature(type='radio', name='nature_of_work', value='ComputerRelated')
-														| 	Nature of work is primarily computer-related, involving coding/analysis
-												tr
-													td
-														input#nature(type='radio', name='nature_of_work', value='Combo')
-														| 	Nature of work is a combination of several types of work.
-												tr
-													td
-														input#nature(type='radio', name='nature_of_work', value='Other')
-														| 	Other, specify:
-														input#nature.form-control(type='text', name='nature_of_work_other', maxlength='60')
-														.help-block.with-errors
-											br
-											label(for='prior_work') * Amount of Prior Work Conducted in Association With This Project:
-											table
-												tr
-													td
-														input#amount(type='radio', name='prior_work', value='None')
-														| 	No prior work; student will be starting from basic idea
-												tr
-													td
-														input#amount(type='radio', name='prior_work', value='Some')
-														| 	Some prior work; student will build on work of others
-												tr
-													td
-														input#amount(type='radio', name='prior_work', value='Refine')
-														| 	Well-established body of work; student will refine/improved upon efforts of others
-												tr
-													td
-														input#amount(type='radio', name='prior_work', value='Other')
-														| 	Other, specify:
-														input#amount.form-control(type='text', name='prior_work_other', maxlength='60')
-														.help-block.with-errors
-										br
-										br
-										fieldset#finances
-											legend  Finances
-											label(for='match_of_funding')
-												| * Speed Type for 50% Match of Funding: 
-												br
-											table
-												tr
-													td
-														input#finances.form-control(name='match_of_funding', type='tel', placeholder='########', pattern='^[0-9]{8}', required='required', maxlength='8', size='6', data-error='Please, provide a speed type.')
-												tr
-													td
-														input(type='checkbox', name='not_sure', value='Yes')
-														|  Not Sure
-														br
-														br
-											label(for='contact')
-												| * Accounting Contact for Project: 
-												br
-											table.style1
-												tr
-													td
-														input#contact.form-control(type='text', name='contact', placeholder='First Last', required='required', data-error='Accounting Contact Name is required.')
-														br
-												tr
-										br
-										br
-										fieldset#other
-											legend Other
-											label(for='supervised_past')
-												| Have you, the faculty supervisor, supervised a Discovery Learning Apprentice in the past?
-											br
-											table.style1
-												tr
-													td
-														input#Past(type='radio', name='supervised_past', value='Yes')
-														| Yes
-													td
-														input#Past(type='radio', name='supervised_past', value='No')
-														| 	No
-											label(for='specific_students')
-												br
-												| Name of Specific Students Desired:
-												br
-											br
-											br
-											br
-											table.style1
-												tr
-													td
-														input#contact.form-control(type='text', name='specific_students1', placeholder='First Last')
-														br
-												tr
-													td
-														input#contact.form-control(type='text', name='specific_students2', placeholder='First Last')
-														br
-												tr
-													td
-														input#contact.form-control(type='text', name='specific_students3', placeholder='First Last')
-														br
-											br
-											br
-											br
-										p
-											input.btn.btn-success(type='save', value='Save')
-											input.btn.btn-success(type='reset', value='Reset')
-											input.btn.btn-success(type='submit', value='Submit')
+		nav
+			ul
+				
+				li.newgroup
+					a(href='/') Home
+				li.newgroup
+					a.button.name(href='/submit-project') Project Submission
+				li.newgroup
+					a.button.name(href='/projects') Project List
+				li.newgroup
+					a.button.name(href='/') Logout 
+		section
+			form#faculty-form(method='post', action='/submit-project', role='form')
+				form
+					fieldset#PrimaryFacultyInfo
+						legend Faculty Member Information
+						label(for='form_name') Faculty Name: *
+						table.style1
+							tr
+								td
+									input#form_name.form-control(type='text', name='name', placeholder=' First Last', required='required', data-error='Faculty Name is required.')
+									.help-block.with-errors
+						label(for='form_phone')  Faculty Phone Number: *
+						table.style1
+							tr
+								td
+									input#form_primPhone.required(name='primPhone', type='tel', placeholder=' ###-###-####',required='required', maxlength='15', size='15')
+									.help-block.with-errors
+						label(for='form_email')  Faculty Email Address: *
+						table.style1
+							tr
+								td
+									input#form_email.form-control(type='email', name='email', placeholder=' First.Last@Colorado.edu', required='required', data-error='Valid email is required.')
+									.help-block.with-errors
+						label(for='faculty_department')  Faculty_Department/Program: *
+						select#faculty_department(name='faculty_department', required='required')
+							option(value='', disabled='disabled', selected='selected') Please Select
+							option(value='AES') Aerospace Engineering Sciences
+							option(value='AM') Applied Math
+							option(value='C&BE') Chemical & Biological Engineering
+							option(value='CE&A') Civil, Environmental and Architectural Engineering
+							option(value='CS') Computer Science
+							option(value='ECEE') Electrical, Computer and Energy Engineering
+							option(value='PHY') Physics
+							option(value='EE') Environmental Engineering
+							option(value='ME') Mechanical Engineering
+							option(value='CSG') Colorado Space Grant
+							option(value='EEd') Engineering Education
+							option(value='ATLAS') ATLAS
+						br
+						br
+						label(for='form_EDC') Does this project have a focus on Engineering for Developing Communities? *
+						table.style1
+							tr
+								td
+									input#edc1(type='radio', name='edc', required='required', value='Yes')
+									|  Yes
+								td
+									input#edc(type='radio', name='edc', required='required', value='No')
+									|  No
+					fieldset#SecondaryFacultyInfo
+						legend Optional Secondary Faculty Member
+						label(for='secondary_name')  Faculty Name:
+						table.style1
+							tr
+								td
+									input#form_name.form-control(type='text', name='secondary_name', placeholder=' First Last', data-error='Faculty Name is required.')
+									.help-block.with-errors
+						label(for='form_phone')  Faculty Phone Number:
+						table.style1
+							tr
+								td
+									input#form_secPhone(name='secPhone', type='tel', placeholder=' ###-###-####', maxlength='15', size='15')
+									.help-block.with-errors
+						label(for='form_email')  Faculty Email Address:
+						table.style1
+							tr
+								td
+									input#form_email.form-control(type='email', name='secondary_email', placeholder=' First.Last@Colorado.edu', data-error='Valid email is required.')
+									.help-block.with-errors
+						label(for='secondary_faculty_department')  Faculty Department/Program:
+						select#secondary_faculty_department(name='secondary_faculty_department')
+							option(value='', disabled='disabled', selected='selected') Please Select
+							option(value='AES') Aerospace Engineering Sciences
+							option(value='AM') Applied Math
+							option(value='C&BE') Chemical & Biological Engineering
+							option(value='CE&A') Civil, Environmental and Architectural Engineering
+							option(value='CS') Computer Science
+							option(value='ECEE') Electrical, Computer and Energy Engineering
+							option(value='PHY') Physics
+							option(value='EE') Environmental Engineering
+							option(value='ME') Mechanical Engineering
+							option(value='CSG') Colorado Space Grant
+							option(value='EEd') Engineering Education
+							option(value='ATLAS') ATLAS
+						br
+						br
+					fieldset#GradStudentPostDoc
+						legend Optional Graduate Student/Post Doctorate Information
+						label(for='post_doc_name')  Name:
+						table.style1
+							tr
+								td
+									input#form_name.form-control(type='text', name='post_doc_name', placeholder=' First Last', data-error='Faculty Name is required.')
+									.help-block.with-errors
+						label(for='post_doc_phone')  Phone Number:
+						table.style1
+							tr
+								td
+									input#form_postDocPhone(name='postDocPhone', type='tel', placeholder=' ###-###-####', maxlength='15', size='15')
+									.help-block.with-errors
+						label(for='form_email')  Email Address:
+						table.style1
+							tr
+								td
+									input#form_email.form-control(type='email', name='post_doc_email', placeholder=' First.Last@Colorado.edu', data-error='Valid email is required.')
+									.help-block.with-errors
+						br
+					fieldset#info
+						legend  Apprenticeship Information
+						label(for='description')  Title or Brief Description of Apprenticeship: *
+						table.style2
+							tr
+								td
+									textarea#description.form-control(name='description', rows='2', required='required', maxlength='80', data-error='Please, provide a description.')
+									.help-block.with-errors
+						label(for='url')
+							br
+							| Website URL to Provide Additional Information:
+						br
+						table.style2
+							tr
+								td
+									input#URL.form-control(type='url', name='url', placeholder=' https://www.website.com')
+									br
+						label(for='requirements')
+							br
+							| Special Requirements for Applicants: 
+							fieldset.requirements  
+						br
+						br
+						table.style2
+							tr
+								td
+									textarea#requirements.form-control(name='requirements1', placeholder=' 1) Optional', maxlength='200')
+									br
+							tr
+								td
+									textarea#requirements.form-control(name='requirements2', placeholder=' 2) Optional', maxlength='200')
+									br
+							tr
+								td
+									textarea#requirements.form-control(name='requirements3', placeholder=' 3) Optional', maxlength='200')
+									br
+							tr
+								td
+									textarea#requirements.form-control(name='requirements4', placeholder=' 4) Optional', maxlength='200')
+									br
+							tr
+								td
+									textarea#requirements.form-control(name='requirements5', placeholder=' 5) Optional', maxlength='200')
+						label(for='longdescription')
+							br
+							|  Longer Description of Apprenticeship: *
+						br
+						table.style2
+							tr
+								td
+									textarea#longdescription.form-control(name='longdescription', rows='2', required='required', maxlength='1200', data-error='Please, provide a description.')
+									.help-block.with-errors
+									br
+						label(for='areas')
+							br
+							|  Areas to Recruit Students From: *
+							br
+							br
+							|(Only students from the areas you 
+							br
+							|select will be able to apply.) 
+						br
+						table.style3
+							tr
+								td
+									input(type='checkbox', name='areas', value='aerospace')
+									|  Aerospace Engineering
+								td
+									input(type='checkbox', name='areas', value='electrical')
+									|  Electrical Engineering
+							tr
+								td
+									input(type='checkbox', name='areas', value='mathematics')
+									|  Applied Mathematics
+								td
+									input(type='checkbox', name='areas', value='electrical_computer')
+									|  Electrical and Computer Engineering
+							tr
+								td
+									input(type='checkbox', name='areas', value='architectural')
+									|  Architectural Engineering
+								td
+									input(type='checkbox', name='areas', value='engineering_physics')
+									|  Engineering Physics
+							tr
+								td
+									input(type='checkbox', name='areas', value='chemical')
+									|  Chemical Engineering
+								td
+									input(type='checkbox', name='areas', value='environmental')
+									|  Environmental Engineering
+							tr
+								td
+									input(type='checkbox', name='areas', value='chemical_biological')
+									|  Chemical & Biological Engineering
+								td
+									input(type='checkbox', name='areas', value='engineering_plus')
+									|  Engineering Plus
+							tr
+								td
+									input(type='checkbox', name='areas', value='civil')
+									|  Civil Engineering
+								td
+									input(type='checkbox', name='areas', value='mechanical')
+									|  Mechanical Engineering
+							tr
+								td
+									input(type='checkbox', name='areas', value='computer_science')
+									|  Computer Science
+								td
+									input(type='checkbox', name='areas', value='tech_arts_media')
+									|  Technology, Arts and Media
+						br
+						label(for='supervision_req')  Amount of Supervision Required / Interaction Available: *
+						table.style3
+							tr
+								td
+									input#amountofsup(type='radio', name='supervision_req', required='required', value='Little')
+									| 	Very little supervision; student will need to work largely independently
+							tr
+								td
+									input#amountofsup(type='radio', name='supervision_req', required='required', value='Moderate')
+									| 	Moderate amount of supervision and interaction with others
+							tr
+								td
+									input#amountofsup(type='radio', name='supervision_req', required='required',value='Large')
+									| 	A great deal of supervision and interaction with others
+						br
+						label(for='supervision_provided')  Supervision Provided By: *
+						table.style3
+							tr
+								td
+									input#supprov(type='radio', name='supervision_provided', required='required', value='Faculty')
+									| 	Supervision primarily by faculty supervisor
+							tr
+								td
+									input#supprov(type='radio', name='supervision_provided', required='required', value='Graduate')
+									| 	Supervision primarily by graduate students
+							tr
+								td
+									input#supprov(type='radio', name='supervision_provided', required='required', value='Combo')
+									| 	Supervision primarily a combination of faculty and graduate students
+						br
+						label(for='nature_of_work')  Nature of Work: *
+						table.style3
+							tr
+								td
+									input#nature(type='radio', name='nature_of_work', required='required', value='Theoretical')
+									| 	Nature of work is primarily theoretical, most work on paper/electronic medium
+							tr
+								td
+									input#nature(type='radio', name='nature_of_work', required='required', value='Experimental')
+									| 	Nature of work is primarily experimental, requiring hands-on work in a lab
+							tr
+								td
+									input#nature(type='radio', name='nature_of_work',required='required', value='FieldBased')
+									| 	Nature of work is primarily field based, requiring hands-on work in the field
+							tr
+								td
+									input#nature(type='radio', name='nature_of_work', required='required', value='ComputerRelated')
+									| 	Nature of work is primarily computer-related, involving coding/analysis
+							tr
+								td
+									input#nature(type='radio', name='nature_of_work', required='required', value='Combo')
+									| 	Nature of work is a combination of several types of work.
+							tr
+								td
+									input#nature(type='radio', name='nature_of_work', required='required', value='Other')
+									| 	Other, specify:
+									br
+									input#nature.form-control(type='text', name='nature_of_work_other', maxlength='60')
+									.help-block.with-errors
+						br
+						label(for='prior_work')  Amount of Prior Work Conducted in Association With This Project: *
+						table.style3
+							tr
+								td
+									input#amount(type='radio', name='prior_work', required='required', value='None')
+									| 	No prior work; student will be starting from basic idea
+							tr
+								td
+									input#amount(type='radio', name='prior_work', required='required', value='Some')
+									| 	Some prior work; student will build on work of others
+							tr
+								td
+									input#amount(type='radio', name='prior_work', required='required', value='Refine')
+									| 	Well-established body of work; student will refine/improved upon efforts of others
+							tr
+								td
+									input#amount(type='radio', name='prior_work', required='required', value='Other')
+									| 	Other, specify:
+									br
+									input#amount.form-control(type='text', name='prior_work_other', maxlength='60')
+									.help-block.with-errors
+					br
+					fieldset#finances
+						legend  Finances
+						label(for='match_of_funding')
+							|  50% Match of Funding Speed Type: *
+							br
+						table.style1
+							tr
+								td
+									input#finances.form-control(name='match_of_funding', type='tel', placeholder=' ########', pattern='^[0-9]{8}', required='required', maxlength='8', size='9', data-error='Please, provide a speed type.')
+							tr
+								td
+									input(type='checkbox', name='not_sure', value='Yes')
+									|  Not Sure
+									br
+									br
+						label(for='contact')
+							|  Accounting Contact for Project: *
+							br
+						table.style1
+							tr
+								td
+									input#contact.form-control(type='text', name='contact', placeholder=' First Last', required='required', data-error='Accounting Contact Name is required.')
+									br
+							tr
+					br
+					fieldset#other
+						legend Other
+						label(for='supervised_past')
+							| Have you, the faculty supervisor, supervised a Discovery Learning Apprentice in the past? *
+						table.style1
+							tr
+								td
+									input#Past(type='radio', name='supervised_past', required='required', value='Yes')
+									| Yes
+								td
+									input#Past(type='radio', name='supervised_past', required='required', value='No')
+									| 	No
+						label(for='specific_students')
+							br
+							| Name of Specific Students Desired:
+							br
+						br
+						br
+						br
+						table.style1
+							tr
+								td
+									input#contact.form-control(type='text', name='specific_students1', placeholder=' First Last')
+									br
+							tr
+								td
+									input#contact.form-control(type='text', name='specific_students2', placeholder=' First Last')
+									br
+							tr
+								td
+									input#contact.form-control(type='text', name='specific_students3', placeholder=' First Last')
+									br
+						br
+						br
+						br
+					p
+						input.btn.btn-success(type='save', value='Save')
+						input.btn.btn-success(type='reset', value='Reset')
+						input.btn.btn-success(type='submit', value='Submit')
