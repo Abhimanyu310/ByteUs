@@ -138,7 +138,7 @@ fieldset input{
 
 /*Yes-No Radio Button Style*/
 table.style1{
-    width: 230px;
+    	width: 230px;
 	color: white; 
 }
 
@@ -150,7 +150,7 @@ table.style2 {
 /*checkbox and long radio button font color*/
 table.style3{
 	color: white;
-	width: 550px;	
+	width: 600px;	
 }
 
 
@@ -315,6 +315,4 @@ input[type="Submit"]:hover {
 
 
 	
-
-
 
