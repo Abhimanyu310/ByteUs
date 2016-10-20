@@ -1,0 +1,44 @@
+html
+	head
+		title Student Form
+		link(rel='stylesheet', href='/stylesheets/application.css')
+	body
+		header
+			h Student Apprenticeship Application
+			h5 *Required Fields
+			img(src='/images/culogo.jpg', alt='Colorado University')
+		nav
+			ul
+				
+				li.newgroup
+					a(href='/') Home
+				li.newgroup
+					a.button.name(href='/projects') Project List
+				li.newgroup
+					a.button.name(href='/logout') Logout 
+		section
+			form#sudent-form(method='post', action='/student-submit', role='form')
+				form
+					fieldset#StudentInfo
+						legend Student Information
+						label(for='form_name') Name: *
+						table.style1
+							tr
+
+								td
+									input#form_name.form-control(type='text', name='name', placeholder=' First Last', required='required', data-error='Faculty Name is required.')
+									.help-block.with-errors
+						label(for='form_EDC') Gender *
+						table.style1
+							tr
+								td
+									input#edc1(type='radio', name='gender', required='required', value='Female')
+									|  Male
+								td
+									input#edc(type='radio', name='gender', required='required', value='Male')
+									|  Female
+								
+				
+						input.btn.btn-success(type='save', value='Save')
+						input.btn.btn-success(type='reset', value='Reset')
+						input.btn.btn-success(type='submit', value='Submit')

@@ -1,10 +1,10 @@
 html
 	head
-		title Project List 
+		title Logged Out
 		link(rel='stylesheet', href='/stylesheets/forms.css')
 	body
 		header
-			h Project List
+			h2 You have been successfully logged out. 
 			img(src='/images/culogo.jpg', alt='Colorado University')
 		nav
 			ul
@@ -15,9 +15,3 @@ html
 					a.button.name(href='/projects') Project List
 				li.newgroup
 					a.button.name(href='/logout') Logout
-		section
-		table.style4
-				tr
-					td
-						each project in projects
-							li #{project.description} by #{project.name}

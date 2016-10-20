@@ -31,19 +31,8 @@ header h {
 	background: black;
 	color: white;
 }
-header h2 {
-	font-size: 22px; 
-	font-weight: bold; 
-	position: absolute;
-	top: 195px;
-	left: 310px;
-	width: 1000px; 
-	background: black;
-	color: white;
-}
-
 header h5{
-	color: rgb(0,123,200); 
+	color: rgb(0,123,200); ; 
 	position: absolute;
 	font-size: 14px; 
 	top: 153px;
@@ -247,38 +236,8 @@ input[type="url"] {
 
 /*Button Styles*/
 
-input[type="Save"] {
-	background-color:  rgb(0,123,200); 
-	color: white; 
-	font-size: 16px; 
-	font-weight: bold;
-	text-align: center; 
-	border-radius: 25px;
-	border: none; 
-	float: left;
-	margin: 0 15px 0 65px;
-	overflow: hidden;
-	width: 200px;
-	height: 40px;
-	display: inline-block;
-}
 
-input[type="Save"]:hover {
-	background-color: rgb(31,49,59);
-	font-size: 16px;
-	font-weight: bold; 
-	text-align: center; 
-	border-radius: 25px;
-	border: none; 
-	float: left;
-	margin: 0 15px 0 65px;
-	overflow: hidden;
-	width: 200px;
-	height: 40px;
-	display: inline-block;
-}
-
-input[type="Reset"] {
+input[type="Student"] {
 	background-color:  rgb(0,123,200); 
 	color: white; 
 	font-size: 16px; 
@@ -287,14 +246,14 @@ input[type="Reset"] {
 	border: none; 
 	border-radius: 25px;
 	float: left;
-	margin: 0 15px 0 65px;
+	margin: 0 15px 0 195px;
 	overflow: hidden;
 	width: 200px;
 	height: 40px;
 	display: inline-block;
 }
 
-input[type="Reset"]:hover {
+input[type="Student"]:hover {
 	background-color: rgb(31,49,59);
 	font-size: 16px; 
 	font-weight: bold;
@@ -302,14 +261,14 @@ input[type="Reset"]:hover {
 	border: none; 	
 	border-radius: 25px;
 	float: left;
-	margin: 0 15px 0 65px;
+	margin: 0 15px 0 195px;
 	overflow: hidden;
 	width: 200px;
 	height: 40px;
 	display: inline-block;
 }
 
-input[type="Submit"] {
+input[type="Faculty"] {
 	background-color:  rgb(0,123,200); 
 	color: white; 
 	font-size: 16px; 
@@ -325,7 +284,7 @@ input[type="Submit"] {
 	display: inline-block;
 }
 
-input[type="Submit"]:hover {
+input[type="Faculty"]:hover {
 	background-color: rgb(31,49,59);
 	font-size: 16px; 
 	font-weight: bold;

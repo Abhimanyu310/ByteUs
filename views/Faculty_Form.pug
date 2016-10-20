@@ -1,6 +1,6 @@
 html
 	head
-		title DLA Faculty Form
+		title Faculty Form
 		link(rel='stylesheet', href='/stylesheets/forms.css')
 	body
 		header
@@ -13,11 +13,9 @@ html
 				li.newgroup
 					a(href='/') Home
 				li.newgroup
-					a.button.name(href='/submit-project') Project Submission
-				li.newgroup
 					a.button.name(href='/projects') Project List
 				li.newgroup
-					a.button.name(href='/') Logout 
+					a.button.name(href='/logout') Logout 
 		section
 			form#faculty-form(method='post', action='/submit-project', role='form')
 				form
@@ -182,10 +180,17 @@ html
 							br
 							|  Areas to Recruit Students From: *
 							br
+							|	(Only students from the areas you 
 							br
-							|(Only students from the areas you 
+							|	select will be able to apply.)
 							br
-							|select will be able to apply.) 
+							br
+							input(type='checkbox', name='check', value='All') 
+							|	Check/Uncheck All 
+							br
+							|	(Not Functional Yet)
+							br
+							br
 						br
 						table.style3
 							tr
@@ -293,7 +298,7 @@ html
 							tr
 								td
 									input#nature(type='radio', name='nature_of_work', required='required', value='Other')
-									| 	Other, specify:
+									| 	Other, specify: (Not complete - need to make sure that if Other is selected the user specified.)
 									br
 									input#nature.form-control(type='text', name='nature_of_work_other', maxlength='60')
 									.help-block.with-errors
@@ -315,7 +320,7 @@ html
 							tr
 								td
 									input#amount(type='radio', name='prior_work', required='required', value='Other')
-									| 	Other, specify:
+									| 	Other, specify: (Not complete - need to make sure that if Other is selected the user specified.)
 									br
 									input#amount.form-control(type='text', name='prior_work_other', maxlength='60')
 									.help-block.with-errors
@@ -332,7 +337,7 @@ html
 							tr
 								td
 									input(type='checkbox', name='not_sure', value='Yes')
-									|  Not Sure
+									|  Not Sure (Not Complete - Have to make sure that only one or the other is filled out/checked.)
 									br
 									br
 						label(for='contact')
@@ -381,6 +386,6 @@ html
 						br
 						br
 					p
-						input.btn.btn-success(type='save', value='Save')
+						input.btn.btn-success(type='save', value='Save(In progress)')
 						input.btn.btn-success(type='reset', value='Reset')
 						input.btn.btn-success(type='submit', value='Submit')

@@ -31,16 +31,6 @@ header h {
 	background: black;
 	color: white;
 }
-header h2 {
-	font-size: 22px; 
-	font-weight: bold; 
-	position: absolute;
-	top: 195px;
-	left: 310px;
-	width: 1000px; 
-	background: black;
-	color: white;
-}
 
 header h5{
 	color: rgb(0,123,200); 
@@ -97,9 +87,6 @@ section {
 	width: 950px;
 }
 
-h4 {
-	color: white; 
-}
 
 /*Fieldset set styles*/
 
@@ -132,7 +119,7 @@ fieldset label{
 	margin-bottom: 6px; 
 	margin-left: 0px; 
 	margin-right: 0px; 
-	width: 290px; 
+	width: 100px; 
 }
 
 fieldset input{ 
@@ -158,64 +145,7 @@ table.style1{
 	color: white; 
 }
 
-/*brief description, url, list of requirements, long description*/
-table.style2 {
-	color: white; 
-}
-
-/*check box and long radio button font color*/
-table.style3{
-	color: white;
-	width: 600px;	
-}
-
-/*Format for project list table*/
-table.style4{
-	list-style:none; 
-	color: white; 
-	width: 800px;
-	padding-top: 250px; 
-	padding-left: 300px; 
-}
-
-table.style5{
-	color: white; 
-	width: 400px;
-	padding-top: 250px; 
-	padding-left: 300px; 
-}
-
-/*Select Styles*/
-
-select{
-	display: block; 
-	float: left; 
-	background-color: rgb(31,49,59);
-	color: white; 
-	font-size: 0.9em; 
-	height: 28px; 
-	border-radius: 5px;
-	margin-top: 5px;
-	margin-right:0px;
-	margin-bottom: 5px;
-	margin-left: 2px;
-	border: none;	
-}
-
-/*Textarea (such as description) Height*/
-textarea{
-	background-color: rgb(31,49,59);
-	color: white; 
-	display: block; 
-	border-radius: 5px;
-	float: left; 
-	font-size: 0.9em;  
-	width: 340px;
-	height: 60px;
-	border-color: black;
-}
-
-/*Textbox Styles for names and other checkbox*/
+/*Textbox Styles for names and other fields*/
 
 input[type="text"]{
 	margin-top: 5px;
@@ -224,28 +154,6 @@ input[type="text"]{
 	margin-left: 2px;
 	width: 340px;
 }
-
-/*Email textbox style*/
-
-input[type="email"]{
-	margin-top: 5px;
-	margin-right:0px;
-	margin-bottom: 5px;
-	margin-left: 2px;
-	width: 340px;
-}
-
-/*URL Styles*/
-
-input[type="url"] {
-	margin-top: 5px;
-	margin-right:0px;
-	margin-bottom: 5px;
-	margin-left: 2px;
-	width: 340px;
-}
-
-/*Button Styles*/
 
 input[type="Save"] {
 	background-color:  rgb(0,123,200); 
