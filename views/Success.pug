@@ -1,1 +1,29 @@
-
+html
+	head
+		title Successful Submission
+		link(rel='stylesheet', href='/stylesheets/forms.css')
+	body
+		header
+			h Successful Submission! 
+			img(src='/images/culogo.jpg', alt='Colorado University')
+		nav
+			ul
+				
+				li.newgroup
+					a(href='/') Home
+				li.newgroup
+					a.button.name(href='/projects') Project List
+				li.newgroup
+					a.button.name(href='/logout') Logout
+		section
+			h4 
+				br
+				|	You have successfully completed your application. Please allow time for processing. 
+				br
+				|	Applicants will be notified in early June about the final decision.
+			
+		table.style4
+				tr
+					td
+						each project in projects
+							li #{project.description} by #{project.name}
