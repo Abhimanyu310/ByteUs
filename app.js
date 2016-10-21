@@ -5,6 +5,25 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var session = require('express-session');
+var flash = require('connect-flash');
+var validator = require('express-validator');
+
+
+// var SequelStore = require('sequelstore-connect')(session);
+// var SequelizeStore = require('connect-session-sequelize')(session.Store);
+// const SequelizeConnection = require ('./models').sequelize;
+
+// var Sequelize = require('sequelize');
+// var sequelize = new Sequelize(
+//     "byteus",
+//     "root",
+//     "silencer", {
+//         "dialect": "mysql",
+//         // "storage": "./session.mysql"
+//     });
+
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
@@ -19,7 +38,18 @@ app.set('view engine', 'pug');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(validator());
 app.use(cookieParser());
+app.use(session({
+    secret: 'mysupersecret',
+    resave: false,
+    saveUninitialized: false,
+    // store: new SequelizeStore({database: sequelize}),
+    cookie: {maxAge: 180 * 60 * 1000}
+}));
+app.use(flash());
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(function(req, res, next) {

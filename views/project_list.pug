@@ -2,8 +2,7 @@ extends layout
 
 block content
     h1= title
-
-
+    h2 #{message}
     ul
     each project in projects
         li #{project.description} by #{project.name}

@@ -13,12 +13,27 @@ router.get('/', function(req, res, next) {
 
 // Project submission for faculty
 router.get('/submit-project', function(req, res, next) {
-    res.render('Faculty_Form', { title: "Hah" });
+    var messages = req.flash('error');
+    console.log(messages);
+    res.render('Faculty_Form', { messages: messages });
 });
 
 
 // Post the project submission form
 router.post('/submit-project', function(req, res, next) {
+
+    req.checkBody('email', 'Invalid email').notEmpty().isEmail();
+    req.checkBody('name', 'Invalid name').notEmpty();
+    var errors = req.validationErrors();
+    if (errors) {
+        var messages = [];
+        errors.forEach(function (error) {
+            messages.push(error.msg);
+        });
+        req.flash('error', messages)
+        res.redirect('/submit-project');
+    }
+
     if (req.body.areas){
         var areas = req.body.areas[0];
         for(i = 1; i < req.body.areas.length; i++){
@@ -68,6 +83,7 @@ router.post('/submit-project', function(req, res, next) {
         specific_students2: req.body.specific_students2,
         specific_students3: req.body.specific_students3,
     }).then(function (task) {
+        req.flash('success', 'Successfully submitted!')
         res.redirect('/projects');
         // res.render('Faculty_Form', { title: task.name });
     }).catch(function (error) {
@@ -83,10 +99,12 @@ router.post('/submit-project', function(req, res, next) {
 
 // GET list of projects page
 router.get('/projects', function(req, res, next) {
+    console.log(req.flash('message'));
     models.Project.findAll().then(function(projects) {
         res.render('project_list', {
             title: 'List of Projects',
-            projects: projects
+            projects: projects,
+            message: req.flash('success')
         });
     });
 });
