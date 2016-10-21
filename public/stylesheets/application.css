@@ -87,7 +87,6 @@ section {
 	width: 950px;
 }
 
-
 /*Fieldset set styles*/
 
 fieldset{
@@ -107,8 +106,8 @@ fieldset legend{
 	margin-bottom: 20px; 
 	text-indent: 0px; 
 	width: 800px; 
-	
 }
+
 
 fieldset label{
 	color: white; 
@@ -119,8 +118,21 @@ fieldset label{
 	margin-bottom: 6px; 
 	margin-left: 0px; 
 	margin-right: 0px; 
-	width: 100px; 
+	width: 290px; 
 }
+
+fieldset label.add{
+	color: white; 
+	clear: left; 
+	float: left; 
+	font-size: 1em; 
+	margin-top: 2px; 
+	margin-bottom: 6px; 
+	margin-left: 0px; 
+	margin-right: 0px; 
+	width: 190px; 
+}
+
 
 fieldset input{ 
 	background-color: rgb(31,49,59);
@@ -129,23 +141,89 @@ fieldset input{
 	display: block; 
 	border-radius: 5px;
 	float: left;
-	margin-top: 4px;
+	margin-top: 2px;
 	margin-right:0px;
-	margin-bottom: 4px;
-	margin-left: 0px; 
+	margin-bottom: 0px;
+	margin-left: 2px; 
 	border: none;
 	height: 30px;
 }
 
 /*Table Style*/
 
-/*Yes-No Radio Button Style*/
-table.style1{
+/*Text Box Style*/
+table.style{
     width: 230px;
 	color: white; 
 }
 
-/*Textbox Styles for names and other fields*/
+/*Yes-No Radio Button Style*/
+table.style1{
+    width: 230px;
+	color: white; 
+	margin-bottom: 7px;
+}
+
+/*Origin Radio Button Style*/
+table.style2{
+    width: 360px;
+	color: white; 
+	margin-top: 3px;
+	margin-right:0px;
+	margin-bottom: 4px;
+	margin-left: 3px; 
+}
+
+/*Race Check Box Style*/
+table.style3{
+    width: 360px;
+	color: white; 
+	margin-top: -30px;
+	margin-right:0px;
+	margin-bottom: 4px;
+	margin-left: 3px; 
+}
+
+/*Select Styles*/
+
+select{
+	display: block; 
+	float: left; 
+	background-color: rgb(31,49,59);
+	color: white; 
+	font-size: 0.9em; 
+	height: 28px; 
+	border-radius: 5px;
+	margin-top: 3px;
+	margin-right: 0px;
+	margin-bottom: 1px;
+	margin-left: 2px;
+	border: none;	
+}
+
+h5{
+	color: rgb(0,123,200); 
+	font-size: 14px; 
+}
+
+/*Zip and Tel textbox style*/
+
+input[type="tel"]{
+	margin-top: 5px;
+	margin-right:0px;
+	margin-bottom: 3px;
+	margin-left: 0px;
+}
+
+/*Email textbox style*/
+
+input[type="email"]{
+	margin-top: 5px;
+	margin-right:0px;
+	margin-bottom: 5px;
+	margin-left: 2px;
+	width: 340px;
+}
 
 input[type="text"]{
 	margin-top: 5px;
