@@ -2,16 +2,12 @@
 module.exports = function(sequelize, DataTypes) {
 	var Project = sequelize.define('Project', {
 	    name: DataTypes.STRING,
-		phone1: DataTypes.STRING,
-		phone2: DataTypes.STRING,
-		phone3: DataTypes.STRING,
+		phone: DataTypes.STRING,
 		email: DataTypes.STRING,
 		faculty_department: DataTypes.STRING,
 		edc: DataTypes.STRING,
 		secondary_name: DataTypes.STRING,
-		secondary_phone1: DataTypes.STRING,
-		secondary_phone2: DataTypes.STRING,
-		secondary_phone3: DataTypes.STRING,
+		secondary_phone: DataTypes.STRING,
 		secondary_email: DataTypes.STRING,
 		secondary_faculty_department: DataTypes.STRING,
 		post_doc_name: DataTypes.STRING,

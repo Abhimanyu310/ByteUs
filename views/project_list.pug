@@ -21,4 +21,5 @@ html
 					td
 						each project in projects
 							li #{project.description} by #{project.name}
+								a(href='/projects/'+project.id+'/view') View Project
 

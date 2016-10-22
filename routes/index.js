@@ -66,16 +66,12 @@ router.post('/submit-project', function(req, res, next) {
 
     models.Project.create({
         name: req.body.name,
-        phone1: req.body.phone1,
-        phone2: req.body.phone2,
-        phone3: req.body.phone3,
+        phone: req.body.phone,
         email: req.body.email,
         faculty_department: req.body.faculty_department,
         edc: req.body.edc,
         secondary_name: req.body.secondary_name,
-        secondary_phone1: req.body.secondary_phone1,
-        secondary_phone2: req.body.secondary_phone2,
-        secondary_phone3: req.body.secondary_phone3,
+        secondary_phone: req.body.secondary_phone,
         secondary_email: req.body.secondary_email,
         secondary_faculty_department: req.body.secondary_faculty_department,
         post_doc_name: req.body.post_doc_name,
@@ -131,5 +127,20 @@ router.get('/projects', function(req, res, next) {
         });
     });
 });
+
+// Project detail
+router.get('/projects/:id/view', function(req, res, next) {
+    var projectId = req.params.id;
+    models.Project.findOne({
+        where: {id: projectId}
+    }).then(function (project){
+        res.render('project_single', {
+            project: project
+            // message: req.flash('success')
+        });
+    });
+    // res.render('Logout', { title: "Logout" });
+});
+
 
 module.exports = router;
