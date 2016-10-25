@@ -10,12 +10,35 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Title' });
 });
 
-
 // Project submission for faculty
 router.get('/submit-project', function(req, res, next) {
     res.render('Faculty_Form', { title: "Hah" });
 });
 
+// Project submission for student
+router.get('/student-submit', function(req, res, next) {
+    res.render('Student_Form', { title: "Student" });
+});
+
+// Project success for faculty and student
+router.get('/success', function(req, res, next) {
+    res.render('Success', { title: "Yay" });
+});
+
+// Faculty Home
+router.get('/faculty-home', function(req, res, next) {
+    res.render('Faculty_Home', { title: "Faculty Home" });
+});
+
+// Student Home
+router.get('/student-home', function(req, res, next) {
+    res.render('Student_Home', { title: "Student Home" });
+});
+
+// Logout
+router.get('/logout', function(req, res, next) {
+    res.render('Logout', { title: "Logout" });
+});
 
 // Post the project submission form
 router.post('/submit-project', function(req, res, next) {
