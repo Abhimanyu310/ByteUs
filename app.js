@@ -28,8 +28,16 @@ app.use(function(req, res, next) {
   next();
 });
 
+// Routes
 app.use('/', routes);
 app.use('/users', users);
+app.use(require('./routes/submit-project'));
+app.use(require('./routes/student-submit'));
+app.use(require('./routes/faculty-home'));
+app.use(require('./routes/student-home'));
+app.use(require('./routes/logout'));
+app.use(require('./routes/success'));
+app.use(require('./routes/projects'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
