@@ -67,21 +67,42 @@ router.post('/submit-project', function(req, res, next) {
         }
     }
 
-    models.Project.create({
-        name: req.body.name,
-        phone: req.body.phone,
-        email: req.body.email,
-        faculty_department: req.body.faculty_department,
-        edc: req.body.edc,
-        secondary_name: req.body.secondary_name,
-        secondary_phone: req.body.secondary_phone,
-        secondary_email: req.body.secondary_email,
-        secondary_faculty_department: req.body.secondary_faculty_department,
-        post_doc_name: req.body.post_doc_name,
-        post_doc_phone1: req.body.post_doc_phone1,
-        post_doc_phone2: req.body.post_doc_phone2,
-        post_doc_phone3: req.body.post_doc_phone3,
-        post_doc_email: req.body.post_doc_email,
+    // var faculty = models.FacultyInfo.create({
+    //     name: req.body.name,
+    //     phone: req.body.phone,
+    //     email: req.body.email,
+    //     faculty_department: req.body.faculty_department,
+    //     edc: req.body.edc,
+    //     secondary_name: req.body.secondary_name,
+    //     secondary_phone: req.body.secondary_phone,
+    //     secondary_email: req.body.secondary_email,
+    //     secondary_faculty_department: req.body.secondary_faculty_department,
+    //     post_doc_name: req.body.post_doc_name,
+    //     post_doc_phone1: req.body.post_doc_phone1,
+    //     post_doc_phone2: req.body.post_doc_phone2,
+    //     post_doc_phone3: req.body.post_doc_phone3,
+    //     post_doc_email: req.body.post_doc_email,
+    //     supervised_past: req.body.supervised_past,
+    //     specific_students1: req.body.specific_students1,
+    //     specific_students2: req.body.specific_students2,
+    //     specific_students3: req.body.specific_students3
+    // }).then(function (task) {
+    //     // faculty.setProject([project]).then(function () {
+    //     //     //done
+    //     // });
+    //     // req.flash('success', 'Successfully submitted!')
+    //     // res.redirect('/projects');
+    //     // res.render('Faculty_Form', { title: task.name });
+    //     console.log(task);
+    //     // req.flash('success', 'Successfully submitted!')
+    //     // res.redirect('/projects');
+    // }).catch(function (error) {
+    //     //error handling
+    //     console.log(error)
+    // });
+    
+    
+    var project = models.Project.create({
         description: req.body.description,
         url: req.body.url,
         requirements1: req.body.requirements1,
@@ -100,17 +121,44 @@ router.post('/submit-project', function(req, res, next) {
         match_of_funding: req.body.match_of_funding,
         not_sure: req.body.not_sure,
         contact: req.body.contact,
-        supervised_past: req.body.supervised_past,
-        specific_students1: req.body.specific_students1,
-        specific_students2: req.body.specific_students2,
-        specific_students3: req.body.specific_students3,
+        Faculty: {
+            name: req.body.name,
+            phone: req.body.phone,
+            email: req.body.email,
+            faculty_department: req.body.faculty_department,
+            edc: req.body.edc,
+            secondary_name: req.body.secondary_name,
+            secondary_phone: req.body.secondary_phone,
+            secondary_email: req.body.secondary_email,
+            secondary_faculty_department: req.body.secondary_faculty_department,
+            post_doc_name: req.body.post_doc_name,
+            post_doc_phone1: req.body.post_doc_phone1,
+            post_doc_phone2: req.body.post_doc_phone2,
+            post_doc_phone3: req.body.post_doc_phone3,
+            post_doc_email: req.body.post_doc_email,
+            supervised_past: req.body.supervised_past,
+            specific_students1: req.body.specific_students1,
+            specific_students2: req.body.specific_students2,
+            specific_students3: req.body.specific_students3
+        }
+    }, {
+        include: [ {model: models.FacultyInfo, as: 'Faculty'} ]
     }).then(function (task) {
-        req.flash('success', 'Successfully submitted!')
-        res.redirect('/projects');
+        // task.setFaculty([faculty]).then(function () {
+        //         //done
+        //     });
+        console.log(task)
         // res.render('Faculty_Form', { title: task.name });
     }).catch(function (error) {
         //error handling
+        console.log(error)
     });
+
+    
+
+
+
+
     // var project = models.Project.build({name: req.body.name});
     // project.save().then(function() {
     //     res.render('Faculty_Form', { title: "SAVED!"});
@@ -135,8 +183,10 @@ router.get('/projects', function(req, res, next) {
 router.get('/projects/:id/view', function(req, res, next) {
     var projectId = req.params.id;
     models.Project.findOne({
-        where: {id: projectId}
+        where: {id: projectId},
+        include: [ {model: models.FacultyInfo, as: 'Faculty'} ]
     }).then(function (project){
+        console.log(project)
         res.render('project_single', {
             project: project
             // message: req.flash('success')
