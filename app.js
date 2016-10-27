@@ -26,6 +26,7 @@ var validator = require('express-validator');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var projects = require('./routes/projects');
 
 var app = express();
 
@@ -59,6 +60,7 @@ app.use(function(req, res, next) {
 });
 
 app.use('/users', users);
+app.use('/project', projects);
 app.use('/', routes);
 
 
