@@ -2,7 +2,10 @@ var models  = require('../models');
 var Project = require('../models/project');
 var express = require('express');
 var router = express.Router();
+var csrf = require('csurf');
 
+var csrfProtection = csrf();
+router.use(csrfProtection);
 
 
 /* GET home page. */
@@ -14,7 +17,7 @@ router.get('/', function(req, res, next) {
 router.get('/submit-project', function(req, res, next) {
     var messages = req.flash('error');
     console.log(messages);
-    res.render('Faculty_Form', { messages: messages });
+    res.render('Faculty_Form', { messages: messages, csrfToken: req.csrfToken() });
 });
 
 // Project submission for student
