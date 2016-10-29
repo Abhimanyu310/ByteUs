@@ -14,8 +14,8 @@ html
 				li.newgroup
 					a.button.name(href='/projects') Project List
 				li.newgroup
-					a.button.name(href='/logout') Logout
+					a.button.name(href='/user/logout') Logout
 		section
-			form#faculty-home(action='/submit-project', role='form')
+			form#faculty-home(action='/project/form', role='form')
 				form
 					input.btn.btn-success(type='submit', value='Create New Application')

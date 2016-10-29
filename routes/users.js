@@ -1,9 +1,23 @@
+var models  = require('../models');
 var express = require('express');
 var router = express.Router();
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+var csrf = require('csurf');
+
+var UserController = require('../controllers/UserController');
+
+var csrfProtection = csrf();
+router.use(csrfProtection);
+
+
+// GET Faculty Home
+router.get('/faculty-home', UserController.getFacultyHome);
+
+// GET Student Home
+router.get('/student-home', UserController.getStudentHome);
+
+// Logout
+router.get('/logout', UserController.postLogout);
+
 
 module.exports = router;

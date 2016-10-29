@@ -112,5 +112,9 @@ module.exports = {
             });
         });
         // res.render('Logout', { title: "Logout" });
+    },
+
+    getProjectSuccess: function(req, res, next) {
+        res.render('Success', { title: "Yay" });
     }
 };

@@ -24,5 +24,7 @@ router.get('/list', ProjectController.getProjectList);
 // GET Project detail
 router.get('/:id/view', ProjectController.getProjectDetail);
 
+// GET Project submission success page
+router.get('/success', ProjectController.getProjectSuccess);
 
 module.exports = router;
