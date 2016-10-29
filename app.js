@@ -60,6 +60,7 @@ app.use(function(req, res, next) {
   next();
 });
 
+
 app.use('/user', users);
 app.use('/application', applications);
 app.use('/project', projects);

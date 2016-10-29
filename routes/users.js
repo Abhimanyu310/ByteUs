@@ -19,5 +19,4 @@ router.get('/student-home', UserController.getStudentHome);
 // Logout
 router.get('/logout', UserController.postLogout);
 
-
 module.exports = router;
