@@ -3,12 +3,15 @@ html
   head
     title
         block title
+
     link(rel='stylesheet', href='/stylesheets/default.css')
     block styles
   body
     include ../includes/navigation
 
     block content
+
+    script(src='https://code.jquery.com/jquery-3.1.1.min.js', integrity='sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=', crossorigin='anonymous')
 
     block scripts
 
