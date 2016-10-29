@@ -1,0 +1,265 @@
+extends ../layouts/master
+
+block title
+	|#{title}
+
+block styles
+	link(rel='stylesheet', href='/stylesheets/application.css')
+
+
+block content
+	header
+		h Student Apprenticeship Application
+		h5 *Required Fields
+	section
+		form#sudent-form(method='post', action='', role='form')
+			form
+				fieldset#StudentInfo
+					legend Student Demographics
+					label(for='form_name') Name: *
+					table.style
+						tr
+
+							td
+								input#form_name.form-control(type='text', name='name', placeholder=' First Last', required='required', data-error='Student name is required.')
+								.help-block.with-errors
+					label(for='Gen') Gender *
+					table.style1
+						tr
+							td
+								input#Gen(type='radio', name='gender', required='required', value='Female')
+								|  Male
+							td
+								input#Gen(type='radio', name='gender', required='required', value='Male')
+								|  Female
+					label(for='Origin') Are you of Hispanic or Latino origin? *
+					table.style2
+						tr
+							td
+								input#Origin(type='radio', name='Origin', required='required', value='Yes')
+								|  Yes
+						tr
+							td
+								input#Orgin(type='radio', name='origin', required='required', value='No')
+								|  No
+						tr
+							td
+								input#Origin(type='radio', name='origin', required='required', value='Not_wish')
+								|  I do not wish to provide this information
+								br
+					label(for='Race')
+						|	Please select your race. *
+						br
+						|	(Check all that apply)
+					table.style3
+						tr
+							td
+								input(type='checkbox', name='race', value='AIorAN')
+								|  American Indian or Alaskan Native
+						tr
+							td
+								input(type='checkbox', name='race', value='BorAA')
+								|  Black or African-American
+						tr
+							td
+								input(type='checkbox', name='race', value='AIorAN')
+								|  American Indian or Alaskan Native
+						tr
+							td
+								input(type='checkbox', name='race', value='NHorPI')
+								|  Native Hawaiian or other Pacific Islander
+
+						tr
+							td
+								input(type='checkbox', name='race', value='Asian')
+								|  Asian
+						tr
+							td
+								input(type='checkbox', name='race', value='Caucasian')
+								|  Caucasian
+						tr
+							td
+								input(type='checkbox', name='race', value='DNW')
+								|  I do not wish to provide this information
+						br
+						br
+					legend Boulder Contact Information
+					label.add(for='form_add') Street Address: *
+					table.style
+						tr
+
+							td
+								input#add.form-control(type='text', name='add', placeholder=' Street Address', required='required', data-error='Street address is required.')
+								.help-block.with-errors
+					label.add(for='city') City: *
+					table.style
+						tr
+
+							td
+								input#city.control(type='text', name='add', placeholder=' City', required='required', data-error='City is required.')
+								.help-block.with-errors
+					label.add(for='state') State: *
+					select#state(name='state', required='required')
+						option(value='AL') Alabama
+						option(value='AK') Alaska
+						option(value='AZ') Arizona
+						option(value='AR') Arkansas
+						option(value='CA') California
+						option(value='CO', selected='selected') Colorado
+						option(value='CT') Connecticut
+						option(value='DE') Delaware
+						option(value='DC') District Of Columbia
+						option(value='FL') Florida
+						option(value='GA') Georgia
+						option(value='HI') Hawaii
+						option(value='ID') Idaho
+						option(value='IL') Illinois
+						option(value='IN') Indiana
+						option(value='IA') Iowa
+						option(value='KS') Kansas
+						option(value='KY') Kentucky
+						option(value='LA') Louisiana
+						option(value='ME') Maine
+						option(value='MD') Maryland
+						option(value='MA') Massachusetts
+						option(value='MI') Michigan
+						option(value='MN') Minnesota
+						option(value='MS') Mississippi
+						option(value='MO') Missouri
+						option(value='MT') Montana
+						option(value='NE') Nebraska
+						option(value='NV') Nevada
+						option(value='NH') New Hampshire
+						option(value='NJ') New Jersey
+						option(value='NM') New Mexico
+						option(value='NY') New York
+						option(value='NC') North Carolina
+						option(value='ND') North Dakota
+						option(value='OH') Ohio
+						option(value='OK') Oklahoma
+						option(value='OR') Oregon
+						option(value='PA') Pennsylvania
+						option(value='RI') Rhode Island
+						option(value='SC') South Carolina
+						option(value='SD') South Dakota
+						option(value='TN') Tennessee
+						option(value='TX') Texas
+						option(value='UT') Utah
+						option(value='VT') Vermont
+						option(value='VA') Virginia
+						option(value='WA') Washington
+						option(value='WV') West Virginia
+						option(value='WI') Wisconsin
+						option(value='WY') Wyoming
+					br
+					label.add(for='form_Zip')  Postal Code: *
+					table.style
+						tr
+							td
+								input#form_Zip.required(name='Zip', type='tel', placeholder=' #####',required='required', maxlength='5', size='6')
+								.help-block.with-errors
+					label.add(for='form_phone')  Phone Number: *
+					table.style
+						tr
+							td
+								input#form_primPhone.required(name='primPhone', type='tel', placeholder=' ###-###-####',required='required', maxlength='15', size='15')
+								.help-block.with-errors
+					label.add(for='form_email')  CU Email Address: *
+					table.style
+						tr
+							td
+								input#form_email.form-control(type='email', name='email', placeholder=' First.Last@Colorado.edu', required='required', data-error='Valid email is required.')
+								.help-block.with-errors
+					legend Summer Contact Information
+					h5 *This is only required if this information is different from your Boulder Contact Information.
+					label.add(for='secAdd') Street Address:
+					table.style
+						tr
+
+							td
+								input#form-control(type='text', name='add', placeholder=' Street Address')
+								.help-block.with-errors
+					label.add(for='secCity') City:
+					table.style
+						tr
+
+							td
+								input#secCity.control(type='text', name='add', placeholder=' City')
+								.help-block.with-errors
+					label.add(for='state') State: *
+					select#state(name='state')
+						option(value='AL') Alabama
+						option(value='AK') Alaska
+						option(value='AZ') Arizona
+						option(value='AR') Arkansas
+						option(value='CA') California
+						option(value='CO', selected='selected') Colorado
+						option(value='CT') Connecticut
+						option(value='DE') Delaware
+						option(value='DC') District Of Columbia
+						option(value='FL') Florida
+						option(value='GA') Georgia
+						option(value='HI') Hawaii
+						option(value='ID') Idaho
+						option(value='IL') Illinois
+						option(value='IN') Indiana
+						option(value='IA') Iowa
+						option(value='KS') Kansas
+						option(value='KY') Kentucky
+						option(value='LA') Louisiana
+						option(value='ME') Maine
+						option(value='MD') Maryland
+						option(value='MA') Massachusetts
+						option(value='MI') Michigan
+						option(value='MN') Minnesota
+						option(value='MS') Mississippi
+						option(value='MO') Missouri
+						option(value='MT') Montana
+						option(value='NE') Nebraska
+						option(value='NV') Nevada
+						option(value='NH') New Hampshire
+						option(value='NJ') New Jersey
+						option(value='NM') New Mexico
+						option(value='NY') New York
+						option(value='NC') North Carolina
+						option(value='ND') North Dakota
+						option(value='OH') Ohio
+						option(value='OK') Oklahoma
+						option(value='OR') Oregon
+						option(value='PA') Pennsylvania
+						option(value='RI') Rhode Island
+						option(value='SC') South Carolina
+						option(value='SD') South Dakota
+						option(value='TN') Tennessee
+						option(value='TX') Texas
+						option(value='UT') Utah
+						option(value='VT') Vermont
+						option(value='VA') Virginia
+						option(value='WA') Washington
+						option(value='WV') West Virginia
+						option(value='WI') Wisconsin
+						option(value='WY') Wyoming
+					br
+					label.add(for='secZip') Postal Code *
+					table.style
+						tr
+							td
+								input#form_secZip.required(name='secZip', type='tel', placeholder=' #####', maxlength='5', size='6')
+								.help-block.with-errors
+					label.add(for='secPhone') Phone Number: *
+					table.style
+						tr
+							td
+								input#form_secPhone.required(name='secPhone', type='tel', placeholder=' ###-###-####', maxlength='15', size='15')
+								.help-block.with-errors
+					label.add(for='form_secEmail') Email Address: *
+					table.style
+						tr
+							td
+								input#secEmail.form-control(type='email', name='email', placeholder=' First.Last@Colorado.edu')
+								.help-block.with-errors
+					br
+					br
+					input.btn.btn-success(type='save', value='Save')
+					input.btn.btn-success(type='reset', value='Reset')
+					input.btn.btn-success(type='submit', value='Submit')

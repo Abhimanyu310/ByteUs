@@ -1,0 +1,37 @@
+extends ../layouts/master
+
+block title
+    |#{title}
+
+block styles
+    link(rel='stylesheet', href='/stylesheets/home.css')
+
+block content
+    header
+        h Student Home
+
+
+    section
+        form#student-home(action='/application/form')
+            h5
+                |	The College of Engineering and Applied Science is pleased to offer research opportunities (Discovery Learning Apprenticeships)
+                |	in fall 2016 and spring 2017 for undergraduate engineering students. You could be one of approximately 75 apprentices who
+                |	will be funded at $12/hour up to $3,600 annually. Earn money and gain valuable, resume-worthy experience while working with graduate
+                |	students and faculty on fascinating projects!
+                br
+                br
+                |	Prior to submitting an application, you are encouraged to contact the supervisors of the projects in which you are interested in
+                |	order to obtain more information. Please be aware, however, that these supervisors do not make the final hiring decision. You can find
+                |	detailed project descriptions online by viewing the 2016-2017 advertised apprenticeships (these will be posted by April 1st, 2016).
+                br
+                br
+                | 	The deadline to complete the application and upload a resume and a separate cover letter is April 30, 2016. Applications will not be
+                |	accepted after the April 30th deadline. Applicants will be notified in early June 2016 as to whether they were selected for the program.
+                br
+                br
+                |	For questions or concerns about the Discover Learning Apprenticeship or your application,please contact Sharon Anderson at
+                |	sharon.e.anderson@colorado.edu.
+                br
+                br
+
+                input.btn.btn-success(type='submit', value='Create New Application')

@@ -12,8 +12,8 @@ module.exports = {
     getProjectList: function(req, res, next){
         console.log(req.flash('message'));
         models.Project.findAll().then(function(projects) {
-            res.render('project_list', {
-                title: 'List of Projects',
+            res.render('project/project-list', {
+                title: 'Project List',
                 projects: projects,
                 message: req.flash('success')
             });
@@ -23,7 +23,9 @@ module.exports = {
     getCreateProject: function(req, res, next) {
         var messages = req.flash('error');
         console.log(messages);
-        res.render('Faculty_Form', { messages: messages, csrfToken: req.csrfToken() });
+        res.render('project/form', {
+            title: 'Faculty Form', messages: messages, csrfToken: req.csrfToken()
+        });
     },
     
     postCreateProject: function(req, res, next) {
@@ -36,7 +38,7 @@ module.exports = {
                 messages.push(error.msg);
             });
             req.flash('error', messages);
-            res.redirect('/submit-project');
+            res.redirect('/project/form');
         }
 
         if (req.body.areas){
@@ -91,11 +93,11 @@ module.exports = {
             // task.setFaculty([faculty]).then(function () {
             //         //done
             //     });
-            console.log(task)
-            // res.render('Faculty_Form', { title: task.name });
+            // console.log(task)
+            res.redirect('project/success');
         }).catch(function (error) {
             //error handling
-            console.log(error)
+            // console.log(error)
         });
     },
     
@@ -106,7 +108,8 @@ module.exports = {
             include: [ {model: models.FacultyInfo, as: 'Faculty'} ]
         }).then(function (project){
             console.log(project)
-            res.render('project_single', {
+            res.render('project/project-single', {
+                title: "Project Detail",
                 project: project
                 // message: req.flash('success')
             });
@@ -115,6 +118,6 @@ module.exports = {
     },
 
     getProjectSuccess: function(req, res, next) {
-        res.render('Success', { title: "Yay" });
+        res.render('project/success', { title: "Success" });
     }
 };

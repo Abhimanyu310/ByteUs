@@ -68,9 +68,9 @@ nav li a:hover {
 
 section h5{
 	color: white; 
-	position: absolute;
-	top: 153px;
-	left: 275px;
+	/*position: absolute;*/
+	/*top: 153px;*/
+	/*left: 275px;*/
 	width: 925px;
 	background: black;
 }

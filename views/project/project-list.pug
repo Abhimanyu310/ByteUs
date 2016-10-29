@@ -1,0 +1,19 @@
+extends ../layouts/master
+
+block title
+    |#{title}
+
+block styles
+    link(rel='stylesheet', href='/stylesheets/forms.css')
+
+block content
+    header
+        h List of Projects
+    section
+    table.style4
+            tr
+                td
+                    each project in projects
+                        li #{project.description} by #{project.name}
+                            a(href='/project/'+project.id+'/view') View Project
+

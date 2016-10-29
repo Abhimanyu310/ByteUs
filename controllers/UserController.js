@@ -4,14 +4,14 @@ var models  = require('../models');
 module.exports = {
 
     getStudentHome: function(req, res, next) {
-        res.render('Student_Home', { title: "Student Home" });
+        res.render('user/student-index', { title: "Student Home" });
     },
 
     getFacultyHome: function(req, res, next) {
-        res.render('Faculty_Home', { title: "Faculty Home" });
+        res.render('user/faculty-index', { title: "Faculty Home" });
     },
     
     postLogout: function(req, res, next) {
-        res.render('Logout', { title: "Logout" });
+        res.render('user/logout', { title: "Logout" });
     }
 };
