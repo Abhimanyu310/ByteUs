@@ -94,7 +94,7 @@ module.exports = {
             //         //done
             //     });
             // console.log(task)
-            res.redirect('project/success');
+            res.redirect('success');
         }).catch(function (error) {
             //error handling
             // console.log(error)
