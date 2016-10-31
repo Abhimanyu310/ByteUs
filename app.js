@@ -4,10 +4,12 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var dotenv = require('dotenv');
 
 var session = require('express-session');
 var flash = require('connect-flash');
 var validator = require('express-validator');
+var passport = require('passport');
 
 
 // var SequelStore = require('sequelstore-connect')(session);
@@ -31,6 +33,11 @@ var applications = require('./routes/applications');
 
 var app = express();
 
+dotenv.load();
+
+
+require('./config/passport');
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -50,7 +57,13 @@ app.use(session({
     // store: new SequelizeStore({database: sequelize}),
     cookie: {maxAge: 180 * 60 * 1000}
 }));
+
 app.use(flash());
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+
 
 app.use(express.static(path.join(__dirname, 'public')));
 
