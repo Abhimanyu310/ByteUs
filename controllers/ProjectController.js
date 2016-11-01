@@ -15,9 +15,13 @@ module.exports = {
             res.render('project/project-list', {
                 title: 'Project List',
                 projects: projects,
-                message: req.flash('success')
+                message: req.flash('success'),
+                csrfToken: req.csrfToken()
             });
-        });
+        }).catch(function (error) {
+            //error handling
+            // console.log(error)
+        });;
     },
     
     getCreateProject: function(req, res, next) {
@@ -119,5 +123,79 @@ module.exports = {
 
     getProjectSuccess: function(req, res, next) {
         res.render('project/success', { title: "Success" });
+    },
+
+    postSearchProject: function(req, res, next) {
+        switch(req.body.search_by) {
+            case 'title':
+                postSearchProjectByTitle(req, res, next);
+                break;
+            case 'faculty':
+                postSearchProjectByFaculty(req, res, next);
+                break;
+            case 'description':
+                postSearchProjectByDescription(req, res, next);
+                break;
+            default:
+                postSearchProjectByTitle(req, res, next);
+        }
     }
+
 };
+
+function postSearchProjectByTitle(req, res, next) {
+    models.Project.findAll({
+        where: {
+            description: {
+                $like: '%' + req.body.search_query + '%'
+            }
+        },
+        include: [ {model: models.FacultyInfo, as: 'Faculty'} ]
+    }).then(function (projects){
+        console.log(projects);
+        res.render('project/search-result', {
+            title: "Project Search",
+            projects: projects
+            // message: req.flash('success')
+        });
+    });
+}
+
+function postSearchProjectByDescription(req, res, next) {
+    models.Project.findAll({
+        where: {
+            longdescription: {
+                $like: '%' + req.body.search_query + '%'
+            }
+        },
+        include: [ {model: models.FacultyInfo, as: 'Faculty'} ]
+    }).then(function (projects){
+        console.log(projects);
+        res.render('project/search-result', {
+            title: "Project Search",
+            projects: projects
+            // message: req.flash('success')
+        });
+    });
+}
+
+function postSearchProjectByFaculty(req, res, next) {
+    models.Project.findAll({
+        include: [{
+            model: models.FacultyInfo, 
+            as: 'Faculty',
+            where: {
+                name: {
+                    $like: '%' + req.body.search_query + '%'
+                }
+            }
+        }]
+    }).then(function (projects){
+        console.log(projects);
+        res.render('project/search-result', {
+            title: "Project Search",
+            projects: projects
+            // message: req.flash('success')
+        });
+    });
+}

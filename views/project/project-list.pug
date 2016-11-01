@@ -1,19 +1,29 @@
 extends ../layouts/master
 
 block title
-    |#{title}
+	|#{title}
 
 block styles
-    link(rel='stylesheet', href='/stylesheets/forms.css')
+	link(rel='stylesheet', href='/stylesheets/forms.css')
 
 block content
-    header
-        h List of Projects
-    section
-    table.style4
-            tr
-                td
-                    each project in projects
-                        li #{project.description} by #{project.name}
-                            a(href='/project/'+project.id+'/view') View Project
+	header
+		h List of Projects
+		form(method='post', action='/project/search', role='form')
+			input(type='text', name='search_query')
+			input(type='radio', name='search_by', value='title' checked)
+			| Title
+			input(type='radio', name='search_by', value='faculty')
+			| Faculty
+			input(type='radio', name='search_by', value='description')
+			| Description
+			input(type='hidden', name='_csrf', value=csrfToken)
+			input.btn.btn-success(type='submit', value='Search')
+	section
+	table.style4
+			tr
+				td
+					each project in projects
+						li #{project.description} by #{project.name}
+							a(href='/project/'+project.id+'/view') View Project
 

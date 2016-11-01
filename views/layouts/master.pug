@@ -6,6 +6,14 @@ html
 
     link(rel='stylesheet', href='/stylesheets/default.css')
     block styles
+
+    script(type='text/javascript')
+      |//<![CDATA[
+      |var tlJsHost = ((window.location.protocol == "https:") ? "https://secure.comodo.com/" : "http://www.trustlogo.com/")
+      |document.write(unescape("%3Cscript src='" + tlJsHost + "trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E"))
+      |//]]>
+
+
   body
     include ../includes/navigation
 
@@ -15,5 +23,11 @@ html
 
 
     block scripts
+
+    script(language='JavaScript', type='text/javascript')
+      |TrustLogo("https://byteus.me/images/comodo_secure.png", "CL1", "none")
+
+    a#comodoTL(href='https://ssl.comodo.com', target='_blank') SSL Certificates
+
 
 
