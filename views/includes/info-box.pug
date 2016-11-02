@@ -1,10 +1,11 @@
 div.info-box.info-box-success
-    if hasSuccess
-        each message in success
-            p #{message}
+	if hasSuccess
+		each message in success
+			p #{message}
 
 
 div.info-box.info-box-error
-    if hasErrors
-        each message in errors
-            p #{message}
+	if hasErrors
+		each error in errors
+			each message in error
+				p #{message.msg}

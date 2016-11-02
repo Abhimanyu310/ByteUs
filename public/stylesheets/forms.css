@@ -237,7 +237,9 @@ input[type="Submit"]:hover {
 	display: inline-block;
 }
 
-
+.has-error {
+	background: #a94442;
+}
 
 
 

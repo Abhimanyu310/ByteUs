@@ -111,14 +111,24 @@ h4 {
     color: white;
 }
 
+
+/* Info box*/
+
 .info-box {
     margin-left: 300px;
+    width: 700px;
 }
 
-.info-box-success{
-    color: green;
+div.info-box-error{
+    background: #f2dede;
+    color: #a94442;
 }
 
-.info-box-error{
-    color: red;
+div.info-box-success{
+    background: #dff0d8;
+    color: #3c763d;
 }
+
+
+
+

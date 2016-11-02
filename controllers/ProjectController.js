@@ -29,7 +29,7 @@ module.exports = {
         var errors = req.flash('errors');
         var success = req.flash('success');
         var form_data = req.flash('form_data');
-        // console.log(messages);
+        console.log(errors);
         res.render('project/form', {
             title: 'Faculty Form',
             errors: errors,
@@ -42,17 +42,31 @@ module.exports = {
     },
     
     postCreateProject: function(req, res, next) {
-        req.checkBody('email', 'Invalid email').notEmpty().isEmail();
+        // req.checkBody('description', 'Invalid Project Title').notEmpty();
+        // req.checkBody('url', 'Invalid Project URL').notEmpty();
+        // req.checkBody('name', 'Invalid name').notEmpty();
+        // req.checkBody('name', 'Invalid name').notEmpty();
+        // req.checkBody('name', 'Invalid name').notEmpty();
+        // req.checkBody('name', 'Invalid name').notEmpty();
+        // req.checkBody('name', 'Invalid name').notEmpty();
+        // req.checkBody('name', 'Invalid name').notEmpty();
+        // req.checkBody('name', 'Invalid name').notEmpty();
+        // req.checkBody('name', 'Invalid name').notEmpty();
+        // req.checkBody('name', 'Invalid name').notEmpty();
+        // req.checkBody('name', 'Invalid name').notEmpty();
+
+
+        req.checkBody('email', 'Email is invalid').notEmpty().isEmail();
         req.checkBody('name', 'Invalid name').notEmpty();
         req.checkBody('phone', 'Invalid phone').notEmpty().isInt();
-        var errors = req.validationErrors();
+        var errors = req.validationErrors(true);
         if (errors) {
-            var messages = [];
-            errors.forEach(function (error) {
-                messages.push(error.msg);
-            });
-            console.log(errors)
-            req.flash('errors', messages);
+            // var messages = [];
+            // errors.forEach(function (error) {
+            //     messages.push(error.msg);
+            // });
+            // console.log(errors)
+            req.flash('errors', errors);
             req.flash('form_data', req.body);
             // req.flash('success', "HAHA")
             res.redirect('/project/form');

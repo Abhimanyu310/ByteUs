@@ -23,13 +23,13 @@ block content
                     legend Faculty Member Information
                     label(for='form_name') Faculty Name: *
                     table.style1
-                        tr
+                        tr(class=(hasErrors ? (errors[0].name ? 'has-error' : undefined) : undefined))
                             td
                                 input#form_name.form-control(type='text', name='name', placeholder=' First Last', required='required', data-error='Faculty name is required.' value=(formData ? formData.name : ''))
                                 .help-block.with-errors
                     label(for='phone')  Faculty Phone Number: *
                     table.style1
-                        tr
+                        tr(class=(hasErrors ? (errors[0].phone ? 'has-error' : undefined) : undefined))
                             td
                                 input#form_primPhone.required(name='phone', type='tel', placeholder=' ###-###-####',required='required', maxlength='15', size='15'  value=(formData ? formData.phone: ''))
                                 .help-block.with-errors
