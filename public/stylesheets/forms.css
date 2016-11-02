@@ -1,151 +1,48 @@
-
-
-/* Display HTML5 structural elements as blocks */
-
-article, aside, figure, figcaption, footer, hgroup, header, 
-section, nav {
-   display: block;
-}
-
-/* Set the default page element styles */
-* {
-	margin: 0px; 
-	padding: 0px;
-	line-height: 2.0em;
-	font-family: "Tahoma", Geneva, sans-serif;
-}
-
-body {
-	background: fixed; 
-	background: black;
-}
-
-
-header h {
-	font-size: 40px; 
-	font-weight: bold; 
-	position: absolute;
-	top: 65px;
-	left: 265px;
-	width: 1000px; 
-	background: black;
-	color: white;
-}
-header h2 {
-	font-size: 22px; 
-	font-weight: bold; 
-	position: absolute;
-	top: 195px;
-	left: 310px;
-	width: 1000px; 
-	background: black;
-	color: white;
-}
-
-header h5{
-	color: rgb(0,123,200); 
-	position: absolute;
-	font-size: 14px; 
-	top: 153px;
-	left: 275px;
-	width: 900px;
-	background: black;
-}
-
-header img {
-	border-width: 0px;
-	position: absolute;
-	top: 0px; 
-	left: 50px;
-}
-
-/*Navigation Styles*/
-nav ul {
-	position: absolute;
-	list-style-type: none;  
-	border-radius: 5px; 
-	top: 207px;
-	left: 40px;
-    list-style-type: none;	
-	vertical-align: left;
-	
-}
-
-nav li a {
-	display: block;  
-	color: white; 
-	background-color: rgb(31,49,59);
-	border: 1px solid black; 
-	border-radius: 5px; 
-	font-size: 22px;
-	padding: 8px 16px; 	
-	text-decoration: none;
-	width: 170px;
-}
-				  
-nav li a:hover {
-	background: rgb(0,123,200); 
-	color: white; 
-}
-
-section {
-	position: absolute; 
-	background-color: black; 
-	margin-top: 0px;
-	top: 178px;
-	left: 290px;
-	width: 950px;
-}
-
-h4 {
-	color: white; 
-}
-
 /*Fieldset set styles*/
 
 fieldset{
-	border: 0px; 
+	border: 0px;
 	display: block;
-	margin-left: 5px; 
+	margin-left: 5px;
 	margin-top: 0px;
 }
 
 fieldset legend{
 	background-color: black;
 	border-bottom: 2px solid rgb(204,185,120);
-	padding: 0px; 
+	padding: 0px;
 	color: rgb(204,185,120);
-	font-size: 1.9em; 
-	margin-top: 0px; 
-	margin-bottom: 20px; 
-	text-indent: 0px; 
-	width: 800px; 
-	
+	font-size: 1.9em;
+	margin-top: 0px;
+	margin-bottom: 20px;
+	text-indent: 0px;
+	width: 800px;
+
 }
 
 fieldset label{
-	color: white; 
-	clear: left; 
-	float: left; 
-	font-size: 1em; 
-	margin-top: 2px; 
-	margin-bottom: 6px; 
-	margin-left: 0px; 
-	margin-right: 0px; 
-	width: 290px; 
+	color: white;
+	clear: left;
+	float: left;
+	font-size: 1em;
+	margin-top: 2px;
+	margin-bottom: 6px;
+	margin-left: 0px;
+	margin-right: 0px;
+	width: 290px;
 }
 
-fieldset input{ 
+fieldset input{
 	background-color: rgb(31,49,59);
-	color: white; 
-	font-size: .9em; 
-	display: block; 
+	color: white;
+	font-size: .9em;
+	display: block;
 	border-radius: 5px;
 	float: left;
 	margin-top: 4px;
 	margin-right:0px;
 	margin-bottom: 4px;
-	margin-left: 0px; 
+	margin-left: 0px;
 	border: none;
 	height: 30px;
 }
@@ -155,61 +52,61 @@ fieldset input{
 /*Yes-No Radio Button Style*/
 table.style1{
     width: 230px;
-	color: white; 
+	color: white;
 }
 
 /*brief description, url, list of requirements, long description*/
 table.style2 {
-	color: white; 
+	color: white;
 }
 
 /*check box and long radio button font color*/
 table.style3{
 	color: white;
-	width: 600px;	
+	width: 600px;
 }
 
 /*Format for project list table*/
 table.style4{
-	list-style:none; 
-	color: white; 
+	list-style:none;
+	color: white;
 	width: 800px;
-	padding-top: 250px; 
-	padding-left: 300px; 
+	padding-top: 250px;
+	padding-left: 300px;
 }
 
 table.style5{
-	color: white; 
+	color: white;
 	width: 400px;
-	padding-top: 250px; 
-	padding-left: 300px; 
+	padding-top: 250px;
+	padding-left: 300px;
 }
 
 /*Select Styles*/
 
 select{
-	display: block; 
-	float: left; 
+	display: block;
+	float: left;
 	background-color: rgb(31,49,59);
-	color: white; 
-	font-size: 0.9em; 
-	height: 28px; 
+	color: white;
+	font-size: 0.9em;
+	height: 28px;
 	border-radius: 5px;
 	margin-top: 5px;
 	margin-right:0px;
 	margin-bottom: 5px;
 	margin-left: 2px;
-	border: none;	
+	border: none;
 }
 
 /*Textarea (such as description) Height*/
 textarea{
 	background-color: rgb(31,49,59);
-	color: white; 
-	display: block; 
+	color: white;
+	display: block;
 	border-radius: 5px;
-	float: left; 
-	font-size: 0.9em;  
+	float: left;
+	font-size: 0.9em;
 	width: 340px;
 	height: 60px;
 	border-color: black;
@@ -248,13 +145,13 @@ input[type="url"] {
 /*Button Styles*/
 
 input[type="Save"] {
-	background-color:  rgb(0,123,200); 
-	color: white; 
-	font-size: 16px; 
+	background-color:  rgb(0,123,200);
+	color: white;
+	font-size: 16px;
 	font-weight: bold;
-	text-align: center; 
+	text-align: center;
 	border-radius: 25px;
-	border: none; 
+	border: none;
 	float: left;
 	margin: 0 15px 0 65px;
 	overflow: hidden;
@@ -266,10 +163,10 @@ input[type="Save"] {
 input[type="Save"]:hover {
 	background-color: rgb(31,49,59);
 	font-size: 16px;
-	font-weight: bold; 
-	text-align: center; 
+	font-weight: bold;
+	text-align: center;
 	border-radius: 25px;
-	border: none; 
+	border: none;
 	float: left;
 	margin: 0 15px 0 65px;
 	overflow: hidden;
@@ -279,12 +176,12 @@ input[type="Save"]:hover {
 }
 
 input[type="Reset"] {
-	background-color:  rgb(0,123,200); 
-	color: white; 
-	font-size: 16px; 
+	background-color:  rgb(0,123,200);
+	color: white;
+	font-size: 16px;
 	font-weight: bold;
-	text-align: center; 
-	border: none; 
+	text-align: center;
+	border: none;
 	border-radius: 25px;
 	float: left;
 	margin: 0 15px 0 65px;
@@ -296,10 +193,10 @@ input[type="Reset"] {
 
 input[type="Reset"]:hover {
 	background-color: rgb(31,49,59);
-	font-size: 16px; 
+	font-size: 16px;
 	font-weight: bold;
 	text-align: center;
-	border: none; 	
+	border: none;
 	border-radius: 25px;
 	float: left;
 	margin: 0 15px 0 65px;
@@ -310,12 +207,12 @@ input[type="Reset"]:hover {
 }
 
 input[type="Submit"] {
-	background-color:  rgb(0,123,200); 
-	color: white; 
-	font-size: 16px; 
+	background-color:  rgb(0,123,200);
+	color: white;
+	font-size: 16px;
 	font-weight: bold;
-	text-align: center; 
-	border: none; 
+	text-align: center;
+	border: none;
 	border-radius: 25px;
 	float: left;
 	margin: 0 15px 0 65px;
@@ -327,16 +224,16 @@ input[type="Submit"] {
 
 input[type="Submit"]:hover {
 	background-color: rgb(31,49,59);
-	font-size: 16px; 
+	font-size: 16px;
 	font-weight: bold;
-	text-align: center; 
-	border: none; 
-	border-radius: 25px; 
+	text-align: center;
+	border: none;
+	border-radius: 25px;
 	float: left;
 	margin: 0 15px 0 65px;
 	overflow: hidden;
 	width: 200px;
-	height: 40px; 
+	height: 40px;
 	display: inline-block;
 }
 

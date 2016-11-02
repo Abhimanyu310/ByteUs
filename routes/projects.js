@@ -28,6 +28,6 @@ router.get('/:id/view', ProjectController.getProjectDetail);
 router.get('/success', ProjectController.getProjectSuccess);
 
 // Post Project search
-router.post('/search', ProjectController.postSearchProject);
+router.post('/list', ProjectController.postSearchProject);
 
 module.exports = router;

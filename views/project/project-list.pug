@@ -4,21 +4,28 @@ block title
 	|#{title}
 
 block styles
-	link(rel='stylesheet', href='/stylesheets/forms.css')
+	link(rel='stylesheet', href='/stylesheets/project-list.css')
 
 block content
 	header
-		h List of Projects
-		form(method='post', action='/project/search', role='form')
-			input(type='text', name='search_query')
+		h #{header}
+
+
+	div.search-form
+		form(method='post', action='/project/list', role='form')
+			input(type='text', name='search_query', value=(prev_value ? prev_value : ''))
+			| Filter By :-
 			input(type='radio', name='search_by', value='title' checked)
 			| Title
-			input(type='radio', name='search_by', value='faculty')
+			input(type='radio', name='search_by', value='faculty' checked=faculty_search)
 			| Faculty
-			input(type='radio', name='search_by', value='description')
+			input(type='radio', name='search_by', value='description' checked=description_search)
 			| Description
+			input(type='checkbox', name='sort', value='desc' checked=recent)
+			| Most recent first
 			input(type='hidden', name='_csrf', value=csrfToken)
 			input.btn.btn-success(type='submit', value='Search')
+
 	section
 	table.style4
 			tr
@@ -26,4 +33,6 @@ block content
 					each project in projects
 						li #{project.description} by #{project.name}
 							a(href='/project/'+project.id+'/view') View Project
+
+
 

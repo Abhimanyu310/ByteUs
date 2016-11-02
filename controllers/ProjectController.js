@@ -14,6 +14,7 @@ module.exports = {
         models.Project.findAll().then(function(projects) {
             res.render('project/project-list', {
                 title: 'Project List',
+                header: 'List of Projects',
                 projects: projects,
                 message: req.flash('success'),
                 csrfToken: req.csrfToken()
@@ -144,43 +145,66 @@ module.exports = {
 };
 
 function postSearchProjectByTitle(req, res, next) {
+    var order_by = req.body.sort || 'asc';
     models.Project.findAll({
         where: {
             description: {
                 $like: '%' + req.body.search_query + '%'
             }
+
         },
+        order: [
+            ['updated_at', order_by],
+            ],
         include: [ {model: models.FacultyInfo, as: 'Faculty'} ]
     }).then(function (projects){
         console.log(projects);
-        res.render('project/search-result', {
-            title: "Project Search",
-            projects: projects
+        res.render('project/project-list', {
+            title: "Search Results",
+            header: "Search Results",
+            projects: projects,
+            csrfToken: req.csrfToken(),
+            prev_value: req.body.search_query,
+            title_search: true,
+            recent : order_desc(order_by)
             // message: req.flash('success')
         });
     });
 }
 
 function postSearchProjectByDescription(req, res, next) {
+    var order_by = req.body.sort || 'asc';
     models.Project.findAll({
         where: {
             longdescription: {
                 $like: '%' + req.body.search_query + '%'
             }
         },
+        order: [
+            ['updated_at', order_by],
+        ],
         include: [ {model: models.FacultyInfo, as: 'Faculty'} ]
     }).then(function (projects){
         console.log(projects);
-        res.render('project/search-result', {
-            title: "Project Search",
-            projects: projects
+        res.render('project/project-list', {
+            title: "Search Results",
+            header: "Search Results",
+            projects: projects,
+            csrfToken: req.csrfToken(),
+            prev_value: req.body.search_query,
+            description_search: true,
+            recent : order_desc(order_by)
             // message: req.flash('success')
         });
     });
 }
 
 function postSearchProjectByFaculty(req, res, next) {
+    var order_by = req.body.sort || 'asc';
     models.Project.findAll({
+        order: [
+            ['updated_at', order_by],
+        ],
         include: [{
             model: models.FacultyInfo, 
             as: 'Faculty',
@@ -192,10 +216,19 @@ function postSearchProjectByFaculty(req, res, next) {
         }]
     }).then(function (projects){
         console.log(projects);
-        res.render('project/search-result', {
-            title: "Project Search",
-            projects: projects
+        res.render('project/project-list', {
+            title: "Search Results",
+            header: "Search Results",
+            projects: projects,
+            csrfToken: req.csrfToken(),
+            prev_value: req.body.search_query,
+            faculty_search: true,
+            recent : order_desc(order_by)
             // message: req.flash('success')
         });
     });
+}
+
+function order_desc(order_by){
+    return order_by == 'desc';
 }
