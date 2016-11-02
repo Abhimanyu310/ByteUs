@@ -265,17 +265,6 @@ input[type="Save"] {
 
 input[type="Save"]:hover {
 	background-color: rgb(31,49,59);
-	font-size: 16px;
-	font-weight: bold; 
-	text-align: center; 
-	border-radius: 25px;
-	border: none; 
-	float: left;
-	margin: 0 15px 0 65px;
-	overflow: hidden;
-	width: 200px;
-	height: 40px;
-	display: inline-block;
 }
 
 input[type="Reset"] {
@@ -296,17 +285,6 @@ input[type="Reset"] {
 
 input[type="Reset"]:hover {
 	background-color: rgb(31,49,59);
-	font-size: 16px; 
-	font-weight: bold;
-	text-align: center;
-	border: none; 	
-	border-radius: 25px;
-	float: left;
-	margin: 0 15px 0 65px;
-	overflow: hidden;
-	width: 200px;
-	height: 40px;
-	display: inline-block;
 }
 
 input[type="Submit"] {
@@ -327,17 +305,6 @@ input[type="Submit"] {
 
 input[type="Submit"]:hover {
 	background-color: rgb(31,49,59);
-	font-size: 16px; 
-	font-weight: bold;
-	text-align: center; 
-	border: none; 
-	border-radius: 25px; 
-	float: left;
-	margin: 0 15px 0 65px;
-	overflow: hidden;
-	width: 200px;
-	height: 40px; 
-	display: inline-block;
 }
 
 
