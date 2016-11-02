@@ -6,6 +6,9 @@ block title
 block styles
     link(rel='stylesheet', href='/stylesheets/forms.css')
 
+block scripts
+    script(type='text/javascript',src='/javascripts/project-form.js')
+
 block content
     header
         h Faculty Apprenticeship Submission
@@ -27,7 +30,7 @@ block content
                     table.style1
                         tr
                             td
-                                input#form_primPhone.required(name='phone', type='tel', placeholder=' ###-###-####',required='required', maxlength='15', size='15')
+                                input#form_primPhone.required(name='phone', type='tel', placeholder=' (xxx) xxx-xxxx',required='required', maxlength='15', size='15')
                                 .help-block.with-errors
                     label(for='form_email')  Faculty Email Address: *
                     table.style1
@@ -73,7 +76,7 @@ block content
                     table.style1
                         tr
                             td
-                                input#form_secPhone(name='secondary_phone', type='tel', placeholder=' ###-###-####', maxlength='15', size='15')
+                                input#form_secPhone(name='secondary_phone', type='tel', placeholder=' (xxx) xxx-xxxx', maxlength='15', size='15')
                                 .help-block.with-errors
                     label(for='form_email')  Faculty Email Address:
                     table.style1
