@@ -33,18 +33,16 @@ fieldset label{
 }
 
 fieldset label.add{
-	color: white; 
-	clear: left; 
-	float: left; 
-	font-size: 1em; 
-	margin-top: 2px; 
-	margin-bottom: 6px; 
-	margin-left: 0px; 
-	margin-right: 0px; 
 	width: 190px; 
 }
 
+fieldset label.aca{
+	margin-right: 20px; 
+}
 
+fieldset label.file{
+	margin-bottom: 15px; 
+}
 fieldset input{ 
 	background-color: rgb(31,49,59);
 	color: white; 
@@ -68,11 +66,12 @@ table.style{
 	color: white; 
 }
 
-/*Yes-No Radio Button Style*/
+/*Gender Radio Button Style*/
 table.style1{
     width: 230px;
 	color: white; 
-	margin-bottom: 7px;
+	margin-top: 4px;
+	margin-bottom: 5px;
 }
 
 /*Origin Radio Button Style*/
@@ -95,6 +94,30 @@ table.style3{
 	margin-left: 3px; 
 }
 
+/*Race Check Box Style*/
+table.style4{
+	margin-top: 12px;
+	margin-right:0px;
+	margin-bottom: 4px;
+	margin-left: 3px; 
+}
+
+/*Experience Radio Button Style*/
+table.style5{
+	width: 600px;
+	color: white; 
+	margin-top: 85px;
+	margin-bottom: 5px; 
+}
+
+/*Interests Drop Down*/
+table.style6{
+    width: 350px;
+	color: white; 
+	margin-top: -22px; 
+}
+
+
 /*Select Styles*/
 
 select{
@@ -107,14 +130,39 @@ select{
 	border-radius: 5px;
 	margin-top: 3px;
 	margin-right: 0px;
-	margin-bottom: 1px;
+	margin-bottom: 0px;
 	margin-left: 2px;
 	border: none;	
 }
 
+select.level{
+	width: 350px; 
+}
+
+h4{
+	color: white; 
+	font-size: 14px; 
+}
 h5{
 	color: rgb(0,123,200); 
 	font-size: 14px; 
+}
+
+/*Fall Employment Plans style*/
+textarea{
+	background-color: rgb(31,49,59);
+	color: white; 
+	display: block; 
+	border-radius: 5px;
+	float: left; 
+	font-size: 0.9em;  
+	width: 340px;
+	height: 60px;
+	border-color: black;
+}
+textarea.skill{
+	width: 700px;
+	height: 30px;	
 }
 
 /*Zip and Tel textbox style*/
@@ -144,6 +192,15 @@ input[type="text"]{
 	width: 340px;
 }
 
+input[type="file"] {
+	background-color: black;
+	color: white; 
+	display: block; 
+	margin-left: -180px; 
+	border: none;
+	height: 30px;
+	width: 200px; 
+}
 input[type="Save"] {
 	background-color:  rgb(0,123,200); 
 	color: white; 

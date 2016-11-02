@@ -12,17 +12,21 @@ block content
 		h Student Apprenticeship Application
 		h5 *Required Fields
 	section
-		form#sudent-form(method='post', action='', role='form')
+		form#sudent-form(method='post', action='', role='form', enctype='multipart/form-data')
 			form
 				fieldset#StudentInfo
 					legend Student Demographics
 					label(for='form_name') Name: *
 					table.style
 						tr
-
 							td
 								input#form_name.form-control(type='text', name='name', placeholder=' First Last', required='required', data-error='Student name is required.')
 								.help-block.with-errors
+					label(for='ID') Student Identification Number: *
+					table.style
+						tr
+							td
+								input#id.form-control(name='id', type='tel', placeholder=' #########', pattern='^[0-9]{9}', maxlength='9', size='10', data-error='Please, provide your student identification number.', required='required')
 					label(for='Gen') Gender *
 					table.style1
 						tr
@@ -185,7 +189,7 @@ block content
 							td
 								input#secCity.control(type='text', name='add', placeholder=' City')
 								.help-block.with-errors
-					label.add(for='state') State: *
+					label.add(for='state') State: 
 					select#state(name='state')
 						option(value='AL') Alabama
 						option(value='AK') Alaska
@@ -239,26 +243,216 @@ block content
 						option(value='WI') Wisconsin
 						option(value='WY') Wyoming
 					br
-					label.add(for='secZip') Postal Code *
+					label.add(for='secZip') Postal Code 
 					table.style
 						tr
 							td
 								input#form_secZip.required(name='secZip', type='tel', placeholder=' #####', maxlength='5', size='6')
 								.help-block.with-errors
-					label.add(for='secPhone') Phone Number: *
+					label.add(for='secPhone') Phone Number: 
 					table.style
 						tr
 							td
 								input#form_secPhone.required(name='secPhone', type='tel', placeholder=' ###-###-####', maxlength='15', size='15')
 								.help-block.with-errors
-					label.add(for='form_secEmail') Email Address: *
+					label.add(for='form_secEmail') Email Address: 
 					table.style
 						tr
 							td
 								input#secEmail.form-control(type='email', name='email', placeholder=' First.Last@Colorado.edu')
 								.help-block.with-errors
 					br
+					
+					legend Academic Information
+					label(for='primary-major') Primary Major: *
+					select.major#primary-major(name='primary-major', required='required')
+						option(value='', disabled='disabled', selected='selected') Please Select
+						option(value='AEE') Aerospace Engineering
+						option(value='AM') Applied Mathematics
+						option(value='ARE') Architectural Engineering
+						option(value='CE') Chemical Engineering
+						option(value='C&BE') Chemical & Biological Engineering
+						option(value='CVE') Civil Engineering
+						option(value='CS') Computer Science
+						option(value='EE') Electrical Engineering
+						option(value='E&CE') Electrical & Computer Engineering
+						option(value='PHY') Engineering Physics
+						option(value='EE') Environmental Engineering
+						option(value='EP') Engineering Plus
+						option(value='ME') Mechanical Engineering
+						option(value='TAM') Technology, Art, and Media 
 					br
+					label(for='secondary-major') Secondary Major: 
+					select.major#secondary-major(name='secondary-major')
+						option(value='', selected='selected') I do not have a secondary major.
+						option(value='AEE') Aerospace Engineering
+						option(value='AM') Applied Mathematics
+						option(value='ARE') Architectural Engineering
+						option(value='CE') Chemical Engineering
+						option(value='C&BE') Chemical & Biological Engineering
+						option(value='CVE') Civil Engineering
+						option(value='CS') Computer Science
+						option(value='EE') Electrical Engineering
+						option(value='E&CE') Electrical & Computer Engineering
+						option(value='PHY') Engineering Physics
+						option(value='EE') Environmental Engineering
+						option(value='EP') Engineering Plus
+						option(value='ME') Mechanical Engineering
+						option(value='TAM') Technology, Art, and Media
+					br
+					label(for='GPA') GPA *
+					table.style4
+						tr
+							td
+								input#gpa(name='gpa', type='tel', placeholder=' #.###', maxlength='5', size='5', data-error='Please, provide your GPA.', required='required')
+					label(for='level') Next Fall's Level in School: * 
+					select#level(name='level', required='required')
+						option(value='', disabled='disabled', selected='selected') Please Select
+						option(value='Freshman') Freshman 
+						option(value='Sophomore') Sophomore 
+						option(value='Junior') Junior
+						option(value='Senior') Senior
+						option(value='5th Year Senior') 5th Year Senior
+						
+					label(for='graduation') Anticipated Graduation Date: * 
+					select#graduation(name='graduation',required='required')
+						option(value='', disabled='disabled', selected='selected') Month
+						option(value='May') May 
+						option(value='August') August 
+						option(value='December') December
+					select#graduation(name='graduation',required='required')
+						option(value='', disabled='disabled', selected='selected') Year
+						option(value='2017') 2017 
+						option(value='2018') 2018 
+						option(value='2019') 2019
+						option(value='2020') 2020
+						option(value='2021') 2021
+						option(value='2022') 2022
+						option(value='2023') 2023
+					label(for='experience') Do you have previous research experience? *
+					table.style5
+						tr
+							td
+								input#experience(type='radio', name='experience', required='required', value='Yes')
+								|  Yes
+							td
+								input#experience(type='radio', name='experience', required='required', value='No')
+								|  No (This does not effect your eligibility.)
+					legend Apprenticeship Information
+					label(for='before') Have you applied for a Discover Learning Apprenticeship before? *
+					table.style
+						tr
+							td
+								input#before(type='radio', name='before', required='required', value='Yes')
+								|  Yes
+							td
+								input#before(type='radio', name='before', required='required', value='No')
+								|  No 
+							td
+								input#before(type='radio', name='before', required='required', value='Not Sure')
+								|  Not Sure
+					label(for='employment') Other fall employment plans:
+					table.style
+						tr
+							td
+								br
+								textarea#employment(type='text', name='employment', maxlength='200', placeholder=' Fall employment plans')
+								.help-block.with-errors
+					br
+					h5 *Please make sure that you selected a major before proceeding. 
+					label.aca(for='selection1') Please select up to five projects you would like to be considered for.
+					table.style6
+						tr
+							td
+								select.level#level(name='selection1', required='required')
+									option(value='', disabled='disabled', selected='selected') Most Interest 
+									option(value='Test') Test 
+							br
+						tr
+							td
+								select.level#level(name='selection2')
+									option(value='', disabled='disabled', selected='selected') High Interest 
+									option(value='Test') Test
+								br
+						tr
+							td
+								select.level#level(name='selection3')
+									option(value='', disabled='disabled', selected='selected') Moderate Interest 
+									option(value='Test') Test
+								br
+						tr
+							td
+								select.level#level(name='selection4')
+									option(value='', disabled='disabled', selected='selected') Low Interest 
+									option(value='Test') Test
+								br
+						tr
+							td
+								select.level#level(name='selection5')
+									option(value='', disabled='disabled', selected='selected') Least Interest
+									option(value='Test') Test
+					br
+					label.aca(for='background') Have you had a background check at CU? *
+					table.style
+						tr
+							td
+								input#background(type='radio', name='background', required='required', value='Yes')
+								|  Yes
+							td
+								input#background(type='radio', name='background', required='required', value='No')
+								|  No 
+							td
+								input#background(type='radio', name='background', required='required', value='Not Sure')
+								|  Not Sure
+					br
+					br
+					label.aca(for='discrimination') Have you had Discrimination & Harassment Awareness training at CU? *
+					table.style
+						tr
+							td
+								input#discrimination(type='radio', name='discrimination', required='required', value='Yes')
+								|  Yes
+							td
+								input#discrimination(type='radio', name='discrimination', required='required', value='No')
+								|  No 
+							td
+								input#discrimination(type='radio', name='discrimination', required='required', value='Not Sure')
+								|  Not Sure
+					br
+					br
+					label.aca(for='ssn') Please enter the last four digits of your Social Security Number so we can access your background check information.
+					table.style
+						tr
+							td
+								input#id.form-control(name='id', type='tel', placeholder=' ####', pattern='^[0-9]{4}', maxlength='4', size='5', data-error='Please, provide your SSN.', required='required')
+					
+					legend Skills, Resume, and Cover Letter: 
+					h4 List three skills or qualifications that you feel make you a great candidate for the positions you selected:
+					h4 Examples: Knowledge of a programming language, knowledge of a field, courses taken, personal characteristics, etc. 
+					h5 Please note that responses are limited to 75 characters. 
+					table.style
+						tr
+							td
+								textarea.skill#skill(type='text', name='skill1', placeholder=' 1.', maxlength='75')
+						tr
+							td
+								textarea.skill#skill(type='text', name='skill2', placeholder=' 2.', maxlength='75')
+						tr
+							td
+								textarea.skill#skill(type='text', name='skill3', placeholder=' 3.', maxlength='75')
+					br
+					h4 To complete the application, you must submit a resume and a cover letter. 
+					h4 Please use either the PDF format or a text document.
+					br
+					label.file(for='resume') Resume: 
+					input#resume(type='file', name='resume')
+					br
+					label.file(for='cover-letter') Cover Letter: 
+					input#cover-letter(type='file', name='cover-letter')
+					br
+					br
+					br
+					input(type='hidden', name='_csrf', value=csrfToken)
 					input.btn.btn-success(type='save', value='Save')
 					input.btn.btn-success(type='reset', value='Reset')
 					input.btn.btn-success(type='submit', value='Submit')
