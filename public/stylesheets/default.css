@@ -111,4 +111,14 @@ h4 {
     color: white;
 }
 
+.info-box {
+    margin-left: 300px;
+}
 
+.info-box-success{
+    color: green;
+}
+
+.info-box-error{
+    color: red;
+}

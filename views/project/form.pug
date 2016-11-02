@@ -7,6 +7,10 @@ block styles
     link(rel='stylesheet', href='/stylesheets/forms.css')
 
 block content
+
+    include ../includes/info-box
+
+
     header
         h Faculty Apprenticeship Submission
         h5 *Required Fields
@@ -21,19 +25,19 @@ block content
                     table.style1
                         tr
                             td
-                                input#form_name.form-control(type='text', name='name', placeholder=' First Last', required='required', data-error='Faculty name is required.')
+                                input#form_name.form-control(type='text', name='name', placeholder=' First Last', required='required', data-error='Faculty name is required.' value=(formData ? formData.name : ''))
                                 .help-block.with-errors
                     label(for='phone')  Faculty Phone Number: *
                     table.style1
                         tr
                             td
-                                input#form_primPhone.required(name='phone', type='tel', placeholder=' ###-###-####',required='required', maxlength='15', size='15')
+                                input#form_primPhone.required(name='phone', type='tel', placeholder=' ###-###-####',required='required', maxlength='15', size='15'  value=(formData ? formData.phone: ''))
                                 .help-block.with-errors
                     label(for='form_email')  Faculty Email Address: *
                     table.style1
                         tr
                             td
-                                input#form_email.form-control(type='', name='email', placeholder=' First.Last@Colorado.edu', required='', data-error='Valid email is required.')
+                                input#form_email.form-control(type='', name='email', placeholder=' First.Last@Colorado.edu', required='', data-error='Valid email is required.' value=(formData ? formData.email: ''))
                                 .help-block.with-errors
                     label(for='faculty_department')  Faculty_Department/Program: *
                     select#faculty_department(name='faculty_department', required='required')
