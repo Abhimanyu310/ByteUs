@@ -132,8 +132,7 @@ module.exports = {
                 // console.log(error)
             });
         }
-
-
+        
     },
     
     getProjectDetail: function(req, res, next) {

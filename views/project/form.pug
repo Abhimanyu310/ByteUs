@@ -39,11 +39,11 @@ block content
                             td
                                 input#form_email.form-control(type='', name='email', placeholder=' First.Last@Colorado.edu', required='', data-error='Valid email is required.' value=(formData ? formData.email: ''))
                                 .help-block.with-errors
-                    label(for='faculty_department')  Faculty_Department/Program: *
+                    label(for='faculty_department')  Faculty Department/Program: *
                     select#faculty_department(name='faculty_department', required='required')
                         option(value='', disabled='disabled', selected='selected') Please Select
                         option(value='AES') Aerospace Engineering Sciences
-                        option(value='AM') Applied Math
+                        option(value='AM') Applied Mathematics
                         option(value='C&BE') Chemical & Biological Engineering
                         option(value='CE&A') Civil, Environmental and Architectural Engineering
                         option(value='CS') Computer Science
@@ -89,7 +89,7 @@ block content
                     select#secondary_faculty_department(name='secondary_faculty_department')
                         option(value='', disabled='disabled', selected='selected') Please Select
                         option(value='AES') Aerospace Engineering Sciences
-                        option(value='AM') Applied Math
+                        option(value='AM') Applied Mathematics
                         option(value='C&BE') Chemical & Biological Engineering
                         option(value='CE&A') Civil, Environmental and Architectural Engineering
                         option(value='CS') Computer Science
@@ -176,6 +176,7 @@ block content
                                 textarea#longdescription.form-control(name='longdescription', rows='2', required='required', maxlength='1200', data-error='Please, provide a description.')
                                 .help-block.with-errors
                                 br
+
                     label(for='areas')
                         br
                         |  Areas to Recruit Students From: *
@@ -185,10 +186,8 @@ block content
                         |	select will be able to apply.)
                         br
                         br
-                        input(type='checkbox', name='check', value='All')
+                        input(type='checkbox', onclick="for(c in document.getElementsByName('areas')) document.getElementsByName('areas').item(c).checked = this.checked", name='check', value='All')
                         |	Check/Uncheck All
-                        br
-                        |	(Not Functional Yet)
                         br
                         br
                     br
@@ -298,7 +297,7 @@ block content
                         tr
                             td
                                 input#nature(type='radio', name='nature_of_work', required='required', value='Other')
-                                | 	Other, specify: (Not complete - need to make sure that if Other is selected the user specified.)
+                                | 	Other, specify:
                                 br
                                 input#nature.form-control(type='text', name='nature_of_work_other', maxlength='60')
                                 .help-block.with-errors
@@ -320,7 +319,7 @@ block content
                         tr
                             td
                                 input#amount(type='radio', name='prior_work', required='required', value='Other')
-                                | 	Other, specify: (Not complete - need to make sure that if Other is selected the user specified.)
+                                | 	Other, specify:
                                 br
                                 input#amount.form-control(type='text', name='prior_work_other', maxlength='60')
                                 .help-block.with-errors
@@ -333,11 +332,11 @@ block content
                     table.style1
                         tr
                             td
-                                input#finances.form-control(name='match_of_funding', type='tel', placeholder=' ########', pattern='^[0-9]{8}', required='required', maxlength='8', size='9', data-error='Please, provide a speed type.')
+                                input#finances.form-control(name='match_of_funding', type='tel', placeholder=' ########', pattern='^[0-9]{8}', maxlength='8', size='9', data-error='Please, provide a speed type.', required='required')
                         tr
                             td
                                 input(type='checkbox', name='not_sure', value='Yes')
-                                |  Not Sure (Not Complete - Have to make sure that only one or the other is filled out/checked.)
+                                |  Not Sure
                                 br
                                 br
                     label(for='contact')
