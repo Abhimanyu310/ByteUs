@@ -9,10 +9,11 @@ var ApplicationController = require('../controllers/ApplicationController');
 var csrfProtection = csrf();
 router.use(csrfProtection);
 
-// Project submission for student
+// GET the student submission form
 router.get('/form', ApplicationController.getApplicationForm);
 
-
+// POST the student submission form
+router.post('/form', ApplicationController.postApplicationForm);
 
 
 module.exports = router;
