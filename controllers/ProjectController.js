@@ -14,7 +14,7 @@ module.exports = {
         models.Project.findAll().then(function(projects) {
             res.render('project/project-list', {
                 title: 'Project List',
-                header: 'List of Projects',
+                header: 'Complete Listing of Discovery Learning Apprenticeships',
                 projects: projects,
                 message: req.flash('success'),
                 csrfToken: req.csrfToken()
@@ -143,7 +143,7 @@ module.exports = {
         }).then(function (project){
             // console.log(project)
             res.render('project/project-single', {
-                title: "Project Detail",
+                title: "Project List",
                 project: project
                 // message: req.flash('success')
             });
@@ -170,6 +170,9 @@ module.exports = {
                 break;
             case 'description':
                 postSearchProjectByDescription(req, res, next);
+                break;
+            case 'department':
+                postSearchProjectByDepartment(req, res, next);
                 break;
             default:
                 postSearchProjectByTitle(req, res, next);
@@ -257,6 +260,36 @@ function postSearchProjectByFaculty(req, res, next) {
             csrfToken: req.csrfToken(),
             prev_value: req.body.search_query,
             faculty_search: true,
+            recent : order_desc(order_by)
+            // message: req.flash('success')
+        });
+    });
+}
+
+function postSearchProjectByDepartment(req, res, next) {
+    var order_by = req.body.sort || 'asc';
+    models.Project.findAll({
+        order: [
+            ['updated_at', order_by],
+        ],
+        include: [{
+            model: models.FacultyInfo, 
+            as: 'Faculty',
+            where: {
+                faculty_department: {
+                    $like: '%' + req.body.search_query + '%'
+                }
+            }
+        }]
+    }).then(function (projects){
+        // console.log(projects);
+        res.render('project/project-list', {
+            title: "Search Results",
+            header: "Search Results",
+            projects: projects,
+            csrfToken: req.csrfToken(),
+            prev_value: req.body.search_query,
+            department_search: true,
             recent : order_desc(order_by)
             // message: req.flash('success')
         });
