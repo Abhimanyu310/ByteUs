@@ -7,6 +7,23 @@ h4 {
 }
 
 /*Format for project list table*/
+table.style3{
+    list-style:none;
+    color: white;
+    width: 800px;
+    border-collapse: collapse;
+}
+th {
+    color: #4CAF50;
+    padding: 15px;
+    border-bottom: 1px solid white;
+}
+td {
+    padding-left: 15px;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid white;
+}
 table.style4{
     list-style:none;
     color: white;

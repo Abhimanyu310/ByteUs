@@ -9,30 +9,42 @@ block styles
 block content
 	header
 		h #{header}
-
-
-	div.search-form
-		form(method='post', action='/project/list', role='form')
-			input(type='text', name='search_query', value=(prev_value ? prev_value : ''))
-			| Filter By :-
-			input(type='radio', name='search_by', value='title' checked)
-			| Title
-			input(type='radio', name='search_by', value='faculty' checked=faculty_search)
-			| Faculty
-			input(type='radio', name='search_by', value='description' checked=description_search)
-			| Description
-			input(type='checkbox', name='sort', value='desc' checked=recent)
-			| Most recent first
-			input(type='hidden', name='_csrf', value=csrfToken)
-			input.btn.btn-success(type='submit', value='Search')
+		h1 Complete Listing of Discovery Learning Apprenticeships by Faculty Affiliation with a Department or Program
 
 	section
 	table.style4
 			tr
 				td
-					each project in projects
-						li #{project.description} by #{project.name}
-							a(href='/project/'+project.id+'/view') View Project
+						table.style3
+								tr
+									th Project Name
+									th Contact Name(s)
+									th Complete Description 
+									th Requirements
+								each project in projects
+									tr
+										td 	#{project.description}
+										td  
+											br
+											li #{project.url}
+										td 	#{project.longdescription}
+										td 	
+											li #{project.requirements1}
+											li #{project.requirements2}
+											li #{project.requirements3}
+											li #{project.requirements4}
+											li #{project.requirements5}
+											br
+											li > #{project.supervision_req}
+											li > #{project.supervision_provided}
+											li > #{project.nature_of_work}
+											li > #{project.prior_work}
+											
+
+
+
+
+
 
 
 
