@@ -113,7 +113,7 @@ block content
                     table.style1
                         tr
                             td
-                                input#form_postDocPhone(name='postDocPhone', type='tel', placeholder=' ###-###-####', maxlength='15', size='15')
+                                input#form_postDocPhone(name='postDocPhone', type='tel', placeholder=' (xxx) xxx-xxxx', maxlength='15', size='15')
                                 .help-block.with-errors
                     label(for='form_email')  Email Address:
                     table.style1
@@ -130,6 +130,9 @@ block content
                             td
                                 textarea#description.form-control(name='description', rows='2', required='required', maxlength='80', data-error='Please, provide a description.')
                                 .help-block.with-errors
+                                br
+                                span#word_count_desc 100
+                                |  words remaining
                     label(for='url')
                         br
                         | Website URL to Provide Additional Information:
@@ -150,21 +153,32 @@ block content
                             td
                                 textarea#requirements.form-control(name='requirements1', placeholder=' 1) Optional', maxlength='200')
                                 br
+                                span#word_count_reqs 100
+                                |  words remaining
                         tr
                             td
                                 textarea#requirements.form-control(name='requirements2', placeholder=' 2) Optional', maxlength='200')
                                 br
+                                span#word_count_reqs 100
+                                |  words remaining
                         tr
                             td
                                 textarea#requirements.form-control(name='requirements3', placeholder=' 3) Optional', maxlength='200')
                                 br
+                                span#word_count_reqs 100
+                                |  words remaining
                         tr
                             td
                                 textarea#requirements.form-control(name='requirements4', placeholder=' 4) Optional', maxlength='200')
                                 br
+                                span#word_count_reqs 100
+                                |  words remaining
                         tr
                             td
                                 textarea#requirements.form-control(name='requirements5', placeholder=' 5) Optional', maxlength='200')
+                                br
+                                span#word_count_reqs 100
+                                |  words remaining
                     label(for='longdescription')
                         br
                         |  Longer Description of Apprenticeship: *
