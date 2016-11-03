@@ -186,9 +186,10 @@ block content
                     table.style2
                         tr
                             td
-                                textarea#longdescription.form-control(name='longdescription', rows='2', required='required', maxlength='1200', data-error='Please, provide a description.')
-                                .help-block.with-errors
+                                textarea#longdescription.form-control(name='longdescription', rows='2', required='required', maxlength='1200', data-error='Please, provide a description.').help-block.with-errors
                                 br
+                                span#char_count 1200
+                                |  characters remaining
 
                     label(for='areas')
                         br

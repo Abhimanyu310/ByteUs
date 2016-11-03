@@ -18,7 +18,7 @@ $(document).ready(function () {
   /* Word Counts */
   
   // Truncate excess characters and display the cound in the sibling span element
-  $('#description, #requirements').each(function(idx,elem) {
+  $('#description, #requirements, #longdescription').each(function(idx,elem) {
     var max_chars = $(elem).attr('maxlength');
     $(elem).siblings('#char_count').html(max_chars);  
     $(elem).on('keyup', function() {
