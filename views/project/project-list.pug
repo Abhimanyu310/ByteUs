@@ -12,6 +12,28 @@ block content
 		h1 Complete Listing of Discovery Learning Apprenticeships by Faculty Affiliation with a Department or Program
 
 	section
+	div.search-form
+		form(method='post', action='/project/list', role='form')
+			input(type='text', name='search_query', value=(prev_value ? prev_value : ''))
+			br
+			| Filter By :-  
+			input(type='radio', name='search_by', value='title' checked)
+			| Title
+			input(type='radio', name='search_by', value='faculty' checked=faculty_search)
+			| Faculty
+			input(type='radio', name='search_by', value='description' checked=description_search)
+			| Description
+			input(type='radio', name='search_by', value='department' checked=department_search)
+			| Department
+			input(type='radio', name='search_by', value='areas' checked=area_search)
+			| Majors for which the project is available
+			<br>
+			input(type='checkbox', name='sort', value='desc' checked=recent)
+			| Most recent first
+			input(type='hidden', name='_csrf', value=csrfToken)
+			input.btn.btn-success(type='submit', value='Search')
+
+
 	table.style4
 			tr
 				td

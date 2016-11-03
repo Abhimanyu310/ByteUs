@@ -6,6 +6,12 @@ h4 {
     color: white;
 }
 
+div {
+    color: white;
+    width: 1000px;
+    padding-top: 200px;
+    padding-left: 300px;
+}
 /*Format for project list table*/
 table.style3{
     list-style:none;
@@ -28,8 +34,8 @@ table.style4{
     list-style:none;
     color: white;
     width: 800px;
-    padding-top: 250px;
     padding-left: 300px;
+    padding-top: 50px;
 }
 
 table.style5{
@@ -46,14 +52,21 @@ table.style5{
 /*Textbox Styles for names and other checkbox*/
 
 input[type="text"]{
-    margin: 5px 0 5px 250px ;
-    /*margin-top: 5px;*/
-    /*margin-right:0px;*/
-    /*margin-bottom: 5px;*/
-    /*margin-left: 250px;*/
+    margin: 5px 0 5px 0px ;
     width: 340px;
 }
-
+input[type="radio"]{
+    margin: 5px 5px 0 5px ;
+    position: relative;
+    /*margin: 5px 5px 5px 5px ;*/
+    width: 20px;
+}
+input[type="checkbox"]{
+    margin: 5px 5px 0 5px ;
+    position: relative;
+    /*margin: 5px 5px 5px 5px ;*/
+    width: 20px;
+}
 
 /*Button Styles*/
 
