@@ -22,7 +22,7 @@ module.exports = {
         }).catch(function (error) {
             //error handling
             // console.log(error)
-        });;
+        });
     },
     
     getCreateProject: function(req, res, next) {
@@ -73,10 +73,17 @@ module.exports = {
         }
         else{
             if (req.body.areas){
-                var areas = req.body.areas[0];
-                for(i = 1; i < req.body.areas.length; i++){
-                    areas +=  ', ' + req.body.areas[i];
+                if( typeof req.body.areas === 'string' ) {
+                    areas = req.body.areas;
                 }
+                else{
+                    var areas = req.body.areas[0];
+                    for(var i = 1; i < req.body.areas.length; i++){
+                        areas +=  ', ' + req.body.areas[i];
+                    }
+                }
+
+
             }
 
             var project = models.Project.create({

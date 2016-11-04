@@ -53,7 +53,7 @@ block content
 							td
 								input#Origin(type='radio', name='origin', required='required', value='Do not wish to answer')
 								|  I do not wish to provide this information
-					label(for='Race')
+					label(for='race')
 						|	Please select your race. *
 						br
 						|	(Check all that apply)
@@ -262,7 +262,7 @@ block content
 					table.style
 						tr
 							td
-								input#secEmail.form-control(type='summer_email', name='email', placeholder=' First.Last@Colorado.edu')
+								input#secEmail.form-control(type='email', name='summer_email', placeholder=' First.Last@Colorado.edu')
 								.help-block.with-errors
 					br
 					
@@ -371,31 +371,36 @@ block content
 							td
 								select.level#level(name='most_interest', required='required')
 									option(value='', disabled='disabled', selected='selected') Most Interest 
-									option(value='Test') Test 
+									each project in projects
+										option(value=project.id) #{project.description}
 							br
 						tr
 							td
 								select.level#level(name='high_interest')
 									option(value='', disabled='disabled', selected='selected') High Interest 
-									option(value='Test') Test
+									each project in projects
+										option(value=project.id) #{project.description}
 								br
 						tr
 							td
 								select.level#level(name='moderate_interest')
 									option(value='', disabled='disabled', selected='selected') Moderate Interest 
-									option(value='Test') Test
+									each project in projects
+										option(value=project.id) #{project.description}
 								br
 						tr
 							td
 								select.level#level(name='low_interest')
 									option(value='', disabled='disabled', selected='selected') Low Interest 
-									option(value='Test') Test
+									each project in projects
+										option(value=project.id) #{project.description}
 								br
 						tr
 							td
 								select.level#level(name='least_interest')
 									option(value='', disabled='disabled', selected='selected') Least Interest
-									option(value='Test') Test
+									each project in projects
+										option(value=project.id) #{project.description}
 					br
 					label.aca(for='background') Have you had a background check at CU? *
 					table.style

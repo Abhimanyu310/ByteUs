@@ -4,14 +4,23 @@ var models  = require('../models');
 module.exports = {
 
     getApplicationForm: function(req, res, next) {
-        res.render('application/form', {
-            title: "Student",
-            csrfToken: req.csrfToken()
+        models.Project.findAll().then(function(projects) {
+            res.render('application/form', {
+                title: "Student",
+                header: 'Student Apprenticeship Information',
+                projects: projects,
+                csrfToken: req.csrfToken()
+            });
+        }).catch(function (error) {
+            //error handling
+            // console.log(error)
         });
+
+
     },
 
     postApplicationForm: function(req, res, next) {
-        console.log('done');
+        // console.log('done');
         if (!req.files) {
             // console.log("no file");
         }
@@ -51,20 +60,14 @@ module.exports = {
             // errors.forEach(function (error) {
             //     messages.push(error.msg);
             // });
-            // console.log(errors)
+            // console.log('-----------------------------------------------');
+            // console.log(errors);
             req.flash('errors', errors);
             req.flash('form_data', req.body);
             // req.flash('success', "HAHA")
             res.redirect('/application/form');
         }
         else{
-            // if (req.body.areas){
-            //     var areas = req.body.areas[0];
-            //     for(i = 1; i < req.body.areas.length; i++){
-            //         areas +=  ', ' + req.body.areas[i];
-            //     }
-            // }
-
             var student = models.Student.create({
                 name: req.body.name,
                 sid: req.body.sid,
@@ -127,13 +130,6 @@ module.exports = {
                 // console.log(error)
             });
         }
-        // res.redirect('/');
-        // res.render('application/form', {
-        //     title: "Student",
-        //     csrfToken: req.csrfToken()
-        // });
 
-
-
-    },
+    }
 };
