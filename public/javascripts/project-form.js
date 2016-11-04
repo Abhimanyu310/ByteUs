@@ -41,6 +41,16 @@ $(document).ready(function () {
   });
 
   /**
+   * Checkbox all
+   */
+
+  $('input[type=checkbox][name=check][value=All]').on('click', function() {
+    $('input[type=checkbox][name=areas]').each(function(idx, elem) {
+      $(elem).prop('checked', this.checked);
+    });
+  });
+
+  /**
    * Phone numbers
    */
   
