@@ -80,4 +80,10 @@ else if (value == "Other")
 	$("#6").hide();
 }
 
+var value= $("#8").text();
+$("#8").hide();
+$("#9").text(value);
+$("#9").attr("href",value);
+console.log(value);
+
 });

@@ -45,8 +45,9 @@ $(document).ready(function () {
    */
 
   $('input[type=checkbox][name=check][value=All]').on('click', function() {
+    var isChecked = $(this).is(':checked');
     $('input[type=checkbox][name=areas]').each(function(idx, elem) {
-      $(elem).prop('checked', this.checked);
+      $(elem).prop('checked', isChecked);
     });
   });
 
