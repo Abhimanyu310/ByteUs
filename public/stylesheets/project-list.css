@@ -14,14 +14,12 @@ div {
 }
 /*Format for project list table*/
 table.style3{
-    list-style: none;
+    list-style:none;
     color: white;
-    border-collapse: separate;
-    width:100%;
-    column-width: 100%
-    border: 1px solid white;
+    width: 100%;
     padding-left: 300px;
     padding-top: 50px;
+    empty-cells: hide;
 }
 th {
     color: rgb(204,185,120);
@@ -49,6 +47,9 @@ table.style5{
     width: 400px;
     padding-top: 250px;
     padding-left: 300px;
+}
+p {
+    width:200px;
 }
 
 a {
