@@ -52,7 +52,7 @@ p {
     width:200px;
 }
 
-a {
+a.buttonstyle {
     text-decoration: none;
     background-color:  rgb(0,123,200);
     color: white;
