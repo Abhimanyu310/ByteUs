@@ -110,14 +110,18 @@ module.exports = {
                     ssn: req.body.ssn
                 }
             }, {
-                include: [ {model: models.FacultyInfo, as: 'Faculty'} ]
+                include: [
+                    {model: models.StudentContact, as: 'Contact'},
+                    {model: models.StudentAcademics, as: 'Academics'},
+                    {model: models.StudentApprenticeship, as: 'Apprenticeship'}
+                ]
             }).then(function (task) {
                 // task.setFaculty([faculty]).then(function () {
                 //         //done
                 //     });
                 // console.log(task)
-                req.flash('success', 'Project Submission Successful!');
-                res.redirect('success');
+                req.flash('success', 'Application Submission Successful!');
+                res.redirect('/user/student-home');
             }).catch(function (error) {
                 //error handling
                 // console.log(error)
