@@ -166,7 +166,7 @@ block content
 					table.style
 						tr
 							td
-								input#form_primPhone.required(name='primPhone', type='tel', placeholder=' ###-###-####',required='required', maxlength='15', size='15')
+								input#form_primPhone.required(name='primPhone', type='tel', placeholder=' (xxx) xxx-xxxx',required='required', maxlength='15', size='15')
 								.help-block.with-errors
 					label.add(for='form_email')  CU Email Address: *
 					table.style
@@ -254,7 +254,7 @@ block content
 					table.style
 						tr
 							td
-								input#form_secPhone.required(name='secPhone', type='tel', placeholder=' ###-###-####', maxlength='15', size='15')
+								input#form_secPhone.required(name='secPhone', type='tel', placeholder=' (xxx) xxx-xxxx', maxlength='15', size='15')
 								.help-block.with-errors
 					label.add(for='form_secEmail') Email Address: 
 					table.style
@@ -359,6 +359,8 @@ block content
 								br
 								textarea#employment(type='text', name='employment', maxlength='200', placeholder=' Fall employment plans')
 								.help-block.with-errors
+								span#char_count 200
+								|  characters remaining
 					br
 					h5 *Please make sure that you selected a major before proceeding. 
 					label.aca(for='selection1') Please select up to five projects you would like to be considered for.
@@ -368,7 +370,6 @@ block content
 								select.level#level(name='selection1', required='required')
 									option(value='', disabled='disabled', selected='selected') Most Interest 
 									option(value='Test') Test 
-									
 							br
 						tr
 							td
@@ -436,12 +437,18 @@ block content
 						tr
 							td
 								textarea.skill#skill(type='text', name='skill1', placeholder=' 1.', maxlength='75')
+								span#char_count 75
+								|  characters remaining
 						tr
 							td
 								textarea.skill#skill(type='text', name='skill2', placeholder=' 2.', maxlength='75')
+								span#char_count 75
+								|  characters remaining
 						tr
 							td
 								textarea.skill#skill(type='text', name='skill3', placeholder=' 3.', maxlength='75')
+								span#char_count 75
+								|  characters remaining
 					br
 					h4 To complete the application, you must submit a resume and a cover letter. 
 					h4 Please use either the PDF format or a text document.
