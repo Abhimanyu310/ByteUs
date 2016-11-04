@@ -82,8 +82,6 @@ module.exports = {
                         areas +=  ', ' + req.body.areas[i];
                     }
                 }
-
-
             }
 
             var project = models.Project.create({

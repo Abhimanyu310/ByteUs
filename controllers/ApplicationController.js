@@ -1,4 +1,5 @@
 var models  = require('../models');
+var path = require('path');
 
 
 module.exports = {
@@ -26,10 +27,13 @@ module.exports = {
         }
         if (req.files) {
             // console.log("FILES YAY");
-            student_id = req.body.student_id;
+            student_id = req.body.sid;
 
             resume = req.files.resume;
             console.log(resume.name);
+            if ((path.extname(resume.name)).toLowerCase() != '.pdf'){
+                res.redirect('/application/form');
+            }
 
             resume.mv('uploads/resume-'+student_id+'.pdf', function(err) {
                 if (err) {
@@ -41,6 +45,9 @@ module.exports = {
             });
 
             cover_letter = req.files.cover_letter;
+            if ((path.extname(cover_letter.name)).toLowerCase() != '.pdf'){
+                res.redirect('/application/form');
+            }
             cover_letter.mv('uploads/cover_letter-'+student_id+'.pdf', function(err) {
                 if (err) {
                     // console.log('error');
@@ -56,12 +63,6 @@ module.exports = {
         req.checkBody('phone', 'Invalid phone').notEmpty().isInt();
         var errors = req.validationErrors(true);
         if (errors) {
-            // var messages = [];
-            // errors.forEach(function (error) {
-            //     messages.push(error.msg);
-            // });
-            // console.log('-----------------------------------------------');
-            // console.log(errors);
             req.flash('errors', errors);
             req.flash('form_data', req.body);
             // req.flash('success', "HAHA")
