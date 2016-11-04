@@ -17,13 +17,13 @@ $(document).ready(function () {
 
   /* Word Counts */
   
-  // Truncate excess characters and display the cound in the sibling span element
+  // Truncate excess characters and display the count in the sibling span element
   $('#description, #requirements, #longdescription').each(function(idx,elem) {
     var max_chars = $(elem).attr('maxlength');
     $(elem).siblings('#char_count').html(max_chars);  
     $(elem).on('keyup', function() {
       var chars = elem.value.length;
-      if (chars > max_chars) {
+      if(chars > max_chars) {
         var trunc = $(this).val().substring(0, max_chars);
         $(elem).val(trunc);
       }
