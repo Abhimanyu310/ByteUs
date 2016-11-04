@@ -19,6 +19,7 @@ module.exports = function(sequelize, DataTypes) {
 		match_of_funding: DataTypes.STRING,
 		not_sure: DataTypes.STRING,
 		contact: DataTypes.STRING,
+		submitted: {type: DataTypes.STRING, defaultValue: 'No'}
 
   }, {
 	paranoid: true,
