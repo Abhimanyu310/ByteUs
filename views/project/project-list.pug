@@ -34,19 +34,19 @@ block content
 
 
 	table.style3
-			tr
-				th Project Name
-				th Complete Description 
-				th Details
+			tr.style3
+				th.style3 Project Name
+				th.style3 Complete Description 
+				th.style3 Details
 			each project in projects
-				tr
-					td 	
+				tr.style3
+					td.style3 	
 						p #{project.description}
-					td  
+					td.style3  
 						li #{project.longdescription}
 						br
 						li #{project.url}
-					td 	
+					td.style3 	
 						a(href='/project/'+project.id+'/view') View Project
 											
 

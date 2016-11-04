@@ -32,8 +32,9 @@ header h {
     color: white;
 }
 header h1 {
-    font-size: 20px;
+    font-size: 25px;
     font-weight: bold;
+    list-style: none;
     position: absolute;
     top: 65px;
     left: 265px;

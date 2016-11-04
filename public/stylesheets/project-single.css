@@ -1,0 +1,134 @@
+h4 {
+    color: white;
+}
+
+div {
+    color: white;
+    width: 1000px;
+    padding-top: 200px;
+    padding-left: 300px;
+}
+/*Format for project list table*/
+table.style3{
+    list-style:none;
+    color: white;
+    width: 100%;
+    padding-left: 300px;
+    padding-top: 50px;
+    empty-cells: hide;
+}
+th.style3{
+    color: rgb(204,185,120);
+    padding: 7px;
+    text-align: center;
+    border: 1px solid white;
+}
+td.style3{
+    padding: 7px;
+    text-align: left;
+    vertical-align: center;
+    border: 1px solid white;
+}
+tr.style3:nth-child(even){background-color: rgb(70,70,70);}
+
+table.style4{
+    list-style:none;
+    color: white;
+    width: 1200px;
+    padding-left:300px;
+    padding-top: 200px;
+}
+th.style4{
+    color: rgb(204,185,120);
+    border-bottom: 1px solid rgb(204,185,120);
+    text-align: left;
+}
+table.style5{
+    color: white;
+    width: 400px;
+    padding-top: 250px;
+    padding-left: 300px;
+}
+table.style6{
+    list-style:none;
+    color: white;
+    width: 800px;
+    padding-left:300px;
+}
+p {
+    width:200px;
+}
+
+a {
+    text-decoration: none;
+    background-color:  rgb(0,123,200);
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 25px;
+    /*float: right;*/
+    margin: 0 15px 0 15px;
+    overflow: hidden;
+    width: 100px;
+    height: 30px;
+    display: inline-block;
+}
+
+
+
+
+
+/*Textbox Styles for names and other checkbox*/
+
+input[type="text"]{
+    margin: 5px 0 5px 0px ;
+    width: 340px;
+}
+input[type="radio"]{
+    margin: 5px 5px 0 5px ;
+    position: relative;
+    /*margin: 5px 5px 5px 5px ;*/
+    width: 20px;
+}
+input[type="checkbox"]{
+    margin: 5px 5px 0 5px ;
+    position: relative;
+    /*margin: 5px 5px 5px 5px ;*/
+    width: 20px;
+}
+
+/*Button Styles*/
+
+
+
+input[type="Submit"] {
+    background-color:  rgb(0,123,200);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 25px;
+    /*float: right;*/
+    margin: 0 15px 0 65px;
+    overflow: hidden;
+    width: 200px;
+    height: 40px;
+    display: inline-block;
+}
+
+input[type="Submit"]:hover {
+    background-color: rgb(31,49,59);
+}
+
+
+
+
+
+
+
+
+
+
