@@ -6,6 +6,9 @@ block title
 block styles
     link(rel='stylesheet', href='/stylesheets/forms.css')
 
+block scripts
+    script(type='text/javascript',src='/javascripts/project-form.js')
+
 block content
 
     include ../includes/info-box
@@ -31,7 +34,7 @@ block content
                     table.style1
                         tr(class=(hasErrors ? (errors[0].phone ? 'has-error' : undefined) : undefined))
                             td
-                                input#form_primPhone.required(name='phone', type='tel', placeholder=' ###-###-####',required='required', maxlength='15', size='15'  value=(formData ? formData.phone: ''))
+                                input#form_primPhone.required(name='phone', type='tel', placeholder=' (xxx) xxx-xxxx',required='required', maxlength='15', size='15'  value=(formData ? formData.phone: ''))
                                 .help-block.with-errors
                     label(for='form_email')  Faculty Email Address: *
                     table.style1
@@ -77,7 +80,7 @@ block content
                     table.style1
                         tr
                             td
-                                input#form_secPhone(name='secondary_phone', type='tel', placeholder=' ###-###-####', maxlength='15', size='15')
+                                input#form_secPhone(name='secondary_phone', type='tel', placeholder=' (xxx) xxx-xxxx', maxlength='15', size='15')
                                 .help-block.with-errors
                     label(for='form_email')  Faculty Email Address:
                     table.style1
@@ -114,7 +117,7 @@ block content
                     table.style1
                         tr
                             td
-                                input#form_postDocPhone(name='postDocPhone', type='tel', placeholder=' ###-###-####', maxlength='15', size='15')
+                                input#form_postDocPhone(name='postDocPhone', type='tel', placeholder=' (xxx) xxx-xxxx', maxlength='15', size='15')
                                 .help-block.with-errors
                     label(for='form_email')  Email Address:
                     table.style1
@@ -131,6 +134,9 @@ block content
                             td
                                 textarea#description.form-control(name='description', rows='2', required='required', maxlength='80', data-error='Please, provide a description.')
                                 .help-block.with-errors
+                                br
+                                span#char_count 80
+                                |  characters remaining
                     label(for='url')
                         br
                         | Website URL to Provide Additional Information:
@@ -151,21 +157,32 @@ block content
                             td
                                 textarea#requirements.form-control(name='requirements1', placeholder=' 1) Optional', maxlength='200')
                                 br
+                                span#char_count 200
+                                |  characters remaining
                         tr
                             td
                                 textarea#requirements.form-control(name='requirements2', placeholder=' 2) Optional', maxlength='200')
                                 br
+                                span#char_count 200
+                                |  characters remaining
                         tr
                             td
                                 textarea#requirements.form-control(name='requirements3', placeholder=' 3) Optional', maxlength='200')
                                 br
+                                span#char_count 200
+                                |  characters remaining
                         tr
                             td
                                 textarea#requirements.form-control(name='requirements4', placeholder=' 4) Optional', maxlength='200')
                                 br
+                                span#char_count 200
+                                |  characters remaining
                         tr
                             td
                                 textarea#requirements.form-control(name='requirements5', placeholder=' 5) Optional', maxlength='200')
+                                br
+                                span#char_count 200
+                                |  characters remaining
                     label(for='longdescription')
                         br
                         |  Longer Description of Apprenticeship: *
@@ -173,9 +190,10 @@ block content
                     table.style2
                         tr
                             td
-                                textarea#longdescription.form-control(name='longdescription', rows='2', required='required', maxlength='1200', data-error='Please, provide a description.')
-                                .help-block.with-errors
+                                textarea#longdescription.form-control(name='longdescription', rows='2', required='required', maxlength='1200', data-error='Please, provide a description.').help-block.with-errors
                                 br
+                                span#char_count 1200
+                                |  characters remaining
 
                     label(for='areas')
                         br
