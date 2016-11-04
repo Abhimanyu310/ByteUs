@@ -4,7 +4,12 @@ var models  = require('../models');
 module.exports = {
 
     getStudentHome: function(req, res, next) {
-        res.render('user/student-index', { title: "Student Home" });
+        var success = req.flash('success');
+        res.render('user/student-index', {
+            title: "Student Home",
+            success: success,
+            hasSuccess: success.length > 0
+        });
     },
 
     getFacultyHome: function(req, res, next) {

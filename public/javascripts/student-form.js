@@ -18,7 +18,7 @@ $(document).ready(function() {
 
   $('textarea').each(function(idx,elem) {
     var max_chars = $(elem).attr('maxlength');
-    $(elem).siblings('#char_count').html(max_chars);  
+    $(elem).siblings('#char_count').html(max_chars);
     $(elem).on('keyup', function() {
       var chars = elem.value.length;
       if(chars > max_chars) {

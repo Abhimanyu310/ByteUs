@@ -5,6 +5,9 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var dotenv = require('dotenv');
+// var multer = require('multer');
+var fileUpload = require('express-fileupload');
+
 
 var session = require('express-session');
 var flash = require('connect-flash');
@@ -47,6 +50,7 @@ app.set('view engine', 'pug');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(fileUpload());
 
 app.use(validator());
 app.use(cookieParser());
@@ -58,6 +62,7 @@ app.use(session({
     cookie: {maxAge: 180 * 60 * 1000}
 }));
 
+// app.use(multer({dest: 'public/'}));
 app.use(flash());
 
 app.use(passport.initialize());
