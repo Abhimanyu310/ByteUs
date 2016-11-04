@@ -51,6 +51,18 @@ $(document).ready(function () {
   });
 
   /**
+   * Checkbox funding speed type
+   */
+
+  $('input[type=checkbox][name=not_sure]').on('click', function() {
+    if(this.checked) { 
+      $('input[id=finances][name=match_of_funding]').attr('disabled', 'disabled').val('');
+    } else {
+      $('input[id=finances][name=match_of_funding]').removeAttr('disabled');
+    }
+  });
+
+  /**
    * Phone numbers
    */
   
