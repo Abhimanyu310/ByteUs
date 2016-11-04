@@ -6,13 +6,40 @@ h4 {
     color: white;
 }
 
+div {
+    color: white;
+    width: 1000px;
+    padding-top: 200px;
+    padding-left: 300px;
+}
 /*Format for project list table*/
+table.style3{
+    list-style:none;
+    color: white;
+    width: 100%;
+    padding-left: 300px;
+    padding-top: 50px;
+    empty-cells: hide;
+}
+th {
+    color: rgb(204,185,120);
+    padding: 7px;
+    text-align: center;
+    border: 1px solid white;
+}
+td {
+    padding: 7px;
+    text-align: left;
+    vertical-align: center;
+    border: 1px solid white;
+}
+tr:nth-child(even){background-color: rgb(70,70,70);}
 table.style4{
     list-style:none;
     color: white;
     width: 800px;
-    padding-top: 250px;
     padding-left: 300px;
+    padding-top: 50px;
 }
 
 table.style5{
@@ -20,6 +47,26 @@ table.style5{
     width: 400px;
     padding-top: 250px;
     padding-left: 300px;
+}
+p {
+    width:200px;
+}
+
+a.buttonstyle {
+    text-decoration: none;
+    background-color:  rgb(0,123,200);
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 25px;
+    /*float: right;*/
+    margin: 0 15px 0 15px;
+    overflow: hidden;
+    width: 100px;
+    height: 30px;
+    display: inline-block;
 }
 
 
@@ -29,14 +76,21 @@ table.style5{
 /*Textbox Styles for names and other checkbox*/
 
 input[type="text"]{
-    margin: 5px 0 5px 250px ;
-    /*margin-top: 5px;*/
-    /*margin-right:0px;*/
-    /*margin-bottom: 5px;*/
-    /*margin-left: 250px;*/
+    margin: 5px 0 5px 0px ;
     width: 340px;
 }
-
+input[type="radio"]{
+    margin: 5px 5px 0 5px ;
+    position: relative;
+    /*margin: 5px 5px 5px 5px ;*/
+    width: 20px;
+}
+input[type="checkbox"]{
+    margin: 5px 5px 0 5px ;
+    position: relative;
+    /*margin: 5px 5px 5px 5px ;*/
+    width: 20px;
+}
 
 /*Button Styles*/
 

@@ -1,37 +1,72 @@
-html
-	head
-		title Project
+extends ../layouts/master
 
-	body
+block title
+	|Project Details
 
-		h1 Faculty Information
-		p Faculty Name : #{project.Faculty.name}
-		p Phone : #{project.Faculty.phone}
-		p Email : #{project.Faculty.email}
-		p Department : #{project.Faculty.faculty_department}
+block styles
+	link(rel='stylesheet', href='/stylesheets/project-single.css')
 
-		h1 Secondary Faculty Information
-		p Faculty Name : #{project.Faculty.secondary_name}
-		p Phone : #{project.Faculty.secondary_phone}
-		p Email : #{project.Faculty.secondary_email}
-		p Department : #{project.Faculty.secondary_faculty_department}
+block scripts
+	script(type='text/javascript',src='/javascripts/project-single.js')
 
-		h1 Apprenticeship Information
-		p Description : #{project.description}
-		p URL : #{project.url}
-		p requirements1 : #{project.requirements1}
-		p requirements2 : #{project.requirements2}
-		p requirements3 : #{project.requirements3}
-		p requirements4 : #{project.requirements4}
-		p requirements5 : #{project.requirements5}
-		p Longer Description : #{project.longdescription}
-		p Areas : #{project.areas}
-		p Supervision Required: #{project.supervision_req}
-		p Supervision Provided : #{project.supervision_provided}
-		p Nature of Work : #{project.nature_of_work}
-		p Prior Work : #{project.prior_work}
-		p Match of funding: #{project.match_of_funding}
-		p Contact : #{project.contact}
-		p Specific Students : #{project.Faculty.specific_students1}, #{project.Faculty.specific_students2}, #{project.Faculty.specific_students3}
+block content
+	header
+		h1 
+			li #{project.Faculty.faculty_department} - #{project.description} 
+			li by #{project.Faculty.name}, #{project.Faculty.secondary_name}
 
-
+	section
+	table.style4
+			tr
+				th.style4 About the Project
+			tr
+				td
+					li #{project.longdescription}
+					li #{project.url}
+	table.style6
+			tr
+				th.style4 Contact Name(s)
+			tr
+				td
+					li #{project.Faculty.name}
+					li #{project.Faculty.phone}
+					li #{project.Faculty.email}
+					br
+			tr
+				td
+					li #{project.Faculty.secondary_name}
+					li #{project.Faculty.secondary_phone}
+					li #{project.Faculty.secondary_email}
+	table.style6
+			tr
+				th.style4 Requirements
+			tr
+				td
+					li Students must meet the following requirements :
+					li.style2 #{project.requirements1}
+					li.style2 #{project.requirements2}
+					li.style2 #{project.requirements3}
+					li.style2 #{project.requirements4}
+					li.style2 #{project.requirements5}
+	table.style6
+			tr
+				th.style4 More about the Apprenticeship
+			tr
+				td
+					li Students belonging to the following areas can apply :
+					li.style2 
+						p#1 #{project.areas}
+					br
+					li Other Information : 
+					li.style2
+						p#2 #{project.supervision_req}
+					li.style2
+						p#3 #{project.supervision_provided}
+					li.style2
+						p#4 #{project.nature_of_work}
+					li.style2
+						p#5 #{project.nature_of_work_other}
+					li.style2
+						p#6 #{project.prior_work}
+					li.style2
+						p#7 #{project.prior_work_other}

@@ -4,3 +4,5 @@ npm-debug.log
 certs/*
 uploads/*
 .env
+**/.DS_Store
+config/config.json

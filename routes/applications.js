@@ -36,5 +36,4 @@ router.get('/form', ApplicationController.getApplicationForm);
 // POST the student submission form
 router.post('/form', ApplicationController.postApplicationForm);
 
-
 module.exports = router;

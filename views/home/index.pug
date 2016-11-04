@@ -33,8 +33,12 @@ block content
 								td
 									input#form_name.form-control(type='text', name='name', required='required', data-error='IdentiKeyPassword is required')
 									.help-block.with-errors
-	br
+	table.style2
+		tr
+			td
+				a.buttonstyle(href='/user/student-home') Student
+			td
+				a.buttonstyle(href='/user/faculty-home') Faculty
+				
 
-	form
-		input(type='Student', value='Student', onclick="window.location.href='/user/student-home'")
-		input(type='Faculty', value='Faculty', onclick="window.location.href='/user/faculty-home'")
+

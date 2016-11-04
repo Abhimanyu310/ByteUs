@@ -150,6 +150,9 @@ table.style1{
 /*brief description, url, list of requirements, long description*/
 table.style2 {
 	color: white; 
+	padding-top: 50px;
+	padding-left: 235px; 
+	width:300px;
 }
 
 /*check box and long radio button font color*/
@@ -236,7 +239,26 @@ input[type="url"] {
 
 /*Button Styles*/
 
+a.buttonstyle {
+	text-decoration: none;
+	background-color:  rgb(0,123,200); 
+	color: white; 
+	font-size: 16px; 
+	font-weight: bold;
+	text-align: center; 
+	border-left: 150px;
+	border-radius: 25px;
+	float: left;
+	margin: 0 65px 0 65px;
+	overflow: hidden;
+	width: 200px;
+	height: 40px;
+	display: inline-block;
+}
 
+a.buttonstyle:hover{
+	background-color: rgb(31,49,59);
+}
 input[type="Student"] {
 	background-color:  rgb(0,123,200); 
 	color: white; 

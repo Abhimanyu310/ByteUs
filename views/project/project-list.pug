@@ -8,31 +8,52 @@ block styles
 
 block content
 	header
-		h #{header}
+		h1 #{header}
 
-
+	section
 	div.search-form
 		form(method='post', action='/project/list', role='form')
 			input(type='text', name='search_query', value=(prev_value ? prev_value : ''))
-			| Filter By :-
+			br
+			| Filter By :-  
 			input(type='radio', name='search_by', value='title' checked)
 			| Title
 			input(type='radio', name='search_by', value='faculty' checked=faculty_search)
 			| Faculty
 			input(type='radio', name='search_by', value='description' checked=description_search)
 			| Description
+			input(type='radio', name='search_by', value='department' checked=department_search)
+			| Department
+			input(type='radio', name='search_by', value='major' checked=area_search)
+			| Majors for which the project is available
+			<br>
 			input(type='checkbox', name='sort', value='desc' checked=recent)
 			| Most recent first
 			input(type='hidden', name='_csrf', value=csrfToken)
 			input.btn.btn-success(type='submit', value='Search')
 
-	section
-	table.style4
-			tr
-				td
-					each project in projects
-						li #{project.description} by #{project.name}
-							a(href='/project/'+project.id+'/view') View Project
+
+	table.style3
+			tr.style3
+				th.style3 Project Name
+				th.style3 Complete Description 
+				th.style3 Details
+			each project in projects
+				tr.style3
+					td.style3 	
+						p #{project.description}
+					td.style3  
+						li #{project.longdescription}
+						br
+						li #{project.url}
+					td.style3 	
+						a.buttonstyle(href='/project/'+project.id+'/view') View Project
+											
+
+
+
+
+
 
 
 

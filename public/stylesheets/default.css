@@ -31,6 +31,18 @@ header h {
     background: black;
     color: white;
 }
+header h1 {
+    font-size: 25px;
+    font-weight: bold;
+    list-style: none;
+    position: absolute;
+    top: 65px;
+    left: 265px;
+    width: 1000px;
+    background: black;
+    color: white;
+}
+
 header h2 {
     font-size: 22px;
     font-weight: bold;
