@@ -15,6 +15,9 @@ router.use(csrfProtection);
 // GET the faculty project submission form
 router.get('/form', ProjectController.getCreateProject);
 
+// GET the faculty project submission form
+router.get('/:id/_edit', ProjectController.getEditProject);
+
 // POST the faculty project submission form
 router.post('/form', ProjectController.postCreateProject);
 

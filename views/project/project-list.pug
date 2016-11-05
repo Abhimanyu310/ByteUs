@@ -30,7 +30,7 @@ block content
 			input(type='checkbox', name='sort', value='desc' checked=recent)
 			| Most recent first
 			input(type='hidden', name='_csrf', value=csrfToken)
-			input.btn.btn-success(type='submit', value='Search')
+			input.btn.btn-success(type='submit', value='Apply filters')
 
 
 	table.style3
@@ -48,6 +48,7 @@ block content
 						li #{project.url}
 					td.style3 	
 						a.buttonstyle(href='/project/'+project.id+'/view') View Project
+						a.buttonstyle(href='/project/'+project.id+'/_edit') Edit Project
 											
 
 

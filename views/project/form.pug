@@ -8,6 +8,8 @@ block styles
 
 block scripts
     script(type='text/javascript',src='/javascripts/project-form.js')
+    script(src='http://malsup.github.com/jquery.form.js')
+
 
 block content
 
@@ -28,20 +30,21 @@ block content
                     table.style1
                         tr(class=(hasErrors ? (errors[0].name ? 'has-error' : undefined) : undefined))
                             td
-                                input#form_name.form-control(type='text', name='name', placeholder=' First Last', required='required', data-error='Faculty name is required.' value=(formData ? formData.name : ''))
+                                input#form_name.form-control(type='text', name='name', placeholder=' First Last', required='required', data-error='Faculty name is required.', value=((formData ? formData.name : '') || (project ? project.Faculty.name : '')))
                                 .help-block.with-errors
                     label(for='phone')  Faculty Phone Number: *
                     table.style1
                         tr(class=(hasErrors ? (errors[0].phone ? 'has-error' : undefined) : undefined))
                             td
-                                input#form_primPhone.required(name='phone', type='tel', placeholder=' (xxx) xxx-xxxx',required='required', maxlength='15', size='15'  value=(formData ? formData.phone: ''))
+                                input#form_primPhone.required(name='phone', type='tel', placeholder=' (xxx) xxx-xxxx',required='required', maxlength='15', size='15'  value=((formData ? formData.phone : '') || (project ? project.Faculty.phone : '')))
                                 .help-block.with-errors
                     label(for='form_email')  Faculty Email Address: *
                     table.style1
                         tr
                             td
-                                input#form_email.form-control(type='', name='email', placeholder=' First.Last@Colorado.edu', required='', data-error='Valid email is required.' value=(formData ? formData.email: ''))
+                                input#form_email.form-control(type='', name='email', placeholder=' First.Last@Colorado.edu', required='', data-error='Valid email is required.' value=((formData ? formData.email : '') || (project ? project.Faculty.email : '')))
                                 .help-block.with-errors
+                    input(type='hidden', id='select_department', value=((formData ? formData.faculty_department : '') || (project ? project.Faculty.faculty_department : '')))
                     label(for='faculty_department')  Faculty Department/Program: *
                     select#faculty_department(name='faculty_department', required='required')
                         option(value='', disabled='disabled', selected='selected') Please Select
@@ -59,14 +62,15 @@ block content
                         option(value='ATLAS') ATLAS
                     br
                     br
+
                     label(for='form_EDC') Does this project have a focus on Engineering for Developing Communities? *
                     table.style1
                         tr
                             td
-                                input#edc1(type='radio', name='edc', required='required', value='Yes')
+                                input#edc1(type='radio', name='edc', required='required', value='Yes' checked=((formData ? (formData.edc == 'Yes' ? true : false) : false) || (project ? (project.Faculty.edc == 'Yes' ? true : false) : false)))
                                 |  Yes
                             td
-                                input#edc(type='radio', name='edc', required='required', value='No')
+                                input#edc(type='radio', name='edc', required='required', value='No' checked=((formData ? (formData.edc == 'No' ? true : false) : false) || (project ? (project.Faculty.edc == 'No' ? true : false) : false)))
                                 |  No
                 fieldset#SecondaryFacultyInfo
                     legend Optional Secondary Faculty Member
@@ -74,20 +78,21 @@ block content
                     table.style1
                         tr
                             td
-                                input#form_name.form-control(type='text', name='secondary_name', placeholder=' First Last')
+                                input#form_name.form-control(type='text', name='secondary_name', placeholder=' First Last' value=((formData ? formData.secondary_name : '') || (project ? project.Faculty.secondary_name : '')))
                                 .help-block.with-errors
                     label(for='secondary_phone')  Faculty Phone Number:
                     table.style1
                         tr
                             td
-                                input#form_secPhone(name='secondary_phone', type='tel', placeholder=' (xxx) xxx-xxxx', maxlength='15', size='15')
+                                input#form_secPhone(name='secondary_phone', type='tel', placeholder=' (xxx) xxx-xxxx', maxlength='15', size='15', value=((formData ? formData.secondary_phone : '') || (project ? project.Faculty.secondary_phone : '')))
                                 .help-block.with-errors
                     label(for='form_email')  Faculty Email Address:
                     table.style1
                         tr
                             td
-                                input#form_email.form-control(type='email', name='secondary_email', placeholder=' First.Last@Colorado.edu', data-error='Valid email is required.')
+                                input#form_email.form-control(type='email', name='secondary_email', placeholder=' First.Last@Colorado.edu', data-error='Valid email is required.', value=((formData ? formData.secondary_email : '') || (project ? project.Faculty.secondary_email : '')))
                                 .help-block.with-errors
+                    input(type='hidden', id='select_secondary_department', value=((formData ? formData.secondary_faculty_department : '') || (project ? project.Faculty.secondary_faculty_department : '')))
                     label(for='secondary_faculty_department')  Faculty Department/Program:
                     select#secondary_faculty_department(name='secondary_faculty_department')
                         option(value='', disabled='disabled', selected='selected') Please Select
@@ -111,19 +116,19 @@ block content
                     table.style1
                         tr
                             td
-                                input#form_name.form-control(type='text', name='post_doc_name', placeholder=' First Last')
+                                input#form_name.form-control(type='text', name='post_doc_name', placeholder=' First Last', value=((formData ? formData.post_doc_name : '') || (project ? project.Faculty.post_doc_name : '')))
                                 .help-block.with-errors
                     label(for='post_doc_phone')  Phone Number:
                     table.style1
                         tr
                             td
-                                input#form_postDocPhone(name='post_doc_phone', type='tel', placeholder=' (xxx) xxx-xxxx', maxlength='15', size='15')
+                                input#form_postDocPhone(name='post_doc_phone', type='tel', placeholder=' (xxx) xxx-xxxx', maxlength='15', size='15', value=((formData ? formData.post_doc_phone : '') || (project ? project.Faculty.post_doc_phone : '')))
                                 .help-block.with-errors
                     label(for='form_email')  Email Address:
                     table.style1
                         tr
                             td
-                                input#form_email.form-control(type='email', name='post_doc_email', placeholder=' First.Last@Colorado.edu', data-error='Valid email is required.')
+                                input#form_email.form-control(type='email', name='post_doc_email', placeholder=' First.Last@Colorado.edu', data-error='Valid email is required.', value=((formData ? formData.post_doc_email : '') || (project ? project.Faculty.post_doc_email : '')))
                                 .help-block.with-errors
                     br
                 fieldset#info
@@ -133,6 +138,7 @@ block content
                         tr
                             td
                                 textarea#description.form-control(name='description', rows='2', required='required', maxlength='80', data-error='Please, provide a description.')
+                                    | #{(formData ? formData.description : '') || (project ? project.description : '')}
                                 .help-block.with-errors
                                 br
                                 span#char_count 80
@@ -144,7 +150,7 @@ block content
                     table.style2
                         tr
                             td
-                                input#URL.form-control(type='url', name='url', placeholder=' https://www.website.com')
+                                input#URL.form-control(type='url', name='url', placeholder=' https://www.website.com', value=value=((formData ? formData.url : '') || (project ? project.url : '')))
                                 br
                     label(for='requirements')
                         br
@@ -156,30 +162,35 @@ block content
                         tr
                             td
                                 textarea#requirements.form-control(name='requirements1', placeholder=' 1) Optional', maxlength='200')
+                                    | #{(formData ? formData.requirements1 : '') || (project ? project.requirements1 : '')}
                                 br
                                 span#char_count 200
                                 |  characters remaining
                         tr
                             td
                                 textarea#requirements.form-control(name='requirements2', placeholder=' 2) Optional', maxlength='200')
+                                    | #{(formData ? formData.requirements2 : '') || (project ? project.requirements2 : '')}
                                 br
                                 span#char_count 200
                                 |  characters remaining
                         tr
                             td
                                 textarea#requirements.form-control(name='requirements3', placeholder=' 3) Optional', maxlength='200')
+                                    | #{(formData ? formData.requirements3 : '') || (project ? project.requirements3 : '')}
                                 br
                                 span#char_count 200
                                 |  characters remaining
                         tr
                             td
                                 textarea#requirements.form-control(name='requirements4', placeholder=' 4) Optional', maxlength='200')
+                                    | #{(formData ? formData.requirements4 : '') || (project ? project.requirements4 : '')}
                                 br
                                 span#char_count 200
                                 |  characters remaining
                         tr
                             td
                                 textarea#requirements.form-control(name='requirements5', placeholder=' 5) Optional', maxlength='200')
+                                    | #{(formData ? formData.requirements5 : '') || (project ? project.requirements5 : '')}
                                 br
                                 span#char_count 200
                                 |  characters remaining
@@ -191,6 +202,7 @@ block content
                         tr
                             td
                                 textarea#longdescription.form-control(name='longdescription', rows='2', required='required', maxlength='1200', data-error='Please, provide a description.').help-block.with-errors
+                                    | #{(formData ? formData.longdescription : '') || (project ? project.longdescription : '')}
                                 br
                                 span#char_count 1200
                                 |  characters remaining
@@ -404,6 +416,6 @@ block content
                     br
                 p
                     input(type='hidden', name='_csrf', value=csrfToken)
-                    input.btn.btn-success(type='save', value='Save(In progress)')
+                    input.btn.btn-success(type='submit', name='action', value='Save')
                     input.btn.btn-success(type='reset', value='Reset')
-                    input.btn.btn-success(type='submit', value='Submit')
+                    input.btn.btn-success(type='submit', name='action', value='Submit')

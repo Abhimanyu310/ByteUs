@@ -5,11 +5,16 @@ var path = require('path');
 module.exports = {
 
     getApplicationForm: function(req, res, next) {
+        var errors = req.flash('errors');
+        var form_data = req.flash('form_data');
         models.Project.findAll().then(function(projects) {
             res.render('application/form', {
                 title: "Student",
                 header: 'Student Apprenticeship Information',
                 projects: projects,
+                errors: errors,
+                hasErrors: errors.length > 0,
+                formData: form_data[0],
                 csrfToken: req.csrfToken()
             });
         }).catch(function (error) {

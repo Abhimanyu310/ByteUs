@@ -96,4 +96,21 @@ $(document).ready(function () {
   
   // TODO: Logic to prevent form submission if bad input
 
+  // Submit form for saving
+
+    // $('input[type=save]').on('click', function() {
+    //     $("#faculty-form").ajaxSubmit({url: '/project/form?save=save', type: 'post'});
+    //
+    //
+    // });
+
+
+    //Select box value during editing form
+    var department = $("#select_department").val();
+    $("#faculty_department").val(department);
+    
+    var secondary_department = $("#select_secondary_department").val();
+    $("#secondary_faculty_department").val(secondary_department);
+
+
 });
