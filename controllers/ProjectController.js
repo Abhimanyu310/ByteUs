@@ -379,7 +379,7 @@ function saveProjectToDB(req, res, next, areas){
 
 // submit the project
 function addProjectToDB(req, res, next, areas){
-    var project = models.Project.upsert({
+    var project = models.Project.create({
         description: req.body.description,
         url: req.body.url,
         requirements1: req.body.requirements1,
