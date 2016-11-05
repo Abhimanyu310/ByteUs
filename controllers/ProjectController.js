@@ -95,7 +95,7 @@ module.exports = {
                 else{
                     var areas = req.body.areas[0];
                     for(var i = 1; i < req.body.areas.length; i++){
-                        areas +=  ', ' + req.body.areas[i];
+                        areas +=  ',' + req.body.areas[i];
                     }
                 }
             }

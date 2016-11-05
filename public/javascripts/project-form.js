@@ -112,5 +112,64 @@ $(document).ready(function () {
     var secondary_department = $("#select_secondary_department").val();
     $("#secondary_faculty_department").val(secondary_department);
 
+    
+    // Select areas for editing form
+    var areas_arr = $("#check_areas").val();
+    var areas = areas_arr.split(',');
+    console.log(areas);
+    console.log($.inArray('mathematics', areas));
+    
+    if ($.inArray('aerospace', areas) != -1){
+        $( "#aerospace" ).prop( "checked", true );
+    }
+    if ($.inArray('electrical', areas) != -1){
+        $( "#electrical" ).prop( "checked", true );
+    }
+    if ($.inArray('mathematics', areas) != -1){
+        $( "#mathematics" ).prop( "checked", true );
+    }
+    if ($.inArray('electrical_computer', areas) != -1){
+        $( "#electrical_computer" ).prop( "checked", true );
+    }
+    if ($.inArray('architectural', areas) != -1){
+        $( "#architectural" ).prop( "checked", true );
+    }
+    if ($.inArray('engineering_physics', areas) != -1){
+        $( "#engineering_physics" ).prop( "checked", true );
+    }
+    if ($.inArray('chemical', areas) != -1){
+        $( "#chemical" ).prop( "checked", true );
+    }
+    if ($.inArray('environmental', areas) != -1){
+        $( "#environmental" ).prop( "checked", true );
+    }
+    if ($.inArray('chemical_biological', areas) != -1){
+        $( "#chemical_biological" ).prop( "checked", true );
+    }
+    if ($.inArray('engineering_plus', areas) != -1){
+        $( "#engineering_plus" ).prop( "checked", true );
+    }
+    if ($.inArray('civil', areas) != -1){
+        $( "#civil" ).prop( "checked", true );
+    }
+    if ($.inArray('mechanical', areas) != -1){
+        $( "#mechanical" ).prop( "checked", true );
+    }
+    if ($.inArray('computer_science', areas) != -1){
+        $( "#computer_science" ).prop( "checked", true );
+    }
+    if ($.inArray('tech_arts_media', areas) != -1){
+        $( "#tech_arts_media" ).prop( "checked", true );
+    }
+
+
+    if ($('#nature').val() == 'Other'){
+        $('input[id=nature][name=nature_of_work_other]').show();
+    }
+
+    if ($('#amount').val() == 'Other') {
+        $('input[id=amount][name=prior_work_other]').show();
+    }
+
 
 });

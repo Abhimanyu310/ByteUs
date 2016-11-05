@@ -150,7 +150,7 @@ block content
                     table.style2
                         tr
                             td
-                                input#URL.form-control(type='url', name='url', placeholder=' https://www.website.com', value=value=((formData ? formData.url : '') || (project ? project.url : '')))
+                                input#URL.form-control(type='url', name='url', placeholder=' https://www.website.com', value=((formData ? formData.url : '') || (project ? project.url : '')))
                                 br
                     label(for='requirements')
                         br
@@ -207,6 +207,7 @@ block content
                                 span#char_count 1200
                                 |  characters remaining
 
+                    input(type='hidden', id='check_areas', value=((formData ? formData.areas : '') || (project ? project.areas : '')))
                     label(for='areas')
                         br
                         |  Areas to Recruit Students From: *
@@ -216,7 +217,7 @@ block content
                         |	select will be able to apply.)
                         br
                         br
-                        input(type='checkbox', name='check', value='All')
+                        input(type='checkbox', name='check', value='All', id='check_all')
                         |	Check/Uncheck All
                         br
                         br
@@ -224,134 +225,134 @@ block content
                     table.style3
                         tr
                             td
-                                input(type='checkbox', name='areas', value='aerospace')
+                                input(type='checkbox', name='areas', value='aerospace', id='aerospace')
                                 |  Aerospace Engineering
                             td
-                                input(type='checkbox', name='areas', value='electrical')
+                                input(type='checkbox', name='areas', value='electrical', id='electrical')
                                 |  Electrical Engineering
                         tr
                             td
-                                input(type='checkbox', name='areas', value='mathematics')
+                                input(type='checkbox', name='areas', value='mathematics', id='mathematics')
                                 |  Applied Mathematics
                             td
-                                input(type='checkbox', name='areas', value='electrical_computer')
+                                input(type='checkbox', name='areas', value='electrical_computer', id='electrical_computer')
                                 |  Electrical and Computer Engineering
                         tr
                             td
-                                input(type='checkbox', name='areas', value='architectural')
+                                input(type='checkbox', name='areas', value='architectural', id='architectural')
                                 |  Architectural Engineering
                             td
-                                input(type='checkbox', name='areas', value='engineering_physics')
+                                input(type='checkbox', name='areas', value='engineering_physics', id='engineering_physics')
                                 |  Engineering Physics
                         tr
                             td
-                                input(type='checkbox', name='areas', value='chemical')
+                                input(type='checkbox', name='areas', value='chemical', id='chemical')
                                 |  Chemical Engineering
                             td
-                                input(type='checkbox', name='areas', value='environmental')
+                                input(type='checkbox', name='areas', value='environmental', id='environmental')
                                 |  Environmental Engineering
                         tr
                             td
-                                input(type='checkbox', name='areas', value='chemical_biological')
+                                input(type='checkbox', name='areas', value='chemical_biological', id='chemical_biological')
                                 |  Chemical & Biological Engineering
                             td
-                                input(type='checkbox', name='areas', value='engineering_plus')
+                                input(type='checkbox', name='areas', value='engineering_plus', id='engineering_plus')
                                 |  Engineering Plus
                         tr
                             td
-                                input(type='checkbox', name='areas', value='civil')
+                                input(type='checkbox', name='areas', value='civil', id='civil')
                                 |  Civil Engineering
                             td
-                                input(type='checkbox', name='areas', value='mechanical')
+                                input(type='checkbox', name='areas', value='mechanical', id='mechanical')
                                 |  Mechanical Engineering
                         tr
                             td
-                                input(type='checkbox', name='areas', value='computer_science')
+                                input(type='checkbox', name='areas', value='computer_science', id='computer_science')
                                 |  Computer Science
                             td
-                                input(type='checkbox', name='areas', value='tech_arts_media')
+                                input(type='checkbox', name='areas', value='tech_arts_media', id='tech_arts_media')
                                 |  Technology, Arts and Media
                     br
                     label(for='supervision_req')  Amount of Supervision Required / Interaction Available: *
                     table.style3
                         tr
                             td
-                                input#amountofsup(type='radio', name='supervision_req', required='required', value='Little')
+                                input#amountofsup(type='radio', name='supervision_req', required='required', value='Little' checked=((formData ? (formData.supervision_req == 'Little' ? true : false) : false) || (project ? (project.supervision_req == 'Little' ? true : false) : false)))
                                 | 	Very little supervision; student will need to work largely independently
                         tr
                             td
-                                input#amountofsup(type='radio', name='supervision_req', required='required', value='Moderate')
+                                input#amountofsup(type='radio', name='supervision_req', required='required', value='Moderate' checked=((formData ? (formData.supervision_req == 'Moderate' ? true : false) : false) || (project ? (project.supervision_req == 'Moderate' ? true : false) : false)))
                                 | 	Moderate amount of supervision and interaction with others
                         tr
                             td
-                                input#amountofsup(type='radio', name='supervision_req', required='required',value='Large')
+                                input#amountofsup(type='radio', name='supervision_req', required='required',value='Large' checked=((formData ? (formData.supervision_req == 'Large' ? true : false) : false) || (project ? (project.supervision_req == 'Large' ? true : false) : false)))
                                 | 	A great deal of supervision and interaction with others
                     br
                     label(for='supervision_provided')  Supervision Provided By: *
                     table.style3
                         tr
                             td
-                                input#supprov(type='radio', name='supervision_provided', required='required', value='Faculty')
+                                input#supprov(type='radio', name='supervision_provided', required='required', value='Faculty' checked=((formData ? (formData.supervision_provided == 'Faculty' ? true : false) : false) || (project ? (project.supervision_provided == 'Faculty' ? true : false) : false)))
                                 | 	Supervision primarily by faculty supervisor
                         tr
                             td
-                                input#supprov(type='radio', name='supervision_provided', required='required', value='Graduate')
+                                input#supprov(type='radio', name='supervision_provided', required='required', value='Graduate' checked=((formData ? (formData.supervision_provided == 'Graduate' ? true : false) : false) || (project ? (project.supervision_provided == 'Graduate' ? true : false) : false)))
                                 | 	Supervision primarily by graduate students
                         tr
                             td
-                                input#supprov(type='radio', name='supervision_provided', required='required', value='Combo')
+                                input#supprov(type='radio', name='supervision_provided', required='required', value='Combo' checked=((formData ? (formData.supervision_provided == 'Combo' ? true : false) : false) || (project ? (project.supervision_provided == 'Combo' ? true : false) : false)))
                                 | 	Supervision primarily a combination of faculty and graduate students
                     br
                     label(for='nature_of_work')  Nature of Work: *
                     table.style3
                         tr
                             td
-                                input#nature(type='radio', name='nature_of_work', required='required', value='Theoretical')
+                                input#nature(type='radio', name='nature_of_work', required='required', value='Theoretical' checked=((formData ? (formData.nature_of_work == 'Theoretical' ? true : false) : false) || (project ? (project.nature_of_work == 'Theoretical' ? true : false) : false)))
                                 | 	Nature of work is primarily theoretical, most work on paper/electronic medium
                         tr
                             td
-                                input#nature(type='radio', name='nature_of_work', required='required', value='Experimental')
+                                input#nature(type='radio', name='nature_of_work', required='required', value='Experimental' checked=((formData ? (formData.nature_of_work == 'Experimental' ? true : false) : false) || (project ? (project.nature_of_work == 'Experimental' ? true : false) : false)))
                                 | 	Nature of work is primarily experimental, requiring hands-on work in a lab
                         tr
                             td
-                                input#nature(type='radio', name='nature_of_work',required='required', value='FieldBased')
+                                input#nature(type='radio', name='nature_of_work',required='required', value='FieldBased' checked=((formData ? (formData.nature_of_work == 'FieldBased' ? true : false) : false) || (project ? (project.nature_of_work == 'FieldBased' ? true : false) : false)))
                                 | 	Nature of work is primarily field based, requiring hands-on work in the field
                         tr
                             td
-                                input#nature(type='radio', name='nature_of_work', required='required', value='ComputerRelated')
+                                input#nature(type='radio', name='nature_of_work', required='required', value='ComputerRelated' checked=((formData ? (formData.nature_of_work == 'ComputerRelated' ? true : false) : false) || (project ? (project.nature_of_work == 'ComputerRelated' ? true : false) : false)))
                                 | 	Nature of work is primarily computer-related, involving coding/analysis
                         tr
                             td
-                                input#nature(type='radio', name='nature_of_work', required='required', value='Combo')
+                                input#nature(type='radio', name='nature_of_work', required='required', value='Combo' checked=((formData ? (formData.nature_of_work == 'Combo' ? true : false) : false) || (project ? (project.nature_of_work == 'Combo' ? true : false) : false)))
                                 | 	Nature of work is a combination of several types of work.
                         tr
                             td
-                                input#nature(type='radio', name='nature_of_work', required='required', value='Other')
+                                input#nature(type='radio', name='nature_of_work', required='required', value='Other' checked=((formData ? (formData.nature_of_work == 'Other' ? true : false) : false) || (project ? (project.nature_of_work == 'Other' ? true : false) : false)))
                                 | 	Other, specify:
                                 br
-                                input#nature.form-control(type='text', name='nature_of_work_other', maxlength='60')
+                                input#nature.form-control(type='text', name='nature_of_work_other', maxlength='60', value=((formData ? formData.nature_of_work_other : '') || (project ? project.nature_of_work_other : '')))
                                 .help-block.with-errors
                     br
                     label(for='prior_work')  Amount of Prior Work Conducted in Association With This Project: *
                     table.style3
                         tr
                             td
-                                input#amount(type='radio', name='prior_work', required='required', value='None')
+                                input#amount(type='radio', name='prior_work', required='required', value='None' checked=((formData ? (formData.prior_work == 'None' ? true : false) : false) || (project ? (project.prior_work == 'None' ? true : false) : false)))
                                 | 	No prior work; student will be starting from basic idea
                         tr
                             td
-                                input#amount(type='radio', name='prior_work', required='required', value='Some')
+                                input#amount(type='radio', name='prior_work', required='required', value='Some' checked=((formData ? (formData.prior_work == 'Some' ? true : false) : false) || (project ? (project.prior_work == 'Some' ? true : false) : false)))
                                 | 	Some prior work; student will build on work of others
                         tr
                             td
-                                input#amount(type='radio', name='prior_work', required='required', value='Refine')
+                                input#amount(type='radio', name='prior_work', required='required', value='Refine' checked=((formData ? (formData.prior_work == 'Refine' ? true : false) : false) || (project ? (project.prior_work == 'Refine' ? true : false) : false)))
                                 | 	Well-established body of work; student will refine/improved upon efforts of others
                         tr
                             td
-                                input#amount(type='radio', name='prior_work', required='required', value='Other')
+                                input#amount(type='radio', name='prior_work', required='required', value='Other' checked=((formData ? (formData.prior_work == 'Other' ? true : false) : false) || (project ? (project.prior_work == 'Other' ? true : false) : false)))
                                 | 	Other, specify:
                                 br
-                                input#amount.form-control(type='text', name='prior_work_other', maxlength='60')
+                                input#amount.form-control(type='text', name='prior_work_other', maxlength='60', value=((formData ? formData.prior_work_other : '') || (project ? project.prior_work_other : '')))
                                 .help-block.with-errors
                 br
                 fieldset#finances
