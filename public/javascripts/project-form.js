@@ -116,8 +116,6 @@ $(document).ready(function () {
     // Select areas for editing form
     var areas_arr = $("#check_areas").val();
     var areas = areas_arr.split(',');
-    console.log(areas);
-    console.log($.inArray('mathematics', areas));
     
     if ($.inArray('aerospace', areas) != -1){
         $( "#aerospace" ).prop( "checked", true );

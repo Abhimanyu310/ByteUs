@@ -71,10 +71,13 @@ module.exports = {
         // req.checkBody('name', 'Invalid name').notEmpty();
         // req.checkBody('name', 'Invalid name').notEmpty();
 
+        if (req.body.action == 'Submit'){
+            req.checkBody('email', 'Email is invalid').notEmpty().isEmail();
 
-        req.checkBody('email', 'Email is invalid').notEmpty().isEmail();
+            req.checkBody('phone', 'Invalid phone').notEmpty().isInt();
+        }
         req.checkBody('name', 'Invalid name').notEmpty();
-        req.checkBody('phone', 'Invalid phone').notEmpty().isInt();
+        req.checkBody('description', 'Invalid title').notEmpty();
         var errors = req.validationErrors(true);
         if (errors) {
             // var messages = [];
@@ -210,60 +213,173 @@ module.exports = {
 };
 
 function saveProjectToDB(req, res, next, areas){
-    var project = models.Project.create({
-        description: req.body.description,
-        url: req.body.url,
-        requirements1: req.body.requirements1,
-        requirements2: req.body.requirements2,
-        requirements3: req.body.requirements3,
-        requirements4: req.body.requirements4,
-        requirements5: req.body.requirements5,
-        longdescription: req.body.longdescription,
-        areas: areas,
-        supervision_req: req.body.supervision_req,
-        supervision_provided: req.body.supervision_provided,
-        nature_of_work: req.body.nature_of_work,
-        nature_of_work_other: req.body.nature_of_work_other,
-        prior_work: req.body.prior_work,
-        prior_work_other: req.body.prior_work_other,
-        match_of_funding: req.body.match_of_funding,
-        not_sure: req.body.not_sure,
-        contact: req.body.contact,
-        Faculty: {
-            name: req.body.name,
-            phone: req.body.phone,
-            email: req.body.email,
-            faculty_department: req.body.faculty_department,
-            edc: req.body.edc,
-            secondary_name: req.body.secondary_name,
-            secondary_phone: req.body.secondary_phone,
-            secondary_email: req.body.secondary_email,
-            secondary_faculty_department: req.body.secondary_faculty_department,
-            post_doc_name: req.body.post_doc_name,
-            post_doc_phone: req.body.post_doc_phone,
-            post_doc_email: req.body.post_doc_email,
-            supervised_past: req.body.supervised_past,
-            specific_students1: req.body.specific_students1,
-            specific_students2: req.body.specific_students2,
-            specific_students3: req.body.specific_students3
-        }
-    }, {
+
+    models.Project.findOne({
+        where: {id: req.body.id},
         include: [ {model: models.FacultyInfo, as: 'Faculty'} ]
-    }).then(function (task) {
-        // task.setFaculty([faculty]).then(function () {
-        //         //done
-        //     });
-        // console.log(task)
-        req.flash('success', 'Project Submission Successful!');
-        res.redirect('success');
-    }).catch(function (error) {
-        //error handling
-        // console.log(error)
+    }).then(function (project){
+        if (!project){
+            var project = models.Project.create({
+                description: req.body.description,
+                url: req.body.url,
+                requirements1: req.body.requirements1,
+                requirements2: req.body.requirements2,
+                requirements3: req.body.requirements3,
+                requirements4: req.body.requirements4,
+                requirements5: req.body.requirements5,
+                longdescription: req.body.longdescription,
+                areas: areas,
+                supervision_req: req.body.supervision_req,
+                supervision_provided: req.body.supervision_provided,
+                nature_of_work: req.body.nature_of_work,
+                nature_of_work_other: req.body.nature_of_work_other,
+                prior_work: req.body.prior_work,
+                prior_work_other: req.body.prior_work_other,
+                match_of_funding: req.body.match_of_funding,
+                not_sure: req.body.not_sure,
+                contact: req.body.contact,
+                Faculty: {
+                    name: req.body.name,
+                    phone: req.body.phone,
+                    email: req.body.email,
+                    faculty_department: req.body.faculty_department,
+                    edc: req.body.edc,
+                    secondary_name: req.body.secondary_name,
+                    secondary_phone: req.body.secondary_phone,
+                    secondary_email: req.body.secondary_email,
+                    secondary_faculty_department: req.body.secondary_faculty_department,
+                    post_doc_name: req.body.post_doc_name,
+                    post_doc_phone: req.body.post_doc_phone,
+                    post_doc_email: req.body.post_doc_email,
+                    supervised_past: req.body.supervised_past,
+                    specific_students1: req.body.specific_students1,
+                    specific_students2: req.body.specific_students2,
+                    specific_students3: req.body.specific_students3
+                }
+            }, {
+                include: [ {model: models.FacultyInfo, as: 'Faculty'} ]
+            }).then(function (task) {
+                // task.setFaculty([faculty]).then(function () {
+                //         //done
+                //     });
+                // console.log(task)
+                req.flash('success', 'Project Submission Successful!');
+                res.redirect('success');
+            }).catch(function (error) {
+                //error handling
+                // console.log(error)
+            });
+        }
+        else{
+            project.Faculty.updateAttributes({
+                id: req.body.id,
+                description: req.body.description,
+                url: req.body.url,
+                requirements1: req.body.requirements1,
+                requirements2: req.body.requirements2,
+                requirements3: req.body.requirements3,
+                requirements4: req.body.requirements4,
+                requirements5: req.body.requirements5,
+                longdescription: req.body.longdescription,
+                areas: areas,
+                supervision_req: req.body.supervision_req,
+                supervision_provided: req.body.supervision_provided,
+                nature_of_work: req.body.nature_of_work,
+                nature_of_work_other: req.body.nature_of_work_other,
+                prior_work: req.body.prior_work,
+                prior_work_other: req.body.prior_work_other,
+                match_of_funding: req.body.match_of_funding,
+                not_sure: req.body.not_sure,
+                contact: req.body.contact,
+                Faculty: {
+                    name: req.body.name,
+                    phone: req.body.phone,
+                    email: req.body.email,
+                    faculty_department: req.body.faculty_department,
+                    edc: req.body.edc,
+                    secondary_name: req.body.secondary_name,
+                    secondary_phone: req.body.secondary_phone,
+                    secondary_email: req.body.secondary_email,
+                    secondary_faculty_department: req.body.secondary_faculty_department,
+                    post_doc_name: req.body.post_doc_name,
+                    post_doc_phone: req.body.post_doc_phone,
+                    post_doc_email: req.body.post_doc_email,
+                    supervised_past: req.body.supervised_past,
+                    specific_students1: req.body.specific_students1,
+                    specific_students2: req.body.specific_students2,
+                    specific_students3: req.body.specific_students3
+                }
+            }).then(function (task) {
+                // task.setFaculty([faculty]).then(function () {
+                //         //done
+                //     });
+                // console.log(task)
+                req.flash('success', 'Project Submission Successful!');
+                res.redirect('success');
+            }).catch(function (error) {
+                //error handling
+                // console.log(error)
+            });
+        }
     });
+
+
+    // var project = models.Project.upsert({
+    //     id: req.body.id,
+    //     description: req.body.description,
+    //     url: req.body.url,
+    //     requirements1: req.body.requirements1,
+    //     requirements2: req.body.requirements2,
+    //     requirements3: req.body.requirements3,
+    //     requirements4: req.body.requirements4,
+    //     requirements5: req.body.requirements5,
+    //     longdescription: req.body.longdescription,
+    //     areas: areas,
+    //     supervision_req: req.body.supervision_req,
+    //     supervision_provided: req.body.supervision_provided,
+    //     nature_of_work: req.body.nature_of_work,
+    //     nature_of_work_other: req.body.nature_of_work_other,
+    //     prior_work: req.body.prior_work,
+    //     prior_work_other: req.body.prior_work_other,
+    //     match_of_funding: req.body.match_of_funding,
+    //     not_sure: req.body.not_sure,
+    //     contact: req.body.contact,
+    //     Faculty: {
+    //         name: req.body.name,
+    //         phone: req.body.phone,
+    //         email: req.body.email,
+    //         faculty_department: req.body.faculty_department,
+    //         edc: req.body.edc,
+    //         secondary_name: req.body.secondary_name,
+    //         secondary_phone: req.body.secondary_phone,
+    //         secondary_email: req.body.secondary_email,
+    //         secondary_faculty_department: req.body.secondary_faculty_department,
+    //         post_doc_name: req.body.post_doc_name,
+    //         post_doc_phone: req.body.post_doc_phone,
+    //         post_doc_email: req.body.post_doc_email,
+    //         supervised_past: req.body.supervised_past,
+    //         specific_students1: req.body.specific_students1,
+    //         specific_students2: req.body.specific_students2,
+    //         specific_students3: req.body.specific_students3
+    //     }
+    // }, {
+    //     include: [ {model: models.FacultyInfo, as: 'Faculty'} ]
+    // }).then(function (task) {
+    //     // task.setFaculty([faculty]).then(function () {
+    //     //         //done
+    //     //     });
+    //     // console.log(task)
+    //     req.flash('success', 'Project Submission Successful!');
+    //     res.redirect('success');
+    // }).catch(function (error) {
+    //     //error handling
+    //     // console.log(error)
+    // });
 }
 
+// submit the project
 function addProjectToDB(req, res, next, areas){
-    var project = models.Project.create({
+    var project = models.Project.upsert({
         description: req.body.description,
         url: req.body.url,
         requirements1: req.body.requirements1,
@@ -303,6 +419,10 @@ function addProjectToDB(req, res, next, areas){
         }
     }, {
         include: [ {model: models.FacultyInfo, as: 'Faculty'} ]
+    }, {
+        where: {
+         id: req.body.id
+        }
     }).then(function (task) {
         // task.setFaculty([faculty]).then(function () {
         //         //done

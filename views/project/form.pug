@@ -30,23 +30,23 @@ block content
                     table.style1
                         tr(class=(hasErrors ? (errors[0].name ? 'has-error' : undefined) : undefined))
                             td
-                                input#form_name.form-control(type='text', name='name', placeholder=' First Last', required='required', data-error='Faculty name is required.', value=((formData ? formData.name : '') || (project ? project.Faculty.name : '')))
+                                input#form_name.form-control(type='text', name='name', placeholder=' First Last', data-error='Faculty name is required.', value=((formData ? formData.name : '') || (project ? project.Faculty.name : '')))
                                 .help-block.with-errors
                     label(for='phone')  Faculty Phone Number: *
                     table.style1
                         tr(class=(hasErrors ? (errors[0].phone ? 'has-error' : undefined) : undefined))
                             td
-                                input#form_primPhone.required(name='phone', type='tel', placeholder=' (xxx) xxx-xxxx',required='required', maxlength='15', size='15'  value=((formData ? formData.phone : '') || (project ? project.Faculty.phone : '')))
+                                input#form_primPhone.required(name='phone', type='tel', placeholder=' (xxx) xxx-xxxx', maxlength='15', size='15'  value=((formData ? formData.phone : '') || (project ? project.Faculty.phone : '')))
                                 .help-block.with-errors
                     label(for='form_email')  Faculty Email Address: *
                     table.style1
                         tr
                             td
-                                input#form_email.form-control(type='', name='email', placeholder=' First.Last@Colorado.edu', required='', data-error='Valid email is required.' value=((formData ? formData.email : '') || (project ? project.Faculty.email : '')))
+                                input#form_email.form-control(type='', name='email', placeholder=' First.Last@Colorado.edu', data-error='Valid email is required.' value=((formData ? formData.email : '') || (project ? project.Faculty.email : '')))
                                 .help-block.with-errors
                     input(type='hidden', id='select_department', value=((formData ? formData.faculty_department : '') || (project ? project.Faculty.faculty_department : '')))
                     label(for='faculty_department')  Faculty Department/Program: *
-                    select#faculty_department(name='faculty_department', required='required')
+                    select#faculty_department(name='faculty_department')
                         option(value='', disabled='disabled', selected='selected') Please Select
                         option(value='AES') Aerospace Engineering Sciences
                         option(value='AM') Applied Mathematics
@@ -67,10 +67,10 @@ block content
                     table.style1
                         tr
                             td
-                                input#edc1(type='radio', name='edc', required='required', value='Yes' checked=((formData ? (formData.edc == 'Yes' ? true : false) : false) || (project ? (project.Faculty.edc == 'Yes' ? true : false) : false)))
+                                input#edc1(type='radio', name='edc', value='Yes' checked=((formData ? (formData.edc == 'Yes' ? true : false) : false) || (project ? (project.Faculty.edc == 'Yes' ? true : false) : false)))
                                 |  Yes
                             td
-                                input#edc(type='radio', name='edc', required='required', value='No' checked=((formData ? (formData.edc == 'No' ? true : false) : false) || (project ? (project.Faculty.edc == 'No' ? true : false) : false)))
+                                input#edc(type='radio', name='edc', value='No' checked=((formData ? (formData.edc == 'No' ? true : false) : false) || (project ? (project.Faculty.edc == 'No' ? true : false) : false)))
                                 |  No
                 fieldset#SecondaryFacultyInfo
                     legend Optional Secondary Faculty Member
@@ -137,7 +137,7 @@ block content
                     table.style2
                         tr
                             td
-                                textarea#description.form-control(name='description', rows='2', required='required', maxlength='80', data-error='Please, provide a description.')
+                                textarea#description.form-control(name='description', rows='2', maxlength='80', data-error='Please, provide a description.')
                                     | #{(formData ? formData.description : '') || (project ? project.description : '')}
                                 .help-block.with-errors
                                 br
@@ -201,7 +201,7 @@ block content
                     table.style2
                         tr
                             td
-                                textarea#longdescription.form-control(name='longdescription', rows='2', required='required', maxlength='1200', data-error='Please, provide a description.').help-block.with-errors
+                                textarea#longdescription.form-control(name='longdescription', rows='8', cols='8', maxlength='1200', data-error='Please, provide a description.').help-block.with-errors
                                     | #{(formData ? formData.longdescription : '') || (project ? project.longdescription : '')}
                                 br
                                 span#char_count 1200
@@ -277,57 +277,57 @@ block content
                     table.style3
                         tr
                             td
-                                input#amountofsup(type='radio', name='supervision_req', required='required', value='Little' checked=((formData ? (formData.supervision_req == 'Little' ? true : false) : false) || (project ? (project.supervision_req == 'Little' ? true : false) : false)))
+                                input#amountofsup(type='radio', name='supervision_req', value='Little' checked=((formData ? (formData.supervision_req == 'Little' ? true : false) : false) || (project ? (project.supervision_req == 'Little' ? true : false) : false)))
                                 | 	Very little supervision; student will need to work largely independently
                         tr
                             td
-                                input#amountofsup(type='radio', name='supervision_req', required='required', value='Moderate' checked=((formData ? (formData.supervision_req == 'Moderate' ? true : false) : false) || (project ? (project.supervision_req == 'Moderate' ? true : false) : false)))
+                                input#amountofsup(type='radio', name='supervision_req', value='Moderate' checked=((formData ? (formData.supervision_req == 'Moderate' ? true : false) : false) || (project ? (project.supervision_req == 'Moderate' ? true : false) : false)))
                                 | 	Moderate amount of supervision and interaction with others
                         tr
                             td
-                                input#amountofsup(type='radio', name='supervision_req', required='required',value='Large' checked=((formData ? (formData.supervision_req == 'Large' ? true : false) : false) || (project ? (project.supervision_req == 'Large' ? true : false) : false)))
+                                input#amountofsup(type='radio', name='supervision_req', value='Large' checked=((formData ? (formData.supervision_req == 'Large' ? true : false) : false) || (project ? (project.supervision_req == 'Large' ? true : false) : false)))
                                 | 	A great deal of supervision and interaction with others
                     br
                     label(for='supervision_provided')  Supervision Provided By: *
                     table.style3
                         tr
                             td
-                                input#supprov(type='radio', name='supervision_provided', required='required', value='Faculty' checked=((formData ? (formData.supervision_provided == 'Faculty' ? true : false) : false) || (project ? (project.supervision_provided == 'Faculty' ? true : false) : false)))
+                                input#supprov(type='radio', name='supervision_provided', value='Faculty' checked=((formData ? (formData.supervision_provided == 'Faculty' ? true : false) : false) || (project ? (project.supervision_provided == 'Faculty' ? true : false) : false)))
                                 | 	Supervision primarily by faculty supervisor
                         tr
                             td
-                                input#supprov(type='radio', name='supervision_provided', required='required', value='Graduate' checked=((formData ? (formData.supervision_provided == 'Graduate' ? true : false) : false) || (project ? (project.supervision_provided == 'Graduate' ? true : false) : false)))
+                                input#supprov(type='radio', name='supervision_provided', value='Graduate' checked=((formData ? (formData.supervision_provided == 'Graduate' ? true : false) : false) || (project ? (project.supervision_provided == 'Graduate' ? true : false) : false)))
                                 | 	Supervision primarily by graduate students
                         tr
                             td
-                                input#supprov(type='radio', name='supervision_provided', required='required', value='Combo' checked=((formData ? (formData.supervision_provided == 'Combo' ? true : false) : false) || (project ? (project.supervision_provided == 'Combo' ? true : false) : false)))
+                                input#supprov(type='radio', name='supervision_provided', value='Combo' checked=((formData ? (formData.supervision_provided == 'Combo' ? true : false) : false) || (project ? (project.supervision_provided == 'Combo' ? true : false) : false)))
                                 | 	Supervision primarily a combination of faculty and graduate students
                     br
                     label(for='nature_of_work')  Nature of Work: *
                     table.style3
                         tr
                             td
-                                input#nature(type='radio', name='nature_of_work', required='required', value='Theoretical' checked=((formData ? (formData.nature_of_work == 'Theoretical' ? true : false) : false) || (project ? (project.nature_of_work == 'Theoretical' ? true : false) : false)))
+                                input#nature(type='radio', name='nature_of_work', value='Theoretical' checked=((formData ? (formData.nature_of_work == 'Theoretical' ? true : false) : false) || (project ? (project.nature_of_work == 'Theoretical' ? true : false) : false)))
                                 | 	Nature of work is primarily theoretical, most work on paper/electronic medium
                         tr
                             td
-                                input#nature(type='radio', name='nature_of_work', required='required', value='Experimental' checked=((formData ? (formData.nature_of_work == 'Experimental' ? true : false) : false) || (project ? (project.nature_of_work == 'Experimental' ? true : false) : false)))
+                                input#nature(type='radio', name='nature_of_work', value='Experimental' checked=((formData ? (formData.nature_of_work == 'Experimental' ? true : false) : false) || (project ? (project.nature_of_work == 'Experimental' ? true : false) : false)))
                                 | 	Nature of work is primarily experimental, requiring hands-on work in a lab
                         tr
                             td
-                                input#nature(type='radio', name='nature_of_work',required='required', value='FieldBased' checked=((formData ? (formData.nature_of_work == 'FieldBased' ? true : false) : false) || (project ? (project.nature_of_work == 'FieldBased' ? true : false) : false)))
+                                input#nature(type='radio', name='nature_of_work', value='FieldBased' checked=((formData ? (formData.nature_of_work == 'FieldBased' ? true : false) : false) || (project ? (project.nature_of_work == 'FieldBased' ? true : false) : false)))
                                 | 	Nature of work is primarily field based, requiring hands-on work in the field
                         tr
                             td
-                                input#nature(type='radio', name='nature_of_work', required='required', value='ComputerRelated' checked=((formData ? (formData.nature_of_work == 'ComputerRelated' ? true : false) : false) || (project ? (project.nature_of_work == 'ComputerRelated' ? true : false) : false)))
+                                input#nature(type='radio', name='nature_of_work', value='ComputerRelated' checked=((formData ? (formData.nature_of_work == 'ComputerRelated' ? true : false) : false) || (project ? (project.nature_of_work == 'ComputerRelated' ? true : false) : false)))
                                 | 	Nature of work is primarily computer-related, involving coding/analysis
                         tr
                             td
-                                input#nature(type='radio', name='nature_of_work', required='required', value='Combo' checked=((formData ? (formData.nature_of_work == 'Combo' ? true : false) : false) || (project ? (project.nature_of_work == 'Combo' ? true : false) : false)))
+                                input#nature(type='radio', name='nature_of_work', value='Combo' checked=((formData ? (formData.nature_of_work == 'Combo' ? true : false) : false) || (project ? (project.nature_of_work == 'Combo' ? true : false) : false)))
                                 | 	Nature of work is a combination of several types of work.
                         tr
                             td
-                                input#nature(type='radio', name='nature_of_work', required='required', value='Other' checked=((formData ? (formData.nature_of_work == 'Other' ? true : false) : false) || (project ? (project.nature_of_work == 'Other' ? true : false) : false)))
+                                input#nature(type='radio', name='nature_of_work', value='Other' checked=((formData ? (formData.nature_of_work == 'Other' ? true : false) : false) || (project ? (project.nature_of_work == 'Other' ? true : false) : false)))
                                 | 	Other, specify:
                                 br
                                 input#nature.form-control(type='text', name='nature_of_work_other', maxlength='60', value=((formData ? formData.nature_of_work_other : '') || (project ? project.nature_of_work_other : '')))
@@ -337,19 +337,19 @@ block content
                     table.style3
                         tr
                             td
-                                input#amount(type='radio', name='prior_work', required='required', value='None' checked=((formData ? (formData.prior_work == 'None' ? true : false) : false) || (project ? (project.prior_work == 'None' ? true : false) : false)))
+                                input#amount(type='radio', name='prior_work', value='None' checked=((formData ? (formData.prior_work == 'None' ? true : false) : false) || (project ? (project.prior_work == 'None' ? true : false) : false)))
                                 | 	No prior work; student will be starting from basic idea
                         tr
                             td
-                                input#amount(type='radio', name='prior_work', required='required', value='Some' checked=((formData ? (formData.prior_work == 'Some' ? true : false) : false) || (project ? (project.prior_work == 'Some' ? true : false) : false)))
+                                input#amount(type='radio', name='prior_work', value='Some' checked=((formData ? (formData.prior_work == 'Some' ? true : false) : false) || (project ? (project.prior_work == 'Some' ? true : false) : false)))
                                 | 	Some prior work; student will build on work of others
                         tr
                             td
-                                input#amount(type='radio', name='prior_work', required='required', value='Refine' checked=((formData ? (formData.prior_work == 'Refine' ? true : false) : false) || (project ? (project.prior_work == 'Refine' ? true : false) : false)))
+                                input#amount(type='radio', name='prior_work', value='Refine' checked=((formData ? (formData.prior_work == 'Refine' ? true : false) : false) || (project ? (project.prior_work == 'Refine' ? true : false) : false)))
                                 | 	Well-established body of work; student will refine/improved upon efforts of others
                         tr
                             td
-                                input#amount(type='radio', name='prior_work', required='required', value='Other' checked=((formData ? (formData.prior_work == 'Other' ? true : false) : false) || (project ? (project.prior_work == 'Other' ? true : false) : false)))
+                                input#amount(type='radio', name='prior_work', value='Other' checked=((formData ? (formData.prior_work == 'Other' ? true : false) : false) || (project ? (project.prior_work == 'Other' ? true : false) : false)))
                                 | 	Other, specify:
                                 br
                                 input#amount.form-control(type='text', name='prior_work_other', maxlength='60', value=((formData ? formData.prior_work_other : '') || (project ? project.prior_work_other : '')))
@@ -363,10 +363,10 @@ block content
                     table.style1
                         tr
                             td
-                                input#finances.form-control(name='match_of_funding', type='tel', placeholder=' ########', pattern='^[0-9]{8}', maxlength='8', size='9', data-error='Please, provide a speed type.')
+                                input#finances.form-control(name='match_of_funding', type='tel', placeholder=' ########', pattern='^[0-9]{8}', maxlength='8', size='9', data-error='Please, provide a speed type.',  value=((formData ? formData.match_of_funding : '') || (project ? project.match_of_funding : '')))
                         tr
                             td
-                                input(type='checkbox', name='not_sure', value='Yes')
+                                input(type='checkbox', name='not_sure', value='Yes' checked=((formData ? (formData.not_sure == 'Yes' ? true : false) : false) || (project ? (project.not_sure == 'Yes' ? true : false) : false)))
                                 |  Not Sure
                                 br
                                 br
@@ -376,7 +376,7 @@ block content
                     table.style1
                         tr
                             td
-                                input#contact.form-control(type='text', name='contact', placeholder=' First Last', required='required', data-error='Accounting contact name is required.')
+                                input#contact.form-control(type='text', name='contact', placeholder=' First Last', data-error='Accounting contact name is required.', value=((formData ? formData.contact : '') || (project ? project.contact : '')))
                                 br
                         tr
                 br
@@ -387,10 +387,10 @@ block content
                     table.style1
                         tr
                             td
-                                input#Past(type='radio', name='supervised_past', required='required', value='Yes')
+                                input#Past(type='radio', name='supervised_past', value='Yes' checked=((formData ? (formData.supervised_past == 'Yes' ? true : false) : false) || (project ? (project.Faculty.supervised_past == 'Yes' ? true : false) : false)))
                                 | Yes
                             td
-                                input#Past(type='radio', name='supervised_past', required='required', value='No')
+                                input#Past(type='radio', name='supervised_past', value='No' checked=((formData ? (formData.supervised_past == 'No' ? true : false) : false) || (project ? (project.Faculty.supervised_past == 'No' ? true : false) : false)))
                                 | 	No
                     label(for='specific_students')
                         br
@@ -402,21 +402,22 @@ block content
                     table.style1
                         tr
                             td
-                                input#contact.form-control(type='text', name='specific_students1', placeholder=' First Last')
+                                input#contact.form-control(type='text', name='specific_students1', placeholder=' First Last', value=((formData ? formData.specific_students1 : '') || (project ? project.Faculty.specific_students1 : '')))
                                 br
                         tr
                             td
-                                input#contact.form-control(type='text', name='specific_students2', placeholder=' First Last')
+                                input#contact.form-control(type='text', name='specific_students2', placeholder=' First Last', value=((formData ? formData.specific_students2 : '') || (project ? project.Faculty.specific_students2 : '')))
                                 br
                         tr
                             td
-                                input#contact.form-control(type='text', name='specific_students3', placeholder=' First Last')
+                                input#contact.form-control(type='text', name='specific_students3', placeholder=' First Last', value=((formData ? formData.specific_students3 : '') || (project ? project.Faculty.specific_students3 : '')))
                                 br
                     br
                     br
                     br
                 p
                     input(type='hidden', name='_csrf', value=csrfToken)
+                    input(type='hidden', name='id', value=(project ? project.id : ''))
                     input.btn.btn-success(type='submit', name='action', value='Save')
                     input.btn.btn-success(type='reset', value='Reset')
                     input.btn.btn-success(type='submit', name='action', value='Submit')
