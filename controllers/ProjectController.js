@@ -1,9 +1,5 @@
 var models  = require('../models');
-// var express = require('express');
-// var router = express.Router();
-// var csrf = require('csurf');
-// var csrfProtection = csrf();
-// router.use(csrfProtection);
+
 
 
 
@@ -62,33 +58,41 @@ module.exports = {
     },
     
     postCreateProject: function(req, res, next) {
-        // req.checkBody('description', 'Invalid Project Title').notEmpty();
-        // req.checkBody('url', 'Invalid Project URL').notEmpty();
-        // req.checkBody('name', 'Invalid name').notEmpty();
-        // req.checkBody('name', 'Invalid name').notEmpty();
-        // req.checkBody('name', 'Invalid name').notEmpty();
-        // req.checkBody('name', 'Invalid name').notEmpty();
-        // req.checkBody('name', 'Invalid name').notEmpty();
-        // req.checkBody('name', 'Invalid name').notEmpty();
-        // req.checkBody('name', 'Invalid name').notEmpty();
-        // req.checkBody('name', 'Invalid name').notEmpty();
-        // req.checkBody('name', 'Invalid name').notEmpty();
-        // req.checkBody('name', 'Invalid name').notEmpty();
-
         if (req.body.action == 'Submit'){
-            req.checkBody('email', 'Email is invalid').notEmpty().isEmail();
 
-            req.checkBody('phone', 'Invalid phone').notEmpty().isInt();
+            req.checkBody('phone', 'Please enter a valid phone number').notEmpty().isInt();
+            req.checkBody('email', 'Please enter a valid email').notEmpty().isEmail();
+            req.checkBody('faculty_department', 'Please enter a department').notEmpty();
+            req.checkBody('edc', 'Please select if the project has a focus on Engineering for Developing Communities').notEmpty();
+
+            // req.checkBody('secondary_phone', 'Please enter a valid secondary faculty phone number').optional().isInt();
+            // req.checkBody('secondary_email', 'Please enter a valid secondary faculty email').optional().isEmail();
+
+            // req.checkBody({
+            //     'secondary_email': {
+            //         optional: {
+            //             options: {checkFalsy: false} // or: [{ checkFalsy: true }]
+            //         },
+            //         isEmail: {
+            //             errorMessage: 'Invalid Email for gods sake'
+            //         }
+            //     }
+            // });
+
+            req.checkBody('longdescription', 'Please enter a description for your project').notEmpty();
+            req.checkBody('areas', 'Please select the majors to recruit the students from').notEmpty();
+            req.checkBody('supervision_req', 'Please select the amount of supervision required').notEmpty();
+            req.checkBody('supervision_provided', 'Please select the amount of supervision provided').notEmpty();
+            req.checkBody('nature_of_work', 'Please select the nature of work').notEmpty();
+            req.checkBody('prior_work', 'Please select the required prior work').notEmpty();
+            req.checkBody('contact', 'Please enter the accounting contact for the project').notEmpty();
+            req.checkBody('supervised_past', 'Please indicate if you have supervised a Discovery Learning Apprentice in the past').notEmpty();
+
         }
-        req.checkBody('name', 'Invalid name').notEmpty();
-        req.checkBody('description', 'Invalid title').notEmpty();
+        req.checkBody('name', 'You need to enter your name').notEmpty();
+        req.checkBody('description', 'You need to enter the project title').notEmpty();
         var errors = req.validationErrors(true);
         if (errors) {
-            // var messages = [];
-            // errors.forEach(function (error) {
-            //     messages.push(error.msg);
-            // });
-            // console.log(errors)
             req.flash('errors', errors);
             req.flash('form_data', req.body);
             // req.flash('success', "HAHA")
