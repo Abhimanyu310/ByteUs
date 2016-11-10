@@ -156,6 +156,9 @@ module.exports = {
             case 'department':
                 postSearchProjectByDepartment(req, res, next);
                 break;
+            case 'major':
+                postSearchProjectByMajor(req, res, next);
+                break;
             default:
                 postSearchProjectByTitle(req, res, next);
         }
@@ -378,6 +381,32 @@ function postSearchProjectByDepartment(req, res, next) {
             csrfToken: req.csrfToken(),
             prev_value: req.body.search_query,
             department_search: true,
+            recent : order_desc(order_by)
+        });
+    });
+}
+
+function postSearchProjectByMajor(req, res, next) {
+    var order_by = req.body.sort || 'asc';
+    models.Project.findAll({
+        where: {
+            areas: {
+                $like: '%' + req.body.search_query + '%'
+            }
+
+        },
+        order: [
+            ['updated_at', order_by],
+        ],
+        include: [ {model: models.FacultyInfo, as: 'Faculty'} ]
+    }).then(function (projects){
+        res.render('project/project-list', {
+            title: "Search Results",
+            header: "Search Results",
+            projects: projects,
+            csrfToken: req.csrfToken(),
+            prev_value: req.body.search_query,
+            major_search: true,
             recent : order_desc(order_by)
         });
     });
