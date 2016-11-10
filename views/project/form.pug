@@ -26,26 +26,26 @@ block content
             form
                 fieldset#PrimaryFacultyInfo
                     legend Faculty Member Information
-                    label(for='form_name') Faculty Name: *
+                    label(for='form_name', class=(hasErrors ? (errors[0].name ? 'has-error' : undefined) : undefined)) Faculty Name: *
                     table.style1
-                        tr(class=(hasErrors ? (errors[0].name ? 'has-error' : undefined) : undefined))
+                        tr
                             td
                                 input#form_name.form-control(type='text', name='name', placeholder=' First Last', data-error='Faculty name is required.', value=((formData ? formData.name : '') || (project ? project.Faculty.name : '')))
                                 .help-block.with-errors
-                    label(for='phone')  Faculty Phone Number: *
+                    label(for='phone', class=(hasErrors ? (errors[0].phone ? 'has-error' : undefined) : undefined)) Faculty Phone Number: *
                     table.style1
-                        tr(class=(hasErrors ? (errors[0].phone ? 'has-error' : undefined) : undefined))
+                        tr
                             td
                                 input#form_primPhone.required(name='phone', type='tel', placeholder=' (xxx) xxx-xxxx', maxlength='15', size='15'  value=((formData ? formData.phone : '') || (project ? project.Faculty.phone : '')))
                                 .help-block.with-errors
-                    label(for='form_email')  Faculty Email Address: *
+                    label(for='form_email', class=(hasErrors ? (errors[0].email ? 'has-error' : undefined) : undefined))  Faculty Email Address: *
                     table.style1
                         tr
                             td
                                 input#form_email.form-control(type='email', name='email', placeholder=' First.Last@Colorado.edu', data-error='Valid email is required.' value=((formData ? formData.email : '') || (project ? project.Faculty.email : '')))
                                 .help-block.with-errors
                     input(type='hidden', id='select_department', value=((formData ? formData.faculty_department : '') || (project ? project.Faculty.faculty_department : '')))
-                    label(for='faculty_department')  Faculty Department/Program: *
+                    label(for='faculty_department', class=(hasErrors ? (errors[0].faculty_department ? 'has-error' : undefined) : undefined))  Faculty Department/Program: *
                     select#faculty_department(name='faculty_department')
                         option(value='', disabled='disabled', selected='selected') Please Select
                         option(value='Aerospace Engineering Sciences') Aerospace Engineering Sciences
@@ -63,7 +63,7 @@ block content
                     br
                     br
 
-                    label(for='form_EDC') Does this project have a focus on Engineering for Developing Communities? *
+                    label(for='form_EDC', class=(hasErrors ? (errors[0].edc ? 'has-error' : undefined) : undefined)) Does this project have a focus on Engineering for Developing Communities? *
                     table.style1
                         tr
                             td
@@ -74,26 +74,26 @@ block content
                                 |  No
                 fieldset#SecondaryFacultyInfo
                     legend Optional Secondary Faculty Member
-                    label(for='secondary_name')  Faculty Name:
+                    label(for='secondary_name', class=(hasErrors ? (errors[0].secondary_name ? 'has-error' : undefined) : undefined))  Faculty Name:
                     table.style1
                         tr
                             td
                                 input#form_name.form-control(type='text', name='secondary_name', placeholder=' First Last' value=((formData ? formData.secondary_name : '') || (project ? project.Faculty.secondary_name : '')))
                                 .help-block.with-errors
-                    label(for='secondary_phone')  Faculty Phone Number:
+                    label(for='secondary_phone', class=(hasErrors ? (errors[0].secondary_phone ? 'has-error' : undefined) : undefined))  Faculty Phone Number:
                     table.style1
                         tr
                             td
                                 input#form_secPhone(name='secondary_phone', type='tel', placeholder=' (xxx) xxx-xxxx', maxlength='15', size='15', value=((formData ? formData.secondary_phone : '') || (project ? project.Faculty.secondary_phone : '')))
                                 .help-block.with-errors
-                    label(for='form_email')  Faculty Email Address:
+                    label(for='form_email', class=(hasErrors ? (errors[0].secondary_email ? 'has-error' : undefined) : undefined))  Faculty Email Address:
                     table.style1
                         tr
                             td
                                 input#form_email.form-control(type='email', name='secondary_email', placeholder=' First.Last@Colorado.edu', data-error='Valid email is required.', value=((formData ? formData.secondary_email : '') || (project ? project.Faculty.secondary_email : '')))
                                 .help-block.with-errors
                     input(type='hidden', id='select_secondary_department', value=((formData ? formData.secondary_faculty_department : '') || (project ? project.Faculty.secondary_faculty_department : '')))
-                    label(for='secondary_faculty_department')  Faculty Department/Program:
+                    label(for='secondary_faculty_department', class=(hasErrors ? (errors[0].secondary_faculty_department ? 'has-error' : undefined) : undefined))  Faculty Department/Program:
                     select#secondary_faculty_department(name='secondary_faculty_department')
                         option(value='', disabled='disabled', selected='selected') Please Select
                         option(value='AES') Aerospace Engineering Sciences
@@ -112,19 +112,19 @@ block content
                     br
                 fieldset#GradStudentPostDoc
                     legend Optional Graduate Student/Post Doctorate Information
-                    label(for='post_doc_name')  Name:
+                    label(for='post_doc_name', class=(hasErrors ? (errors[0].post_doc_name ? 'has-error' : undefined) : undefined))  Name:
                     table.style1
                         tr
                             td
                                 input#form_name.form-control(type='text', name='post_doc_name', placeholder=' First Last', value=((formData ? formData.post_doc_name : '') || (project ? project.Faculty.post_doc_name : '')))
                                 .help-block.with-errors
-                    label(for='post_doc_phone')  Phone Number:
+                    label(for='post_doc_phone', class=(hasErrors ? (errors[0].post_doc_phone ? 'has-error' : undefined) : undefined))  Phone Number:
                     table.style1
                         tr
                             td
                                 input#form_postDocPhone(name='post_doc_phone', type='tel', placeholder=' (xxx) xxx-xxxx', maxlength='15', size='15', value=((formData ? formData.post_doc_phone : '') || (project ? project.Faculty.post_doc_phone : '')))
                                 .help-block.with-errors
-                    label(for='form_email')  Email Address:
+                    label(for='form_email', class=(hasErrors ? (errors[0].post_doc_email ? 'has-error' : undefined) : undefined))  Email Address:
                     table.style1
                         tr
                             td
@@ -133,7 +133,7 @@ block content
                     br
                 fieldset#info
                     legend  Apprenticeship Information
-                    label(for='description')  Title or Brief Description of Apprenticeship: *
+                    label(for='description', class=(hasErrors ? (errors[0].description ? 'has-error' : undefined) : undefined))  Title or Brief Description of Apprenticeship: *
                     table.style2
                         tr
                             td
@@ -143,7 +143,7 @@ block content
                                 br
                                 span#char_count 80
                                 |  characters remaining
-                    label(for='url')
+                    label(for='url', class=(hasErrors ? (errors[0].url ? 'has-error' : undefined) : undefined))
                         br
                         | Website URL to Provide Additional Information:
                     br
@@ -194,7 +194,7 @@ block content
                                 br
                                 span#char_count 200
                                 |  characters remaining
-                    label(for='longdescription')
+                    label(for='longdescription', class=(hasErrors ? (errors[0].longdescription ? 'has-error' : undefined) : undefined))
                         br
                         |  Longer Description of Apprenticeship: *
                     br
@@ -208,7 +208,7 @@ block content
                                 |  characters remaining
 
                     input(type='hidden', id='check_areas', value=((formData ? formData.areas : '') || (project ? project.areas : '')))
-                    label(for='areas')
+                    label(for='areas', class=(hasErrors ? (errors[0].areas ? 'has-error' : undefined) : undefined))
                         br
                         |  Areas to Recruit Students From: *
                         br
@@ -273,7 +273,7 @@ block content
                                 input(type='checkbox', name='areas', value='tech_arts_media', id='tech_arts_media')
                                 |  Technology, Arts and Media
                     br
-                    label(for='supervision_req')  Amount of Supervision Required / Interaction Available: *
+                    label(for='supervision_req', class=(hasErrors ? (errors[0].supervision_req ? 'has-error' : undefined) : undefined))  Amount of Supervision Required / Interaction Available: *
                     table.style3
                         tr
                             td
@@ -288,7 +288,7 @@ block content
                                 input#amountofsup(type='radio', name='supervision_req', value='Large' checked=((formData ? (formData.supervision_req == 'Large' ? true : false) : false) || (project ? (project.supervision_req == 'Large' ? true : false) : false)))
                                 | 	A great deal of supervision and interaction with others
                     br
-                    label(for='supervision_provided')  Supervision Provided By: *
+                    label(for='supervision_provided', class=(hasErrors ? (errors[0].supervision_provided ? 'has-error' : undefined) : undefined))  Supervision Provided By: *
                     table.style3
                         tr
                             td
@@ -303,7 +303,7 @@ block content
                                 input#supprov(type='radio', name='supervision_provided', value='Combo' checked=((formData ? (formData.supervision_provided == 'Combo' ? true : false) : false) || (project ? (project.supervision_provided == 'Combo' ? true : false) : false)))
                                 | 	Supervision primarily a combination of faculty and graduate students
                     br
-                    label(for='nature_of_work')  Nature of Work: *
+                    label(for='nature_of_work', class=(hasErrors ? (errors[0].nature_of_work ? 'has-error' : undefined) : undefined))  Nature of Work: *
                     table.style3
                         tr
                             td
@@ -333,7 +333,7 @@ block content
                                 input#nature.form-control(type='text', name='nature_of_work_other', maxlength='60', value=((formData ? formData.nature_of_work_other : '') || (project ? project.nature_of_work_other : '')))
                                 .help-block.with-errors
                     br
-                    label(for='prior_work')  Amount of Prior Work Conducted in Association With This Project: *
+                    label(for='prior_work', class=(hasErrors ? (errors[0].prior_work ? 'has-error' : undefined) : undefined))  Amount of Prior Work Conducted in Association With This Project: *
                     table.style3
                         tr
                             td
@@ -357,7 +357,7 @@ block content
                 br
                 fieldset#finances
                     legend  Finances
-                    label(for='match_of_funding')
+                    label(for='match_of_funding', class=(hasErrors ? (errors[0].match_of_funding ? 'has-error' : undefined) : undefined))
                         |  50% Match of Funding Speed Type:
                         br
                     table.style1
@@ -370,7 +370,7 @@ block content
                                 |  Not Sure
                                 br
                                 br
-                    label(for='contact')
+                    label(for='contact', class=(hasErrors ? (errors[0].contact ? 'has-error' : undefined) : undefined))
                         |  Accounting Contact for Project: *
                         br
                     table.style1
@@ -382,7 +382,7 @@ block content
                 br
                 fieldset#other
                     legend Other
-                    label(for='supervised_past')
+                    label(for='supervised_past', class=(hasErrors ? (errors[0].supervised_past ? 'has-error' : undefined) : undefined))
                         | Have you, the faculty supervisor, supervised a Discovery Learning Apprentice in the past? *
                     table.style1
                         tr
