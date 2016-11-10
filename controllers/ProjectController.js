@@ -274,12 +274,6 @@ function addProjectToDB(req, res, next, areas, action){
         }
     });
 
-
-
-
-
-    
-
 }
 
 function postSearchProjectByTitle(req, res, next) {
@@ -296,7 +290,6 @@ function postSearchProjectByTitle(req, res, next) {
             ],
         include: [ {model: models.FacultyInfo, as: 'Faculty'} ]
     }).then(function (projects){
-        // console.log(projects);
         res.render('project/project-list', {
             title: "Search Results",
             header: "Search Results",
@@ -305,7 +298,6 @@ function postSearchProjectByTitle(req, res, next) {
             prev_value: req.body.search_query,
             title_search: true,
             recent : order_desc(order_by)
-            // message: req.flash('success')
         });
     });
 }
@@ -323,7 +315,6 @@ function postSearchProjectByDescription(req, res, next) {
         ],
         include: [ {model: models.FacultyInfo, as: 'Faculty'} ]
     }).then(function (projects){
-        // console.log(projects);
         res.render('project/project-list', {
             title: "Search Results",
             header: "Search Results",
@@ -332,7 +323,6 @@ function postSearchProjectByDescription(req, res, next) {
             prev_value: req.body.search_query,
             description_search: true,
             recent : order_desc(order_by)
-            // message: req.flash('success')
         });
     });
 }
@@ -353,7 +343,6 @@ function postSearchProjectByFaculty(req, res, next) {
             }
         }]
     }).then(function (projects){
-        // console.log(projects);
         res.render('project/project-list', {
             title: "Search Results",
             header: "Search Results",
@@ -362,7 +351,6 @@ function postSearchProjectByFaculty(req, res, next) {
             prev_value: req.body.search_query,
             faculty_search: true,
             recent : order_desc(order_by)
-            // message: req.flash('success')
         });
     });
 }
@@ -383,7 +371,6 @@ function postSearchProjectByDepartment(req, res, next) {
             }
         }]
     }).then(function (projects){
-        // console.log(projects);
         res.render('project/project-list', {
             title: "Search Results",
             header: "Search Results",
@@ -392,7 +379,6 @@ function postSearchProjectByDepartment(req, res, next) {
             prev_value: req.body.search_query,
             department_search: true,
             recent : order_desc(order_by)
-            // message: req.flash('success')
         });
     });
 }
