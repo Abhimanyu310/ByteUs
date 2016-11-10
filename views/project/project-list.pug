@@ -7,15 +7,17 @@ block styles
 	link(rel='stylesheet', href='/stylesheets/project-list.css')
 
 block content
+
+
 	header
 		h1 #{header}
 
-	section
+
 	div.search-form
 		form(method='post', action='/project/list', role='form')
 			input(type='text', name='search_query', value=(prev_value ? prev_value : ''))
 			br
-			| Filter By :-  
+			| Filter By :-
 			input(type='radio', name='search_by', value='title' checked)
 			| Title
 			input(type='radio', name='search_by', value='faculty' checked=faculty_search)
@@ -36,18 +38,19 @@ block content
 	table.style3
 			tr.style3
 				th.style3 Project Name
-				th.style3 Complete Description 
+				th.style3 Complete Description
 				th.style3 Details
 			each project in projects
 				tr.style3
-					td.style3 	
+					td.style3
 						p #{project.description}
-					td.style3  
+					td.style3
 						li #{project.longdescription}
-					td.style3 	
+					td.style3
 						a.buttonstyle(href='/project/'+project.id+'/view') View Project
-						a.buttonstyle(href='/project/'+project.id+'/_edit') Edit Project
-											
+						if (project.submitted != 'Yes')
+							a.buttonstyle(href='/project/'+project.id+'/_edit') Edit Project
+
 
 
 

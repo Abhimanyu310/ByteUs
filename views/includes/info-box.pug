@@ -1,11 +1,18 @@
-div.info-box.info-box-success
-	if hasSuccess
+if hasSuccess
+	div.info-box.info-box-success
 		each message in success
 			p #{message}
 
 
-div.info-box.info-box-error
-	if hasErrors
+if hasError
+	div.info-box.info-box-error
+		each err in error
+			p #{err}
+
+
+
+if hasErrors
+	div.info-box.info-box-error
 		each error in errors
 			each message in error
 				p #{message.msg}
