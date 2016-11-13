@@ -7,19 +7,27 @@ var passport = require('passport');
 var csrf = require('csurf');
 
 var UserController = require('../controllers/UserController');
+var Helpers = require('../controllers/helpers/helpers');
+
 
 var csrfProtection = csrf();
 router.use(csrfProtection);
 
 
 // GET Faculty Home
-router.get('/faculty-home', UserController.getFacultyHome);
+router.get('/faculty-home', Helpers.isLoggedInAsFaculty, UserController.getFacultyHome);
 
 // GET Student Home
-router.get('/student-home', UserController.getStudentHome);
+router.get('/student-home', Helpers.isLoggedInAsStudent, UserController.getStudentHome);
 
 // Logout
-router.get('/logout', UserController.getLogout);
+router.get('/logout', Helpers.isLoggedIn, UserController.getLogout);
+
+
+router.use('/', Helpers.notLoggedIn, function (req, res, next) {
+    next();
+});
+
 
 //Local strategy
 router.get('/signup', UserController.getSignUp);
@@ -62,3 +70,6 @@ router.get('/login/fail',
 
 
 module.exports = router;
+
+
+
