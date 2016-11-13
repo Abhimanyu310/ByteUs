@@ -21,12 +21,12 @@ module.exports = function(sequelize, DataTypes) {
         classMethods: {
             associate: function(models) {
                 User.hasMany(models.Project, {
-                    as : 'Project',
+                    as : 'Projects',
                     onDelete: "CASCADE"
                 });
 
                 User.hasMany(models.Student, {
-                    as : 'Student',
+                    as : 'Applications',
                     onDelete: "CASCADE"
                 });
             }

@@ -14,6 +14,27 @@ module.exports = {
 
     getFacultyHome: function(req, res, next) {
         res.render('user/faculty-index', { title: "Faculty Home" });
+
+    },
+
+    getFacultySubmittedProjects: function (req, res, next) {
+        var user = req.user;
+        user.getProjects().then(function (projects) {
+            res.render('user/faculty-index', {
+                title: "Projects",
+                projects: projects
+            });
+        });
+    },
+
+    getStudentSubmittedApplications: function (req, res, next) {
+        var user = req.user;
+        user.getApplications().then(function (applications) {
+            res.render('user/faculty-index', {
+                title: "Projects",
+                applications: applications
+            });
+        });
     },
     
     getSignUp: function(req, res, next) {

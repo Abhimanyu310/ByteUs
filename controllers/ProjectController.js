@@ -258,6 +258,7 @@ function addProjectToDB(req, res, next, areas, action){
                 not_sure: req.body.not_sure,
                 contact: req.body.contact,
                 submitted : action,
+                user_id: req.user.id,
                 Faculty: Faculty
             }, {
                 include: [ {model: models.FacultyInfo, as: 'Faculty'} ]

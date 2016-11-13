@@ -37,32 +37,40 @@ module.exports = {
             student_id = req.body.sid;
 
             resume = req.files.resume;
-            console.log(resume.name);
-            if ((path.extname(resume.name)).toLowerCase() != '.pdf'){
-                res.redirect('/application/form');
+            if (resume){
+                if ((path.extname(resume.name)).toLowerCase() != '.pdf'){
+                    res.redirect('/application/form');
+                }
+
+                resume.mv('uploads/resume-'+student_id+'.pdf', function(err) {
+                    if (err) {
+                        // console.log('error');
+                    }
+                    else {
+                        // console.log('File uploaded!');
+                    }
+                });
             }
 
-            resume.mv('uploads/resume-'+student_id+'.pdf', function(err) {
-                if (err) {
-                    // console.log('error');
-                }
-                else {
-                    // console.log('File uploaded!');
-                }
-            });
+
+
 
             cover_letter = req.files.cover_letter;
-            if ((path.extname(cover_letter.name)).toLowerCase() != '.pdf'){
-                res.redirect('/application/form');
+            if (cover_letter){
+                if ((path.extname(cover_letter.name)).toLowerCase() != '.pdf'){
+                    res.redirect('/application/form');
+                }
+                cover_letter.mv('uploads/cover_letter-'+student_id+'.pdf', function(err) {
+                    if (err) {
+                        // console.log('error');
+                    }
+                    else {
+                        // console.log('File uploaded!');
+                    }
+                });
             }
-            cover_letter.mv('uploads/cover_letter-'+student_id+'.pdf', function(err) {
-                if (err) {
-                    // console.log('error');
-                }
-                else {
-                    // console.log('File uploaded!');
-                }
-            });
+
+
         }
 
         req.checkBody('email', 'Email is invalid').notEmpty().isEmail();
@@ -70,6 +78,7 @@ module.exports = {
         req.checkBody('phone', 'Invalid phone').notEmpty().isInt();
         var errors = req.validationErrors(true);
         if (errors) {
+            console.log(errors);
             req.flash('errors', errors);
             req.flash('form_data', req.body);
             // req.flash('success', "HAHA")
@@ -82,6 +91,7 @@ module.exports = {
                 gender: req.body.gender,
                 hispanic_latino: req.body.origin,
                 race: req.body.race,
+                user_id: req.user.id,
                 Contact: {
                     street_address: req.body.street_address,
                     city: req.body.city,
