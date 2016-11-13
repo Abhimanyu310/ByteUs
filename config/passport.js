@@ -1,14 +1,27 @@
 var passport = require('passport');
 var saml = require('passport-saml');
+var LocalSrategy = require('passport-local').Strategy;
+var models  = require('../models');
 var fs = require('fs');
 
+
 passport.serializeUser(function(user, done) {
-    done(null, user);
+    // console.log('serialize id');
+    // console.log(user.id);
+    done(null, user.id);
 });
 
-passport.deserializeUser(function(user, done) {
-    done(null, user);
+passport.deserializeUser(function(id, done) {
+    // console.log(id);
+    models.User.findOne({
+        where: {id: id}
+    }).then(function (user){
+        // console.log(user);
+        done(null, user);
+    });
 });
+
+
 
 var samlStrategy = new saml.Strategy({
     // URL that goes from the Identity Provider -> Service Provider
@@ -49,3 +62,86 @@ passport.use('saml.login', samlStrategy);
 
 
 exports.samlStrategy = samlStrategy;
+
+
+
+passport.use('local.signup', new LocalSrategy({
+    usernameField: 'email',
+    passwordField: 'password',
+    passReqToCallback: true
+}, function (req, email, password, done) {
+    req.checkBody('email', 'Invalid email').notEmpty().isEmail();
+    req.checkBody('password', 'Invalid password').notEmpty().isLength({min: 6});
+    req.checkBody('type', 'Please select what type of user you are').notEmpty();
+
+
+    var errors = req.validationErrors();
+    if (errors) {
+        var messages = [];
+        errors.forEach(function (error) {
+            messages.push(error.msg);
+        });
+        return done(null, false, req.flash('errors', messages));
+    }
+
+
+    // var errors = req.validationErrors(true);
+    // if (errors) {
+    //     req.flash('errors', errors);
+    //     return done(null, false, req.flash('errors', errors));
+    // }
+
+
+    models.User.findOne({
+        where: {email: email}
+    }).then(function (user){
+        if (user){
+            return done(null, false, {message: 'Email already in use.'});
+        }
+
+        var newUser = models.User.build();
+        newUser.email = email;
+        newUser.password = password;
+        newUser.type = req.body.type;
+
+        newUser.save().then(function (user) {
+            return done(null, user);
+        }).catch(function (error) {
+            return done(error);
+        });
+    }).catch(function (error) {
+        return done(error);
+    });
+
+}));
+
+
+
+passport.use('local.signin', new LocalSrategy({
+    usernameField: 'email',
+    passwordField: 'password',
+    passReqToCallback: true
+}, function (req, email, password, done) {
+    req.checkBody('email', 'Invalid email').notEmpty().isEmail();
+    req.checkBody('password', 'Invalid password').notEmpty();
+
+    var errors = req.validationErrors(true);
+    if (errors) {
+        return done(null, false, req.flash('errors', errors));
+    }
+
+    models.User.findOne({
+        where: {email: email}
+    }).then(function (user){
+        if (!user){
+            return done(null, false, {message: 'No user found.'});
+        }
+        if (!user.validPassword(password)){
+            return done(null, false, {message: 'Wrong password.'});
+        }
+        return done(null, user);
+    }).catch(function (error) {
+        return done(error);
+    });
+
+}));

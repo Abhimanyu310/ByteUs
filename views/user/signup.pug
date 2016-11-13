@@ -1,0 +1,24 @@
+extends ../layouts/master
+
+block title
+    |#{title}
+
+block styles
+    link(rel='stylesheet', href='/stylesheets/signin.css')
+
+block content
+
+    include ../includes/info-box
+
+    header
+        h User Register
+    section
+        form#user-login(method='post', action='/user/signup')
+            input(name='email')
+            input(name='password')
+            input(type='checkbox', name='type', value='Student')
+            | Student
+            input(type='checkbox', name='type', value='Faculty')
+            | Faculty
+            input(type='hidden', name='_csrf', value=csrfToken)
+            input.btn.btn-success(type='submit', name='action', value='Submit')

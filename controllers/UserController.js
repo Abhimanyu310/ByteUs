@@ -16,7 +16,53 @@ module.exports = {
         res.render('user/faculty-index', { title: "Faculty Home" });
     },
     
-    postLogout: function(req, res, next) {
+    getSignUp: function(req, res, next) {
+        var validation_errors = req.flash('errors');
+        console.log(validation_errors);
+        res.render('user/signup', {
+            title: "User Register",
+            csrfToken: req.csrfToken(),
+            errors: validation_errors,
+            hasErrors: validation_errors.length > 0
+        });
+    },
+
+    postSignUp: function(req, res, next) {
+        if (req.session.oldUrl){
+            var oldUrl = req.session.oldUrl;
+            req.session.oldUrl = null;
+            res.redirect(oldUrl);
+        } else{
+            res.redirect('/');
+        }
+    },
+
+    getSignIn: function(req, res, next) {
+        var validation_errors = req.flash('errors');
+        res.render('user/signin', {
+            title: "User Login",
+            csrfToken: req.csrfToken(),
+            errors: validation_errors,
+            hasErrors: validation_errors.length > 0
+        });
+    },
+
+    postSignIn: function(req, res, next) {
+        console.log('printing req.session.passport.user');
+        console.log(req.session.passport.user);
+        console.log('printing req.user');
+        console.log(req.user.id);
+        if (req.session.oldUrl){
+            var oldUrl = req.session.oldUrl;
+            req.session.oldUrl = null;
+            res.redirect(oldUrl);
+        } else{
+            res.redirect('/');
+        }
+    },
+    
+    getLogout: function(req, res, next) {
+        req.logout();
         res.render('user/logout', { title: "Logout" });
     }
 };

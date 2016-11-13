@@ -19,8 +19,27 @@ router.get('/faculty-home', UserController.getFacultyHome);
 router.get('/student-home', UserController.getStudentHome);
 
 // Logout
-router.get('/logout', UserController.postLogout);
+router.get('/logout', UserController.getLogout);
 
+//Local strategy
+router.get('/signup', UserController.getSignUp);
+
+router.post('/signup',passport.authenticate('local.signup', {
+    failureRedirect: '/user/signup',
+    failureFlash: true
+}), UserController.postSignUp);
+
+
+router.get('/signin', UserController.getSignIn);
+
+router.post('/signin', passport.authenticate('local.signin', {
+    failureRedirect: '/user/signin',
+    failureFlash: true
+}), UserController.postSignIn);
+
+
+
+//SAML
 router.get('/login',
     passport.authenticate('saml.login', { failureRedirect: '/login/fail' }),
     function (req, res) {

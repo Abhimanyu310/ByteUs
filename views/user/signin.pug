@@ -1,0 +1,18 @@
+extends ../layouts/master
+
+block title
+    |#{title}
+
+block styles
+    link(rel='stylesheet', href='/stylesheets/signin.css')
+
+block content
+    header
+        h User Login
+    section
+        form#user-login(method='post', action='/user/signin')
+            input(name='email')
+            input(name='password')
+            input(type='hidden', name='_csrf', value=csrfToken)
+            input.btn.btn-success(type='submit', name='action', value='Submit')
+

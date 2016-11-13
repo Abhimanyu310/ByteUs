@@ -79,10 +79,19 @@ app.use(function(req, res, next) {
 });
 
 
+app.use(function (req, res, next) {
+  res.locals.login = req.isAuthenticated();
+  res.locals.user = req.user;
+  next();
+});
+
+
 app.use('/user', users);
 app.use('/application', applications);
 app.use('/project', projects);
 app.use('/', routes);
+
+
 
 
 // catch 404 and forward to error handler

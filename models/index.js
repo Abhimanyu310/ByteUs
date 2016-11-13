@@ -5,6 +5,7 @@ var path      = require('path');
 var Sequelize = require('sequelize');
 var dotenv    = require('dotenv');
 var basename  = path.basename(module.filename);
+var bcrypt = require('bcrypt-nodejs');
 
 dotenv.load();
 
@@ -36,6 +37,8 @@ Object.keys(db).forEach(function(modelName) {
     db[modelName].associate(db);
   }
 });
+
+
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
