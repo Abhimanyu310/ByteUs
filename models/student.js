@@ -6,6 +6,7 @@ module.exports = function(sequelize, DataTypes) {
         gender: DataTypes.STRING,
         hispanic_latino: DataTypes.STRING,
         race: DataTypes.STRING,
+        submitted: {type: DataTypes.STRING, defaultValue: 'No'}
 
     }, {
         paranoid: true,

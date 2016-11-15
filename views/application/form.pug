@@ -22,41 +22,41 @@ block content
 			form
 				fieldset#StudentInfo
 					legend Student Demographics
-					label(for='form_name') Name: *
+					label(for='form_name', class=(hasErrors ? (errors[0].name ? 'has-error' : undefined) : undefined)) Name: *
 					table.style
 						tr
 							td
-								input#form_name.form-control(type='text', name='name', placeholder=' First Last', required='required', data-error='Student name is required.')
+								input#form_name.form-control(type='text', name='name', placeholder=' First Last', data-error='Student name is required.')
 								.help-block.with-errors
-					label(for='ID') Student Identification Number: *
+					label(for='ID', class=(hasErrors ? (errors[0].sid ? 'has-error' : undefined) : undefined)) Student Identification Number: *
 					table.style
 						tr
 							td
-								input#id.form-control(name='sid', type='tel', placeholder=' #########', pattern='^[0-9]{9}', maxlength='9', size='10', data-error='Please, provide your student identification number.', required='required')
-					label(for='Gen') Gender *
+								input#id.form-control(name='sid', type='tel', placeholder=' #########', pattern='^[0-9]{9}', maxlength='9', size='10', data-error='Please, provide your student identification number.')
+					label(for='Gen', class=(hasErrors ? (errors[0].gender ? 'has-error' : undefined) : undefined)) Gender *
 					table.style1
 						tr
 							td
-								input#Gen(type='radio', name='gender', required='required', value='Female')
+								input#Gen(type='radio', name='gender', value='Female')
 								|  Male
 							td
-								input#Gen(type='radio', name='gender', required='required', value='Male')
+								input#Gen(type='radio', name='gender', value='Male')
 								|  Female
-					label(for='Origin') Are you of Hispanic or Latino origin? *
+					label(for='Origin', class=(hasErrors ? (errors[0].origin ? 'has-error' : undefined) : undefined)) Are you of Hispanic or Latino origin? *
 					table.style2
 						tr
 							td
-								input#Origin(type='radio', name='origin', required='required', value='Yes')
+								input#Origin(type='radio', name='origin', value='Yes')
 								|  Yes
 						tr
 							td
-								input#Orgin(type='radio', name='origin', required='required', value='No')
+								input#Orgin(type='radio', name='origin', value='No')
 								|  No
 						tr
 							td
-								input#Origin(type='radio', name='origin', required='required', value='Do not wish to answer')
+								input#Origin(type='radio', name='origin', value='Do not wish to answer')
 								|  I do not wish to provide this information
-					label(for='race')
+					label(for='race', class=(hasErrors ? (errors[0].race ? 'has-error' : undefined) : undefined))
 						|	Please select your race. *
 						br
 						|	(Check all that apply)
@@ -93,21 +93,21 @@ block content
 						br
 						br
 					legend Boulder Contact Information
-					label.add(for='form_add') Street Address: *
+					label.add(for='form_add', class=(hasErrors ? (errors[0].street_address ? 'has-error' : undefined) : undefined)) Street Address: *
 					table.style
 						tr
 
 							td
-								input#add.form-control(type='text', name='street_address', placeholder=' Street Address', required='required', data-error='Street address is required.')
+								input#add.form-control(type='text', name='street_address', placeholder=' Street Address', data-error='Street address is required.')
 								.help-block.with-errors
-					label.add(for='city') City: *
+					label.add(for='city', class=(hasErrors ? (errors[0].city ? 'has-error' : undefined) : undefined)) City: *
 					table.style
 						tr
 
 							td
-								input#city.control(type='text', name='city', placeholder=' City', required='required', data-error='City is required.')
+								input#city.control(type='text', name='city', placeholder=' City', data-error='City is required.')
 								.help-block.with-errors
-					label.add(for='state') State: *
+					label.add(for='state', class=(hasErrors ? (errors[0].state ? 'has-error' : undefined) : undefined)) State: *
 					select#state(name='state', required='required')
 						option(value='AL') Alabama
 						option(value='AK') Alaska
@@ -161,41 +161,41 @@ block content
 						option(value='WI') Wisconsin
 						option(value='WY') Wyoming
 					br
-					label.add(for='zip')  Postal Code: *
+					label.add(for='zip', class=(hasErrors ? (errors[0].zip ? 'has-error' : undefined) : undefined))  Postal Code: *
 					table.style
 						tr
 							td
-								input#form_Zip.required(name='zip', type='tel', placeholder=' #####',required='required', maxlength='5', size='6')
+								input#form_Zip.required(name='zip', type='tel', placeholder=' #####', maxlength='5', size='6')
 								.help-block.with-errors
-					label.add(for='form_phone')  Phone Number: *
+					label.add(for='form_phone', class=(hasErrors ? (errors[0].phone ? 'has-error' : undefined) : undefined))  Phone Number: *
 					table.style
 						tr
 							td
-								input#form_primPhone.required(name='phone', type='tel', placeholder=' (xxx) xxx-xxxx',required='required', maxlength='15', size='15')
+								input#form_primPhone.required(name='phone', type='tel', placeholder=' (xxx) xxx-xxxx', maxlength='15', size='15')
 								.help-block.with-errors
-					label.add(for='form_email')  CU Email Address: *
+					label.add(for='form_email', class=(hasErrors ? (errors[0].email ? 'has-error' : undefined) : undefined))  CU Email Address: *
 					table.style
 						tr
 							td
-								input#form_email.form-control(type='email', name='email', placeholder=' First.Last@Colorado.edu', required='required', data-error='Valid email is required.')
+								input#form_email.form-control(type='email', name='email', placeholder=' First.Last@Colorado.edu', data-error='Valid email is required.')
 								.help-block.with-errors
 					legend Summer Contact Information
 					h5 *This is only required if this information is different from your Boulder Contact Information.
-					label.add(for='secAdd') Street Address:
+					label.add(for='secAdd', class=(hasErrors ? (errors[0].summer_street_address ? 'has-error' : undefined) : undefined)) Street Address:
 					table.style
 						tr
 
 							td
 								input#form-control(type='text', name='summer_street_address', placeholder=' Street Address')
 								.help-block.with-errors
-					label.add(for='secCity') City:
+					label.add(for='secCity', class=(hasErrors ? (errors[0].summer_city ? 'has-error' : undefined) : undefined)) City:
 					table.style
 						tr
 
 							td
 								input#secCity.control(type='text', name='summer_city', placeholder=' City')
 								.help-block.with-errors
-					label.add(for='state') State: 
+					label.add(for='state', class=(hasErrors ? (errors[0].summer_state ? 'has-error' : undefined) : undefined)) State:
 					select#state(name='summer_state')
 						option(value='AL') Alabama
 						option(value='AK') Alaska
@@ -249,19 +249,19 @@ block content
 						option(value='WI') Wisconsin
 						option(value='WY') Wyoming
 					br
-					label.add(for='summer_zip') Postal Code
+					label.add(for='summer_zip', class=(hasErrors ? (errors[0].summer_zip ? 'has-error' : undefined) : undefined)) Postal Code
 					table.style
 						tr
 							td
 								input#form_secZip.required(name='summer_zip', type='tel', placeholder=' #####', maxlength='5', size='6')
 								.help-block.with-errors
-					label.add(for='secPhone') Phone Number: 
+					label.add(for='secPhone', class=(hasErrors ? (errors[0].summer_phone ? 'has-error' : undefined) : undefined)) Phone Number:
 					table.style
 						tr
 							td
 								input#form_secPhone.required(name='summer_phone', type='tel', placeholder=' (xxx) xxx-xxxx', maxlength='15', size='15')
 								.help-block.with-errors
-					label.add(for='form_secEmail') Email Address: 
+					label.add(for='form_secEmail', class=(hasErrors ? (errors[0].summer_email ? 'has-error' : undefined) : undefined)) Email Address:
 					table.style
 						tr
 							td
@@ -270,8 +270,8 @@ block content
 					br
 					
 					legend Academic Information
-					label(for='primary_major') Primary Major: *
-					select.major#primary-major(name='primary_major', required='required')
+					label(for='primary_major', class=(hasErrors ? (errors[0].primary_major ? 'has-error' : undefined) : undefined)) Primary Major: *
+					select.major#primary-major(name='primary_major')
 						option(value='', disabled='disabled', selected='selected') Please Select
 						option(value='AEE') Aerospace Engineering
 						option(value='AM') Applied Mathematics
@@ -288,7 +288,7 @@ block content
 						option(value='ME') Mechanical Engineering
 						option(value='TAM') Technology, Art, and Media 
 					br
-					label(for='secondary-major') Secondary Major: 
+					label(for='secondary-major', class=(hasErrors ? (errors[0].secondary_major ? 'has-error' : undefined) : undefined)) Secondary Major:
 					select.major#secondary-major(name='secondary_major')
 						option(value='', selected='selected') I do not have a secondary major.
 						option(value='AEE') Aerospace Engineering
@@ -306,13 +306,13 @@ block content
 						option(value='ME') Mechanical Engineering
 						option(value='TAM') Technology, Art, and Media
 					br
-					label(for='GPA') GPA *
+					label(for='GPA', class=(hasErrors ? (errors[0].gpa ? 'has-error' : undefined) : undefined)) GPA *
 					table.style4
 						tr
 							td
-								input#gpa(name='gpa', type='tel', placeholder=' #.###', maxlength='5', size='5', data-error='Please, provide your GPA.', required='required')
-					label(for='level') Next Fall's Level in School: * 
-					select#level(name='next_fall_level', required='required')
+								input#gpa(name='gpa', type='tel', placeholder=' #.###', maxlength='5', size='5', data-error='Please, provide your GPA.')
+					label(for='level', class=(hasErrors ? (errors[0].next_fall_level ? 'has-error' : undefined) : undefined)) Next Fall's Level in School: *
+					select#level(name='next_fall_level')
 						option(value='', disabled='disabled', selected='selected') Please Select
 						option(value='Freshman') Freshman 
 						option(value='Sophomore') Sophomore 
@@ -320,13 +320,13 @@ block content
 						option(value='Senior') Senior
 						option(value='5th Year Senior') 5th Year Senior
 						
-					label(for='graduation') Anticipated Graduation Date: * 
-					select#graduation(name='grad_month',required='required')
+					label(for='graduation', class=(hasErrors ? ((errors[0].grad_month || errors[0].grad_year) ? 'has-error' : undefined) : undefined)) Anticipated Graduation Date: *
+					select#graduation(name='grad_month')
 						option(value='', disabled='disabled', selected='selected') Month
 						option(value='May') May 
 						option(value='August') August 
 						option(value='December') December
-					select#graduation(name='grad_year',required='required')
+					select#graduation(name='grad_year')
 						option(value='', disabled='disabled', selected='selected') Year
 						option(value='2017') 2017 
 						option(value='2018') 2018 
@@ -335,29 +335,29 @@ block content
 						option(value='2021') 2021
 						option(value='2022') 2022
 						option(value='2023') 2023
-					label(for='experience') Do you have previous research experience? *
+					label(for='experience', class=(hasErrors ? (errors[0].prev_research_exp ? 'has-error' : undefined) : undefined)) Do you have previous research experience? *
 					table.style5
 						tr
 							td
-								input#experience(type='radio', name='prev_research_exp', required='required', value='Yes')
+								input#experience(type='radio', name='prev_research_exp', value='Yes')
 								|  Yes
 							td
-								input#experience(type='radio', name='prev_research_exp', required='required', value='No')
+								input#experience(type='radio', name='prev_research_exp', value='No')
 								|  No (This does not effect your eligibility.)
 					legend Apprenticeship Information
-					label(for='before') Have you applied for a Discover Learning Apprenticeship before? *
+					label(for='before', class=(hasErrors ? (errors[0].prev_application ? 'has-error' : undefined) : undefined)) Have you applied for a Discover Learning Apprenticeship before? *
 					table.style
 						tr
 							td
-								input#before(type='radio', name='prev_application', required='required', value='Yes')
+								input#before(type='radio', name='prev_application', value='Yes')
 								|  Yes
 							td
-								input#before(type='radio', name='prev_application', required='required', value='No')
+								input#before(type='radio', name='prev_application', value='No')
 								|  No 
 							td
-								input#before(type='radio', name='prev_application', required='required', value='Not Sure')
+								input#before(type='radio', name='prev_application', value='Not Sure')
 								|  Not Sure
-					label(for='employment') Other fall employment plans:
+					label(for='employment', class=(hasErrors ? (errors[0].fall_employment_plans ? 'has-error' : undefined) : undefined)) Other fall employment plans:
 					table.style
 						tr
 							td
@@ -368,11 +368,11 @@ block content
 								|  characters remaining
 					br
 					h5 *Please make sure that you selected a major before proceeding. 
-					label.aca(for='selection1') Please select up to five projects you would like to be considered for.
+					label.aca(for='selection1', class=(hasErrors ? (errors[0].most_interest ? 'has-error' : undefined) : undefined)) Please select up to five projects you would like to be considered for.
 					table.style6
 						tr
 							td
-								select.level#level(name='most_interest', required='required')
+								select.level#level(name='most_interest')
 									option(value='', disabled='disabled', selected='selected') Most Interest 
 									each project in projects
 										option(value=project.id) #{project.description}
@@ -405,39 +405,39 @@ block content
 									each project in projects
 										option(value=project.id) #{project.description}
 					br
-					label.aca(for='background') Have you had a background check at CU? *
+					label.aca(for='background', class=(hasErrors ? (errors[0].background_check ? 'has-error' : undefined) : undefined)) Have you had a background check at CU? *
 					table.style
 						tr
 							td
-								input#background(type='radio', name='background_check', required='required', value='Yes')
+								input#background(type='radio', name='background_check', value='Yes')
 								|  Yes
 							td
-								input#background(type='radio', name='background_check', required='required', value='No')
+								input#background(type='radio', name='background_check', value='No')
 								|  No 
 							td
-								input#background(type='radio', name='background_check', required='required', value='Not Sure')
+								input#background(type='radio', name='background_check', value='Not Sure')
 								|  Not Sure
 					br
 					br
-					label.aca(for='discrimination') Have you had Discrimination & Harassment Awareness training at CU? *
+					label.aca(for='discrimination', class=(hasErrors ? (errors[0].awareness_training ? 'has-error' : undefined) : undefined)) Have you had Discrimination & Harassment Awareness training at CU? *
 					table.style
 						tr
 							td
-								input#discrimination(type='radio', name='awareness_training', required='required', value='Yes')
+								input#discrimination(type='radio', name='awareness_training', value='Yes')
 								|  Yes
 							td
-								input#discrimination(type='radio', name='awareness_training', required='required', value='No')
+								input#discrimination(type='radio', name='awareness_training', value='No')
 								|  No 
 							td
-								input#discrimination(type='radio', name='awareness_training', required='required', value='Not Sure')
+								input#discrimination(type='radio', name='awareness_training', value='Not Sure')
 								|  Not Sure
 					br
 					br
-					label.aca(for='ssn') Please enter the last four digits of your Social Security Number so we can access your background check information.
+					label.aca(for='ssn', class=(hasErrors ? (errors[0].ssn ? 'has-error' : undefined) : undefined)) Please enter the last four digits of your Social Security Number so we can access your background check information.
 					table.style
 						tr
 							td
-								input#id.form-control(name='ssn', type='tel', placeholder=' ####', pattern='^[0-9]{4}', maxlength='4', size='5', data-error='Please, provide your SSN.', required='required')
+								input#id.form-control(name='ssn', type='tel', placeholder=' ####', pattern='^[0-9]{4}', maxlength='4', size='5', data-error='Please, provide your SSN.')
 					
 					legend Skills, Resume, and Cover Letter: 
 					h4 List three skills or qualifications that you feel make you a great candidate for the positions you selected:
@@ -463,14 +463,15 @@ block content
 					h4 To complete the application, you must submit a resume and a cover letter. 
 					h4 Please upload in PDF format.
 					br
-					label.file(for='resume') Resume: 
-					input#resume(type='file', name='resume' accept="application/pdf" required)
+					label.file(for='resume', class=(hasErrors ? (errors[0].resume ? 'has-error' : undefined) : undefined)) Resume:
+					input#resume(type='file', name='resume' accept="application/pdf")
 					br
-					label.file(for='cover_letter') Cover Letter:
-					input#cover-letter(type='file', name='cover_letter' accept="application/pdf" required)
+					label.file(for='cover_letter', class=(hasErrors ? (errors[0].cover_letter ? 'has-error' : undefined) : undefined)) Cover Letter:
+					input#cover-letter(type='file', name='cover_letter' accept="application/pdf")
 					br
 					br
 					br
-					input.btn.btn-success(type='save', value='Save')
+					input(type='hidden', name='id', value=(application ? application.id : ''))
+					input.btn.btn-success(type='submit', name='action', value='Save')
 					input.btn.btn-success(type='reset', value='Reset')
-					input.btn.btn-success(type='submit', value='Submit')
+					input.btn.btn-success(type='submit', name='action', value='Submit')

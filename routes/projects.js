@@ -31,7 +31,7 @@ router.get('/list', ProjectController.getProjectList);
 router.get('/:id/view', ProjectController.getProjectDetail);
 
 // GET Project submission success page
-router.get('/success', Helpers.isLoggedInAsFaculty, ProjectController.getProjectSuccess);
+router.get('/success', ProjectController.getProjectSuccess);
 
 // Post Project search
 router.post('/list', ProjectController.postSearchProject);

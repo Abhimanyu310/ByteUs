@@ -52,7 +52,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(fileUpload());
 
-app.use(validator());
+// app.use(validator());
+
+app.use(validator({
+  customValidators: {
+    isPDF: function(value, filename) {
+      var extension = (path.extname(filename)).toLowerCase();
+      return extension == '.pdf';
+    }
+  }
+}));
+
 app.use(cookieParser());
 app.use(session({
     secret: 'mysupersecret',

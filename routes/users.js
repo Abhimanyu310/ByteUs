@@ -15,10 +15,10 @@ router.use(csrfProtection);
 
 
 // GET Faculty Home
-router.get('/faculty-home', Helpers.isLoggedInAsFaculty, UserController.getFacultyHome);
+router.get('/faculty-home', UserController.getFacultyHome);
 
 // GET Student Home
-router.get('/student-home', Helpers.isLoggedInAsStudent, UserController.getStudentHome);
+router.get('/student-home', UserController.getStudentHome);
 
 // Logout
 router.get('/logout', Helpers.isLoggedIn, UserController.getLogout);
