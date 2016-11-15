@@ -109,7 +109,7 @@ block content
 								.help-block.with-errors
 					input(type='hidden', id='select_state', value=((formData ? formData.state : '') || (application ? application.Contact.state : '')))
 					label.add(for='state', class=(hasErrors ? (errors[0].state ? 'has-error' : undefined) : undefined)) State: *
-					select#state(name='state' disabled)
+					select#state(name='state')
 						option(value='CO') Colorado
 
 					br
@@ -129,7 +129,7 @@ block content
 					table.style
 						tr
 							td
-								input#form_email.form-control(type='phone', name='email', placeholder=' First.Last@Colorado.edu', data-error='Valid email is required.', value=((formData ? formData.phone : '') || (application ? application.Contact.phone : '')))
+								input#form_email.form-control(type='phone', name='email', placeholder=' First.Last@Colorado.edu', data-error='Valid email is required.', value=((formData ? formData.email : '') || (application ? application.Contact.email : '')))
 								.help-block.with-errors
 					legend Summer Contact Information
 					h5 *This is only required if this information is different from your Boulder Contact Information.

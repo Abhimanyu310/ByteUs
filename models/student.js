@@ -4,7 +4,7 @@ module.exports = function(sequelize, DataTypes) {
         name: DataTypes.STRING,
         sid: DataTypes.STRING,
         gender: DataTypes.STRING,
-        hispanic_latino: DataTypes.STRING,
+        origin: DataTypes.STRING,
         race: DataTypes.STRING,
         submitted: {type: DataTypes.STRING, defaultValue: 'No'}
 
