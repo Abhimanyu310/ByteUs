@@ -5,7 +5,6 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var dotenv = require('dotenv');
-// var multer = require('multer');
 var fileUpload = require('express-fileupload');
 
 
@@ -13,20 +12,6 @@ var session = require('express-session');
 var flash = require('connect-flash');
 var validator = require('express-validator');
 var passport = require('passport');
-
-
-// var SequelStore = require('sequelstore-connect')(session);
-// var SequelizeStore = require('connect-session-sequelize')(session.Store);
-// const SequelizeConnection = require ('./models').sequelize;
-
-// var Sequelize = require('sequelize');
-// var sequelize = new Sequelize(
-//     "byteus",
-//     "root",
-//     "silencer", {
-//         "dialect": "mysql",
-//         // "storage": "./session.mysql"
-//     });
 
 
 var routes = require('./routes/index');

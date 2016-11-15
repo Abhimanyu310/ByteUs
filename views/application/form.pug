@@ -26,35 +26,35 @@ block content
 					table.style
 						tr
 							td
-								input#form_name.form-control(type='text', name='name', placeholder=' First Last', data-error='Student name is required.')
+								input#form_name.form-control(type='text', name='name', placeholder=' First Last', data-error='Student name is required.', value=((formData ? formData.name : '') || (application ? application.name : '')))
 								.help-block.with-errors
 					label(for='ID', class=(hasErrors ? (errors[0].sid ? 'has-error' : undefined) : undefined)) Student Identification Number: *
 					table.style
 						tr
 							td
-								input#id.form-control(name='sid', type='tel', placeholder=' #########', pattern='^[0-9]{9}', maxlength='9', size='10', data-error='Please, provide your student identification number.')
+								input#id.form-control(name='sid', type='tel', placeholder=' #########', pattern='^[0-9]{9}', maxlength='9', size='10', data-error='Please, provide your student identification number.', value=((formData ? formData.sid : '') || (application ? application.sid : '')))
 					label(for='Gen', class=(hasErrors ? (errors[0].gender ? 'has-error' : undefined) : undefined)) Gender *
 					table.style1
 						tr
 							td
-								input#Gen(type='radio', name='gender', value='Female')
+								input#Gen(type='radio', name='gender', value='Female' checked=((formData ? (formData.gender == 'Female' ? true : false) : false) || (application ? (application.gender == 'Female' ? true : false) : false)))
 								|  Male
 							td
-								input#Gen(type='radio', name='gender', value='Male')
+								input#Gen(type='radio', name='gender', value='Male' checked=((formData ? (formData.gender == 'Male' ? true : false) : false) || (application ? (application.gender == 'Male' ? true : false) : false)))
 								|  Female
 					label(for='Origin', class=(hasErrors ? (errors[0].origin ? 'has-error' : undefined) : undefined)) Are you of Hispanic or Latino origin? *
 					table.style2
 						tr
 							td
-								input#Origin(type='radio', name='origin', value='Yes')
+								input#Origin(type='radio', name='origin', value='Yes' checked=((formData ? (formData.origin == 'Yes' ? true : false) : false) || (application ? (application.origin == 'Yes' ? true : false) : false)))
 								|  Yes
 						tr
 							td
-								input#Orgin(type='radio', name='origin', value='No')
+								input#Orgin(type='radio', name='origin', value='No' checked=((formData ? (formData.origin == 'No' ? true : false) : false) || (application ? (application.origin == 'No' ? true : false) : false)))
 								|  No
 						tr
 							td
-								input#Origin(type='radio', name='origin', value='Do not wish to answer')
+								input#Origin(type='radio', name='origin', value='Do not wish to answer' checked=((formData ? (formData.origin == 'Do not wish to answer' ? true : false) : false) || (application ? (application.origin == 'Do not wish to answer' ? true : false) : false)))
 								|  I do not wish to provide this information
 					label(for='race', class=(hasErrors ? (errors[0].race ? 'has-error' : undefined) : undefined))
 						|	Please select your race. *
@@ -98,86 +98,38 @@ block content
 						tr
 
 							td
-								input#add.form-control(type='text', name='street_address', placeholder=' Street Address', data-error='Street address is required.')
+								input#add.form-control(type='text', name='street_address', placeholder=' Street Address', data-error='Street address is required.', value=((formData ? formData.street_address : '') || (application ? application.Contact.street_address : '')))
 								.help-block.with-errors
 					label.add(for='city', class=(hasErrors ? (errors[0].city ? 'has-error' : undefined) : undefined)) City: *
 					table.style
 						tr
 
 							td
-								input#city.control(type='text', name='city', placeholder=' City', data-error='City is required.')
+								input#city.control(type='text', name='city', placeholder=' City', data-error='City is required.', value=((formData ? formData.city : '') || (application ? application.Contact.city : '')))
 								.help-block.with-errors
+					input(type='hidden', id='select_state', value=((formData ? formData.state : '') || (application ? application.Contact.state : '')))
 					label.add(for='state', class=(hasErrors ? (errors[0].state ? 'has-error' : undefined) : undefined)) State: *
-					select#state(name='state', required='required')
-						option(value='AL') Alabama
-						option(value='AK') Alaska
-						option(value='AZ') Arizona
-						option(value='AR') Arkansas
-						option(value='CA') California
-						option(value='CO', selected='selected') Colorado
-						option(value='CT') Connecticut
-						option(value='DE') Delaware
-						option(value='DC') District Of Columbia
-						option(value='FL') Florida
-						option(value='GA') Georgia
-						option(value='HI') Hawaii
-						option(value='ID') Idaho
-						option(value='IL') Illinois
-						option(value='IN') Indiana
-						option(value='IA') Iowa
-						option(value='KS') Kansas
-						option(value='KY') Kentucky
-						option(value='LA') Louisiana
-						option(value='ME') Maine
-						option(value='MD') Maryland
-						option(value='MA') Massachusetts
-						option(value='MI') Michigan
-						option(value='MN') Minnesota
-						option(value='MS') Mississippi
-						option(value='MO') Missouri
-						option(value='MT') Montana
-						option(value='NE') Nebraska
-						option(value='NV') Nevada
-						option(value='NH') New Hampshire
-						option(value='NJ') New Jersey
-						option(value='NM') New Mexico
-						option(value='NY') New York
-						option(value='NC') North Carolina
-						option(value='ND') North Dakota
-						option(value='OH') Ohio
-						option(value='OK') Oklahoma
-						option(value='OR') Oregon
-						option(value='PA') Pennsylvania
-						option(value='RI') Rhode Island
-						option(value='SC') South Carolina
-						option(value='SD') South Dakota
-						option(value='TN') Tennessee
-						option(value='TX') Texas
-						option(value='UT') Utah
-						option(value='VT') Vermont
-						option(value='VA') Virginia
-						option(value='WA') Washington
-						option(value='WV') West Virginia
-						option(value='WI') Wisconsin
-						option(value='WY') Wyoming
+					select#state(name='state' disabled)
+						option(value='CO') Colorado
+
 					br
 					label.add(for='zip', class=(hasErrors ? (errors[0].zip ? 'has-error' : undefined) : undefined))  Postal Code: *
 					table.style
 						tr
 							td
-								input#form_Zip.required(name='zip', type='tel', placeholder=' #####', maxlength='5', size='6')
+								input#form_Zip.required(name='zip', type='tel', placeholder=' #####', maxlength='5', size='6', value=((formData ? formData.zip : '') || (application ? application.Contact.zip : '')))
 								.help-block.with-errors
 					label.add(for='form_phone', class=(hasErrors ? (errors[0].phone ? 'has-error' : undefined) : undefined))  Phone Number: *
 					table.style
 						tr
 							td
-								input#form_primPhone.required(name='phone', type='tel', placeholder=' (xxx) xxx-xxxx', maxlength='15', size='15')
+								input#form_primPhone.required(name='phone', type='tel', placeholder=' (xxx) xxx-xxxx', maxlength='15', size='15', value=((formData ? formData.phone : '') || (application ? application.Contact.phone : '')))
 								.help-block.with-errors
 					label.add(for='form_email', class=(hasErrors ? (errors[0].email ? 'has-error' : undefined) : undefined))  CU Email Address: *
 					table.style
 						tr
 							td
-								input#form_email.form-control(type='email', name='email', placeholder=' First.Last@Colorado.edu', data-error='Valid email is required.')
+								input#form_email.form-control(type='phone', name='email', placeholder=' First.Last@Colorado.edu', data-error='Valid email is required.', value=((formData ? formData.phone : '') || (application ? application.Contact.phone : '')))
 								.help-block.with-errors
 					legend Summer Contact Information
 					h5 *This is only required if this information is different from your Boulder Contact Information.
@@ -186,23 +138,25 @@ block content
 						tr
 
 							td
-								input#form-control(type='text', name='summer_street_address', placeholder=' Street Address')
+								input#form-control(type='text', name='summer_street_address', placeholder=' Street Address', value=((formData ? formData.summer_street_address : '') || (application ? application.Contact.summer_street_address : '')))
 								.help-block.with-errors
 					label.add(for='secCity', class=(hasErrors ? (errors[0].summer_city ? 'has-error' : undefined) : undefined)) City:
 					table.style
 						tr
 
 							td
-								input#secCity.control(type='text', name='summer_city', placeholder=' City')
+								input#secCity.control(type='text', name='summer_city', placeholder=' City', value=((formData ? formData.summer_city : '') || (application ? application.Contact.summer_city : '')))
 								.help-block.with-errors
+					input(type='hidden', id='select_summer_state', value=((formData ? formData.summer_state : '') || (application ? application.Contact.summer_state : '')))
 					label.add(for='state', class=(hasErrors ? (errors[0].summer_state ? 'has-error' : undefined) : undefined)) State:
-					select#state(name='summer_state')
+					select#summer_state(name='summer_state')
+						option(value='' selected disabled) Please Select
 						option(value='AL') Alabama
 						option(value='AK') Alaska
 						option(value='AZ') Arizona
 						option(value='AR') Arkansas
 						option(value='CA') California
-						option(value='CO', selected='selected') Colorado
+						option(value='CO') Colorado
 						option(value='CT') Connecticut
 						option(value='DE') Delaware
 						option(value='DC') District Of Columbia
@@ -253,66 +207,69 @@ block content
 					table.style
 						tr
 							td
-								input#form_secZip.required(name='summer_zip', type='tel', placeholder=' #####', maxlength='5', size='6')
+								input#form_secZip.required(name='summer_zip', type='tel', placeholder=' #####', maxlength='5', size='6', value=((formData ? formData.summer_zip : '') || (application ? application.Contact.summer_zip : '')))
 								.help-block.with-errors
 					label.add(for='secPhone', class=(hasErrors ? (errors[0].summer_phone ? 'has-error' : undefined) : undefined)) Phone Number:
 					table.style
 						tr
 							td
-								input#form_secPhone.required(name='summer_phone', type='tel', placeholder=' (xxx) xxx-xxxx', maxlength='15', size='15')
+								input#form_secPhone.required(name='summer_phone', type='tel', placeholder=' (xxx) xxx-xxxx', maxlength='15', size='15', value=((formData ? formData.summer_phone : '') || (application ? application.Contact.summer_phone : '')))
 								.help-block.with-errors
 					label.add(for='form_secEmail', class=(hasErrors ? (errors[0].summer_email ? 'has-error' : undefined) : undefined)) Email Address:
 					table.style
 						tr
 							td
-								input#secEmail.form-control(type='email', name='summer_email', placeholder=' First.Last@Colorado.edu')
+								input#secEmail.form-control(type='email', name='summer_email', placeholder=' First.Last@Colorado.edu', value=((formData ? formData.summer_email : '') || (application ? application.Contact.summer_email : '')))
 								.help-block.with-errors
 					br
 					
 					legend Academic Information
+					input(type='hidden', id='select_primary_major', value=((formData ? formData.primary_major : '') || (application ? application.Academics.primary_major : '')))
 					label(for='primary_major', class=(hasErrors ? (errors[0].primary_major ? 'has-error' : undefined) : undefined)) Primary Major: *
-					select.major#primary-major(name='primary_major')
+					select.major#primary_major(name='primary_major')
 						option(value='', disabled='disabled', selected='selected') Please Select
-						option(value='AEE') Aerospace Engineering
-						option(value='AM') Applied Mathematics
-						option(value='ARE') Architectural Engineering
-						option(value='CE') Chemical Engineering
-						option(value='C&BE') Chemical & Biological Engineering
-						option(value='CVE') Civil Engineering
-						option(value='CS') Computer Science
-						option(value='EE') Electrical Engineering
-						option(value='E&CE') Electrical & Computer Engineering
-						option(value='PHY') Engineering Physics
-						option(value='EE') Environmental Engineering
-						option(value='EP') Engineering Plus
-						option(value='ME') Mechanical Engineering
-						option(value='TAM') Technology, Art, and Media 
+						option(value='Aerospace Engineering') Aerospace Engineering
+						option(value='Applied Mathematics') Applied Mathematics
+						option(value='Architectural Engineering') Architectural Engineering
+						option(value='Chemical Engineering') Chemical Engineering
+						option(value='Chemical & Biological Engineering') Chemical & Biological Engineering
+						option(value='Civil Engineering') Civil Engineering
+						option(value='Computer Science') Computer Science
+						option(value='Electrical Engineering') Electrical Engineering
+						option(value='Electrical & Computer Engineering') Electrical & Computer Engineering
+						option(value='Engineering Physics') Engineering Physics
+						option(value='Environmental Engineering') Environmental Engineering
+						option(value='Engineering Plus') Engineering Plus
+						option(value='Mechanical Engineering') Mechanical Engineering
+						option(value='Technology, Art, and Media') Technology, Art, and Media
 					br
+					input(type='hidden', id='select_secondary_major', value=((formData ? formData.secondary_major : '') || (application ? application.Academics.secondary_major : '')))
 					label(for='secondary-major', class=(hasErrors ? (errors[0].secondary_major ? 'has-error' : undefined) : undefined)) Secondary Major:
-					select.major#secondary-major(name='secondary_major')
+					select.major#secondary_major(name='secondary_major')
 						option(value='', selected='selected') I do not have a secondary major.
-						option(value='AEE') Aerospace Engineering
-						option(value='AM') Applied Mathematics
-						option(value='ARE') Architectural Engineering
-						option(value='CE') Chemical Engineering
-						option(value='C&BE') Chemical & Biological Engineering
-						option(value='CVE') Civil Engineering
-						option(value='CS') Computer Science
-						option(value='EE') Electrical Engineering
-						option(value='E&CE') Electrical & Computer Engineering
-						option(value='PHY') Engineering Physics
-						option(value='EE') Environmental Engineering
-						option(value='EP') Engineering Plus
-						option(value='ME') Mechanical Engineering
-						option(value='TAM') Technology, Art, and Media
+						option(value='Aerospace Engineering') Aerospace Engineering
+						option(value='Applied Mathematics') Applied Mathematics
+						option(value='Architectural Engineering') Architectural Engineering
+						option(value='Chemical Engineering') Chemical Engineering
+						option(value='Chemical & Biological Engineering') Chemical & Biological Engineering
+						option(value='Civil Engineering') Civil Engineering
+						option(value='Computer Science') Computer Science
+						option(value='Electrical Engineering') Electrical Engineering
+						option(value='Electrical & Computer Engineering') Electrical & Computer Engineering
+						option(value='Engineering Physics') Engineering Physics
+						option(value='Environmental Engineering') Environmental Engineering
+						option(value='Engineering Plus') Engineering Plus
+						option(value='Mechanical Engineering') Mechanical Engineering
+						option(value='Technology, Art, and Media') Technology, Art, and Media
 					br
 					label(for='GPA', class=(hasErrors ? (errors[0].gpa ? 'has-error' : undefined) : undefined)) GPA *
 					table.style4
 						tr
 							td
-								input#gpa(name='gpa', type='tel', placeholder=' #.###', maxlength='5', size='5', data-error='Please, provide your GPA.')
+								input#gpa(name='gpa', type='tel', placeholder=' #.###', maxlength='5', size='5', data-error='Please, provide your GPA.', value=((formData ? formData.gpa : '') || (application ? application.Academics.gpa : '')))
+					input(type='hidden', id='select_next_fall_level', value=((formData ? formData.next_fall_level : '') || (application ? application.Academics.next_fall_level : '')))
 					label(for='level', class=(hasErrors ? (errors[0].next_fall_level ? 'has-error' : undefined) : undefined)) Next Fall's Level in School: *
-					select#level(name='next_fall_level')
+					select#next_fall_level(name='next_fall_level')
 						option(value='', disabled='disabled', selected='selected') Please Select
 						option(value='Freshman') Freshman 
 						option(value='Sophomore') Sophomore 
@@ -320,13 +277,15 @@ block content
 						option(value='Senior') Senior
 						option(value='5th Year Senior') 5th Year Senior
 						
+					input(type='hidden', id='select_grad_month', value=((formData ? formData.grad_month : '') || (application ? application.Academics.grad_month : '')))
+					input(type='hidden', id='select_grad_year', value=((formData ? formData.grad_year : '') || (application ? application.Academics.grad_year : '')))
 					label(for='graduation', class=(hasErrors ? ((errors[0].grad_month || errors[0].grad_year) ? 'has-error' : undefined) : undefined)) Anticipated Graduation Date: *
-					select#graduation(name='grad_month')
+					select#grad_month(name='grad_month')
 						option(value='', disabled='disabled', selected='selected') Month
 						option(value='May') May 
 						option(value='August') August 
 						option(value='December') December
-					select#graduation(name='grad_year')
+					select#grad_year(name='grad_year')
 						option(value='', disabled='disabled', selected='selected') Year
 						option(value='2017') 2017 
 						option(value='2018') 2018 
@@ -339,23 +298,23 @@ block content
 					table.style5
 						tr
 							td
-								input#experience(type='radio', name='prev_research_exp', value='Yes')
+								input#experience(type='radio', name='prev_research_exp', value='Yes' checked=((formData ? (formData.prev_research_exp == 'Yes' ? true : false) : false) || (application ? (application.Academics.prev_research_exp == 'Yes' ? true : false) : false)))
 								|  Yes
 							td
-								input#experience(type='radio', name='prev_research_exp', value='No')
+								input#experience(type='radio', name='prev_research_exp', value='No' checked=((formData ? (formData.prev_research_exp == 'No' ? true : false) : false) || (application ? (application.Academics.prev_research_exp == 'No' ? true : false) : false)))
 								|  No (This does not effect your eligibility.)
 					legend Apprenticeship Information
 					label(for='before', class=(hasErrors ? (errors[0].prev_application ? 'has-error' : undefined) : undefined)) Have you applied for a Discover Learning Apprenticeship before? *
 					table.style
 						tr
 							td
-								input#before(type='radio', name='prev_application', value='Yes')
+								input#before(type='radio', name='prev_application', value='Yes' checked=((formData ? (formData.prev_application == 'Yes' ? true : false) : false) || (application ? (application.Apprenticeship.prev_application == 'Yes' ? true : false) : false)))
 								|  Yes
 							td
-								input#before(type='radio', name='prev_application', value='No')
+								input#before(type='radio', name='prev_application', value='No' checked=((formData ? (formData.prev_application == 'No' ? true : false) : false) || (application ? (application.Apprenticeship.prev_application == 'No' ? true : false) : false)))
 								|  No 
 							td
-								input#before(type='radio', name='prev_application', value='Not Sure')
+								input#before(type='radio', name='prev_application', value='Not Sure' checked=((formData ? (formData.prev_application == 'Not Sure' ? true : false) : false) || (application ? (application.Apprenticeship.prev_application == 'Not Sure' ? true : false) : false)))
 								|  Not Sure
 					label(for='employment', class=(hasErrors ? (errors[0].fall_employment_plans ? 'has-error' : undefined) : undefined)) Other fall employment plans:
 					table.style
@@ -363,44 +322,51 @@ block content
 							td
 								br
 								textarea#employment(type='text', name='fall_employment_plans', maxlength='200', placeholder=' Fall employment plans')
+									| #{(formData ? formData.fall_employment_plans : '') || (application ? application.Apprenticeship.fall_employment_plans : '')}
 								.help-block.with-errors
 								span#char_count 200
 								|  characters remaining
 					br
 					h5 *Please make sure that you selected a major before proceeding. 
+					input(type='hidden', id='select_most_interest', value=((formData ? formData.most_interest : '') || (application ? application.Apprenticeship.most_interest : '')))
+					input(type='hidden', id='select_high_interest', value=((formData ? formData.high_interest : '') || (application ? application.Apprenticeship.high_interest : '')))
+					input(type='hidden', id='select_moderate_interest', value=((formData ? formData.moderate_interest : '') || (application ? application.Apprenticeship.moderate_interest : '')))
+					input(type='hidden', id='select_low_interest', value=((formData ? formData.low_interest : '') || (application ? application.Apprenticeship.low_interest : '')))
+					input(type='hidden', id='select_least_interest', value=((formData ? formData.least_interest : '') || (application ? application.Apprenticeship.least_interest : '')))
+
 					label.aca(for='selection1', class=(hasErrors ? (errors[0].most_interest ? 'has-error' : undefined) : undefined)) Please select up to five projects you would like to be considered for.
 					table.style6
 						tr
 							td
-								select.level#level(name='most_interest')
+								select.level#most_interest(name='most_interest')
 									option(value='', disabled='disabled', selected='selected') Most Interest 
 									each project in projects
 										option(value=project.id) #{project.description}
 							br
 						tr
 							td
-								select.level#level(name='high_interest')
+								select.level#high_interest(name='high_interest')
 									option(value='', disabled='disabled', selected='selected') High Interest 
 									each project in projects
 										option(value=project.id) #{project.description}
 								br
 						tr
 							td
-								select.level#level(name='moderate_interest')
+								select.level#moderate_interest(name='moderate_interest')
 									option(value='', disabled='disabled', selected='selected') Moderate Interest 
 									each project in projects
 										option(value=project.id) #{project.description}
 								br
 						tr
 							td
-								select.level#level(name='low_interest')
+								select.level#low_interest(name='low_interest')
 									option(value='', disabled='disabled', selected='selected') Low Interest 
 									each project in projects
 										option(value=project.id) #{project.description}
 								br
 						tr
 							td
-								select.level#level(name='least_interest')
+								select.level#least_interest(name='least_interest')
 									option(value='', disabled='disabled', selected='selected') Least Interest
 									each project in projects
 										option(value=project.id) #{project.description}
@@ -409,13 +375,13 @@ block content
 					table.style
 						tr
 							td
-								input#background(type='radio', name='background_check', value='Yes')
+								input#background(type='radio', name='background_check', value='Yes' checked=((formData ? (formData.background_check == 'Yes' ? true : false) : false) || (application ? (application.Apprenticeship.background_check == 'Yes' ? true : false) : false)))
 								|  Yes
 							td
-								input#background(type='radio', name='background_check', value='No')
+								input#background(type='radio', name='background_check', value='No' checked=((formData ? (formData.background_check == 'No' ? true : false) : false) || (application ? (application.Apprenticeship.background_check == 'No' ? true : false) : false)))
 								|  No 
 							td
-								input#background(type='radio', name='background_check', value='Not Sure')
+								input#background(type='radio', name='background_check', value='Not Sure' checked=((formData ? (formData.background_check == 'Not Sure' ? true : false) : false) || (application ? (application.Apprenticeship.background_check == 'Not Sure' ? true : false) : false)))
 								|  Not Sure
 					br
 					br
@@ -423,13 +389,13 @@ block content
 					table.style
 						tr
 							td
-								input#discrimination(type='radio', name='awareness_training', value='Yes')
+								input#discrimination(type='radio', name='awareness_training', value='Yes' checked=((formData ? (formData.awareness_training == 'Yes' ? true : false) : false) || (application ? (application.Apprenticeship.awareness_training == 'Yes' ? true : false) : false)))
 								|  Yes
 							td
-								input#discrimination(type='radio', name='awareness_training', value='No')
+								input#discrimination(type='radio', name='awareness_training', value='No' checked=((formData ? (formData.awareness_training == 'No' ? true : false) : false) || (application ? (application.Apprenticeship.awareness_training == 'No' ? true : false) : false)))
 								|  No 
 							td
-								input#discrimination(type='radio', name='awareness_training', value='Not Sure')
+								input#discrimination(type='radio', name='awareness_training', value='Not Sure' checked=((formData ? (formData.awareness_training == 'Not Sure' ? true : false) : false) || (application ? (application.Apprenticeship.awareness_training == 'Not Sure' ? true : false) : false)))
 								|  Not Sure
 					br
 					br
@@ -437,7 +403,7 @@ block content
 					table.style
 						tr
 							td
-								input#id.form-control(name='ssn', type='tel', placeholder=' ####', pattern='^[0-9]{4}', maxlength='4', size='5', data-error='Please, provide your SSN.')
+								input#id.form-control(name='ssn', type='tel', placeholder=' ####', pattern='^[0-9]{4}', maxlength='4', size='5', data-error='Please, provide your SSN.', value=((formData ? formData.ssn : '') || (application ? application.Apprenticeship.ssn : '')))
 					
 					legend Skills, Resume, and Cover Letter: 
 					h4 List three skills or qualifications that you feel make you a great candidate for the positions you selected:
@@ -447,16 +413,19 @@ block content
 						tr
 							td
 								textarea.skill#skill(type='text', name='skill1', placeholder=' 1.', maxlength='75')
+									| #{(formData ? formData.skill1 : '') || (application ? application.Academics.skill1 : '')}
 								span#char_count 75
 								|  characters remaining
 						tr
 							td
 								textarea.skill#skill(type='text', name='skill2', placeholder=' 2.', maxlength='75')
+									| #{(formData ? formData.skill2 : '') || (application ? application.Academics.skill2 : '')}
 								span#char_count 75
 								|  characters remaining
 						tr
 							td
 								textarea.skill#skill(type='text', name='skill3', placeholder=' 3.', maxlength='75')
+									| #{(formData ? formData.skill3 : '') || (application ? application.Academics.skill3 : '')}
 								span#char_count 75
 								|  characters remaining
 					br

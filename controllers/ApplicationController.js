@@ -73,30 +73,30 @@ module.exports = {
     postApplicationForm: function(req, res, next) {
         if (req.body.action == 'Submit'){
 
-            // req.checkBody('sid', 'Please enter a valid SID').notEmpty().isInt();
-            // req.checkBody('gender', 'Please enter your gender').notEmpty();
-            // req.checkBody('origin', 'Please enter your origin').notEmpty();
-            // req.checkBody('race', 'Please select your race').notEmpty();
-            //
-            // req.checkBody('street_address', 'Please enter your complete address').notEmpty();
-            // req.checkBody('city', 'Please enter your complete address').notEmpty();
-            // req.checkBody('state', 'Please enter your complete address').notEmpty();
-            // req.checkBody('zip', 'Please enter your complete address').notEmpty().isInt();
-            // req.checkBody('phone', 'Please enter a valid phone number').notEmpty().isInt();
-            // req.checkBody('email', 'Please enter a valid email').notEmpty().isEmail();
-            //
-            //
-            // req.checkBody('gpa', 'Please enter a valid GPA').notEmpty();
-            // req.checkBody('next_fall_level', 'Please select your next fall status').notEmpty();
-            // req.checkBody('grad_month', 'Please enter your graduation month').notEmpty();
-            // req.checkBody('grad_year', 'Please enter a your graduation year').notEmpty();
-            // req.checkBody('prev_research_exp', 'Please indicate if you have had a previous reserch experience').notEmpty();
-            //
-            // req.checkBody('prev_application', 'Please indicate if you have previously applied for an apprenticeship').notEmpty();
-            // req.checkBody('most_interest', 'Please select at least one project').notEmpty();
-            // req.checkBody('background_check', 'Please indicate if you have had a background check at CU').notEmpty();
-            // req.checkBody('awareness_training', 'Please indicate if you have had a Discrimination & Harassment Awareness training at CU').notEmpty();
-            // req.checkBody('ssn', 'Please enter the last 4 digits of your SSN').notEmpty();
+            req.checkBody('sid', 'Please enter a valid SID').notEmpty().isInt();
+            req.checkBody('gender', 'Please enter your gender').notEmpty();
+            req.checkBody('origin', 'Please enter your origin').notEmpty();
+            req.checkBody('race', 'Please select your race').notEmpty();
+
+            req.checkBody('street_address', 'Please enter your complete address').notEmpty();
+            req.checkBody('city', 'Please enter your complete address').notEmpty();
+            req.checkBody('state', 'Please enter your complete address').notEmpty();
+            req.checkBody('zip', 'Please enter your complete address').notEmpty().isInt();
+            req.checkBody('phone', 'Please enter a valid phone number').notEmpty().isInt();
+            req.checkBody('email', 'Please enter a valid email').notEmpty().isEmail();
+
+
+            req.checkBody('gpa', 'Please enter a valid GPA').notEmpty();
+            req.checkBody('next_fall_level', 'Please select your next fall status').notEmpty();
+            req.checkBody('grad_month', 'Please enter your graduation month').notEmpty();
+            req.checkBody('grad_year', 'Please enter a your graduation year').notEmpty();
+            req.checkBody('prev_research_exp', 'Please indicate if you have had a previous reserch experience').notEmpty();
+
+            req.checkBody('prev_application', 'Please indicate if you have previously applied for an apprenticeship').notEmpty();
+            req.checkBody('most_interest', 'Please select at least one project').notEmpty();
+            req.checkBody('background_check', 'Please indicate if you have had a background check at CU').notEmpty();
+            req.checkBody('awareness_training', 'Please indicate if you have had a Discrimination & Harassment Awareness training at CU').notEmpty();
+            req.checkBody('ssn', 'Please enter the last 4 digits of your SSN').notEmpty();
 
             req.checkBody('resume', 'Please upload your resume in PDF').isPDF(req.files.resume.name);
             req.checkBody('cover_letter', 'Please upload a cover letter in PDF').isPDF(req.files.cover_letter.name);
