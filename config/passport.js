@@ -38,7 +38,9 @@ var samlStrategy = new saml.Strategy({
     // Identity Provider's public key
     cert: fs.readFileSync(process.env.IDP_PUBLIC_KEY, 'utf8'),
     validateInResponseTo: false,
-    disableRequestedAuthnContext: true
+    disableRequestedAuthnContext: true, 
+    logoutUrl: process.env.LOGOUT_URL,
+    logoutCallbackUrl: process.env.LOGOUT_CALLBACK
 }, function(profile, done) {
     return done(null, profile);
 });
