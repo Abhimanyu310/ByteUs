@@ -15,6 +15,7 @@ var passport = require('passport');
 
 
 var routes = require('./routes/index');
+var admin = require('./routes/admin');
 var users = require('./routes/users');
 var projects = require('./routes/projects');
 var applications = require('./routes/applications');
@@ -84,6 +85,7 @@ app.use(function (req, res, next) {
 app.use('/user', users);
 app.use('/application', applications);
 app.use('/project', projects);
+app.use('/admin',admin);
 app.use('/', routes);
 
 

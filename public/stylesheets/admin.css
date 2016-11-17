@@ -1,0 +1,163 @@
+/* Display HTML5 structural elements as blocks */
+
+article, aside, figure, figcaption, footer, hgroup, header, 
+section, nav {
+   display: block;
+}
+
+/* Set the default page element styles */
+* {
+	margin: 0px; 
+	padding: 0px;
+	line-height: 2.0em;
+	font-family: "Tahoma", Geneva, sans-serif;
+}
+
+body {
+	background: fixed; 
+	background: black;
+}
+
+
+header h {
+	font-size: 40px; 
+	font-weight: bold; 
+	position: absolute;
+	top: 65px;
+	left: 265px;
+	width: 1000px; 
+	background: black;
+	color: white;
+}
+
+header img {
+	border-width: 0px;
+	position: absolute;
+	top: 0px; 
+	left: 50px;
+}
+
+/*Navigation Styles*/
+nav ul {
+	position: absolute;
+	list-style-type: none;  
+	border-radius: 5px; 
+	top: 207px;
+	left: 40px;
+    list-style-type: none;	
+	vertical-align: left;
+	
+}
+
+nav li a {
+	display: block;  
+	color: white; 
+	background-color: rgb(31,49,59);
+	border: 1px solid black; 
+	border-radius: 5px; 
+	font-size: 22px;
+	padding: 8px 16px; 	
+	text-decoration: none;
+	width: 170px;
+}
+				  
+nav li a:hover {
+	background: rgb(0,123,200); 
+	color: white; 
+}
+
+section h5{
+	color: white; 
+	/*position: absolute;*/
+	/*top: 153px;*/
+	/*left: 275px;*/
+	width: 925px;
+	background: black;
+}
+
+a.buttonstyle {
+	text-decoration: none;
+	background-color:  rgb(0,123,200); 
+	color: white; 
+	font-size: 16px; 
+	font-weight: bold;
+	text-align: center; 
+	border: none; 
+	border-radius: 25px;
+	float: left;
+	margin: 0 15px 0 65px;
+	overflow: hidden;
+	width: 200px;
+	height: 40px;
+	display: inline-block;
+}
+
+a.buttonstyle:hover {
+	background-color: rgb(31,49,59);
+}
+
+input[type="Submit"] {
+	background-color:  rgb(0,123,200); 
+	color: white; 
+	font-size: 16px; 
+	font-weight: bold;
+	text-align: center; 
+	border: none; 
+	border-radius: 25px;
+	float: left;
+	margin: 0 15px 0 65px;
+	overflow: hidden;
+	width: 200px;
+	height: 40px;
+	display: inline-block;
+}
+
+input[type="Submit"]:hover {
+	background-color: rgb(31,49,59);
+}
+table.style3{
+    list-style:none;
+    color: white;
+    width: 100%;
+    padding-left: 300px;
+    empty-cells: hide;
+}
+th.style3{
+    color: rgb(204,185,120);
+    padding: 7px;
+    text-align: center;
+    border: 1px solid white;
+}
+td.style3{
+    padding: 7px;
+    text-align: left;
+    vertical-align: center;
+    border: 1px solid white;
+}
+tr.style3:nth-child(even){background-color: rgb(70,70,70);}
+
+table.style4{
+    list-style:none;
+    color: white;
+    width: 1200px;
+    padding-left:300px;
+    padding-top: 200px;
+}
+th.style4{
+    color: rgb(204,185,120);
+    border-bottom: 1px solid rgb(204,185,120);
+    text-align: left;
+}
+table.style5{
+    color: white;
+    width: 400px;
+    padding-top: 250px;
+    padding-left: 300px;
+}
+table.style6{
+    list-style:none;
+    color: white;
+    width: 1200px;
+    padding-left:300px;
+}
+

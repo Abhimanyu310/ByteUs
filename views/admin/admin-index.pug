@@ -1,0 +1,27 @@
+extends ../layouts/master
+
+block title
+	|#{title}
+
+block styles
+	link(rel='stylesheet', href='/stylesheets/admin.css')
+
+block content
+
+	include ../includes/info-box
+
+	header
+		h Admin Home
+
+	section
+	table.style4
+			each project in projects
+				tr.style4
+					td.style4
+						p #{project.description}
+						table.style3
+							tr
+								th.style3 List of Students applied
+								th.style3 Priority
+								th.style3 Edit/Delete
+				
