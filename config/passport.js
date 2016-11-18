@@ -13,19 +13,19 @@ passport.serializeUser(function(user, done) {
     console.log(user);
     // console.log('serialize id');
     // console.log(user.id);
-    // done(null, user.id);
-    done(null, user);
+    done(null, user.id);
+    // done(null, user);
 });
 
-passport.deserializeUser(function(user, done) {
-    // console.log(id);
-    // models.User.findOne({
-    //     where: {id: id}
-    // }).then(function (user){
-    //     // console.log(user);
-    //     done(null, user);
-    // });
-    done(null, user);
+passport.deserializeUser(function(id, done) {
+    console.log(id);
+    models.User.findOne({
+        where: {id: id}
+    }).then(function (user){
+        // console.log(user);
+        done(null, user);
+    });
+    // done(null, user);
 });
 
 
@@ -70,12 +70,32 @@ var samlStrategy = new saml.Strategy({
         }
 
     });
-    var status = user_attributes[0];
+    var type = user_attributes[0];
     var email = user_attributes[1];
     var name = user_attributes[2];
     console.log('in profile done');
-    console.log(status + email + name);
-    return done(null, profile);
+
+    models.User.findOne({
+        where: {email: email}
+    }).then(function (user){
+        if (user){
+            return done(null, user);
+        }
+
+        var newUser = models.User.build();
+        newUser.email = email;
+        newUser.type = type;
+
+        newUser.save().then(function (user) {
+            return done(null, user);
+        }).catch(function (error) {
+            return done(error);
+        });
+    }).catch(function (error) {
+        return done(error);
+    });
+
+    // return done(null, profile);
 });
 
 passport.use('saml.login', samlStrategy);
