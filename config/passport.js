@@ -59,12 +59,25 @@ var samlStrategy = new saml.Strategy({
 
         console.log('first');
         console.log(attributes[0]);
-        // var name = attributes["saml2:Attribute"]["saml2:AttributeValue"];
-        // console.log('name');
-        // console.log(name);
-        var name0 = attributes[0]["saml2:Attribute"]["saml2:AttributeValue"];
-        console.log('name0');
-        console.log(name0);
+        var attr = attributes[0];
+
+        for (var key in attr) {
+            // skip loop if the property is from prototype
+            if (!attr.hasOwnProperty(key)) continue;
+
+            var obj = attr[key];
+            for (var prop in obj) {
+                // skip loop if the property is from prototype
+                if(!obj.hasOwnProperty(prop)) continue;
+
+                // your code
+                console.log('in loop');
+                console.log(prop);
+                console.log(obj[prop]);
+                // alert(prop + " = " + obj[prop]);
+            }
+        }
+
         console.log(attributes);
     });
     console.log('in profile done');
