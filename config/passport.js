@@ -53,6 +53,7 @@ var samlStrategy = new saml.Strategy({
     var xml = profile.getAssertionXml();
     var doc = new dom().parseFromString(xml);
     console.log(doc);
+    console.log(doc[4].firstChild.firstChild.data);
     // var attributes = xpath.select("//saml2:AttributeStatement", doc)
     //
     // console.log(attributes[0].localName + ": " + attributes[0].firstChild.firstChild.data)
