@@ -89,6 +89,7 @@ module.exports = {
                 // LOCAL logout
                 req.logout();
                 // redirect to the IdP with the encrypted SAML logout request
+                console.log('HEREEEEEEEEEEEEEEEEEEEEE');
                 console.log(requestUrl);
                 res.redirect(requestUrl);
             });
