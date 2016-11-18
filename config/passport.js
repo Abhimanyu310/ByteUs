@@ -49,11 +49,11 @@ var samlStrategy = new saml.Strategy({
     logoutUrl: process.env.LOGOUT_URL,
     logoutCallbackUrl: process.env.LOGOUT_CALLBACK
 }, function(profile, done) {
-
+    var user_attributes = [];
     var xml = profile.getAssertionXml();
     parseString(xml, function (err, result) {
         var attributes_section = result["saml2:Assertion"]["saml2:AttributeStatement"][0];
-        var user_attributes = [];
+
         for (var key in attributes_section) {
             // skip loop if the property is from prototype
             if (!attributes_section.hasOwnProperty(key)) continue;
@@ -69,13 +69,10 @@ var samlStrategy = new saml.Strategy({
             }
         }
 
-        var status = user_attributes[0];
-        var email = user_attributes[1];
-        var name = user_attributes[2];
-
-
-
     });
+    var status = user_attributes[0];
+    var email = user_attributes[1];
+    var name = user_attributes[2];
     console.log('in profile done');
     console.log(status + email + name);
     return done(null, profile);
