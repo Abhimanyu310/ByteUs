@@ -50,7 +50,7 @@ var samlStrategy = new saml.Strategy({
 
     var xml = profile.getAssertionXml();
     parseString(xml, function (err, result) {
-        console.dir(result);
+        console.dir(JSON.stringify(result));
     });
     // var attribute = xmlDoc.get('//saml2:Attribute');
     // console.log(attribute);
