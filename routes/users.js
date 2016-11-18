@@ -65,6 +65,8 @@ router.get('/login',
 // );
 
 router.post('/login/callback', function (req, res, next) {
+   console.log('in callback');
+   console.log(req);
    console.log(req.body);
 });
 
