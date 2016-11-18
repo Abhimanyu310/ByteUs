@@ -13,8 +13,8 @@ var Helpers = require('../controllers/helpers/helpers');
 
 
 
-var csrfProtection = csrf();
-router.use(csrfProtection);
+// var csrfProtection = csrf();
+// router.use(csrfProtection);
 
 
 // GET Faculty Home
