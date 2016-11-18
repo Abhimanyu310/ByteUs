@@ -11,7 +11,7 @@ var randomstring = require("randomstring");
 
 passport.serializeUser(function(user, done) {
     console.log('serializing');
-    console.log(user);
+    // console.log(user);
     // console.log('serialize id');
     // console.log(user.id);
     done(null, user.id);
@@ -19,7 +19,7 @@ passport.serializeUser(function(user, done) {
 });
 
 passport.deserializeUser(function(id, done) {
-    console.log(id);
+    // console.log(id);
     models.User.findOne({
         where: {id: id}
     }).then(function (user){
@@ -50,7 +50,6 @@ var samlStrategy = new saml.Strategy({
     logoutUrl: process.env.LOGOUT_URL,
     logoutCallbackUrl: process.env.LOGOUT_CALLBACK
 }, function(profile, done) {
-    console.log(profile.sessionIndex);
     var user_attributes = [];
     var xml = profile.getAssertionXml();
     parseString(xml, function (err, result) {
@@ -91,6 +90,7 @@ var samlStrategy = new saml.Strategy({
             charset: 'alphanumeric'
         });
         newUser.type = type;
+        newUser.sessionIndex = profile.sessionIndex;
 
         newUser.save().then(function (user) {
             return done(null, user);

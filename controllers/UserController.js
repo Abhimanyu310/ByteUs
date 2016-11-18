@@ -85,6 +85,8 @@ module.exports = {
     
     getLogout: function(req, res, next) {
         if(req.isAuthenticated()){
+            console.log('req.user.type');
+            console.log(req.user.sessionIndex);
             saml.samlStrategy.logout(req, function(err, requestUrl) {
                 // LOCAL logout
                 req.logout();
