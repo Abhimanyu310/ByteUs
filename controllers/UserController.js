@@ -1,4 +1,5 @@
 var models  = require('../models');
+var saml = require('../config/passport');
 
 
 module.exports = {
@@ -84,7 +85,7 @@ module.exports = {
     
     getLogout: function(req, res, next) {
         if(req.isAuthenticated()){
-            samlStrategy.logout(req, function(err, requestUrl) {
+            saml.samlStrategy.logout(req, function(err, requestUrl) {
                 // LOCAL logout
                 req.logout();
                 // redirect to the IdP with the encrypted SAML logout request
