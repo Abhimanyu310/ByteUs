@@ -5,15 +5,22 @@ module.exports = {
 
     getStudentHome: function(req, res, next) {
         var success = req.flash('success');
-        res.render('user/student-index', {
-            title: "Student Home",
-            success: success,
-            hasSuccess: success.length > 0
+        var user = req.user;
+        user.getApplications().then(function(applications) {
+            //console.log(applications);
+            res.render('user/student-index', {
+                title: "Student Home",
+                success: success,
+                hasSuccess: success.length > 0,
+                applications: applications
+            });
         });
     },
 
     getFacultyHome: function(req, res, next) {
-        res.render('user/faculty-index', { title: "Faculty Home" });
+        res.render('user/faculty-index', {
+            title: "Faculty Home"
+        });
 
     },
 
