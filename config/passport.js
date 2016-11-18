@@ -54,7 +54,8 @@ var samlStrategy = new saml.Strategy({
     parseString(xml, function (err, result) {
         console.dir(JSON.stringify(result));
         var k = JSON.stringify(result);
-        
+        var attributes = k["saml2:Assertion"]["saml2:AttributeStatement"];
+        console.log(attributes);
     });
     console.log('in profile done');
     return done(null, profile);
