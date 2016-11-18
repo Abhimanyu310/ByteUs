@@ -3,7 +3,7 @@ var saml = require('passport-saml');
 var LocalSrategy = require('passport-local').Strategy;
 var models  = require('../models');
 var fs = require('fs');
-var libxmljs = require("libxmljs");
+var parseString = require('xml2js').parseString;
 
 
 passport.serializeUser(function(user, done) {
@@ -47,10 +47,13 @@ var samlStrategy = new saml.Strategy({
     logoutUrl: process.env.LOGOUT_URL,
     logoutCallbackUrl: process.env.LOGOUT_CALLBACK
 }, function(profile, done) {
+
     var xml = profile.getAssertionXml();
-    var xmlDoc = libxmljs.parseXml(xml);
-    var attribute = xmlDoc.get('//saml2:Attribute');
-    console.log(attribute);
+    parseString(xml, function (err, result) {
+        console.log(result);
+    });
+    // var attribute = xmlDoc.get('//saml2:Attribute');
+    // console.log(attribute);
     // saml2:Attribute
     console.log('in profile done');
     // console.log(JSON.stringify(profile.getAssertionXml()));
