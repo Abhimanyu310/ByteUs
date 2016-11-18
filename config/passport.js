@@ -3,7 +3,9 @@ var saml = require('passport-saml');
 var LocalSrategy = require('passport-local').Strategy;
 var models  = require('../models');
 var fs = require('fs');
-var parseString = require('xml2js').parseString;
+var xpath = require('xpath');
+var dom = require('xmldom').DOMParser;
+
 
 
 passport.serializeUser(function(user, done) {
@@ -48,17 +50,14 @@ var samlStrategy = new saml.Strategy({
     logoutCallbackUrl: process.env.LOGOUT_CALLBACK
 }, function(profile, done) {
 
-    // var xml = profile.getAssertionXml();
-    var xml = "<root>Hello xml2js!</root>"
-    parseString(xml, function (err, result) {
-        console.log(result);
-        console.dir(JSON.stringify(result));
-    });
-    // var attribute = xmlDoc.get('//saml2:Attribute');
-    // console.log(attribute);
-    // saml2:Attribute
+    var xml = profile.getAssertionXml();
+    var doc = new dom().parseFromString(xml);
+    var attributes = xpath.select("//saml2:AttributeStatement", doc)
+
+    console.log(attributes[0].localName + ": " + attributes[0].firstChild.firstChild.data)
+    console.log("Node: " + attributes[0].toString());
+
     console.log('in profile done');
-    // console.log(JSON.stringify(profile.getAssertionXml()));
     return done(null, profile);
 });
 
