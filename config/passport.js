@@ -6,6 +6,7 @@ var fs = require('fs');
 
 
 passport.serializeUser(function(user, done) {
+    console.log(user);
     // console.log('serialize id');
     // console.log(user.id);
     // done(null, user.id);
