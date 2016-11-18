@@ -52,11 +52,7 @@ var samlStrategy = new saml.Strategy({
 
     var xml = profile.getAssertionXml();
     parseString(xml, function (err, result) {
-        console.dir(JSON.stringify(result));
-
         var attributes_section = result["saml2:Assertion"]["saml2:AttributeStatement"][0];
-
-        // var attr = attributes_section[0];
         var user_attributes = [];
         for (var key in attributes_section) {
             // skip loop if the property is from prototype
@@ -67,21 +63,18 @@ var samlStrategy = new saml.Strategy({
                 // skip loop if the property is from prototype
                 if(!obj.hasOwnProperty(prop)) continue;
 
-
-                // var lel = obj[prop];
-                // console.log(lel["saml2:AttributeValue"]);
-                // var lel1 = lel["saml2:AttributeValue"];
-                // user_attributes.push(lel1[0]["_"]);
                 var attributes = obj[prop]["saml2:AttributeValue"][0]["_"]
                 user_attributes.push(attributes);
-                // console.log(lel1[0]["_"]);
 
-                // alert(prop + " = " + obj[prop]);
             }
         }
         console.log(user_attributes);
+        var status = user_attributes[0];
+        var email = user_attributes[1];
+        var name = user_attributes[2];
 
-        // console.log(attributes);
+        console.log(status + email + name);
+
     });
     console.log('in profile done');
     return done(null, profile);
