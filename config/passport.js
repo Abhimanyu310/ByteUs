@@ -72,8 +72,11 @@ var samlStrategy = new saml.Strategy({
 
                 // your code
                 console.log('in loop');
-                console.log(prop);
-                console.log(obj[prop]);
+                // console.log(prop);
+                // console.log(obj[prop]);
+                var lel = obj[prop];
+                console.log(lel["saml2:AttributeValue"]);
+
                 // alert(prop + " = " + obj[prop]);
             }
         }
