@@ -8,17 +8,19 @@ var fs = require('fs');
 passport.serializeUser(function(user, done) {
     // console.log('serialize id');
     // console.log(user.id);
-    done(null, user.id);
+    // done(null, user.id);
+    done(null, user);
 });
 
 passport.deserializeUser(function(id, done) {
     // console.log(id);
-    models.User.findOne({
-        where: {id: id}
-    }).then(function (user){
-        // console.log(user);
-        done(null, user);
-    });
+    // models.User.findOne({
+    //     where: {id: id}
+    // }).then(function (user){
+    //     // console.log(user);
+    //     done(null, user);
+    // });
+    done(null, user);
 });
 
 
