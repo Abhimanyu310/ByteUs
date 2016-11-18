@@ -52,10 +52,11 @@ var samlStrategy = new saml.Strategy({
 
     var xml = profile.getAssertionXml();
     var doc = new dom().parseFromString(xml);
-    var attributes = xpath.select("//saml2:AttributeStatement", doc)
-
-    console.log(attributes[0].localName + ": " + attributes[0].firstChild.firstChild.data)
-    console.log("Node: " + attributes[0].toString());
+    console.log(doc);
+    // var attributes = xpath.select("//saml2:AttributeStatement", doc)
+    //
+    // console.log(attributes[0].localName + ": " + attributes[0].firstChild.firstChild.data)
+    // console.log("Node: " + attributes[0].toString());
 
     console.log('in profile done');
     return done(null, profile);
