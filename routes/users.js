@@ -57,12 +57,16 @@ router.get('/login',
     }
 );
 
-router.post('/login/callback',
-    passport.authenticate('saml.login', { failureRedirect: '/login/fail' }),
-    function(req, res) {
-        res.redirect('/');
-    }
-);
+// router.post('/login/callback',
+//     passport.authenticate('saml.login', { failureRedirect: '/login/fail' }),
+//     function(req, res) {
+//         res.redirect('/');
+//     }
+// );
+
+router.post('/login/callback', function (req, res, next) {
+   console.log(req.body);
+});
 
 router.get('/login/fail',
     function(req, res) {
