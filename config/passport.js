@@ -3,8 +3,8 @@ var saml = require('passport-saml');
 var LocalSrategy = require('passport-local').Strategy;
 var models  = require('../models');
 var fs = require('fs');
-var xpath = require('xpath');
-var dom = require('xmldom').DOMParser;
+var parseString = require('xml2js').parseString;
+
 
 
 
@@ -51,14 +51,11 @@ var samlStrategy = new saml.Strategy({
 }, function(profile, done) {
 
     var xml = profile.getAssertionXml();
-    var doc = new dom().parseFromString(xml);
-    // console.log(doc);
-    // console.log(doc[4].firstChild.firstChild.data);
-    var attributes = xpath.select("string(//saml2:AttributeStatement)", doc)
-
-    console.log(attributes[0].localName + ": " + attributes[0].firstChild.firstChild.data)
-    console.log("Node: " + attributes[0].toString());
-
+    parseString(xml, function (err, result) {
+        console.dir(JSON.stringify(result));
+        var k = JSON.stringify(result);
+        
+    });
     console.log('in profile done');
     return done(null, profile);
 });
