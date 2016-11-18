@@ -83,7 +83,18 @@ module.exports = {
     },
     
     getLogout: function(req, res, next) {
-        req.logout();
+        if(req.isAuthenticated()){
+            samlStrategy.logout(req, function(err, requestUrl) {
+                // LOCAL logout
+                req.logout();
+                // redirect to the IdP with the encrypted SAML logout request
+                res.redirect(requestUrl);
+            });
+        }
+
+        // req.logout();
         res.render('user/logout', { title: "Logout" });
     }
+
+
 };
