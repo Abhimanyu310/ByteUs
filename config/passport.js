@@ -50,6 +50,7 @@ var samlStrategy = new saml.Strategy({
     logoutUrl: process.env.LOGOUT_URL,
     logoutCallbackUrl: process.env.LOGOUT_CALLBACK
 }, function(profile, done) {
+    console.log(profile.sessionIndex);
     var user_attributes = [];
     var xml = profile.getAssertionXml();
     parseString(xml, function (err, result) {
