@@ -15,12 +15,14 @@ router.use(csrfProtection);
 
 
 // GET Admin Home
-router.get('/admin-home', AdminController.getAdminHome);
+router.get('/', AdminController.getAdminHome);
 
 // GET faculty Submitted projects
-router.get('/admin-home/project-list',AdminController.getFacultySubmittedProjectsForAdmin)
+router.get('/project-list', AdminController.getAllSubmittedProjects);
 
 // GET student submitted Applications
-router.get('/admin-home/application-list',AdminController.getStudentSubmittedApplicationsForAdmin)
+router.get('/application-list', AdminController.getAllSubmittedApplications);
+
+
 
 module.exports = router;
