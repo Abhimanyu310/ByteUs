@@ -68,12 +68,10 @@ var samlStrategy = new saml.Strategy({
 
             }
         }
-        console.log(user_attributes);
         var status = user_attributes[0];
         var email = user_attributes[1];
         var name = user_attributes[2];
 
-        console.log(status + email + name);
 
     });
     console.log('in profile done');
