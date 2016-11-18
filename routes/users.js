@@ -10,26 +10,7 @@ var UserController = require('../controllers/UserController');
 var Helpers = require('../controllers/helpers/helpers');
 
 
-//SAML
-router.get('/login',
-    passport.authenticate('saml.login', { failureRedirect: '/login/fail' }),
-    function (req, res) {
-        res.redirect('/');
-    }
-);
 
-router.post('/login/callback',
-    passport.authenticate('saml.login', { failureRedirect: '/login/fail' }),
-    function(req, res) {
-        res.redirect('/');
-    }
-);
-
-router.get('/login/fail',
-    function(req, res) {
-        res.status(401).send('Login failed');
-    }
-);
 
 
 var csrfProtection = csrf();
@@ -68,7 +49,26 @@ router.post('/signin', passport.authenticate('local.signin', {
 }), UserController.postSignIn);
 
 
+//SAML
+router.get('/login',
+    passport.authenticate('saml.login', { failureRedirect: '/login/fail' }),
+    function (req, res) {
+        res.redirect('/');
+    }
+);
 
+router.post('/login/callback',
+    passport.authenticate('saml.login', { failureRedirect: '/login/fail' }),
+    function(req, res) {
+        res.redirect('/');
+    }
+);
+
+router.get('/login/fail',
+    function(req, res) {
+        res.status(401).send('Login failed');
+    }
+);
 
 
 
