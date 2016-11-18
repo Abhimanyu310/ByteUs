@@ -59,10 +59,12 @@ var samlStrategy = new saml.Strategy({
 
         console.log('first');
         console.log(attributes[0]);
-        var name = attributes["saml2:Attribute"]["saml2:AttributeValue"];
-        console.log('name');
-        console.log(name);
+        // var name = attributes["saml2:Attribute"]["saml2:AttributeValue"];
+        // console.log('name');
+        // console.log(name);
         var name0 = attributes[0]["saml2:Attribute"]["saml2:AttributeValue"];
+        console.log('name0');
+        console.log(name0);
         console.log(attributes);
     });
     console.log('in profile done');
