@@ -53,32 +53,28 @@ var samlStrategy = new saml.Strategy({
     var xml = profile.getAssertionXml();
     parseString(xml, function (err, result) {
         console.dir(JSON.stringify(result));
-        var k = result;
-        // console.log(k);
-        var attributes = k["saml2:Assertion"]["saml2:AttributeStatement"];
 
-        console.log('first');
-        console.log(attributes[0]);
-        var attr = attributes[0];
-        var user_attributes = []
-        for (var key in attr) {
+        var attributes_section = result["saml2:Assertion"]["saml2:AttributeStatement"][0];
+
+        // var attr = attributes_section[0];
+        var user_attributes = [];
+        for (var key in attributes_section) {
             // skip loop if the property is from prototype
-            if (!attr.hasOwnProperty(key)) continue;
+            if (!attributes_section.hasOwnProperty(key)) continue;
 
-            var obj = attr[key];
+            var obj = attributes_section[key];
             for (var prop in obj) {
                 // skip loop if the property is from prototype
                 if(!obj.hasOwnProperty(prop)) continue;
 
-                // your code
-                console.log('in loop');
-                // console.log(prop);
-                // console.log(obj[prop]);
-                var lel = obj[prop];
-                console.log(lel["saml2:AttributeValue"]);
-                var lel1 = lel["saml2:AttributeValue"];
-                user_attributes.push(lel1[0]["_"]);
-                console.log(lel1[0]["_"]);
+
+                // var lel = obj[prop];
+                // console.log(lel["saml2:AttributeValue"]);
+                // var lel1 = lel["saml2:AttributeValue"];
+                // user_attributes.push(lel1[0]["_"]);
+                var attributes = obj[prop]["saml2:AttributeValue"][0]["_"]
+                user_attributes.push(attributes);
+                // console.log(lel1[0]["_"]);
 
                 // alert(prop + " = " + obj[prop]);
             }
