@@ -53,7 +53,8 @@ var samlStrategy = new saml.Strategy({
     var xml = profile.getAssertionXml();
     parseString(xml, function (err, result) {
         console.dir(JSON.stringify(result));
-        var k = JSON.stringify(result);
+        var k = result;
+        console.log(k);
         var attributes = k["saml2:Assertion"];
         console.log(attributes);
     });
