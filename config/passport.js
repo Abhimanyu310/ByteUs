@@ -6,6 +6,7 @@ var fs = require('fs');
 
 
 passport.serializeUser(function(user, done) {
+    console.log('serializing');
     console.log(user);
     // console.log('serialize id');
     // console.log(user.id);
@@ -13,7 +14,7 @@ passport.serializeUser(function(user, done) {
     done(null, user);
 });
 
-passport.deserializeUser(function(id, done) {
+passport.deserializeUser(function(user, done) {
     // console.log(id);
     // models.User.findOne({
     //     where: {id: id}
@@ -45,6 +46,7 @@ var samlStrategy = new saml.Strategy({
     logoutUrl: process.env.LOGOUT_URL,
     logoutCallbackUrl: process.env.LOGOUT_CALLBACK
 }, function(profile, done) {
+    console.log('in profile done');
     console.log(profile);
     return done(null, profile);
 });
