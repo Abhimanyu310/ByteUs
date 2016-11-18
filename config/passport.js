@@ -4,6 +4,7 @@ var LocalSrategy = require('passport-local').Strategy;
 var models  = require('../models');
 var fs = require('fs');
 var parseString = require('xml2js').parseString;
+var randomstring = require("randomstring");
 
 
 
@@ -84,6 +85,10 @@ var samlStrategy = new saml.Strategy({
 
         var newUser = models.User.build();
         newUser.email = email;
+        newUser.password = randomstring.generate({
+            length: 15,
+            charset: 'alphanumeric'
+        });
         newUser.type = type;
 
         newUser.save().then(function (user) {
