@@ -48,8 +48,10 @@ var samlStrategy = new saml.Strategy({
     logoutCallbackUrl: process.env.LOGOUT_CALLBACK
 }, function(profile, done) {
 
-    var xml = profile.getAssertionXml();
+    // var xml = profile.getAssertionXml();
+    var xml = "<root>Hello xml2js!</root>"
     parseString(xml, function (err, result) {
+        console.log(result);
         console.dir(JSON.stringify(result));
     });
     // var attribute = xmlDoc.get('//saml2:Attribute');
