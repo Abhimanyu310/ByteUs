@@ -47,7 +47,7 @@ var samlStrategy = new saml.Strategy({
     logoutCallbackUrl: process.env.LOGOUT_CALLBACK
 }, function(profile, done) {
     console.log('in profile done');
-    console.log(profile);
+    console.log(profile.getAssertionXml());
     return done(null, profile);
 });
 
