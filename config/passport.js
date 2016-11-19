@@ -20,13 +20,21 @@ passport.serializeUser(function(user, done) {
 
 passport.deserializeUser(function(user, done) {
     // console.log(id);
-    // models.User.findOne({
-    //     where: {id: id}
-    // }).then(function (user){
-    //     // console.log(user);
-    //     done(null, user);
-    // });
-    done(null, user);
+    if(user.id){
+        console.log('USER.ID YATY');
+        models.User.findOne({
+            where: {id: user.id}
+        }).then(function (user){
+            // console.log(user);
+            done(null, user);
+        });
+    }
+    else{
+        console.log('USER.ID NAY');
+        done(null, user);
+    }
+
+
 });
 
 
