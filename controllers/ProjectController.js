@@ -277,12 +277,14 @@ function addProjectToDB(req, res, next, areas, action){
                 // console.log(task)
                 if (action == 'Yes'){
                     req.flash('success', 'Project Submission Successful!');
+                    res.redirect('success');
                 }
                 else{
                     req.flash('success', 'Project Successfully Saved!');
+                    res.redirect('/user/faculty-home');
                 }
 
-                res.redirect('success');
+
             }).catch(function (error) {
                 //error handling
                 console.log(error)

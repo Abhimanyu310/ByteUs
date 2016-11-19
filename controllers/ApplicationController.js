@@ -96,7 +96,6 @@ module.exports = {
             req.checkBody('most_interest', 'Please select at least one project').notEmpty();
             req.checkBody('background_check', 'Please indicate if you have had a background check at CU').notEmpty();
             req.checkBody('awareness_training', 'Please indicate if you have had a Discrimination & Harassment Awareness training at CU').notEmpty();
-            req.checkBody('ssn', 'Please enter the last 4 digits of your SSN').notEmpty();
 
             req.checkBody('resume', 'Please upload your resume in PDF').isPDF(req.files.resume.name);
             req.checkBody('cover_letter', 'Please upload a cover letter in PDF').isPDF(req.files.cover_letter.name);
@@ -190,7 +189,7 @@ function addApplicationToDB(req, res, next, action) {
         name: req.body.name,
         sid: req.body.sid,
         gender: req.body.gender,
-        hispanic_latino: req.body.origin,
+        origin: req.body.origin,
         race: req.body.race,
         submitted: action,
     };
@@ -257,7 +256,7 @@ function addApplicationToDB(req, res, next, action) {
                                     student.Apprenticeship.updateAttributes(Apprenticeship)
                                         .then(function (apprenticeship) {
                                             req.flash('success', 'Application Successfully Saved!');
-                                            res.redirect('/project/success');
+                                            res.redirect('/user/student-home');
                                         })
                                 })
 
@@ -272,7 +271,7 @@ function addApplicationToDB(req, res, next, action) {
                 name: req.body.name,
                 sid: req.body.sid,
                 gender: req.body.gender,
-                hispanic_latino: req.body.origin,
+                origin: req.body.origin,
                 race: req.body.race,
                 submitted: action,
                 user_id: user_id,
@@ -297,7 +296,7 @@ function addApplicationToDB(req, res, next, action) {
                     req.flash('success', 'Application Successfully Saved!');
                 }
 
-                res.redirect('/project/success');
+                res.redirect('/user/student-home');
             }).catch(function (error) {
                 //error handling
                 console.log(error)
