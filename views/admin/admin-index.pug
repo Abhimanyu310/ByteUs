@@ -30,34 +30,34 @@ block content
 					th.style3 Project Preference
 			tr.style3
 				each application in applications
-					td.style3 
-						p #{application.name}
-					td.style3
-						p #{application.sid}
-					td.style3 
-						p #{application.Academics.primary_major}
-					td.style3 
-						p #{application.Academics.secondary_major}
-					td.style3 
-						p #{application.Academics.next_fall_level}
-					td.style3 
-						p #{application.Academics.grad_month}/#{application.Academics.grad_year}
-					td.style3 
-						p #{application.Academics.gpa}
-					td.style3 
-						p #{application.gender}
-					td.style3 
-						p #{application.race}
-					td.style3 
-						p #{application.prev_research_exp}
-					td.style3 
-						p #{application.Apprenticeship.prev_application}
-					td.style3
-						a.buttonstyle(href='/project/'+application.Apprenticeship.most_interest+'/view') Most Interest
-						a.buttonstyle(href='/project/'+application.Apprenticeship.high_interest+'/view') High Interest
-						a.buttonstyle(href='/project/'+application.Apprenticeship.moderate_interest+'/view') Moderate Interest
-						a.buttonstyle(href='/project/'+application.Apprenticeship.low_interest+'/view') Low Project
-						a.buttonstyle(href='/project/'+application.Apprenticeship.least_interest+'/view') Least Project
-						
+					tr
+						td.style3 
+							p #{application.name}
+						td.style3
+							p #{application.sid}
+						td.style3 
+							p #{application.Academics.primary_major}
+						td.style3 
+							p #{application.Academics.secondary_major}
+						td.style3 
+							p #{application.Academics.next_fall_level}
+						td.style3 
+							p #{application.Academics.grad_month}/#{application.Academics.grad_year}
+						td.style3 
+							p #{application.Academics.gpa}
+						td.style3 
+							p #{application.gender}
+						td.style3 
+							p #{application.race}
+						td.style3 
+							p #{application.prev_research_exp}
+						td.style3 
+							p #{application.Apprenticeship.prev_application}
+						td.style3
+							a.buttonstyle(href='/project/'+application.Apprenticeship.most_interest+'/view') Most Interest
+							a.buttonstyle(href='/project/'+application.Apprenticeship.high_interest+'/view') High Interest
+							a.buttonstyle(href='/project/'+application.Apprenticeship.moderate_interest+'/view') Moderate Interest
+							a.buttonstyle(href='/project/'+application.Apprenticeship.low_interest+'/view') Low Project
+							a.buttonstyle(href='/project/'+application.Apprenticeship.least_interest+'/view') Least Project
 					
 											
