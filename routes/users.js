@@ -45,8 +45,8 @@ var csrfProtection = csrf();
 router.use(csrfProtection);
 
 
-// GET Faculty Home
-router.get('/faculty-home', UserController.getFacultyHome);
+// GET Faculty Home //UserController.getFacultyHome
+router.get('/faculty-home', UserController.getFacultySubmittedProjects);
 
 // GET Student Home
 router.get('/student-home', UserController.getStudentHome);

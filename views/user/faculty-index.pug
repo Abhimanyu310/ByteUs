@@ -4,12 +4,31 @@ block title
     |#{title}
 
 block styles
-    link(rel='stylesheet', href='/stylesheets/forms.css')
+    link(rel='stylesheet', href='/stylesheets/user-home.css')
 
 block content
     header
         h Faculty Home
-    section
-        form#faculty-home
-            form
-                a.buttonstyle(href='/project/form') Create New Application
+    
+    div
+        tr.style3
+            th.style3 Project Name
+            th.style3 Complete Description
+            th.style3 Actions
+        each project in projects
+            tr.style3
+                td.style3
+                    p #{project.description}
+                td.style3
+                    li #{project.longdescription}
+                td.style3
+                    a.buttonstyle(href='/project/'+project.id+'/view') View Project
+                    if (project.submitted != 'Yes')
+                        a.buttonstyle(href='/project/'+project.id+'/_edit') Edit Project
+                    else
+                        p Project has been submitted.
+        tr.style3
+            td.style3
+            td.style3
+            td.style3
+                a.buttonstyle(href='/project/form') Create New Project
