@@ -11,17 +11,13 @@ block content
 	include ../includes/info-box
 
 	header
-		h Admin Home
+		h1 #{header}
 
 	section
-	table.style4
-			each project in projects
-				tr.style4
-					td.style4
-						p #{project.description}
-						table.style3
-							tr
-								th.style3 List of Students applied
-								th.style3 Priority
-								th.style3 Edit/Delete
-				
+		table.style3
+			
+			each application in applications
+				tr.style3
+					td.style3 
+						p #{application.name}
+											
