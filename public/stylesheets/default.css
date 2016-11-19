@@ -132,18 +132,26 @@ h4 {
 /* Info box*/
 
 .info-box {
-    margin-left: 300px;
-    width: 700px;
+    margin-left: 400px;
+    width: 400px;
+	text-align: center;
+	position: relative;
+	z-index: 99;
+	border: 2px solid;
+	border-color: black;
+	border-radius: 4px; 
+	border-bottom: 0px; 
+	font: 15px;
 }
 
-div.info-box-error{
-    background: #f2dede;
-    color: #a94442;
+div.info-box-error{ 
+    background: rgb(0,123,200);
+	color: white;
 }
 
 div.info-box-success{
-    background: #dff0d8;
-    color: #3c763d;
+    background: rgb(0,123,200);
+	color: white;
 }
 
 /*style links as button*/

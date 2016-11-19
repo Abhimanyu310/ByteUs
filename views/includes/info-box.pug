@@ -10,9 +10,8 @@ if hasError
 			p #{err}
 
 
-
 if hasErrors
-	div.info-box.info-box-error
-		each error in errors
-			each message in error
+	each error in errors
+		each message in error
+			div.info-box.info-box-error
 				p #{message.msg}
