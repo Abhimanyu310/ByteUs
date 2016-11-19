@@ -34,13 +34,10 @@ block content
 				br
 				|	For questions or concerns about the Discover Learning Apprenticeship or your application,please contact Sharon Anderson at
 				|	sharon.e.anderson@colorado.edu.
-				br
-				br
-
 	table.style3
 		tr.style3
-			td(colspan=3)
-				a.buttonstyle(href='/application/form') Create New Application
+			td.style1(colspan=3)
+				a.buttonstyle1(href='/application/form') Create New Application
 		tr.style3
 			th.style3 Application Date
 			th.style3 Project(s) Applied For
@@ -58,8 +55,8 @@ block content
 				td.style3
 					//a.buttonstyle(href='/application/'+application.id+'/view') View Application
 					if (application.submitted == 'No')
-						a.buttonstyle(href='/application/'+application.id+'/_edit') Edit Application
 						p Application has NOT been submitted.
+						a.buttonstyle(href='/application/'+application.id+'/_edit') Edit Application
 					else
 						p Application has been submitted.
 		tr.style3

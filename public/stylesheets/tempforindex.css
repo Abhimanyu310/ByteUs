@@ -1,8 +1,11 @@
+header h{
+	top: 100px; 
+}
 header h5{
-	color: rgb(0,123,200); 
+	color: white; 
 	position: absolute;
 	font-size: 14px; 
-	top: 153px;
+	top: 193px;
 	left: 275px;
 	width: 650px;
 	background: black;
@@ -12,8 +15,8 @@ section {
     position: absolute;
     background-color: black;
     margin-top: 0px;
-    top: 178px;
-    left: 970px;
+    top: 200px;
+    left: 990px;
 	padding: 50px 10px 40px 10px;
     width: 300px;
 	border: 4px solid rgb(204,185,120);
