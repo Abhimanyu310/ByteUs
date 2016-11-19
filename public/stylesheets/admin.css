@@ -119,7 +119,7 @@ table.style3{
     list-style:none;
     color: white;
     width: 100%;
-    padding-left: 300px;
+    padding-left: 0px;
     empty-cells: hide;
 }
 th.style3{

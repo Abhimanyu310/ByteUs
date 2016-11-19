@@ -11,17 +11,53 @@ block content
 	include ../includes/info-box
 
 	header
-		h Admin Home
+		h1 #{header}
 
 	section
-	table.style4
-			each project in projects
-				tr.style4
-					td.style4
-						p #{project.description}
-						table.style3
-							tr
-								th.style3 List of Students applied
-								th.style3 Priority
-								th.style3 Edit/Delete
-				
+		table.style3
+			tr.style3
+					th.style3 Student name
+					th.style3 Student ID
+					th.style3 Primary Major
+					th.style3 Secondary Major
+					th.style3 Level In School
+					th.style3 Grad Date
+					th.style3 GPA
+					th.style3 Gender
+					th.style3 Ethnicity
+					th.style3 Previous Experience
+					th.style3 Other Employment
+					th.style3 Project Preference
+			tr.style3
+				each application in applications
+					td.style3 
+						p #{application.name}
+					td.style3
+						p #{application.sid}
+					td.style3 
+						p #{application.Academics.primary_major}
+					td.style3 
+						p #{application.Academics.secondary_major}
+					td.style3 
+						p #{application.Academics.next_fall_level}
+					td.style3 
+						p #{application.Academics.grad_month}/#{application.Academics.grad_year}
+					td.style3 
+						p #{application.Academics.gpa}
+					td.style3 
+						p #{application.gender}
+					td.style3 
+						p #{application.race}
+					td.style3 
+						p #{application.prev_research_exp}
+					td.style3 
+						p #{application.Apprenticeship.prev_application}
+					td.style3
+						a.buttonstyle(href='/project/'+application.Apprenticeship.most_interest+'/view') Most Interest
+						a.buttonstyle(href='/project/'+application.Apprenticeship.high_interest+'/view') High Interest
+						a.buttonstyle(href='/project/'+application.Apprenticeship.moderate_interest+'/view') Moderate Interest
+						a.buttonstyle(href='/project/'+application.Apprenticeship.low_interest+'/view') Low Project
+						a.buttonstyle(href='/project/'+application.Apprenticeship.least_interest+'/view') Least Project
+						
+					
+											
