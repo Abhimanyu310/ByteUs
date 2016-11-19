@@ -50,11 +50,11 @@ block content
 				td.style3
 					p #{application.created_at}
 				td.style3
-					li Priority 1 project
-					li Priority 2 project
-					li Priority 3 project
-					li Priority 4 project
-					li Priority 5 project
+					li #{application.Apprenticeship.most_interest}
+					li #{application.Apprenticeship.high_interest}
+					li #{application.Apprenticeship.moderate_interest}
+					li #{application.Apprenticeship.low_interest}
+					li #{application.Apprenticeship.least_interest}
 				td.style3
 					//a.buttonstyle(href='/application/'+application.id+'/view') View Application
 					if (application.submitted == 'No')
