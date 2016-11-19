@@ -15,8 +15,15 @@ module.exports = {
         models.User.findOne({
             where: {id: user.id}
         }).then(function (user){
-            user.getApplications().then(function(applications) {
-                //console.log(applications);
+            user.getApplications({
+                include: [
+                    {model: models.StudentContact, as: 'Contact'},
+                    {model: models.StudentAcademics, as: 'Academics'},
+                    {model: models.StudentApprenticeship, as: 'Apprenticeship'}
+                ]
+            }).then(function(applications) {
+                console.log('from here');
+                console.log(applications);
                 res.render('user/student-index', {
                     title: "Student Home",
                     success: success,
