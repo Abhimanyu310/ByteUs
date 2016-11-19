@@ -21,20 +21,22 @@ block content
 			br
 			|	As an undergraduate discovery learning apprentice, you’ll work alongside graduate students, post-doctoral fellows, faculty, and industry representatives, as collaborative partners on original research. We find that students bring a fresh perspective to the research team while also learning from their more experienced partners.
 
-	section
-		form#user-login(method='post', action='/user/signin')
-			table.style
-				tr
-					td
-						label(for='email') Email:
-						input(name='email')
-						label(for='password') Password:
-						input(name='password', type='password')
-				tr
-					td
-						input(type='hidden', name='_csrf', value=csrfToken)
-						input.btn.btn-success(type='submit', name='action', value='Submit')
-						a(href='/user/signup') Register 
-		
+	if(!login)
+		section
+			p Please login to continue
+			form#user-login(method='post', action='/user/signin')
+				table.style
+					tr
+						td
+							label(for='email') Email:
+							input(name='email')
+							label(for='password') Password:
+							input(name='password', type='password')
+					tr
+						td
+							input(type='hidden', name='_csrf', value=csrfToken)
+							input.btn.btn-success(type='submit', name='action', value='Submit')
+							a.buttonstyle(href='/user/signup') Register
+
 		
 		

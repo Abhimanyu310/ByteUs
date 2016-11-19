@@ -16,7 +16,8 @@ section {
     left: 970px;
 	padding: 50px 10px 40px 10px;
     width: 300px;
-	border: 4px solid rgb(204,185,120); 
+	border: 4px solid rgb(204,185,120);
+	color: yellow;
 }
 
 label{
