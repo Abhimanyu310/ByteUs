@@ -12,18 +12,23 @@ module.exports = {
         else{
             user = req.user;
         }
-        console.log('in here the user is');
-        console.log('daf');
-        console.log(user);
-        user.getApplications().then(function(applications) {
-            //console.log(applications);
-            res.render('user/student-index', {
-                title: "Student Home",
-                success: success,
-                hasSuccess: success.length > 0,
-                applications: applications
+        models.User.findOne({
+            where: {id: user.id}
+        }).then(function (user){
+            user.getApplications().then(function(applications) {
+                //console.log(applications);
+                res.render('user/student-index', {
+                    title: "Student Home",
+                    success: success,
+                    hasSuccess: success.length > 0,
+                    applications: applications
+                });
             });
         });
+        // console.log('in here the user is');
+        // console.log('daf');
+        // console.log(user);
+
     },
 
     getFacultyHome: function(req, res, next) {
