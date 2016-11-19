@@ -6,7 +6,12 @@ module.exports = {
 
     getStudentHome: function(req, res, next) {
         var success = req.flash('success');
-        var user = req.user;
+        if (req.session.CU){
+            var user = req.session.cu_user;
+        }
+        else{
+            user = req.user;
+        }
         user.getApplications().then(function(applications) {
             //console.log(applications);
             res.render('user/student-index', {
@@ -26,7 +31,12 @@ module.exports = {
     },
 
     getFacultySubmittedProjects: function (req, res, next) {
-        var user = req.user;
+        if (req.session.CU){
+            var user = req.session.cu_user;
+        }
+        else{
+            user = req.user;
+        }
         user.getProjects().then(function (projects) {
             res.render('user/faculty-index', {
                 title: "Projects",
@@ -36,7 +46,12 @@ module.exports = {
     },
 
     getStudentSubmittedApplications: function (req, res, next) {
-        var user = req.user;
+        if (req.session.CU){
+            var user = req.session.cu_user;
+        }
+        else{
+            user = req.user;
+        }
         user.getApplications().then(function (applications) {
             res.render('user/faculty-index', {
                 title: "Projects",
@@ -77,10 +92,10 @@ module.exports = {
     },
 
     postSignIn: function(req, res, next) {
-        console.log('printing req.session.passport.user');
-        console.log(req.session.passport.user);
-        console.log('printing req.user');
-        console.log(req.user.id);
+        // console.log('printing req.session.passport.user');
+        // console.log(req.session.passport.user);
+        // console.log('printing req.user');
+        // console.log(req.user.id);
         if (req.session.oldUrl){
             var oldUrl = req.session.oldUrl;
             req.session.oldUrl = null;

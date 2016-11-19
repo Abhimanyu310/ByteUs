@@ -9,11 +9,13 @@ module.exports = {
         // console.log(req.isAuthenticated());
 
         // 
-
+        var validation_errors = req.flash('errors');
 
         res.render('home/index', {
             title: 'Home',
-            // user: req.user
+            csrfToken: req.csrfToken(),
+            errors: validation_errors,
+            hasErrors: validation_errors.length > 0
         });
     }
 };
