@@ -26,7 +26,7 @@ router.post('/login/callback',
     }
 );
 
-router.post('/logout', UserController.getLogout);
+router.post('/logout', UserController.postLogout);
 
 // router.post('/login/callback', function (req, res, next) {
 //    console.log('in callback');

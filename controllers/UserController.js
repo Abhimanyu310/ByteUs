@@ -114,6 +114,11 @@ module.exports = {
         }
         // req.logout();
 
+    },
+
+    postLogout: function(req, res, next) {
+        res.render('user/logout', { title: "Logout" });
+
     }
 
 
