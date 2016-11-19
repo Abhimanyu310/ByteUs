@@ -89,6 +89,11 @@ module.exports = {
                 saml.samlStrategy.logout(req, function(err, requestUrl) {
                     // LOCAL logout
                     req.logout();
+                    req.session.CU = '';
+                    req.session.type = '';
+                    req.session.email = '';
+                    req.session.name = '';
+                    req.session.user_id = '';
                     // redirect to the IdP with the encrypted SAML logout request
                     console.log('HEREEEEEEEEEEEEEEEEEEEEE');
                     console.log(requestUrl);
