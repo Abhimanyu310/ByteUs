@@ -41,15 +41,15 @@ block content
 				th.style3 Complete Description
 				th.style3 Details
 			each project in projects
-				tr.style3
-					td.style3
-						p #{project.description}
-					td.style3
-						li #{project.longdescription}
-					td.style3
-						a.buttonstyle(href='/project/'+project.id+'/view') View Project
-						if (project.submitted != 'Yes')
-							a.buttonstyle(href='/project/'+project.id+'/_edit') Edit Project
+				if (project.submitted == 'Yes')
+					tr.style3
+						td.style3
+							p #{project.description}
+						td.style3
+							li #{project.longdescription}
+						td.style3
+							a.buttonstyle(href='/project/'+project.id+'/view') View Project
+
 
 
 
