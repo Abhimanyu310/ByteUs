@@ -37,6 +37,7 @@ module.exports = {
         else{
             user = req.user;
         }
+        console.log('in here the user is');
         console.log(user);
         user.getProjects().then(function (projects) {
             res.render('user/faculty-index', {
@@ -53,6 +54,7 @@ module.exports = {
         else{
             user = req.user;
         }
+        console.log(user);
         user.getApplications().then(function (applications) {
             res.render('user/faculty-index', {
                 title: "Projects",
