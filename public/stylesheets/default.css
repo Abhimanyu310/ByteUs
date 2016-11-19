@@ -158,7 +158,7 @@ h4 {
 	border-color: black;
 	border-radius: 4px; 
 	border-bottom: 0px; 
-	font: 15px;
+	/*font: 15px;*/
 }
 
 div.info-box-error{ 
@@ -169,6 +169,13 @@ div.info-box-error{
 div.info-box-success{
     background: #dff0d8;
 	color: #3c763d;
+}
+
+/*login info*/
+
+.login-info {
+    color: rgb(0,123,200);
+    font-size: 10px;
 }
 
 /*style links as button*/
