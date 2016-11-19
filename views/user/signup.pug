@@ -1,24 +1,37 @@
 extends ../layouts/master
 
 block title
-    |#{title}
+	|#{title}
 
 block styles
-    link(rel='stylesheet', href='/stylesheets/signin.css')
+	link(rel='stylesheet', href='/stylesheets/signin.css')
 
 block content
 
-    include ../includes/info-box
+	include ../includes/info-box
 
-    header
-        h User Register
-    section
-        form#user-login(method='post', action='/user/signup')
-            input(name='email')
-            input(name='password')
-            input(type='checkbox', name='type', value='Student')
-            | Student
-            input(type='checkbox', name='type', value='Faculty')
-            | Faculty
-            input(type='hidden', name='_csrf', value=csrfToken)
-            input.btn.btn-success(type='submit', name='action', value='Submit')
+	header 
+		h User Register
+	section
+		form#user-login(method='post', action='/user/signup')
+			table.style
+				tr
+					td
+						label(for='email') Email:
+						input(name='email')
+						label(for='password') Password:
+						input(name='password', type='password')
+			table.style1
+				tr
+					td
+						input(type='checkbox', name='type', value='Student')
+						| Student
+					td
+						input(type='checkbox', name='type', value='Faculty')
+						| Faculty
+						
+			table.style2
+				tr
+					td
+						input(type='hidden', name='_csrf', value=csrfToken)
+						input.btn.btn-success(type='submit', name='action', value='Submit')
