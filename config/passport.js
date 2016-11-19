@@ -10,23 +10,23 @@ var randomstring = require("randomstring");
 
 
 passport.serializeUser(function(user, done) {
-    console.log('serializing');
+    // console.log('serializing');
     // console.log(user);
     // console.log('serialize id');
     // console.log(user.id);
-    done(null, user.id);
-    // done(null, user);
+    // done(null, user.id);
+    done(null, user);
 });
 
-passport.deserializeUser(function(id, done) {
+passport.deserializeUser(function(user, done) {
     // console.log(id);
-    models.User.findOne({
-        where: {id: id}
-    }).then(function (user){
-        // console.log(user);
-        done(null, user);
-    });
-    // done(null, user);
+    // models.User.findOne({
+    //     where: {id: id}
+    // }).then(function (user){
+    //     // console.log(user);
+    //     done(null, user);
+    // });
+    done(null, user);
 });
 
 
@@ -46,11 +46,12 @@ var samlStrategy = new saml.Strategy({
     // Identity Provider's public key
     cert: fs.readFileSync(process.env.IDP_PUBLIC_KEY, 'utf8'),
     validateInResponseTo: false,
-    disableRequestedAuthnContext: true, 
+    disableRequestedAuthnContext: true,
+    passReqToCallback: true,
     logoutUrl: process.env.LOGOUT_URL,
     logoutCallbackUrl: process.env.LOGOUT_CALLBACK
-}, function(profile, done) {
-    console.log(profile.nameID);
+}, function(req, profile, done) {
+    // console.log(profile.nameID);
     var user_attributes = [];
     var xml = profile.getAssertionXml();
     parseString(xml, function (err, result) {
@@ -77,11 +78,17 @@ var samlStrategy = new saml.Strategy({
     var name = user_attributes[2];
     console.log('in profile done');
 
+    req.session.CU = true;
+    req.session.type = user_attributes[0];
+    req.session.email = user_attributes[1];
+    req.session.name = user_attributes[2];
+
     models.User.findOne({
         where: {email: email}
     }).then(function (user){
         if (user){
-            return done(null, user);
+            // return done(null, user);
+            return done(null, profile);
         }
 
         var newUser = models.User.build();
@@ -91,10 +98,11 @@ var samlStrategy = new saml.Strategy({
             charset: 'alphanumeric'
         });
         newUser.type = type;
-        newUser.sessionIndex = profile.sessionIndex;
+
 
         newUser.save().then(function (user) {
-            return done(null, user);
+            // return done(null, user);
+            return done(null, profile);
         }).catch(function (error) {
             return done(error);
         });
