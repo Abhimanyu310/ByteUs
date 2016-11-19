@@ -87,6 +87,7 @@ var samlStrategy = new saml.Strategy({
         where: {email: email}
     }).then(function (user){
         if (user){
+            req.session.user_id = user.id;
             // return done(null, user);
             return done(null, profile);
         }
@@ -102,6 +103,7 @@ var samlStrategy = new saml.Strategy({
 
         newUser.save().then(function (user) {
             // return done(null, user);
+            req.session.user_id = user.id;
             return done(null, profile);
         }).catch(function (error) {
             return done(error);

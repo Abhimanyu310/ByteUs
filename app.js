@@ -77,7 +77,19 @@ app.use(function(req, res, next) {
 
 app.use(function (req, res, next) {
   res.locals.login = req.isAuthenticated();
-  res.locals.user = req.user;
+  if(req.session.CU){
+    res.locals.user = {
+      id: req.session.user_id,
+      email: req.session.email,
+      type: req.session.type,
+      name: req.session.name
+    }
+  }
+  else {
+    res.locals.user = req.user;
+    console.log('is this it?');
+    console.dir(req.user);
+  }
   next();
 });
 
