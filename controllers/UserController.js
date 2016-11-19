@@ -38,6 +38,7 @@ module.exports = {
             user = req.user;
         }
         console.log('in here the user is');
+        console.log('daf');
         console.log(user);
         user.getProjects().then(function (projects) {
             res.render('user/faculty-index', {
