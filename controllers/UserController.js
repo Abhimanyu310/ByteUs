@@ -117,8 +117,8 @@ module.exports = {
     },
 
     postLogout: function(req, res, next) {
-        res.render('user/logout', { title: "Logout" });
-
+        // res.render('user/logout', { title: "Logout" });
+        res.redirect('/');
     }
 
 
