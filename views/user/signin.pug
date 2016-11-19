@@ -12,7 +12,7 @@ block content
     section
         form#user-login(method='post', action='/user/signin')
             input(name='email')
-            input(name='password')
+            input(name='password', type='password')
             input(type='hidden', name='_csrf', value=csrfToken)
             input.btn.btn-success(type='submit', name='action', value='Submit')
 
