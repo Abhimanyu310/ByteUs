@@ -84,7 +84,12 @@ module.exports = {
     },
     
     getFacultySubmittedProjectsForAdmin: function (req, res, next) {
-        var user = req.user;
+        if (req.session.CU){
+            var user = req.session.cu_user;
+        }
+        else{
+            user = req.user;
+        }
         user.getProjects().then(function (projects) {
             res.render('admin/admin-index', {
                 title: "Projects",
@@ -94,7 +99,12 @@ module.exports = {
     },
 
     getStudentSubmittedApplicationsForAdmin: function (req, res, next) {
-        var user = req.user;
+        if (req.session.CU){
+            var user = req.session.cu_user;
+        }
+        else{
+            user = req.user;
+        }
         user.getApplications().then(function (applications) {
             res.render('admin/admin-index', {
                 title: "Projects",

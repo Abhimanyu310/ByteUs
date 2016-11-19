@@ -73,6 +73,23 @@ a {
     outline: none;
 }
 
+a.buttonstyle {
+    text-decoration: none;
+    background-color:  rgb(0,123,200);
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 25px;
+    /*float: right;*/
+    margin: 0 15px 0 15px;
+    overflow: hidden;
+    width: 100px;
+    height: 30px;
+    display: inline-block;
+}
+
 /*Navigation Styles*/
 
 nav img {
@@ -132,18 +149,33 @@ h4 {
 /* Info box*/
 
 .info-box {
-    margin-left: 300px;
-    width: 700px;
+    margin-left: 950px;
+    width: 400px;
+	text-align: center;
+	position: relative;
+	z-index: 99;
+	border: 2px solid;
+	border-color: black;
+	border-radius: 4px; 
+	border-bottom: 0px; 
+	/*font: 15px;*/
 }
 
-div.info-box-error{
+div.info-box-error{ 
     background: #f2dede;
-    color: #a94442;
+	color: #a94442;
 }
 
 div.info-box-success{
     background: #dff0d8;
-    color: #3c763d;
+	color: #3c763d;
+}
+
+/*login info*/
+
+.login-info {
+    color: rgb(0,123,200);
+    font-size: 10px;
 }
 
 /*style links as button*/

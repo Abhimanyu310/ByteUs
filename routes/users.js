@@ -26,6 +26,8 @@ router.post('/login/callback',
     }
 );
 
+router.post('/logout', UserController.postLogout);
+
 // router.post('/login/callback', function (req, res, next) {
 //    console.log('in callback');
 //    console.log(req);
@@ -70,7 +72,7 @@ router.post('/signup',passport.authenticate('local.signup', {
 router.get('/signin', UserController.getSignIn);
 
 router.post('/signin', passport.authenticate('local.signin', {
-    failureRedirect: '/user/signin',
+    failureRedirect: '/',
     failureFlash: true
 }), UserController.postSignIn);
 

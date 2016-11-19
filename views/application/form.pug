@@ -37,10 +37,10 @@ block content
 					table.style1
 						tr
 							td
-								input#Gen(type='radio', name='gender', value='Female' checked=((formData ? (formData.gender == 'Female' ? true : false) : false) || (application ? (application.gender == 'Female' ? true : false) : false)))
+								input#Gen(type='radio', name='gender', value='Male' checked=((formData ? (formData.gender == 'Male' ? true : false) : false) || (application ? (application.gender == 'Male' ? true : false) : false)))
 								|  Male
 							td
-								input#Gen(type='radio', name='gender', value='Male' checked=((formData ? (formData.gender == 'Male' ? true : false) : false) || (application ? (application.gender == 'Male' ? true : false) : false)))
+								input#Gen(type='radio', name='gender', value='female' checked=((formData ? (formData.gender == 'female' ? true : false) : false) || (application ? (application.gender == 'female' ? true : false) : false)))
 								|  Female
 					label(for='Origin', class=(hasErrors ? (errors[0].origin ? 'has-error' : undefined) : undefined)) Are you of Hispanic or Latino origin? *
 					table.style2

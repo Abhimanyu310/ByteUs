@@ -3,22 +3,38 @@ var saml = require('passport-saml');
 var LocalSrategy = require('passport-local').Strategy;
 var models  = require('../models');
 var fs = require('fs');
+var parseString = require('xml2js').parseString;
+var randomstring = require("randomstring");
+
+
 
 
 passport.serializeUser(function(user, done) {
+    // console.log('serializing');
+    // console.log(user);
     // console.log('serialize id');
     // console.log(user.id);
-    done(null, user.id);
+    // done(null, user.id);
+    done(null, user);
 });
 
-passport.deserializeUser(function(id, done) {
+passport.deserializeUser(function(user, done) {
     // console.log(id);
-    models.User.findOne({
-        where: {id: id}
-    }).then(function (user){
-        // console.log(user);
+    if(user.id){
+        // console.log('USER.ID YATY');
+        models.User.findOne({
+            where: {id: user.id}
+        }).then(function (user){
+            // console.log(user);
+            done(null, user);
+        });
+    }
+    else{
+        // console.log('USER.ID NAY');
         done(null, user);
-    });
+    }
+
+
 });
 
 
@@ -38,12 +54,91 @@ var samlStrategy = new saml.Strategy({
     // Identity Provider's public key
     cert: fs.readFileSync(process.env.IDP_PUBLIC_KEY, 'utf8'),
     validateInResponseTo: false,
-    disableRequestedAuthnContext: true, 
+    disableRequestedAuthnContext: true,
+    passReqToCallback: true,
     logoutUrl: process.env.LOGOUT_URL,
     logoutCallbackUrl: process.env.LOGOUT_CALLBACK
-}, function(profile, done) {
-    console.log(profile);
-    return done(null, profile);
+}, function(req, profile, done) {
+    // console.log(profile.nameID);
+    var user_attributes = [];
+    var xml = profile.getAssertionXml();
+    parseString(xml, function (err, result) {
+        var attributes_section = result["saml2:Assertion"]["saml2:AttributeStatement"][0];
+
+        for (var key in attributes_section) {
+            // skip loop if the property is from prototype
+            if (!attributes_section.hasOwnProperty(key)) continue;
+
+            var obj = attributes_section[key];
+            for (var prop in obj) {
+                // skip loop if the property is from prototype
+                if(!obj.hasOwnProperty(prop)) continue;
+
+                var attributes = obj[prop]["saml2:AttributeValue"][0]["_"]
+                user_attributes.push(attributes);
+
+            }
+        }
+
+    });
+    var type = user_attributes[0];
+    var email = user_attributes[1];
+    var name = user_attributes[2];
+    console.log('in profile done');
+
+    req.session.CU = true;
+
+    // req.session.type = user_attributes[0];
+    // req.session.email = user_attributes[1];
+    // req.session.name = user_attributes[2];
+
+    models.User.findOne({
+        where: {email: email}
+    }).then(function (user){
+        if (user){
+            models.User.findOne({
+                where: {id: user.id}
+            }).then(function (user){
+                req.session.cu_user = user;
+                return done(null, profile);
+            });
+            // req.session.cu_user = user;
+            // // req.session.user_id = user.id;
+            // // return done(null, user);
+            // return done(null, profile);
+        }
+
+        else{
+            var newUser = models.User.build();
+            newUser.email = email;
+            newUser.password = randomstring.generate({
+                length: 15,
+                charset: 'alphanumeric'
+            });
+            newUser.type = type;
+
+
+            newUser.save().then(function (user) {
+                models.User.findOne({
+                    where: {id: user.id}
+                }).then(function (user){
+                    req.session.cu_user = user;
+                    return done(null, profile);
+                });
+                // return done(null, user);
+                // req.session.user_id = user.id;
+                // req.session.cu_user = user;
+                // return done(null, profile);
+            }).catch(function (error) {
+                return done(error);
+            });
+        }
+        
+    }).catch(function (error) {
+        return done(error);
+    });
+    // console.log(profile);
+    // return done(null, profile);
 });
 
 passport.use('saml.login', samlStrategy);

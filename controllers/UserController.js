@@ -1,20 +1,31 @@
 var models  = require('../models');
+var saml = require('../config/passport');
 
 
 module.exports = {
 
     getStudentHome: function(req, res, next) {
         var success = req.flash('success');
-        var user = req.user;
-        user.getApplications().then(function(applications) {
-            //console.log(applications);
-            res.render('user/student-index', {
-                title: "Student Home",
-                success: success,
-                hasSuccess: success.length > 0,
-                applications: applications
+        if (req.session.CU){
+            var user = req.session.cu_user;
+        }
+        else{
+            user = req.user;
+        }
+        models.User.findOne({
+            where: {id: user.id}
+        }).then(function (user){
+            user.getApplications().then(function(applications) {
+                //console.log(applications);
+                res.render('user/student-index', {
+                    title: "Student Home",
+                    success: success,
+                    hasSuccess: success.length > 0,
+                    applications: applications
+                });
             });
         });
+
     },
 
     getFacultyHome: function(req, res, next) {
@@ -25,17 +36,33 @@ module.exports = {
     },
 
     getFacultySubmittedProjects: function (req, res, next) {
-        var user = req.user;
-        user.getProjects().then(function (projects) {
-            res.render('user/faculty-index', {
-                title: "Projects",
-                projects: projects
+        if (req.session.CU){
+            var user = req.session.cu_user;
+        }
+        else{
+            user = req.user;
+        }
+        models.User.findOne({
+            where: {id: user.id}
+        }).then(function (user){
+            user.getProjects().then(function (projects) {
+                res.render('user/faculty-index', {
+                    title: "Projects",
+                    projects: projects
+                });
             });
         });
+
     },
 
     getStudentSubmittedApplications: function (req, res, next) {
-        var user = req.user;
+        if (req.session.CU){
+            var user = req.session.cu_user;
+        }
+        else{
+            user = req.user;
+        }
+        console.log(user);
         user.getApplications().then(function (applications) {
             res.render('user/faculty-index', {
                 title: "Projects",
@@ -76,10 +103,10 @@ module.exports = {
     },
 
     postSignIn: function(req, res, next) {
-        console.log('printing req.session.passport.user');
-        console.log(req.session.passport.user);
-        console.log('printing req.user');
-        console.log(req.user.id);
+        // console.log('printing req.session.passport.user');
+        // console.log(req.session.passport.user);
+        // console.log('printing req.user');
+        // console.log(req.user.id);
         if (req.session.oldUrl){
             var oldUrl = req.session.oldUrl;
             req.session.oldUrl = null;
@@ -90,7 +117,37 @@ module.exports = {
     },
     
     getLogout: function(req, res, next) {
-        req.logout();
-        res.render('user/logout', { title: "Logout" });
+        if(req.isAuthenticated()){
+            if(req.session.CU){
+                saml.samlStrategy.logout(req, function(err, requestUrl) {
+                    // LOCAL logout
+                    req.logout();
+                    req.session.CU = '';
+                    req.session.cu_user = '';
+                    req.session.oldUrl = '';
+                    // redirect to the IdP with the encrypted SAML logout request
+                    console.log('HEREEEEEEEEEEEEEEEEEEEEE');
+                    console.log(requestUrl);
+                    res.redirect(requestUrl);
+                });
+            }
+            else {
+                req.logout();
+                req.session.oldUrl = '';
+                res.render('user/logout', { title: "Logout" });
+            }
+        }
+        else{
+            res.render('user/logout', { title: "Logout" });
+        }
+        // req.logout();
+
+    },
+
+    postLogout: function(req, res, next) {
+        // res.render('user/logout', { title: "Logout" });
+        res.redirect('/');
     }
+
+
 };

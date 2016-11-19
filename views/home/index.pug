@@ -13,35 +13,33 @@ block content
 	header
 		h Discovery Learning Apprenticeship
 		h5
-			|	This page is still in progress. IdentiKey login will be used soon.
-			|	For now, please fill out the required CU Login Name and Identikey
-			|	Password. Once that is filled out, select the "Student" button
-			|	if you are a student or select the "Faculty" button if you are
-			|	faculty. This will insure that you  are directed to the proper forms.
-			|	Also, the project lists may later be displayed on this page.
+			|	Whether helping develop new diagnostic techniques for heart disease, or detecting the effects of nuclear waste, discovery learning apprentices make the most of their time at CU Boulder by supplementing classroom instruction with real-world engineering experience.
+			br
+			br
+			|	Undergraduate engineering students in the apprenticeship program earn hourly wages while engaging in research with college faculty and graduate students. Positions are announced in early April, and applications are accepted through the end of April for apprenticeships during the following academic year.
+			br
+			br
+			|	As an undergraduate discovery learning apprentice, you’ll work alongside graduate students, post-doctoral fellows, faculty, and industry representatives, as collaborative partners on original research. We find that students bring a fresh perspective to the research team while also learning from their more experienced partners.
 
-	section
-	table.style5
-		tr
-			td
-				label(for='cu_username') CU Login Name:
-					table.style1
-						tr
-							td
-								input#form_name.form-control(type='text', name='name', required='required', data-error='CU Login Name is required')
-								.help-block.with-errors
-				label(for='IdentiKey_pass') IdentiKey Password: :
-					table.style1
-							tr
-								td
-									input#form_name.form-control(type='text', name='name', required='required', data-error='IdentiKeyPassword is required')
-									.help-block.with-errors
-	table.style2
-		tr
-			td
-				a.buttonstyle(href='/user/student-home') Student
-			td
-				a.buttonstyle(href='/user/faculty-home') Faculty
-				
+	if(!login)
+		section
+			p Please login to continue
+			form#user-login(method='post', action='/user/signin')
+				table.style
+					tr
+						td
+							label(for='email') Email:
+							input(name='email')
+							label(for='password') Password:
+							input(name='password', type='password')
+					tr
+						td
+							input(type='hidden', name='_csrf', value=csrfToken)
+							input.btn.btn-success(type='submit', name='action', value='Submit')
+							a(href='/user/signup') Register
 
 
+		
+				div.login-info
+					p Test Student: Email - student@colorado.edu, Password - student
+					p Test Faculty: Email - faculty@colorado.edu, Password - faculty
