@@ -25,9 +25,6 @@ module.exports = {
                 });
             });
         });
-        // console.log('in here the user is');
-        // console.log('daf');
-        // console.log(user);
 
     },
 
@@ -45,15 +42,17 @@ module.exports = {
         else{
             user = req.user;
         }
-        console.log('in here the user is');
-        console.log('daf');
-        console.log(user);
-        user.getProjects().then(function (projects) {
-            res.render('user/faculty-index', {
-                title: "Projects",
-                projects: projects
+        models.User.findOne({
+            where: {id: user.id}
+        }).then(function (user){
+            user.getProjects().then(function (projects) {
+                res.render('user/faculty-index', {
+                    title: "Projects",
+                    projects: projects
+                });
             });
         });
+
     },
 
     getStudentSubmittedApplications: function (req, res, next) {
