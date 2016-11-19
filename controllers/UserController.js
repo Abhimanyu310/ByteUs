@@ -124,6 +124,7 @@ module.exports = {
                     req.logout();
                     req.session.CU = '';
                     req.session.cu_user = '';
+                    req.session.oldUrl = '';
                     // redirect to the IdP with the encrypted SAML logout request
                     console.log('HEREEEEEEEEEEEEEEEEEEEEE');
                     console.log(requestUrl);
@@ -132,6 +133,7 @@ module.exports = {
             }
             else {
                 req.logout();
+                req.session.oldUrl = '';
                 res.render('user/logout', { title: "Logout" });
             }
         }
