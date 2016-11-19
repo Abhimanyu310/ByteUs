@@ -72,7 +72,7 @@ router.post('/signup',passport.authenticate('local.signup', {
 router.get('/signin', UserController.getSignIn);
 
 router.post('/signin', passport.authenticate('local.signin', {
-    failureRedirect: '/user/signin',
+    failureRedirect: '/',
     failureFlash: true
 }), UserController.postSignIn);
 

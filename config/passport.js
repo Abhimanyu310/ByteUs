@@ -21,7 +21,7 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(function(user, done) {
     // console.log(id);
     if(user.id){
-        console.log('USER.ID YATY');
+        // console.log('USER.ID YATY');
         models.User.findOne({
             where: {id: user.id}
         }).then(function (user){
@@ -30,7 +30,7 @@ passport.deserializeUser(function(user, done) {
         });
     }
     else{
-        console.log('USER.ID NAY');
+        // console.log('USER.ID NAY');
         done(null, user);
     }
 
