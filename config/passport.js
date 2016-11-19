@@ -14,19 +14,19 @@ passport.serializeUser(function(user, done) {
     // console.log(user);
     // console.log('serialize id');
     // console.log(user.id);
-    // done(null, user.id);
-    done(null, user);
+    done(null, user.id);
+    // done(null, user);
 });
 
-passport.deserializeUser(function(user, done) {
+passport.deserializeUser(function(id, done) {
     // console.log(id);
-    // models.User.findOne({
-    //     where: {id: id}
-    // }).then(function (user){
-    //     // console.log(user);
-    //     done(null, user);
-    // });
-    done(null, user);
+    models.User.findOne({
+        where: {id: id}
+    }).then(function (user){
+        // console.log(user);
+        done(null, user);
+    });
+    // done(null, user);
 });
 
 
@@ -50,58 +50,59 @@ var samlStrategy = new saml.Strategy({
     logoutUrl: process.env.LOGOUT_URL,
     logoutCallbackUrl: process.env.LOGOUT_CALLBACK
 }, function(profile, done) {
-    // var user_attributes = [];
-    // var xml = profile.getAssertionXml();
-    // parseString(xml, function (err, result) {
-    //     var attributes_section = result["saml2:Assertion"]["saml2:AttributeStatement"][0];
-    //
-    //     for (var key in attributes_section) {
-    //         // skip loop if the property is from prototype
-    //         if (!attributes_section.hasOwnProperty(key)) continue;
-    //
-    //         var obj = attributes_section[key];
-    //         for (var prop in obj) {
-    //             // skip loop if the property is from prototype
-    //             if(!obj.hasOwnProperty(prop)) continue;
-    //
-    //             var attributes = obj[prop]["saml2:AttributeValue"][0]["_"]
-    //             user_attributes.push(attributes);
-    //
-    //         }
-    //     }
-    //
-    // });
-    // var type = user_attributes[0];
-    // var email = user_attributes[1];
-    // var name = user_attributes[2];
-    // console.log('in profile done');
-    //
-    // models.User.findOne({
-    //     where: {email: email}
-    // }).then(function (user){
-    //     if (user){
-    //         return done(null, user);
-    //     }
-    //
-    //     var newUser = models.User.build();
-    //     newUser.email = email;
-    //     newUser.password = randomstring.generate({
-    //         length: 15,
-    //         charset: 'alphanumeric'
-    //     });
-    //     newUser.type = type;
-    //     newUser.sessionIndex = profile.sessionIndex;
-    //
-    //     newUser.save().then(function (user) {
-    //         return done(null, user);
-    //     }).catch(function (error) {
-    //         return done(error);
-    //     });
-    // }).catch(function (error) {
-    //     return done(error);
-    // });
-    console.log(profile);
-    return done(null, profile);
+    console.log(profile.nameID);
+    var user_attributes = [];
+    var xml = profile.getAssertionXml();
+    parseString(xml, function (err, result) {
+        var attributes_section = result["saml2:Assertion"]["saml2:AttributeStatement"][0];
+
+        for (var key in attributes_section) {
+            // skip loop if the property is from prototype
+            if (!attributes_section.hasOwnProperty(key)) continue;
+
+            var obj = attributes_section[key];
+            for (var prop in obj) {
+                // skip loop if the property is from prototype
+                if(!obj.hasOwnProperty(prop)) continue;
+
+                var attributes = obj[prop]["saml2:AttributeValue"][0]["_"]
+                user_attributes.push(attributes);
+
+            }
+        }
+
+    });
+    var type = user_attributes[0];
+    var email = user_attributes[1];
+    var name = user_attributes[2];
+    console.log('in profile done');
+
+    models.User.findOne({
+        where: {email: email}
+    }).then(function (user){
+        if (user){
+            return done(null, user);
+        }
+
+        var newUser = models.User.build();
+        newUser.email = email;
+        newUser.password = randomstring.generate({
+            length: 15,
+            charset: 'alphanumeric'
+        });
+        newUser.type = type;
+        newUser.sessionIndex = profile.sessionIndex;
+
+        newUser.save().then(function (user) {
+            return done(null, user);
+        }).catch(function (error) {
+            return done(error);
+        });
+    }).catch(function (error) {
+        return done(error);
+    });
+    // console.log(profile);
+    // return done(null, profile);
 });
 
 passport.use('saml.login', samlStrategy);
