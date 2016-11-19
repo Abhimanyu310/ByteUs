@@ -108,29 +108,32 @@ var samlStrategy = new saml.Strategy({
             // return done(null, profile);
         }
 
-        var newUser = models.User.build();
-        newUser.email = email;
-        newUser.password = randomstring.generate({
-            length: 15,
-            charset: 'alphanumeric'
-        });
-        newUser.type = type;
-
-
-        newUser.save().then(function (user) {
-            models.User.findOne({
-                where: {id: user.id}
-            }).then(function (user){
-                req.session.cu_user = user;
-                return done(null, profile);
+        else{
+            var newUser = models.User.build();
+            newUser.email = email;
+            newUser.password = randomstring.generate({
+                length: 15,
+                charset: 'alphanumeric'
             });
-            // return done(null, user);
-            // req.session.user_id = user.id;
-            // req.session.cu_user = user;
-            // return done(null, profile);
-        }).catch(function (error) {
-            return done(error);
-        });
+            newUser.type = type;
+
+
+            newUser.save().then(function (user) {
+                models.User.findOne({
+                    where: {id: user.id}
+                }).then(function (user){
+                    req.session.cu_user = user;
+                    return done(null, profile);
+                });
+                // return done(null, user);
+                // req.session.user_id = user.id;
+                // req.session.cu_user = user;
+                // return done(null, profile);
+            }).catch(function (error) {
+                return done(error);
+            });
+        }
+        
     }).catch(function (error) {
         return done(error);
     });
