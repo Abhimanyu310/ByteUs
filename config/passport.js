@@ -96,10 +96,16 @@ var samlStrategy = new saml.Strategy({
         where: {email: email}
     }).then(function (user){
         if (user){
-            req.session.cu_user = user;
-            // req.session.user_id = user.id;
-            // return done(null, user);
-            return done(null, profile);
+            models.User.findOne({
+                where: {id: user.id}
+            }).then(function (user){
+                req.session.cu_user = user;
+                return done(null, profile);
+            });
+            // req.session.cu_user = user;
+            // // req.session.user_id = user.id;
+            // // return done(null, user);
+            // return done(null, profile);
         }
 
         var newUser = models.User.build();
@@ -112,10 +118,16 @@ var samlStrategy = new saml.Strategy({
 
 
         newUser.save().then(function (user) {
+            models.User.findOne({
+                where: {id: user.id}
+            }).then(function (user){
+                req.session.cu_user = user;
+                return done(null, profile);
+            });
             // return done(null, user);
             // req.session.user_id = user.id;
-            req.session.cu_user = user;
-            return done(null, profile);
+            // req.session.cu_user = user;
+            // return done(null, profile);
         }).catch(function (error) {
             return done(error);
         });
