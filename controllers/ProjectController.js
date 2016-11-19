@@ -174,6 +174,14 @@ module.exports = {
 // submit or save the project
 function addProjectToDB(req, res, next, areas, action){
 
+    if (req.session.CU){
+        var user_id = req.session.cu_user.id;
+    }
+    else{
+        user_id = req.user.id;
+    }
+    
+    
     //define the project
     var Project = {
         description: req.body.description,
@@ -258,7 +266,7 @@ function addProjectToDB(req, res, next, areas, action){
                 not_sure: req.body.not_sure,
                 contact: req.body.contact,
                 submitted : action,
-                user_id: req.user.id,
+                user_id: user_id,
                 Faculty: Faculty
             }, {
                 include: [ {model: models.FacultyInfo, as: 'Faculty'} ]

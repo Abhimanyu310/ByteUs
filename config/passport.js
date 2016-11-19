@@ -79,15 +79,17 @@ var samlStrategy = new saml.Strategy({
     console.log('in profile done');
 
     req.session.CU = true;
-    req.session.type = user_attributes[0];
-    req.session.email = user_attributes[1];
-    req.session.name = user_attributes[2];
+
+    // req.session.type = user_attributes[0];
+    // req.session.email = user_attributes[1];
+    // req.session.name = user_attributes[2];
 
     models.User.findOne({
         where: {email: email}
     }).then(function (user){
         if (user){
-            req.session.user_id = user.id;
+            req.session.cu_user = user;
+            // req.session.user_id = user.id;
             // return done(null, user);
             return done(null, profile);
         }
@@ -103,7 +105,8 @@ var samlStrategy = new saml.Strategy({
 
         newUser.save().then(function (user) {
             // return done(null, user);
-            req.session.user_id = user.id;
+            // req.session.user_id = user.id;
+            req.session.cu_user = user;
             return done(null, profile);
         }).catch(function (error) {
             return done(error);

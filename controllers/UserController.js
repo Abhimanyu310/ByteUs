@@ -90,10 +90,7 @@ module.exports = {
                     // LOCAL logout
                     req.logout();
                     req.session.CU = '';
-                    req.session.type = '';
-                    req.session.email = '';
-                    req.session.name = '';
-                    req.session.user_id = '';
+                    req.session.cu_user = '';
                     // redirect to the IdP with the encrypted SAML logout request
                     console.log('HEREEEEEEEEEEEEEEEEEEEEE');
                     console.log(requestUrl);

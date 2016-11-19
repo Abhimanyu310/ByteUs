@@ -177,7 +177,12 @@ function saveFiles(req, res, next){
 
 function addApplicationToDB(req, res, next, action) {
 
-
+    if (req.session.CU){
+        var user_id = req.session.cu_user.id;
+    }
+    else{
+        user_id = req.user.id;
+    }
 
     //define the application
     //define student
@@ -270,7 +275,7 @@ function addApplicationToDB(req, res, next, action) {
                 hispanic_latino: req.body.origin,
                 race: req.body.race,
                 submitted: action,
-                user_id: req.user.id,
+                user_id: user_id,
                 Contact: Contact,
                 Academics: Academics,
                 Apprenticeship: Apprenticeship
