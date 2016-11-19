@@ -7,6 +7,9 @@ exports.isLoggedIn = function (req, res, next) {
         // req.session.oldUrl = '/project' + req.url;
         res.redirect('/');
     }
+    else{
+        res.redirect('/');
+    }
 
 };
 
@@ -20,6 +23,9 @@ exports.isLoggedInAsFaculty = function(req, res, next) {
         // req.session.oldUrl = '/project' + req.url;
         res.redirect('/');
     }
+    else{
+        res.redirect('/');
+    }
 };
 
 exports.isLoggedInAsStudent = function(req, res, next) {
@@ -29,6 +35,9 @@ exports.isLoggedInAsStudent = function(req, res, next) {
     if (req.originalUrl != '/user/logout'){
         req.session.oldUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
         // req.session.oldUrl = '/project' + req.url;
+        res.redirect('/');
+    }
+    else{
         res.redirect('/');
     }
 };
