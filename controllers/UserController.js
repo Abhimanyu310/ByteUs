@@ -22,8 +22,8 @@ module.exports = {
                     {model: models.StudentApprenticeship, as: 'Apprenticeship'}
                 ]
             }).then(function(applications) {
-                console.log('from here');
-                console.log(applications);
+                // console.log('from here');
+                // console.log(applications);
                 res.render('user/student-index', {
                     title: "Student Home",
                     success: success,
