@@ -54,10 +54,15 @@ block content
 						td.style3 
 							p #{application.Apprenticeship.prev_application}
 						td.style3
-							a(href='/project/'+application.Apprenticeship.most_interest+'/view') Most Interest
-							a(href='/project/'+application.Apprenticeship.high_interest+'/view') High Interest
-							a(href='/project/'+application.Apprenticeship.moderate_interest+'/view') Moderate Interest
-							a(href='/project/'+application.Apprenticeship.low_interest+'/view') Low Project
-							a(href='/project/'+application.Apprenticeship.least_interest+'/view') Least Project
-					
+							if(application.Apprenticeship.most_interest)
+								a.buttonstyle(href='/project/'+application.Apprenticeship.most_interest+'/view') Most Interest
+							if(application.Apprenticeship.high_interest)
+								a.buttonstyle(href='/project/'+application.Apprenticeship.high_interest+'/view') High Interest
+							if(application.Apprenticeship.moderate_interest)
+								a.buttonstyle(href='/project/'+application.Apprenticeship.moderate_interest+'/view') Moderate Interest
+							if(application.Apprenticeship.low_interest)
+								a.buttonstyle(href='/project/'+application.Apprenticeship.low_interest+'/view') Low Interest
+							if(application.Apprenticeship.least_interest)
+								a.buttonstyle(href='/project/'+application.Apprenticeship.least_interest+'/view') Least Interest
+
 											
