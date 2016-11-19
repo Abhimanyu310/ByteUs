@@ -4,7 +4,7 @@ block title
 	|#{title}
 
 block styles
-	link(rel='stylesheet', href='/stylesheets/home.css')
+	link(rel='stylesheet', href='/stylesheets/user-home.css')
 
 block content
 
@@ -13,8 +13,7 @@ block content
 	header
 		h Student Home
 
-
-	section
+	div
 
 		form#student-home
 			h5
@@ -38,4 +37,30 @@ block content
 				br
 				br
 
+	table.style3
+		tr.style3
+			th.style3 Application Date
+			th.style3 Project(s) Applied For
+			th.style3 Actions
+		each application in applications
+			tr.style3
+				td.style3
+					p #{application.created_at}
+				td.style3
+					li Priority 1 project
+					li Priority 2 project
+					li Priority 3 project
+					li Priority 4 project
+					li Priority 5 project
+				td.style3
+					//a.buttonstyle(href='/application/'+application.id+'/view') View Application
+					if (application.submitted == 'No')
+						a.buttonstyle(href='/application/'+application.id+'/_edit') Edit Application
+						p Application has NOT been submitted.
+					else
+						p Application has been submitted.
+		tr.style3
+			td.style3
+			td.style3
+			td.style3
 				a.buttonstyle(href='/application/form') Create New Application

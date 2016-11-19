@@ -10,12 +10,41 @@ var UserController = require('../controllers/UserController');
 var Helpers = require('../controllers/helpers/helpers');
 
 
+
+//SAML
+router.get('/login',
+    passport.authenticate('saml.login', { failureRedirect: '/login/fail' }),
+    function (req, res) {
+        res.redirect('/');
+    }
+);
+
+router.post('/login/callback',
+    passport.authenticate('saml.login', { failureRedirect: '/login/fail' }),
+    function(req, res) {
+        res.redirect('/');
+    }
+);
+
+// router.post('/login/callback', function (req, res, next) {
+//    console.log('in callback');
+//    console.log(req);
+//    console.log(req.body);
+//    console.log(req.user);
+// });
+
+router.get('/login/fail',
+    function(req, res) {
+        res.status(401).send('Login failed');
+    }
+);
+
 var csrfProtection = csrf();
 router.use(csrfProtection);
 
 
-// GET Faculty Home
-router.get('/faculty-home', UserController.getFacultyHome);
+// GET Faculty Home //UserController.getFacultyHome
+router.get('/faculty-home', UserController.getFacultySubmittedProjects);
 
 // GET Student Home
 router.get('/student-home', UserController.getStudentHome);
@@ -47,26 +76,7 @@ router.post('/signin', passport.authenticate('local.signin', {
 
 
 
-//SAML
-router.get('/login',
-    passport.authenticate('saml.login', { failureRedirect: '/login/fail' }),
-    function (req, res) {
-        res.redirect('/');
-    }
-);
 
-router.post('/login/callback',
-    passport.authenticate('saml.login', { failureRedirect: '/login/fail' }),
-    function(req, res) {
-        res.redirect('/');
-    }
-);
-
-router.get('/login/fail',
-    function(req, res) {
-        res.status(401).send('Login failed');
-    }
-);
 
 
 module.exports = router;

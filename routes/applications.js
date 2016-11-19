@@ -15,13 +15,13 @@ var csrfProtection = csrf();
 router.use(csrfProtection);
 
 // GET the student submission form
-router.get('/form', ApplicationController.getApplicationForm);
+router.get('/form', Helpers.isLoggedInAsStudent, ApplicationController.getApplicationForm);
 
 // POST the student submission form
-router.post('/form', ApplicationController.postApplicationForm);
+router.post('/form', Helpers.isLoggedInAsStudent, ApplicationController.postApplicationForm);
 
 // GET the student submission form for editing
-router.get('/:id/_edit', ApplicationController.getEditApplicationForm);
+router.get('/:id/_edit', Helpers.isLoggedInAsStudent, ApplicationController.getEditApplicationForm);
 
 // GET list of student applications
 router.get('/list', ApplicationController.getApplicationList);

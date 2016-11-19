@@ -22,8 +22,13 @@ router.get('/', HomeController.getHome);
 
 router.get('/Shibboleth.sso/Metadata',
     function(req, res) {
+
         res.type('application/xml');
-        res.status(200).send(saml.samlStrategy.generateServiceProviderMetadata(fs.readFileSync(process.env.SP_CERTIFICATE, 'utf8')));
+        res.status(200);
+        res.send(fs.readFileSync(process.env.METADATA, 'utf8'));
+
+        // res.type('application/xml');
+        // res.status(200).send(saml.samlStrategy.generateServiceProviderMetadata(fs.readFileSync(process.env.SP_CERTIFICATE, 'utf8')));
     }
 );
 

@@ -7,8 +7,18 @@ nav
         li.newgroup
             a.button.name(href='/project/list') Project List
         li.newgroup
-            a.button.name(href='/user/signin') User Login
-        li.newgroup
-            a.button.name(href='/user/signup') User Register
-        li.newgroup
-            a.button.name(href='/user/logout') Logout
+            a.button.name(href='/user/login') CU Login
+        if(login && user && user.type == 'Student')
+            li.newgroup
+                a.button.name(href='/user/student-home') My Applications
+        if(login && user && user.type == 'Faculty')
+            li.newgroup
+                a.buttin.name(href='/user/faculty-home') My Projects
+        if(!login)
+            li.newgroup
+                a.button.name(href='/user/signup') User Register
+            li.newgroup
+                a.button.name(href='/user/signin') User Login
+        else
+            li.newgroup
+                a.button.name(href='/user/logout') Logout
