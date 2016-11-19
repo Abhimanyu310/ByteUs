@@ -12,6 +12,9 @@ module.exports = {
         else{
             user = req.user;
         }
+        console.log('in here the user is');
+        console.log('daf');
+        console.log(user);
         user.getApplications().then(function(applications) {
             //console.log(applications);
             res.render('user/student-index', {
