@@ -96,9 +96,11 @@ module.exports = {
                 res.redirect(requestUrl);
             });
         }
-
+        else{
+            res.render('user/logout', { title: "Logout" });
+        }
         // req.logout();
-        res.render('user/logout', { title: "Logout" });
+
     }
 
 
