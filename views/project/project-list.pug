@@ -15,7 +15,7 @@ block content
 
 	div.search-form
 		form(method='post', action='/project/list', role='form')
-			input(type='text', name='search_query', value=(prev_value ? prev_value : ''))
+			input(type='text', name='search_query', placeholder=' Search Criteria', value=(prev_value ? prev_value : ''))
 			br
 			| Filter By :-
 			input(type='radio', name='search_by', value='title' checked)

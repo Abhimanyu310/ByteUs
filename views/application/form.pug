@@ -294,6 +294,7 @@ block content
 						option(value='2021') 2021
 						option(value='2022') 2022
 						option(value='2023') 2023
+						
 					label(for='experience', class=(hasErrors ? (errors[0].prev_research_exp ? 'has-error' : undefined) : undefined)) Do you have previous research experience? *
 					table.style5
 						tr
@@ -303,6 +304,16 @@ block content
 							td
 								input#experience(type='radio', name='prev_research_exp', value='No' checked=((formData ? (formData.prev_research_exp == 'No' ? true : false) : false) || (application ? (application.Academics.prev_research_exp == 'No' ? true : false) : false)))
 								|  No (This does not effect your eligibility.)
+					label(for='gold') Are you a Goldshirt member? *
+					table.style
+						tr
+							td
+								input#gold(type='radio', name='gold', required='required', value='Yes')
+								|  Yes
+							td
+								input#gold(type='radio', name='gold', required='required', value='No')
+								|  No
+						br
 					legend Apprenticeship Information
 					label(for='before', class=(hasErrors ? (errors[0].prev_application ? 'has-error' : undefined) : undefined)) Have you applied for a Discover Learning Apprenticeship before? *
 					table.style
@@ -345,11 +356,53 @@ block content
 							br
 						tr
 							td
+								h5 *Please check the requirements that you meet.
+								input(type='checkbox', name='req1', value='req1')
+								|  Requirement should be here
+						tr
+							td
+								input(type='checkbox', name='req2', value='req2')
+								|  Requirement should be here
+						tr
+							td
+								input(type='checkbox', name='req3', value='req3')
+								|  Requirement should be here
+						tr
+							td
+								input(type='checkbox', name='req4', value='req4')
+								|  Requirement should be here
+						tr
+							td
+								input(type='checkbox', name='req5', value='req5')
+								|  Requirement should be here
+						tr
+							td
 								select.level#high_interest(name='high_interest')
 									option(value='', disabled='disabled', selected='selected') High Interest 
 									each project in projects
 										option(value=project.id) #{project.description}
 								br
+						tr
+							td
+								h5 *Please check the requirements that you meet.
+								input(type='checkbox', name='req6', value='req6')
+								|  Requirement should be here
+						tr
+							td
+								input(type='checkbox', name='req7', value='req7')
+								|  Requirement should be here
+						tr
+							td
+								input(type='checkbox', name='req8', value='req8')
+								|  Requirement should be here
+						tr
+							td
+								input(type='checkbox', name='req9', value='req9')
+								|  Requirement should be here
+						tr
+							td
+								input(type='checkbox', name='req10', value='req10')
+								|  Requirement should be here
 						tr
 							td
 								select.level#moderate_interest(name='moderate_interest')
@@ -359,6 +412,27 @@ block content
 								br
 						tr
 							td
+								h5 *Please check the requirements that you meet.
+								input(type='checkbox', name='req11', value='req11')
+								|  Requirement should be here
+						tr
+							td
+								input(type='checkbox', name='req12', value='req12')
+								|  Requirement should be here
+						tr
+							td
+								input(type='checkbox', name='req13', value='req13')
+								|  Requirement should be here
+						tr
+							td
+								input(type='checkbox', name='req14', value='req14')
+								|  Requirement should be here
+						tr
+							td
+								input(type='checkbox', name='req15', value='req15')
+								|  Requirement should be here
+						tr
+							td
 								select.level#low_interest(name='low_interest')
 									option(value='', disabled='disabled', selected='selected') Low Interest 
 									each project in projects
@@ -366,10 +440,52 @@ block content
 								br
 						tr
 							td
+								h5 *Please check the requirements that you meet.
+								input(type='checkbox', name='req16', value='req16')
+								|  Requirement should be here
+						tr
+							td
+								input(type='checkbox', name='req17', value='req17')
+								|  Requirement should be here
+						tr
+							td
+								input(type='checkbox', name='req18', value='req18')
+								|  Requirement should be here
+						tr
+							td
+								input(type='checkbox', name='req19', value='req19')
+								|  Requirement should be here
+						tr
+							td
+								input(type='checkbox', name='req20', value='req20')
+								|  Requirement should be here
+						tr
+							td
 								select.level#least_interest(name='least_interest')
 									option(value='', disabled='disabled', selected='selected') Least Interest
 									each project in projects
 										option(value=project.id) #{project.description}
+						tr
+							td
+								h5 *Please check the requirements that you meet.
+								input(type='checkbox', name='req21', value='req21')
+								|  Requirement should be here
+						tr
+							td
+								input(type='checkbox', name='req2', value='req22')
+								|  Requirement should be here
+						tr
+							td
+								input(type='checkbox', name='req23', value='req23')
+								|  Requirement should be here
+						tr
+							td
+								input(type='checkbox', name='req24', value='req24')
+								|  Requirement should be here
+						tr
+							td
+								input(type='checkbox', name='req25', value='req25')
+								|  Requirement should be here
 					br
 					label.aca(for='background', class=(hasErrors ? (errors[0].background_check ? 'has-error' : undefined) : undefined)) Have you had a background check at CU? *
 					table.style

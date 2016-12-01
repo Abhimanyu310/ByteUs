@@ -27,6 +27,7 @@ block content
 					li #{project.longdescription}
 				td.style3
 					a.buttonstyle(href='/project/'+project.id+'/view') View Project
+					a.buttonstyle2(href='/project/'+project.id+'/view') Delete Project
 					if (project.submitted != 'Yes')
 						a.buttonstyle(href='/project/'+project.id+'/_edit') Edit Project
 					else
