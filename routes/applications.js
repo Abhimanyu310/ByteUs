@@ -32,4 +32,7 @@ router.get('/:id/view', ApplicationController.getApplicationDetail);
 // Post Application search
 router.post('/list', ApplicationController.postSearchApplication);
 
+// GET delete project
+router.get('/:id/_delete', Helpers.isLoggedInAsStudent, ApplicationController.getDeleteApplication);
+
 module.exports = router;

@@ -17,6 +17,24 @@ module.exports = {
     postSearchApplication: function(req, res, next) {
 
     },
+
+    getDeleteApplication: function(req, res, next) {
+        var applicationId = req.params.id;
+        models.Student.findOne({
+            where: {id: applicationId},
+            include: [
+                {model: models.StudentContact, as: 'Contact'},
+                {model: models.StudentAcademics, as: 'Academics'},
+                {model: models.StudentApprenticeship, as: 'Apprenticeship'}
+            ]
+        }).then(function (application){
+            application.destroy();
+            res.status(200).json({
+                message: 'Success'
+            });
+
+        });
+    },
     
     getApplicationForm: function(req, res, next) {
         var errors = req.flash('errors');

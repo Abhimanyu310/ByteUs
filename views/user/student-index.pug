@@ -6,6 +6,9 @@ block title
 block styles
 	link(rel='stylesheet', href='/stylesheets/user-home.css')
 
+block scripts
+	script(type='text/javascript',src='/javascripts/student-index.js')
+
 block content
 
 
@@ -54,13 +57,14 @@ block content
 					li #{application.Apprenticeship.least_interest}
 				td.style3
 					//a.buttonstyle(href='/application/'+application.id+'/view') View Application
+					a.buttonstyle2.delete(href='#', data-applicationid=application.id) Delete Project
 					if (application.submitted == 'No')
 						p Application has NOT been submitted.
 						a.buttonstyle(href='/application/'+application.id+'/_edit') Edit Application
-						a.buttonstyle2(href='/application/'+application.id+'/_edit') Delete Project
+
 					else
 						p Application has been submitted.
-						a.buttonstyle2(href='/application/'+application.id+'/_edit') Delete Project
+
 		tr.style3
 			td.style3
 			td.style3

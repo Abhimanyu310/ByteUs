@@ -34,6 +34,19 @@ module.exports = {
     },
 
 
+    getDeleteProject: function(req, res, next) {
+        var projectId = req.params.id;
+        models.Project.findOne({
+            where: {id: projectId},
+            include: [ {model: models.FacultyInfo, as: 'Faculty'} ]
+        }).then(function (project){
+            project.destroy();
+            res.status(200).json({
+                message: 'Success',
+            });
+        });
+    },
+    
     getCreateProject: function(req, res, next) {
         var validation_errors = req.flash('errors');
         var success = req.flash('success');

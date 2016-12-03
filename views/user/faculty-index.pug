@@ -6,7 +6,12 @@ block title
 block styles
 	link(rel='stylesheet', href='/stylesheets/user-home.css')
 
+block scripts
+	script(type='text/javascript',src='/javascripts/faculty-index.js')
+
 block content
+
+
 	header
 		h Faculty Home
 
@@ -27,7 +32,7 @@ block content
 					li #{project.longdescription}
 				td.style3
 					a.buttonstyle(href='/project/'+project.id+'/view') View Project
-					a.buttonstyle2(href='/project/'+project.id+'/view') Delete Project
+					a.buttonstyle2.delete(href='#', data-projectid=project.id) Delete Project
 					if (project.submitted != 'Yes')
 						a.buttonstyle(href='/project/'+project.id+'/_edit') Edit Project
 					else

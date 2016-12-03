@@ -28,6 +28,7 @@ exports.isLoggedInAsFaculty = function(req, res, next) {
     }
 };
 
+
 exports.isLoggedInAsStudent = function(req, res, next) {
     if (req.isAuthenticated() && (req.user.type == 'Student' || req.session.cu_user.type == 'Student')) {
         return next();

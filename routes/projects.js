@@ -39,5 +39,8 @@ router.post('/list', ProjectController.postSearchProject);
 // GET Project Requirements
 router.get('/:id/requirements', ProjectController.getProjectRequirements);
 
+// GET delete project
+router.get('/:id/_delete', Helpers.isLoggedInAsFaculty, ProjectController.getDeleteProject);
+
 module.exports = router;
 
