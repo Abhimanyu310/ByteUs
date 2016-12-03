@@ -91,6 +91,7 @@ module.exports = {
             req.checkBody('grad_month', 'Please enter your graduation month').notEmpty();
             req.checkBody('grad_year', 'Please enter a your graduation year').notEmpty();
             req.checkBody('prev_research_exp', 'Please indicate if you have had a previous reserch experience').notEmpty();
+            req.checkBody('goldshirt', 'Please indicate if you are a Goldshirt member').notEmpty();
 
             req.checkBody('prev_application', 'Please indicate if you have previously applied for an apprenticeship').notEmpty();
             req.checkBody('most_interest', 'Please select at least one project').notEmpty();

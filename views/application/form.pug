@@ -304,14 +304,14 @@ block content
 							td
 								input#experience(type='radio', name='prev_research_exp', value='No' checked=((formData ? (formData.prev_research_exp == 'No' ? true : false) : false) || (application ? (application.Academics.prev_research_exp == 'No' ? true : false) : false)))
 								|  No (This does not effect your eligibility.)
-					label(for='gold') Are you a Goldshirt member? *
+					label(for='gold', class=(hasErrors ? (errors[0].goldshirt ? 'has-error' : undefined) : undefined)) Are you a Goldshirt member? *
 					table.style
 						tr
 							td
-								input#gold(type='radio', name='gold', required='required', value='Yes')
+								input#gold(type='radio', name='goldshirt', value='Yes' checked=((formData ? (formData.goldshirt == 'Yes' ? true : false) : false) || (application ? (application.Academics.goldshirt == 'Yes' ? true : false) : false)))
 								|  Yes
 							td
-								input#gold(type='radio', name='gold', required='required', value='No')
+								input#gold(type='radio', name='goldshirt', value='No' checked=((formData ? (formData.goldshirt == 'No' ? true : false) : false) || (application ? (application.Academics.goldshirt == 'No' ? true : false) : false)))
 								|  No
 						br
 					legend Apprenticeship Information
