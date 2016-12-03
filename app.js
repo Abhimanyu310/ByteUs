@@ -77,6 +77,7 @@ app.use(function(req, res, next) {
 
 app.use(function (req, res, next) {
   res.locals.login = req.isAuthenticated();
+  res.locals.logout = req.originalUrl == '/user/logout';
   if(req.session.CU){
     res.locals.user = req.session.cu_user;
   }

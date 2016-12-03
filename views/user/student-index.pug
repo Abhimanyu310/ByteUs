@@ -57,7 +57,7 @@ block content
 					li #{application.Apprenticeship.least_interest}
 				td.style3
 					//a.buttonstyle(href='/application/'+application.id+'/view') View Application
-					a.buttonstyle2.delete(href='#', data-applicationid=application.id) Delete Project
+					a.buttonstyle2.delete(href='#', data-applicationid=application.id) Delete Application
 					if (application.submitted == 'No')
 						p Application has NOT been submitted.
 						a.buttonstyle(href='/application/'+application.id+'/_edit') Edit Application
