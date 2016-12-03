@@ -8,6 +8,7 @@ module.exports = function(sequelize, DataTypes) {
         grad_month: DataTypes.STRING,
         grad_year: DataTypes.STRING,
         prev_research_exp: DataTypes.STRING,
+        goldshirt: DataTypes.STRING,
         skill1: DataTypes.STRING,
         skill2: DataTypes.STRING,
         skill3: DataTypes.STRING
