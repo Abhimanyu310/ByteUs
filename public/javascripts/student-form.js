@@ -71,8 +71,8 @@ $(document).ready(function() {
 
 
   // project requirements
-  $('#most_interest, #high_interest, #moderate_interest, #low_interest, #least_interest').on('change', function(event) {
-    event.preventDefault();
+  var requirement_check = function(event) {
+    // event.preventDefault();
     var selected = this.value;
     var selectElement = event.target;
     var selectRow = selectElement.parentNode.parentNode;
@@ -118,6 +118,18 @@ $(document).ready(function() {
             requirement5Row.style.display = 'none';
           }
 
+          requirement1Element.previousSibling.disabled = false;
+          requirement2Element.previousSibling.disabled = false;
+          requirement3Element.previousSibling.disabled = false;
+          requirement4Element.previousSibling.disabled = false;
+          requirement5Element.previousSibling.disabled = false;
+
+          requirement1Element.previousSibling.checked = false;
+          requirement2Element.previousSibling.checked = false;
+          requirement3Element.previousSibling.checked = false;
+          requirement4Element.previousSibling.checked = false;
+          requirement5Element.previousSibling.checked = false;
+
           requirement1Element.innerHTML = requirements[0];
           requirement2Element.innerHTML = requirements[1];
           requirement3Element.innerHTML = requirements[2];
@@ -126,11 +138,100 @@ $(document).ready(function() {
 
 
         });
-  });
+  };
 
-    
-    
-    
+  var requirement_check_load = function(selected, selectElement) {
+    // event.preventDefault();
+    // var selected = this.value;
+    // var selectElement = event.target;
+    var selectRow = selectElement.parentNode.parentNode;
+    var requirement1Row = selectRow.nextSibling;
+    var requirement2Row = requirement1Row.nextSibling;
+    var requirement3Row = requirement2Row.nextSibling;
+    var requirement4Row = requirement3Row.nextSibling;
+    var requirement5Row = requirement4Row.nextSibling;
+
+    var requirement1Element = requirement1Row.children[0].children[2];
+    var requirement2Element = requirement2Row.children[0].children[1];
+    var requirement3Element = requirement3Row.children[0].children[1];
+    var requirement4Element = requirement4Row.children[0].children[1];
+    var requirement5Element = requirement5Row.children[0].children[1];
+
+    $.ajax({
+          method: 'GET',
+          url: '/project/' + selected + '/requirements/'
+        })
+        .done(function(obj) {
+          var requirements = obj.requirements;
+          console.log(requirements);
+
+          requirement1Row.style.display = '';
+          requirement2Row.style.display = '';
+          requirement3Row.style.display = '';
+          requirement4Row.style.display = '';
+          requirement5Row.style.display = '';
+
+          if (requirements[0] == ''){
+            requirement1Row.style.display = 'none';
+          }
+          if (requirements[1] == ''){
+            requirement2Row.style.display = 'none';
+          }
+          if (requirements[2] == ''){
+            requirement3Row.style.display = 'none';
+          }
+          if (requirements[3] == ''){
+            requirement4Row.style.display = 'none';
+          }
+          if (requirements[4] == ''){
+            requirement5Row.style.display = 'none';
+          }
+
+          requirement1Element.previousSibling.disabled = false;
+          requirement2Element.previousSibling.disabled = false;
+          requirement3Element.previousSibling.disabled = false;
+          requirement4Element.previousSibling.disabled = false;
+          requirement5Element.previousSibling.disabled = false;
+          requirement1Element.innerHTML = requirements[0];
+          requirement2Element.innerHTML = requirements[1];
+          requirement3Element.innerHTML = requirements[2];
+          requirement4Element.innerHTML = requirements[3];
+          requirement5Element.innerHTML = requirements[4];
+
+
+        });
+  };
+
+  //check if selected
+  var most_interest = $('#most_interest')[0];
+  if (most_interest.value != ''){
+    requirement_check_load(most_interest.value, most_interest);
+  }
+
+  var high_interest = $('#high_interest')[0];
+  if (high_interest.value != ''){
+    requirement_check_load(high_interest.value, high_interest);
+  }
+
+  var moderate_interest = $('#moderate_interest')[0];
+  if (moderate_interest.value != ''){
+    requirement_check_load(moderate_interest.value, moderate_interest);
+  }
+
+  var low_interest = $('#low_interest')[0];
+  if (low_interest.value != ''){
+    requirement_check_load(low_interest.value, low_interest);
+  }
+
+  var least_interest = $('#least_interest')[0];
+  if (least_interest.value != ''){
+    requirement_check_load(least_interest.value, least_interest);
+  }
+  
+
+  // Get requirements for selection
+  $('#most_interest, #high_interest, #moderate_interest, #low_interest, #least_interest').on('change', requirement_check);
+
 
 
 });
