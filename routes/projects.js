@@ -36,5 +36,8 @@ router.get('/success', ProjectController.getProjectSuccess);
 // Post Project search
 router.post('/list', ProjectController.postSearchProject);
 
+// GET Project Requirements
+router.get('/:id/requirements', ProjectController.getProjectRequirements);
+
 module.exports = router;
 

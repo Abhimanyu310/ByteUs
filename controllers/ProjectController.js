@@ -19,7 +19,21 @@ module.exports = {
             // console.log(error)
         });
     },
-    
+
+    getProjectRequirements: function(req, res, next){
+        var projectId = req.params.id;
+        models.Project.findOne({
+            where: {id: projectId}
+        }).then(function (project) {
+            var requirements = [project.requirements1, project.requirements2, project.requirements3, project.requirements4, project.requirements5];
+            res.status(200).json({
+                message: 'Success',
+                requirements: requirements
+            });
+        });
+    },
+
+
     getCreateProject: function(req, res, next) {
         var validation_errors = req.flash('errors');
         var success = req.flash('success');

@@ -353,28 +353,29 @@ block content
 									option(value='', disabled='disabled', selected='selected') Most Interest 
 									each project in projects
 										option(value=project.id) #{project.description}
+										| gg #{project.requirements1}
 							br
 						tr
 							td
 								h5 *Please check the requirements that you meet.
 								input(type='checkbox', name='most_interest_req1', value='Yes'  checked=((formData ? (formData.most_interest_req1 == 'Yes' ? true : false) : false) || (application ? (application.Apprenticeship.most_interest_req1 == 'Yes' ? true : false) : false)))
-								|  Requirement should be here
+								p Requirement 1
 						tr
 							td
 								input(type='checkbox', name='most_interest_req2', value='Yes'  checked=((formData ? (formData.most_interest_req2 == 'Yes' ? true : false) : false) || (application ? (application.Apprenticeship.most_interest_req2 == 'Yes' ? true : false) : false)))
-								|  Requirement should be here
+								p  Requirement 2
 						tr
 							td
 								input(type='checkbox', name='most_interest_req3', value='Yes'  checked=((formData ? (formData.most_interest_req3 == 'Yes' ? true : false) : false) || (application ? (application.Apprenticeship.most_interest_req3 == 'Yes' ? true : false) : false)))
-								|  Requirement should be here
+								p  Requirement 3
 						tr
 							td
 								input(type='checkbox', name='most_interest_req4', value='Yes'  checked=((formData ? (formData.most_interest_req4 == 'Yes' ? true : false) : false) || (application ? (application.Apprenticeship.most_interest_req4 == 'Yes' ? true : false) : false)))
-								|  Requirement should be here
+								p  Requirement 4
 						tr
 							td
 								input(type='checkbox', name='most_interest_req5', value='Yes'  checked=((formData ? (formData.most_interest_req5 == 'Yes' ? true : false) : false) || (application ? (application.Apprenticeship.most_interest_req5 == 'Yes' ? true : false) : false)))
-								|  Requirement should be here
+								p  Requirement 5
 						tr
 							td
 								select.level#high_interest(name='high_interest')
@@ -386,23 +387,23 @@ block content
 							td
 								h5 *Please check the requirements that you meet.
 								input(type='checkbox', name='high_interest_req1', value='Yes'  checked=((formData ? (formData.high_interest_req1 == 'Yes' ? true : false) : false) || (application ? (application.Apprenticeship.high_interest_req1 == 'Yes' ? true : false) : false)))
-								|  Requirement should be here
+								p Requirement 1
 						tr
 							td
 								input(type='checkbox', name='high_interest_req2', value='Yes'  checked=((formData ? (formData.high_interest_req2 == 'Yes' ? true : false) : false) || (application ? (application.Apprenticeship.high_interest_req2 == 'Yes' ? true : false) : false)))
-								|  Requirement should be here
+								p Requirement 2
 						tr
 							td
 								input(type='checkbox', name='high_interest_req3', value='Yes'  checked=((formData ? (formData.high_interest_req3 == 'Yes' ? true : false) : false) || (application ? (application.Apprenticeship.high_interest_req3 == 'Yes' ? true : false) : false)))
-								|  Requirement should be here
+								p Requirement 3
 						tr
 							td
 								input(type='checkbox', name='high_interest_req4', value='Yes'  checked=((formData ? (formData.high_interest_req4 == 'Yes' ? true : false) : false) || (application ? (application.Apprenticeship.high_interest_req4 == 'Yes' ? true : false) : false)))
-								|  Requirement should be here
+								p Requirement 4
 						tr
 							td
 								input(type='checkbox', name='high_interest_req5', value='Yes'  checked=((formData ? (formData.high_interest_req5 == 'Yes' ? true : false) : false) || (application ? (application.Apprenticeship.high_interest_req5 == 'Yes' ? true : false) : false)))
-								|  Requirement should be here
+								p Requirement 5
 						tr
 							td
 								select.level#moderate_interest(name='moderate_interest')
@@ -414,23 +415,23 @@ block content
 							td
 								h5 *Please check the requirements that you meet.
 								input(type='checkbox', name='moderate_interest_req1', value='Yes'  checked=((formData ? (formData.moderate_interest_req1 == 'Yes' ? true : false) : false) || (application ? (application.Apprenticeship.moderate_interest_req1 == 'Yes' ? true : false) : false)))
-								|  Requirement should be here
+								p Requirement 1
 						tr
 							td
 								input(type='checkbox', name='moderate_interest_req2', value='Yes'  checked=((formData ? (formData.moderate_interest_req2 == 'Yes' ? true : false) : false) || (application ? (application.Apprenticeship.moderate_interest_req2 == 'Yes' ? true : false) : false)))
-								|  Requirement should be here
+								p Requirement 2
 						tr
 							td
 								input(type='checkbox', name='moderate_interest_req3', value='Yes'  checked=((formData ? (formData.moderate_interest_req3 == 'Yes' ? true : false) : false) || (application ? (application.Apprenticeship.moderate_interest_req3 == 'Yes' ? true : false) : false)))
-								|  Requirement should be here
+								p Requirement 3
 						tr
 							td
 								input(type='checkbox', name='moderate_interest_req4', value='Yes'  checked=((formData ? (formData.moderate_interest_req4 == 'Yes' ? true : false) : false) || (application ? (application.Apprenticeship.moderate_interest_req4 == 'Yes' ? true : false) : false)))
-								|  Requirement should be here
+								p Requirement 4
 						tr
 							td
 								input(type='checkbox', name='moderate_interest_req5', value='Yes'  checked=((formData ? (formData.moderate_interest_req5 == 'Yes' ? true : false) : false) || (application ? (application.Apprenticeship.moderate_interest_req5 == 'Yes' ? true : false) : false)))
-								|  Requirement should be here
+								p Requirement 5
 						tr
 							td
 								select.level#low_interest(name='low_interest')
@@ -442,23 +443,23 @@ block content
 							td
 								h5 *Please check the requirements that you meet.
 								input(type='checkbox', name='low_interest_req1', value='Yes'  checked=((formData ? (formData.low_interest_req1 == 'Yes' ? true : false) : false) || (application ? (application.Apprenticeship.low_interest_req1 == 'Yes' ? true : false) : false)))
-								|  Requirement should be here
+								p Requirement 1
 						tr
 							td
 								input(type='checkbox', name='low_interest_req2', value='Yes'  checked=((formData ? (formData.low_interest_req2 == 'Yes' ? true : false) : false) || (application ? (application.Apprenticeship.low_interest_req2 == 'Yes' ? true : false) : false)))
-								|  Requirement should be here
+								p Requirement 2
 						tr
 							td
 								input(type='checkbox', name='low_interest_req3', value='Yes'  checked=((formData ? (formData.low_interest_req3 == 'Yes' ? true : false) : false) || (application ? (application.Apprenticeship.low_interest_req3 == 'Yes' ? true : false) : false)))
-								|  Requirement should be here
+								p Requirement 3
 						tr
 							td
 								input(type='checkbox', name='low_interest_req4', value='Yes'  checked=((formData ? (formData.low_interest_req4 == 'Yes' ? true : false) : false) || (application ? (application.Apprenticeship.low_interest_req4 == 'Yes' ? true : false) : false)))
-								|  Requirement should be here
+								p Requirement 4
 						tr
 							td
 								input(type='checkbox', name='low_interest_req5', value='Yes'  checked=((formData ? (formData.low_interest_req5 == 'Yes' ? true : false) : false) || (application ? (application.Apprenticeship.low_interest_req5 == 'Yes' ? true : false) : false)))
-								|  Requirement should be here
+								p Requirement 5
 						tr
 							td
 								select.level#least_interest(name='least_interest')
@@ -469,23 +470,23 @@ block content
 							td
 								h5 *Please check the requirements that you meet.
 								input(type='checkbox', name='least_interest_req1', value='Yes'  checked=((formData ? (formData.least_interest_req1 == 'Yes' ? true : false) : false) || (application ? (application.Apprenticeship.least_interest_req1 == 'Yes' ? true : false) : false)))
-								|  Requirement should be here
+								p Requirement 1
 						tr
 							td
 								input(type='checkbox', name='least_interest_req2', value='Yes'  checked=((formData ? (formData.least_interest_req2 == 'Yes' ? true : false) : false) || (application ? (application.Apprenticeship.least_interest_req2 == 'Yes' ? true : false) : false)))
-								|  Requirement should be here
+								p Requirement 2
 						tr
 							td
 								input(type='checkbox', name='least_interest_req3', value='Yes'  checked=((formData ? (formData.least_interest_req3 == 'Yes' ? true : false) : false) || (application ? (application.Apprenticeship.least_interest_req3 == 'Yes' ? true : false) : false)))
-								|  Requirement should be here
+								p Requirement 3
 						tr
 							td
 								input(type='checkbox', name='least_interest_req4', value='Yes'  checked=((formData ? (formData.least_interest_req4 == 'Yes' ? true : false) : false) || (application ? (application.Apprenticeship.least_interest_req4 == 'Yes' ? true : false) : false)))
-								|  Requirement should be here
+								p Requirement 4
 						tr
 							td
 								input(type='checkbox', name='least_interest_req5', value='Yes'  checked=((formData ? (formData.least_interest_req5 == 'Yes' ? true : false) : false) || (application ? (application.Apprenticeship.least_interest_req5 == 'Yes' ? true : false) : false)))
-								|  Requirement should be here
+								p Requirement 5
 					br
 					label.aca(for='background', class=(hasErrors ? (errors[0].background_check ? 'has-error' : undefined) : undefined)) Have you had a background check at CU? *
 					table.style
@@ -560,3 +561,10 @@ block content
 					input.btn.btn-success(type='submit', name='action', value='Save')
 					input.btn.btn-success(type='reset', value='Reset')
 					input.btn.btn-success(type='submit', name='action', value='Submit')
+
+
+
+
+
+
+

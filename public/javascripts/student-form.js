@@ -70,8 +70,67 @@ $(document).ready(function() {
 
 
 
+  // project requirements
+  $('#most_interest, #high_interest, #moderate_interest, #low_interest, #least_interest').on('change', function(event) {
+    event.preventDefault();
+    var selected = this.value;
+    var selectElement = event.target;
+    var selectRow = selectElement.parentNode.parentNode;
+    var requirement1Row = selectRow.nextSibling;
+    var requirement2Row = requirement1Row.nextSibling;
+    var requirement3Row = requirement2Row.nextSibling;
+    var requirement4Row = requirement3Row.nextSibling;
+    var requirement5Row = requirement4Row.nextSibling;
+
+    var requirement1Element = requirement1Row.children[0].children[2];
+    var requirement2Element = requirement2Row.children[0].children[1];
+    var requirement3Element = requirement3Row.children[0].children[1];
+    var requirement4Element = requirement4Row.children[0].children[1];
+    var requirement5Element = requirement5Row.children[0].children[1];
+
+    $.ajax({
+          method: 'GET',
+          url: '/project/' + selected + '/requirements/'
+        })
+        .done(function(obj) {
+          var requirements = obj.requirements;
+          console.log(requirements);
+
+          requirement1Row.style.display = '';
+          requirement2Row.style.display = '';
+          requirement3Row.style.display = '';
+          requirement4Row.style.display = '';
+          requirement5Row.style.display = '';
+
+          if (requirements[0] == ''){
+            requirement1Row.style.display = 'none';
+          }
+          if (requirements[1] == ''){
+            requirement2Row.style.display = 'none';
+          }
+          if (requirements[2] == ''){
+            requirement3Row.style.display = 'none';
+          }
+          if (requirements[3] == ''){
+            requirement4Row.style.display = 'none';
+          }
+          if (requirements[4] == ''){
+            requirement5Row.style.display = 'none';
+          }
+
+          requirement1Element.innerHTML = requirements[0];
+          requirement2Element.innerHTML = requirements[1];
+          requirement3Element.innerHTML = requirements[2];
+          requirement4Element.innerHTML = requirements[3];
+          requirement5Element.innerHTML = requirements[4];
 
 
+        });
+  });
+
+    
+    
+    
 
 
 });
