@@ -20,10 +20,11 @@ block content
 		tr.style3
 			td.style1(colspan=3)
 				a.buttonstyle1(href='/project/form') Create New Project
-		tr.style3
-			th.style3 Project Name
-			th.style3 Complete Description
-			th.style3 Actions
+		if(projects.length > 0)
+            tr.style3
+                th.style3 Project Name
+                th.style3 Complete Description
+                th.style3 Actions
 		each project in projects
 			tr.style3
 				td.style3
