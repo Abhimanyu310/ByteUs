@@ -97,7 +97,6 @@ $(document).ready(function() {
         })
         .done(function(obj) {
           var requirements = obj.requirements;
-          console.log(requirements);
 
           requirement1Row.style.display = '';
           requirement2Row.style.display = '';
