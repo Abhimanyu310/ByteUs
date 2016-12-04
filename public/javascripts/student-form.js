@@ -88,6 +88,7 @@ $(document).ready(function() {
     var requirement4Element = requirement4Row.children[0].children[1];
     var requirement5Element = requirement5Row.children[0].children[1];
 
+    var clearElement = selectElement.nextSibling;
     var viewElement = selectElement.nextSibling.nextSibling.nextSibling;
 
     $.ajax({
@@ -138,6 +139,7 @@ $(document).ready(function() {
           requirement4Element.innerHTML = requirements[3];
           requirement5Element.innerHTML = requirements[4];
 
+          clearElement.innerHTML = 'Clear Selection';
           viewElement.href = '/project/' + selected + '/view';
           viewElement.target = '_blank';
           viewElement.innerHTML = 'View Project';
@@ -163,6 +165,7 @@ $(document).ready(function() {
     var requirement4Element = requirement4Row.children[0].children[1];
     var requirement5Element = requirement5Row.children[0].children[1];
 
+    var clearElement = selectElement.nextSibling;
     var viewElement = selectElement.nextSibling.nextSibling.nextSibling;
 
     $.ajax({
@@ -207,6 +210,7 @@ $(document).ready(function() {
           requirement4Element.innerHTML = requirements[3];
           requirement5Element.innerHTML = requirements[4];
 
+          clearElement.innerHTML = 'Clear Selection';
           viewElement.href = '/project/' + selected + '/view';
           viewElement.target = '_blank';
           viewElement.innerHTML = 'View Project';
@@ -235,6 +239,7 @@ $(document).ready(function() {
     var requirement4Element = requirement4Row.children[0].children[1];
     var requirement5Element = requirement5Row.children[0].children[1];
 
+    var clearElement = selectElement.nextSibling;
     var viewElement = selectElement.nextSibling.nextSibling.nextSibling;
 
     requirement1Row.style.display = 'none';
@@ -261,6 +266,7 @@ $(document).ready(function() {
     requirement4Element.innerHTML = '';
     requirement5Element.innerHTML = '';
 
+    clearElement.innerHTML = '';
     viewElement.href = '';
     viewElement.innerHTML = '';
   };
