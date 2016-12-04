@@ -88,6 +88,8 @@ $(document).ready(function() {
     var requirement4Element = requirement4Row.children[0].children[1];
     var requirement5Element = requirement5Row.children[0].children[1];
 
+    var viewElement = selectElement.nextSibling.nextSibling.nextSibling;
+
     $.ajax({
           method: 'GET',
           url: '/project/' + selected + '/requirements/'
@@ -136,6 +138,9 @@ $(document).ready(function() {
           requirement4Element.innerHTML = requirements[3];
           requirement5Element.innerHTML = requirements[4];
 
+          viewElement.href = '/project/' + selected + '/view';
+          viewElement.target = '_blank';
+          viewElement.innerHTML = 'View Project';
 
         });
   };
@@ -157,6 +162,8 @@ $(document).ready(function() {
     var requirement4Element = requirement4Row.children[0].children[1];
     var requirement5Element = requirement5Row.children[0].children[1];
 
+    var viewElement = selectElement.nextSibling.nextSibling.nextSibling;
+
     $.ajax({
           method: 'GET',
           url: '/project/' + selected + '/requirements/'
@@ -170,6 +177,7 @@ $(document).ready(function() {
           requirement3Row.style.display = '';
           requirement4Row.style.display = '';
           requirement5Row.style.display = '';
+
 
           if (requirements[0] == ''){
             requirement1Row.style.display = 'none';
@@ -198,9 +206,65 @@ $(document).ready(function() {
           requirement4Element.innerHTML = requirements[3];
           requirement5Element.innerHTML = requirements[4];
 
+          viewElement.href = '/project/' + selected + '/view';
+          viewElement.target = '_blank';
+          viewElement.innerHTML = 'View Project';
+
 
         });
   };
+
+  var clear_selection = function(event) {
+    event.preventDefault();
+    var selectElement = event.target.previousSibling;
+
+    selectElement.value = '';
+
+    var selectRow = selectElement.parentNode.parentNode;
+    var requirement1Row = selectRow.nextSibling;
+    var requirement2Row = requirement1Row.nextSibling;
+    var requirement3Row = requirement2Row.nextSibling;
+    var requirement4Row = requirement3Row.nextSibling;
+    var requirement5Row = requirement4Row.nextSibling;
+
+    var requirement1Element = requirement1Row.children[0].children[2];
+    var requirement2Element = requirement2Row.children[0].children[1];
+    var requirement3Element = requirement3Row.children[0].children[1];
+    var requirement4Element = requirement4Row.children[0].children[1];
+    var requirement5Element = requirement5Row.children[0].children[1];
+
+    var viewElement = selectElement.nextSibling.nextSibling.nextSibling;
+
+    requirement1Row.style.display = 'none';
+    requirement2Row.style.display = 'none';
+    requirement3Row.style.display = 'none';
+    requirement4Row.style.display = 'none';
+    requirement5Row.style.display = 'none';
+
+    requirement1Element.previousSibling.disabled = true;
+    requirement2Element.previousSibling.disabled = true;
+    requirement3Element.previousSibling.disabled = true;
+    requirement4Element.previousSibling.disabled = true;
+    requirement5Element.previousSibling.disabled = true;
+
+    requirement1Element.previousSibling.checked = false;
+    requirement2Element.previousSibling.checked = false;
+    requirement3Element.previousSibling.checked = false;
+    requirement4Element.previousSibling.checked = false;
+    requirement5Element.previousSibling.checked = false;
+
+    requirement1Element.innerHTML = '';
+    requirement2Element.innerHTML = '';
+    requirement3Element.innerHTML = '';
+    requirement4Element.innerHTML = '';
+    requirement5Element.innerHTML = '';
+
+    viewElement.href = '';
+    viewElement.innerHTML = '';
+  };
+
+  // console.log($('.reqCheck'));
+  $('.reqCheck').hide();
 
   //check if selected
   var most_interest = $('#most_interest')[0];
@@ -232,6 +296,8 @@ $(document).ready(function() {
   // Get requirements for selection
   $('#most_interest, #high_interest, #moderate_interest, #low_interest, #least_interest').on('change', requirement_check);
 
+  // Clear selection
+  $('.clear_select').on('click', clear_selection);
 
 
 });

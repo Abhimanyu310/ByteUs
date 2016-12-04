@@ -84,7 +84,7 @@ var samlStrategy = new saml.Strategy({
     var type = user_attributes[0];
     var email = user_attributes[1];
     var name = user_attributes[2];
-    console.log('in profile done');
+    // console.log('in profile done');
 
     req.session.CU = true;
 
