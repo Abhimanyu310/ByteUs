@@ -70,7 +70,7 @@ $(document).ready(function() {
 
 
 
-  // project requirements
+  // get project requirements
   var requirement_check = function(event) {
     // event.preventDefault();
     var selected = this.value;
@@ -145,6 +145,7 @@ $(document).ready(function() {
         });
   };
 
+  // load requirements on page load
   var requirement_check_load = function(selected, selectElement) {
     // event.preventDefault();
     // var selected = this.value;
@@ -214,6 +215,7 @@ $(document).ready(function() {
         });
   };
 
+  // clear selection
   var clear_selection = function(event) {
     event.preventDefault();
     var selectElement = event.target.previousSibling;
@@ -263,7 +265,8 @@ $(document).ready(function() {
     viewElement.innerHTML = '';
   };
 
-  // console.log($('.reqCheck'));
+
+  // hide the requirements checkboxes
   $('.reqCheck').hide();
 
   //check if selected
