@@ -130,6 +130,18 @@ module.exports = {
             res.redirect('/application/form');
         }
         else{
+            if (req.body.race){
+                if( typeof req.body.race === 'string' ) {
+                    race = req.body.race;
+                }
+                else{
+                    var race = req.body.race[0];
+                    for(var i = 1; i < req.body.race.length; i++){
+                        race +=  ',' + req.body.race[i];
+                    }
+                }
+            }
+
             var action;
             if (req.body.action == 'Save'){
                 action = 'No';
@@ -139,7 +151,7 @@ module.exports = {
                 saveFiles(req, res, next);
             }
 
-            addApplicationToDB(req, res, next, action);
+            addApplicationToDB(req, res, next, action, race);
         }
         
         
@@ -193,7 +205,7 @@ function saveFiles(req, res, next){
     }
 }
 
-function addApplicationToDB(req, res, next, action) {
+function addApplicationToDB(req, res, next, action, race) {
 
     if (req.session.CU){
         var user_id = req.session.cu_user.id;
@@ -209,7 +221,7 @@ function addApplicationToDB(req, res, next, action) {
         sid: req.body.sid,
         gender: req.body.gender,
         origin: req.body.origin,
-        race: req.body.race,
+        race: race,
         submitted: action
     };
 

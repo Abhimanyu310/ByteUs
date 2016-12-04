@@ -63,32 +63,28 @@ block content
 					table.style3
 						tr
 							td
-								input(type='checkbox', name='race', value='AIorAN')
+								input(type='checkbox', name='race', value='AIorAN' checked=((formData ? (formData.race == 'AIorAN' ? true : false) : false) || (application ? (application.race == 'AIorAN' ? true : false) : false)))
 								|  American Indian or Alaskan Native
 						tr
 							td
-								input(type='checkbox', name='race', value='BorAA')
+								input(type='checkbox', name='race', value='BorAA' checked=((formData ? (formData.race == 'BorAA' ? true : false) : false) || (application ? (application.race == 'BorAA' ? true : false) : false)))
 								|  Black or African-American
 						tr
 							td
-								input(type='checkbox', name='race', value='AIorAN')
-								|  American Indian or Alaskan Native
-						tr
-							td
-								input(type='checkbox', name='race', value='NHorPI')
+								input(type='checkbox', name='race', value='NHorPI' checked=((formData ? (formData.race == 'NHorPI' ? true : false) : false) || (application ? (application.race == 'NHorPI' ? true : false) : false)))
 								|  Native Hawaiian or other Pacific Islander
 
 						tr
 							td
-								input(type='checkbox', name='race', value='Asian')
+								input(type='checkbox', name='race', value='Asian' checked=((formData ? (formData.race == 'Asian' ? true : false) : false) || (application ? (application.race == 'Asian' ? true : false) : false)))
 								|  Asian
 						tr
 							td
-								input(type='checkbox', name='race', value='Caucasian')
+								input(type='checkbox', name='race', value='Caucasian' checked=((formData ? (formData.race == 'Caucasian' ? true : false) : false) || (application ? (application.race == 'Caucasian' ? true : false) : false)))
 								|  Caucasian
 						tr
 							td
-								input(type='checkbox', name='race', value='DNW')
+								input(type='checkbox', name='race', value='DNW' checked=((formData ? (formData.race == 'DNW' ? true : false) : false) || (application ? (application.race == 'DNW' ? true : false) : false)))
 								|  I do not wish to provide this information
 						br
 						br
