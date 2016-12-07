@@ -169,7 +169,7 @@ passport.use('local.signup', new LocalSrategy({
     passReqToCallback: true
 }, function (req, email, password, done) {
     req.checkBody('email', 'Invalid email').notEmpty().isEmail();
-    req.checkBody('password', 'Invalid password').notEmpty().isLength({min: 6});
+    // req.checkBody('password', 'Invalid password').notEmpty().isLength({min: 6});
     req.checkBody('type', 'Please select what type of user you are').notEmpty();
 
 
