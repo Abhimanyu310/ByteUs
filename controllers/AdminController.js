@@ -68,6 +68,36 @@ module.exports = {
         });
     },
 
+    getAllSubmittedProjectsAndApplications: function (req, res, next) {
+        models.Project.findAll({
+            where: {submitted: 'Yes'},
+            include: [
+                {model: models.FacultyInfo, as: 'Faculty'}
+            ]
+        }).then(function(projects) {
+            models.Student.findAll({
+                include: [
+                    {model: models.StudentContact, as: 'Contact'},
+                    {model: models.StudentAcademics, as: 'Academics'},
+                    {model: models.StudentApprenticeship, as: 'Apprenticeship'}
+                ]
+            }).then(function(applications) {
+                // console.log(applications);
+                res.render('admin/admin-index', {
+                    title: "List of Submitted Projects",
+                    projects: projects,
+                    applications: applications
+                });
+            }).catch(function (error) {
+                //error handling
+                // console.log(error)
+            });
+        }).catch(function (error) {
+            //error handling
+            // console.log(error)
+        });
+    },
+
     getAllProjects: function (req, res, next) {
         models.Project.findAll({
             include: [
@@ -177,10 +207,18 @@ module.exports = {
         match: function (req, res, next) {
         var project_id = req.params.project_id;
         var application_id = req.params.application_id;
+        Helpers.isMatchedStudent(application_id, function (matched) {
+            if(matched){
+                console.log('Matched');
+            }
+            else{
+                console.log('Not matched');
+            }
+        });
         // If project is already matched, it updates the student. Else creates a new entry
         Helpers.match_or_update(project_id, application_id, 'No', function(match){
             // console.log('before typing match');
-            console.log(match);
+            // console.log(match);
             res.redirect('/');
             // console.log('after typing match');
         });
