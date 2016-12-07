@@ -19,6 +19,7 @@ module.exports = {
     },
 
     getDeleteApplication: function(req, res, next) {
+        // TODO check for own application
         var applicationId = req.params.id;
         models.Student.findOne({
             where: {id: applicationId},

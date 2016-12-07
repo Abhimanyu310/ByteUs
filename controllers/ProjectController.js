@@ -35,6 +35,7 @@ module.exports = {
 
 
     getDeleteProject: function(req, res, next) {
+        // TODO check for own project
         var projectId = req.params.id;
         models.Project.findOne({
             where: {id: projectId},

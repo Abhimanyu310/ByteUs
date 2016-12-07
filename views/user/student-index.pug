@@ -40,7 +40,13 @@ block content
 	table.style3
 		tr.style3
 			td.style1(colspan=3)
-				a.buttonstyle1(href='/application/form') Create New Application
+				if (applications.length == 0)
+					a.buttonstyle1(href='/application/form') Create New Application
+				else
+					if (applications[0].submitted == "Yes")
+						| You have already submitted an application
+					if (applications[0].submitted == "No")
+						| You have an application in progress
 		if(applications.length > 0)
 			tr.style3
 				th.style3 Application Date
