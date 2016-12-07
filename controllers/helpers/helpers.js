@@ -1,3 +1,6 @@
+var models  = require('../../models');
+
+
 exports.isLoggedIn = function (req, res, next) {
     if (req.isAuthenticated()) {
         return next();
@@ -48,4 +51,17 @@ exports.notLoggedIn = function(req, res, next) {
         return next();
     }
     res.redirect('/');
+};
+
+exports.match = function(project_id, application_id, override){
+    var new_match = models.Match.create({
+        project_id: project_id,
+        student_id: application_id,
+        override: override
+    }).then(function (match) {
+        return match;
+    }).catch(function (error) {
+        //error handling
+        console.log(error)
+    });
 };
