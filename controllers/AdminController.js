@@ -148,10 +148,18 @@ module.exports = {
     match: function (req, res, next) {
         var project_id = req.params.project_id;
         var application_id = req.params.application_id;
+        Helpers.isMatchedStudent(application_id, function (matched) {
+            if(matched){
+                console.log('Matched');
+            }
+            else{
+                console.log('Not matched');
+            }
+        });
         // If project is already matched, it updates the student. Else creates a new entry
         Helpers.match_or_update(project_id, application_id, 'No', function(match){
             // console.log('before typing match');
-            console.log(match);
+            // console.log(match);
             res.redirect('/');
             // console.log('after typing match');
         });
