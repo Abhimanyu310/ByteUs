@@ -5,10 +5,12 @@ nav
 		li.newgroup
 			a(href='/') Home
 		if(!logout)
-			li.newgroup
-				a.button.name(href='/admin/project-list') Admin Project list
-			li.newgroup
-				a.button.name(href='/admin/application-list') Admin application list
+
+			if(login && user && user.type == 'Admin')
+				li.newgroup
+					a.button.name(href='/admin/project-list') Admin Project list
+				li.newgroup
+					a.button.name(href='/admin/application-list') Admin application list
 			if(login)
 				li.newgroup
 					a.button.name(href='/project/list') Project List
