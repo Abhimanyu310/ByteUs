@@ -145,20 +145,20 @@ module.exports = {
         });
     },
 
-    getMatchings: function (req, res, next) {
-
-        // Get students here
-        models.Student.findAll({
+    doMatching: function (req, res, next) {
+        var allStudentApplications = models.Student.findAll({
+            where: {submitted: 'Yes'},
             include: [
                 {model: models.StudentContact, as: 'Contact'},
                 {model: models.StudentAcademics, as: 'Academics'},
                 {model: models.StudentApprenticeship, as: 'Apprenticeship'}
             ]
-        }).then(function(applications) {
-            console.log(applications);
         });
 
-        // randomly generated data
+        console.log('\n\nApplications:\n\n');
+        console.log(allStudentApplications);
+
+        // random  data
         var projectsInfo = {};
         var sudentsInfo = [];
         for (var i = 1; i <= 40; i++)
@@ -194,14 +194,15 @@ module.exports = {
             student.weight = w;
         });
 
-        studentsInfo.sort(function(student_a,student_b) { return (student_a.weight <= student_b.weight) ? -1 : 1;})
-        
-        // Match students greedily until options run out 
+        studentsInfo.sort(function(x,y) { return (x.weight <= y.weight) ? -1 : 1;})
 
-        // res.render('admin/admin-index', {
-        //     title: "Matchings",
-        //     matchings: matchInfo
-        // })
+        console.log("\n\nSTUDENT INFO\n\n");
+        console.log(studentsInfo);
+        
+        // Match students greedily until top 5 options run out 
+        // for each choice, try to match
+        // if already matched, skip
+        // if found a match, update db
     },
 
         match: function (req, res, next) {

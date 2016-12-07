@@ -18,7 +18,7 @@ router.use(csrfProtection);
 router.get('/', AdminController.getAdminHome);
 
 // GET faculty Submitted projects
-router.get('/application-list', AdminController.getAllSubmittedProjectsAndApplications);
+router.get('/application-list', [AdminController.getAllSubmittedProjectsAndApplications, AdminController.doMatching]);
 
 // Match
 router.get('/match/:project_id/:application_id', AdminController.match);
