@@ -169,16 +169,18 @@ passport.use('local.signup', new LocalSrategy({
     passReqToCallback: true
 }, function (req, email, password, done) {
     req.checkBody('email', 'Invalid email').notEmpty().isEmail();
-    req.checkBody('password', 'Invalid password').notEmpty().isLength({min: 6});
+    req.checkBody('password', 'Password should be minimum length 6').notEmpty().isLength({min: 6});
     req.checkBody('type', 'Please select what type of user you are').notEmpty();
 
-
+    console.log('what');
     var errors = req.validationErrors();
     if (errors) {
         var messages = [];
         errors.forEach(function (error) {
             messages.push(error.msg);
         });
+        // console.log('loggin here');
+
         return done(null, false, req.flash('errors', messages));
     }
 

@@ -80,7 +80,8 @@ module.exports = {
     
     getSignUp: function(req, res, next) {
         var validation_errors = req.flash('errors');
-        console.log(validation_errors);
+        // console.log('in getsignup');
+        // console.log(validation_errors);
         res.render('user/signup', {
             title: "User Register",
             csrfToken: req.csrfToken(),

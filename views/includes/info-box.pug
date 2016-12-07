@@ -4,6 +4,7 @@ if hasSuccess
 			p #{message}
 
 
+
 if hasError
 	div.info-box.info-box-error
 		each err in error
@@ -16,3 +17,8 @@ if hasErrors
 			div.info-box.info-box-error
 				p #{message.msg}
 
+
+if hasErrors
+	each error in errors
+		div.info-box.info-box-error
+			p #{error}
