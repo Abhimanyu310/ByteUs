@@ -111,5 +111,54 @@ module.exports = {
                 applications: applications
             });
         });
-    }
+    },
+
+    getMatchings: function (req, res, next) {
+
+        // Get Unmatched info. here
+        // models.Matchings.findAll({
+        //     where: {},
+        //     include: [{}]
+        // }).then(function (matchInfo)) {  }
+
+        // randomly generated data
+        var projectsInfo = {};
+        var sudentsInfo = [];
+        for (var i = 1; i <= 40; i++)
+        {
+            projectsInfo[i] = {
+                studentId: -1,
+                projectId: i,
+                isMatched: false
+            };
+
+            studentsInfo.push({
+                studentId:  i,
+                projectId: -1,
+                weight:     1.0,
+                gpa:        4.0 * Math.floor(Math.random()) + 1,
+                mostId:     40 * Math.floor(Math.random()) + 1,
+                highId:     40 * Math.floor(Math.random()) + 1,
+                moderareId: 40 * Math.floor(Math.random()) + 1,
+                lowId:      40 * Math.floor(Math.random()) + 1,
+                leastId:    40 * Math.floor(Math.random()) + 1
+            });
+        }
+
+        res.render('admin/admin-index', {
+            title: "Matchings",
+            matchings: matchInfo
+        })
+    },
+
+    
+
  };
+
+function compareStudentWeight(student_a,student_b) {
+        if (student_a.weight <= student_b.weight)
+            return -1;
+        if (student_a.weight > student_b.weight)
+            return 1;
+        //return 0;
+}
