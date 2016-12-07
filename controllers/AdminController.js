@@ -68,6 +68,36 @@ module.exports = {
         });
     },
 
+    getAllSubmittedProjectsAndApplications: function (req, res, next) {
+        models.Project.findAll({
+            where: {submitted: 'Yes'},
+            include: [
+                {model: models.FacultyInfo, as: 'Faculty'}
+            ]
+        }).then(function(projects) {
+            models.Student.findAll({
+                include: [
+                    {model: models.StudentContact, as: 'Contact'},
+                    {model: models.StudentAcademics, as: 'Academics'},
+                    {model: models.StudentApprenticeship, as: 'Apprenticeship'}
+                ]
+            }).then(function(applications) {
+                // console.log(applications);
+                res.render('admin/admin-index', {
+                    title: "List of Submitted Projects",
+                    projects: projects,
+                    applications: applications
+                });
+            }).catch(function (error) {
+                //error handling
+                // console.log(error)
+            });
+        }).catch(function (error) {
+            //error handling
+            // console.log(error)
+        });
+    },
+
     getAllProjects: function (req, res, next) {
         models.Project.findAll({
             include: [
