@@ -196,7 +196,8 @@ passport.use('local.signup', new LocalSrategy({
         where: {email: email}
     }).then(function (user){
         if (user){
-            return done(null, false, {message: 'Email already in use.'});
+            messages = ['Email already in use.'];
+            return done(null, false, req.flash('errors', messages));
         }
 
         var newUser = models.User.build();

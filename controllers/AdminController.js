@@ -1,4 +1,6 @@
 var models  = require('../models');
+var Helpers = require('../controllers/helpers/helpers');
+
 
 module.exports = {
 
@@ -151,8 +153,18 @@ module.exports = {
         })
     },
 
+        match: function (req, res, next) {
+        var project_id = req.params.project_id;
+        var application_id = req.params.application_id;
+        // If project is already matched, it updates the student. Else creates a new entry
+        Helpers.match_or_update(project_id, application_id, 'No', function(match){
+            // console.log('before typing match');
+            console.log(match);
+            res.redirect('/');
+            // console.log('after typing match');
+        });
+    }
     
-
  };
 
 function compareStudentWeight(student_a,student_b) {
