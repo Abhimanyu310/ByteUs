@@ -117,11 +117,16 @@ module.exports = {
 
     getMatchings: function (req, res, next) {
 
-        // Get Unmatched info. here
-        // models.Matchings.findAll({
-        //     where: {},
-        //     include: [{}]
-        // }).then(function (matchInfo)) {  }
+        // Get students here
+        models.Student.findAll({
+            include: [
+                {model: models.StudentContact, as: 'Contact'},
+                {model: models.StudentAcademics, as: 'Academics'},
+                {model: models.StudentApprenticeship, as: 'Apprenticeship'}
+            ]
+        }).then(function(applications) {
+            console.log(applications);
+        });
 
         // randomly generated data
         var projectsInfo = {};
@@ -139,6 +144,9 @@ module.exports = {
                 projectId: -1,
                 weight:     1.0,
                 gpa:        4.0 * Math.floor(Math.random()) + 1,
+                gender:     (Math.round(Math.random())) ? 'male' : 'female',
+                goldShirt:  (Math.random() < 0.90) ? 'Yes' : 'No',
+                ethnicBias: (Math.random() < 0.75) ? 1.00 : 1.15,
                 mostId:     40 * Math.floor(Math.random()) + 1,
                 highId:     40 * Math.floor(Math.random()) + 1,
                 moderareId: 40 * Math.floor(Math.random()) + 1,
@@ -147,10 +155,23 @@ module.exports = {
             });
         }
 
-        res.render('admin/admin-index', {
-            title: "Matchings",
-            matchings: matchInfo
-        })
+        studentsInfo.forEach(function(student) {
+            var w = student.weight;
+            w *= student.gpa;
+            w = (student.gender == 'female') ? w * 1.15 : w;
+            w = (student.goldShirt == 'Yes') ? w * 1.15 : w;
+            w = w * student.ethnicBias;
+            student.weight = w;
+        });
+
+        studentsInfo.sort(function(student_a,student_b) { return (student_a.weight <= student_b.weight) ? -1 : 1;})
+        
+        // Match students greedily until options run out 
+
+        // res.render('admin/admin-index', {
+        //     title: "Matchings",
+        //     matchings: matchInfo
+        // })
     },
 
         match: function (req, res, next) {
@@ -166,11 +187,3 @@ module.exports = {
     }
     
  };
-
-function compareStudentWeight(student_a,student_b) {
-        if (student_a.weight <= student_b.weight)
-            return -1;
-        if (student_a.weight > student_b.weight)
-            return 1;
-        //return 0;
-}

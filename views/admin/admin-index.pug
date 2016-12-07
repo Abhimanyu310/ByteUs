@@ -45,35 +45,33 @@ block content
 							input(type='checkbox', name='overwrite', value='Yes'  checked=false)
 						td.style3
 							p StudentId
-						td.style3 
-							p #{application.Academics.primary_major}
-						td.style3 
-							p #{application.Academics.secondary_major}
-						td.style3 
-							p #{application.Academics.next_fall_level}
-						td.style3 
-							p #{application.Academics.grad_month}/#{application.Academics.grad_year}
-						td.style3 
-							p #{application.Academics.gpa}
-						td.style3 
-							p #{application.gender}
-						td.style3 
-							p #{application.race}
-						td.style3 
-							p #{application.prev_research_exp}
-						td.style3		 
-							p #{application.Apprenticeship.prev_application}
-						td.style3
-							if(application.Apprenticeship.most_interest)
-								a.buttonstyle(href='/project/'+application.Apprenticeship.most_interest+'/view') Most Interest
-							if(application.Apprenticeship.high_interest)
-								a.buttonstyle(href='/project/'+application.Apprenticeship.high_interest+'/view') High Interest
-							if(application.Apprenticeship.moderate_interest)
-								a.buttonstyle(href='/project/'+application.Apprenticeship.moderate_interest+'/view') Moderate Interest
-							if(application.Apprenticeship.low_interest)
-								a.buttonstyle(href='/project/'+application.Apprenticeship.low_interest+'/view') Low Interest
-							if(application.Apprenticeship.least_interest)
-								a.buttonstyle(href='/project/'+application.Apprenticeship.least_interest+'/view') Least Interest
-
-							
-											
+						if(application)
+							td.style3 
+								p #{application.Academics.primary_major}
+							td.style3 
+								p #{application.Academics.secondary_major}
+							td.style3 
+								p #{application.Academics.next_fall_level}
+							td.style3 
+								p #{application.Academics.grad_month}/#{application.Academics.grad_year}
+							td.style3 
+								p #{application.Academics.gpa}
+							td.style3 
+								p #{application.gender}
+							td.style3 
+								p #{application.race}
+							td.style3 
+								p #{application.prev_research_exp}
+							td.style3
+								p #{application.Apprenticeship.prev_application}
+							td.style3
+								if(application.Apprenticeship.most_interest)
+									a.buttonstyle(href='/project/'+application.Apprenticeship.most_interest+'/view') Most Interest
+								if(application.Apprenticeship.high_interest)
+									a.buttonstyle(href='/project/'+application.Apprenticeship.high_interest+'/view') High Interest
+								if(application.Apprenticeship.moderate_interest)
+									a.buttonstyle(href='/project/'+application.Apprenticeship.moderate_interest+'/view') Moderate Interest
+								if(application.Apprenticeship.low_interest)
+									a.buttonstyle(href='/project/'+application.Apprenticeship.low_interest+'/view') Low Interest
+								if(application.Apprenticeship.least_interest)
+									a.buttonstyle(href='/project/'+application.Apprenticeship.least_interest+'/view') Least Interest
