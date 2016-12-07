@@ -66,6 +66,25 @@ nav li a:hover {
 	color: white; 
 }
 
+select{
+	display: block; 
+	float: left; 
+	background-color: rgb(31,49,59);
+	color: white; 
+	font-size: 0.9em; 
+	height: 28px; 
+	border-radius: 5px;
+	margin-top: 3px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 2px;
+	border: none;	
+}
+
+select.level{
+	width: 150px; 
+}
+
 section h5{
 	color: white; 
 	/*position: absolute;*/
@@ -115,6 +134,7 @@ td.style3{
     padding: 7px;
     text-align: left;
     vertical-align: center;
+    text-align: center;
     border: 1px solid white;
 }
 tr.style3:nth-child(even){background-color: rgb(70,70,70);}
