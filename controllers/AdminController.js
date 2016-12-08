@@ -157,10 +157,6 @@ module.exports = {
             console.log('\n\nApplications: ' + applications.length + '\n\n');
             console.log(applications);
             
-            res.render('admin/matching', {
-                title: "Matching",
-            });
-
             // TODO: Filter out matched students here
 
             // Gather student info for matching
@@ -232,12 +228,17 @@ module.exports = {
             console.log("\n\nStudent info:\n\n");
             console.log(studentsInfo);
 
-            
-            
-            // Match students greedily until top 5 options run out 
-            // for each choice, try to match
-            // if already matched, skip
-            // if found a match, update db
+            // Greedy Matching
+            // for i = 0 to n
+            // match top priority if available
+            // else match next priority if available, repeat
+            // if no match, skip
+            // update DB with matches
+
+            res.render('admin/matching', {
+                title: "Matching",
+                studentsInfo: studentsInfo
+            });
         });
     },
 
