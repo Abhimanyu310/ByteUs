@@ -28,7 +28,7 @@ router.get('/match/:project_id/:application_id', AdminController.match);
 router.get('/export', AdminController.export);
 
 // Test matching
-router.get('/matching', AdminController.doMatching);
+// router.get('/matching', AdminController.doMatching);
 
 
 module.exports = router;
