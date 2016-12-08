@@ -146,63 +146,99 @@ module.exports = {
     },
 
     doMatching: function (req, res, next) {
-        var allStudentApplications = models.Student.findAll({
+        models.Student.findAll({
             where: {submitted: 'Yes'},
             include: [
                 {model: models.StudentContact, as: 'Contact'},
                 {model: models.StudentAcademics, as: 'Academics'},
                 {model: models.StudentApprenticeship, as: 'Apprenticeship'}
             ]
-        });
-
-        console.log('\n\nApplications:\n\n');
-        console.log(allStudentApplications);
-
-        // random  data
-        var projectsInfo = {};
-        var sudentsInfo = [];
-        for (var i = 1; i <= 40; i++)
-        {
-            projectsInfo[i] = {
-                studentId: -1,
-                projectId: i,
-                isMatched: false
-            };
-
-            studentsInfo.push({
-                studentId:  i,
-                projectId: -1,
-                weight:     1.0,
-                gpa:        4.0 * Math.floor(Math.random()) + 1,
-                gender:     (Math.round(Math.random())) ? 'male' : 'female',
-                goldShirt:  (Math.random() < 0.90) ? 'Yes' : 'No',
-                ethnicBias: (Math.random() < 0.75) ? 1.00 : 1.15,
-                mostId:     40 * Math.floor(Math.random()) + 1,
-                highId:     40 * Math.floor(Math.random()) + 1,
-                moderareId: 40 * Math.floor(Math.random()) + 1,
-                lowId:      40 * Math.floor(Math.random()) + 1,
-                leastId:    40 * Math.floor(Math.random()) + 1
+        }).then(function(applications) {
+            console.log('\n\nApplications: ' + applications.length + '\n\n');
+            console.log(applications);
+            
+            res.render('admin/matching', {
+                title: "Matching",
             });
-        }
 
-        studentsInfo.forEach(function(student) {
-            var w = student.weight;
-            w *= student.gpa;
-            w = (student.gender == 'female') ? w * 1.15 : w;
-            w = (student.goldShirt == 'Yes') ? w * 1.15 : w;
-            w = w * student.ethnicBias;
-            student.weight = w;
+            // TODO: Filter out matched students here
+
+            // Gather student info for matching
+            var studentsInfo = [];
+            for (var i = 0; i < applications.length; i++)
+            {
+                studentsInfo.push({
+                    application_id: applications[i].id,
+                    project_id:     -1,
+                    isMatched:      false,
+                    weight:         applications[i].Academics.gpa,
+                    classStanding:  applications[i].Academics.next_fall_level,
+                    goldshirt:      applications[i].Academics.goldshirt,
+                    gender:         applications[i].gender,
+                    race:           applications[i].race,
+                    appliedBefore:  applications[i].Apprenticeship.prev_application,
+                    mostId:         applications[i].Apprenticeship.most_interest,
+                    highId:         applications[i].Apprenticeship.high_interest,
+                    moderateId:     applications[i].Apprenticeship.moderate_interest,
+                    lowId:          applications[i].Apprenticeship.low_interest,
+                    leastId:        applications[i].Apprenticeship.least_interest,
+                });
+            }
+
+            // TODO: Filter out students who do not meet specific project requirements here
+
+            studentsInfo.forEach(function(student) {
+                var w = 1.00;
+                switch (student.classStanding) {
+                    case 'Freshman':
+                        w -= 0.20;
+                        break;
+                    case 'Sophomore':
+                        w -= 0.10;
+                        break;
+                    case 'Junior':
+                    default:
+                        // no change
+                        break;
+                    case 'Senior':
+                        w += 0.10;
+                        break;
+                    case '5th Year Senior':
+                        w += 0.20;
+                        break;
+                }
+                switch (student.race) {
+                    case 'AIorAN':
+                    case 'BorAA':
+                    case 'NHorPI':
+                        w += 0.05;
+                        break;
+                    case 'Asian':
+                    case 'Caucasian':
+                    case 'DNW':
+                    default:
+                        // no change
+                        break;
+                }
+                w += (student.goldshirt == 'Yes') ? 0.10 : 0.00;
+                w += (student.gender == 'female' || student.gender == 'Female') ? 0.10 : 0.00;
+                w += (student.appliedBefore == 'Yes') ? 0.05 : 0.00;
+                student.weight *= w;
+            });
+
+            // Sort descending order
+            studentsInfo.sort(function(x,y) { return (x.weight <= y.weight) ? 1 : -1;})
+
+            console.log("\n\nStudent info:\n\n");
+            console.log(studentsInfo);
+
+            
+            
+            // Match students greedily until top 5 options run out 
+            // for each choice, try to match
+            // if already matched, skip
+            // if found a match, update db
         });
-
-        studentsInfo.sort(function(x,y) { return (x.weight <= y.weight) ? -1 : 1;})
-
-        console.log("\n\nSTUDENT INFO\n\n");
-        console.log(studentsInfo);
-        
-        // Match students greedily until top 5 options run out 
-        // for each choice, try to match
-        // if already matched, skip
-        // if found a match, update db
     },
 
         match: function (req, res, next) {
