@@ -57,11 +57,16 @@ block content
 				td.style3
 					p #{application.created_at}
 				td.style3
-					li #{application.Apprenticeship.most_interest}
-					li #{application.Apprenticeship.high_interest}
-					li #{application.Apprenticeship.moderate_interest}
-					li #{application.Apprenticeship.low_interest}
-					li #{application.Apprenticeship.least_interest}
+					if(application.Apprenticeship.most_interest)
+						a.buttonstyle(href='/project/'+application.Apprenticeship.most_interest+'/view') Most Interest
+					if(application.Apprenticeship.high_interest)
+						a.buttonstyle(href='/project/'+application.Apprenticeship.high_interest+'/view') High Interest
+					if(application.Apprenticeship.moderate_interest)
+						a.buttonstyle(href='/project/'+application.Apprenticeship.moderate_interest+'/view') Moderate Interest
+					if(application.Apprenticeship.low_interest)
+						a.buttonstyle(href='/project/'+application.Apprenticeship.low_interest+'/view') Low Interest
+					if(application.Apprenticeship.least_interest)
+						a.buttonstyle(href='/project/'+application.Apprenticeship.least_interest+'/view') Least Interest
 				td.style3
 					//a.buttonstyle(href='/application/'+application.id+'/view') View Application
 					a.buttonstyle2.delete(href='#', data-applicationid=application.id) Delete Application

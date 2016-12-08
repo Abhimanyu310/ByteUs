@@ -23,7 +23,12 @@ router.get('/application-list', AdminController.getAllSubmittedProjectsAndApplic
 // Match
 router.get('/match/:project_id/:application_id', AdminController.match);
 
+
 // Export
 router.get('/export', AdminController.export);
+
+// Test matching
+router.get('/matching', AdminController.doMatching);
+
 
 module.exports = router;
