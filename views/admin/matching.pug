@@ -1,0 +1,30 @@
+extends ../layouts/master
+
+block title
+	|#{title}
+
+block styles
+	link(rel='stylesheet', href='/stylesheets/admin.css')
+
+block content
+
+	include ../includes/info-box
+
+	header
+		h1 #{title}
+		
+	section
+		table.style3
+			tr.style3
+				th.style3 Application ID
+				th.style3 Project ID
+				th.style3 Weight
+			tr.style3
+				each student in studentsInfo
+					tr
+						td.style3
+							p #{student.application_id}
+						td.style3
+							p #{student.project_id}
+						td.style3
+							p #{student.weight}

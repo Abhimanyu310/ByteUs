@@ -88,5 +88,50 @@ exports.match_or_update = function(project_id, application_id, override, callbac
         }
     });
 
+};
 
+exports.isMatchedProject = function(project_id, callback){
+    models.Match.findOne({
+        where: {
+            project_id: project_id
+        }
+    }).then(function (match) {
+        if (match) {
+            return callback(true);
+        }
+        else {
+            return callback(false);
+        }
+    });
+};
+
+exports.isMatchedStudent = function(application_id, callback){
+    models.Match.findOne({
+        where: {
+            student_id: application_id
+        }
+    }).then(function (match) {
+        if (match) {
+            return callback(true);
+        }
+        else {
+            return callback(false);
+        }
+    });
+};
+
+exports.isMatchedProjectAndStudent = function(project_id, application_id, callback){
+    models.Match.findOne({
+        where: {
+            project_id: project_id,
+            student_id: application_id
+        }
+    }).then(function (match) {
+        if (match) {
+            return callback(true);
+        }
+        else {
+            return callback(false);
+        }
+    });
 };
