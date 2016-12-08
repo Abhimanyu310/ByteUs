@@ -65,7 +65,7 @@ module.exports = {
             });
         }).catch(function (error) {
             //error handling
-            // console.log(error)
+            // // console.log(error)
         });
 
 
@@ -81,7 +81,7 @@ module.exports = {
                 {model: models.StudentApprenticeship, as: 'Apprenticeship'}
             ]
         }).then(function (application){
-            // console.log(project)
+            // // console.log(project)
             if (application.submitted == 'Yes'){
                 res.redirect('/application/'+applicationId+'/view');
             }
@@ -95,7 +95,7 @@ module.exports = {
                     });
                 }).catch(function (error) {
                     //error handling
-                    // console.log(error)
+                    // // console.log(error)
                 });
             }
 
@@ -178,7 +178,7 @@ module.exports = {
 function saveFiles(req, res, next){
     // Save files
     if (req.files) {
-        // console.log("FILES YAY");
+        // // console.log("FILES YAY");
         student_id = req.body.sid;
 
         resume = req.files.resume;
@@ -189,10 +189,10 @@ function saveFiles(req, res, next){
 
             resume.mv('uploads/resume-'+student_id+'.pdf', function(err) {
                 if (err) {
-                    // console.log('error');
+                    // // console.log('error');
                 }
                 else {
-                    // console.log('File uploaded!');
+                    // // console.log('File uploaded!');
                 }
             });
         }
@@ -207,10 +207,10 @@ function saveFiles(req, res, next){
             // }
             cover_letter.mv('uploads/cover_letter-'+student_id+'.pdf', function(err) {
                 if (err) {
-                    // console.log('error');
+                    // // console.log('error');
                 }
                 else {
-                    // console.log('File uploaded!');
+                    // // console.log('File uploaded!');
                 }
             });
         }
@@ -334,7 +334,7 @@ function addApplicationToDB(req, res, next, action, race) {
                         });
                 }).catch(function (error) {
                 //error handling
-                console.log(error)
+                // console.log(error)
             });
         }
         else {
@@ -359,7 +359,7 @@ function addApplicationToDB(req, res, next, action, race) {
                 // task.setFaculty([faculty]).then(function () {
                 //         //done
                 //     });
-                // console.log(task)
+                // // console.log(task)
                 if (action == 'Yes') {
                     req.flash('success', 'Application Submission Successful!');
                 }
@@ -370,7 +370,7 @@ function addApplicationToDB(req, res, next, action, race) {
                 res.redirect('/user/student-home');
             }).catch(function (error) {
                 //error handling
-                console.log(error)
+                // console.log(error)
             });
         }
     });

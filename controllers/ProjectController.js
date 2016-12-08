@@ -7,7 +7,7 @@ module.exports = {
 
     getProjectList: function(req, res, next){
         models.Project.findAll().then(function(projects) {
-            console.log(projects);
+            // console.log(projects);
             res.render('project/project-list', {
                 title: 'Project List',
                 header: 'Complete Listing of Discovery Learning Apprenticeships',
@@ -17,13 +17,13 @@ module.exports = {
             });
         }).catch(function (error) {
             //error handling
-            // console.log(error)
+            // // console.log(error)
         });
     },
 
     getProjects: function(req, res, next){
         models.Project.findAll().then(function(projects) {
-            console.log(projects);
+            // console.log(projects);
             res.status(200).json({
                 message: 'Success',
                 projects: projects
@@ -80,7 +80,7 @@ module.exports = {
             where: {id: projectId},
             include: [ {model: models.FacultyInfo, as: 'Faculty'} ]
         }).then(function (project){
-            // console.log(project)
+            // // console.log(project)
             if (project.submitted == 'Yes'){
                 res.redirect('/project/'+projectId+'/view');
             }
@@ -168,7 +168,7 @@ module.exports = {
             where: {id: projectId},
             include: [ {model: models.FacultyInfo, as: 'Faculty'} ]
         }).then(function (project){
-            // console.log(project)
+            // // console.log(project)
             res.render('project/project-single', {
                 title: "Project List",
                 project: project
@@ -281,7 +281,7 @@ function addProjectToDB(req, res, next, areas, action){
                         });
                 }).catch(function (error) {
                 //error handling
-                console.log(error)
+                // console.log(error)
             });
         }
         else{
@@ -313,7 +313,7 @@ function addProjectToDB(req, res, next, areas, action){
                 // task.setFaculty([faculty]).then(function () {
                 //         //done
                 //     });
-                // console.log(task)
+                // // console.log(task)
                 if (action == 'Yes'){
                     req.flash('success', 'Project Submission Successful!');
                     res.redirect('success');
@@ -326,7 +326,7 @@ function addProjectToDB(req, res, next, areas, action){
 
             }).catch(function (error) {
                 //error handling
-                console.log(error)
+                // console.log(error)
             });
         }
     });

@@ -30,7 +30,7 @@ router.get('/:id/view',AdminController.getMatchedStudent);
 router.get('/export', AdminController.export);
 
 // Test matching
-// router.get('/matching', AdminController.doMatching);
+router.get('/matching', AdminController.doMatching);
 
 
 module.exports = router;

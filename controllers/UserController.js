@@ -22,8 +22,8 @@ module.exports = {
                     {model: models.StudentApprenticeship, as: 'Apprenticeship'}
                 ]
             }).then(function(applications) {
-                // console.log('from here');
-                // console.log(applications);
+                // // console.log('from here');
+                // // console.log(applications);
                 res.render('user/student-index', {
                     title: "Student Home",
                     success: success,
@@ -69,7 +69,7 @@ module.exports = {
         else{
             user = req.user;
         }
-        console.log(user);
+        // console.log(user);
         user.getApplications().then(function (applications) {
             res.render('user/faculty-index', {
                 title: "Projects",
@@ -80,8 +80,8 @@ module.exports = {
     
     getSignUp: function(req, res, next) {
         var validation_errors = req.flash('errors');
-        // console.log('in getsignup');
-        // console.log(validation_errors);
+        // // console.log('in getsignup');
+        // // console.log(validation_errors);
         res.render('user/signup', {
             title: "User Register",
             csrfToken: req.csrfToken(),
@@ -111,10 +111,10 @@ module.exports = {
     },
 
     postSignIn: function(req, res, next) {
-        // console.log('printing req.session.passport.user');
-        // console.log(req.session.passport.user);
-        // console.log('printing req.user');
-        // console.log(req.user.id);
+        // // console.log('printing req.session.passport.user');
+        // // console.log(req.session.passport.user);
+        // // console.log('printing req.user');
+        // // console.log(req.user.id);
         if (req.session.oldUrl){
             var oldUrl = req.session.oldUrl;
             req.session.oldUrl = null;
@@ -134,8 +134,8 @@ module.exports = {
                     req.session.cu_user = '';
                     req.session.oldUrl = '';
                     // redirect to the IdP with the encrypted SAML logout request
-                    console.log('HEREEEEEEEEEEEEEEEEEEEEE');
-                    console.log(requestUrl);
+                    // console.log('HEREEEEEEEEEEEEEEEEEEEEE');
+                    // console.log(requestUrl);
                     res.redirect(requestUrl);
                 });
             }

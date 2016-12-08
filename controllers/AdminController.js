@@ -23,14 +23,14 @@ module.exports = {
                 {model: models.StudentApprenticeship, as: 'Apprenticeship'}
             ]
         }).then(function(applications) {
-            console.log(applications);
+            // console.log(applications);
             res.render('admin/admin-index', {
                 title: "List of Submitted Applications",
                 applications: applications
             });
         }).catch(function (error) {
             //error handling
-            // console.log(error)
+            // // console.log(error)
         });
     },
 
@@ -42,27 +42,27 @@ module.exports = {
                 {model: models.StudentApprenticeship, as: 'Apprenticeship'}
             ]
         }).then(function(applications) {
-            console.log(applications);
+            // console.log(applications);
             res.render('admin/admin-index', {
                 title: "List of Applications",
                 applications: applications
             });
         }).catch(function (error) {
             //error handling
-            // console.log(error)
+            // // console.log(error)
         });
     },
 
     getMatchedStudent: function(req,res,next) {
-        console.log('matchedstudent function called');
+        // console.log('matchedstudent function called');
         var project_id = req.params.id;
-        console.log(project_id);
+        // console.log(project_id);
         models.Project.find({
             where: {id: project_id}
         }).then(function (project) {
-            console.log(project);
+            // console.log(project);
             Helpers.findMatchedStudent(project.id, project.description, function (matched_id, name) {
-                console.log('matched id for ' + name + ' is ' + matched_id);
+                // console.log('matched id for ' + name + ' is ' + matched_id);
                 res.status(200).json({
                     message: 'Success',
                     matched_id: matched_id
@@ -85,7 +85,7 @@ module.exports = {
             });
         }).catch(function (error) {
             //error handling
-            // console.log(error)
+            // // console.log(error)
         });
     },
 
@@ -103,7 +103,7 @@ module.exports = {
                     {model: models.StudentApprenticeship, as: 'Apprenticeship'}
                 ]
             }).then(function(applications) {
-                // console.log(applications);
+                // // console.log(applications);
                 res.render('admin/admin-index', {
                     title: "List of Submitted Projects",
                     projects: projects,
@@ -111,11 +111,11 @@ module.exports = {
                 });
             }).catch(function (error) {
                 //error handling
-                // console.log(error)
+                // // console.log(error)
             });
         }).catch(function (error) {
             //error handling
-            // console.log(error)
+            // // console.log(error)
         });
     },
 
@@ -125,14 +125,14 @@ module.exports = {
                 {model: models.FacultyInfo, as: 'Faculty'}
             ]
         }).then(function(projects) {
-            console.log(applications);
+            // console.log(applications);
             res.render('admin/admin-index', {
                 title: "List of Projects",
                 projects: projects
             });
         }).catch(function (error) {
             //error handling
-            // console.log(error)
+            // // console.log(error)
         });
     },
     
@@ -181,8 +181,8 @@ module.exports = {
                     {model: models.FacultyInfo, as: 'Faculty'}
                 ]
             }).then(function(projects) {
-                // console.log('\n\nApplications: ' + applications.length + '\n\n');
-                // console.log(applications);
+                // // console.log('\n\nApplications: ' + applications.length + '\n\n');
+                // // console.log(applications);
                 
                 // Gather project information for matching
                 var projectsMatches = {};
@@ -262,8 +262,8 @@ module.exports = {
                 // Sort descending order
                 studentsInfo.sort(function(x,y) { return (x.weight <= y.weight) ? 1 : -1;})
 
-                console.log("\n\nStudent info:\n\n");
-                console.log(studentsInfo);
+                // console.log("\n\nStudent info:\n\n");
+                // console.log(studentsInfo);
 
                 // Greedy match
                 for(var i = 0; i < studentsInfo.length; i++)
@@ -301,8 +301,8 @@ module.exports = {
                     }
                 }
 
-                console.log("\n\Project matches:\n\n");
-                console.log(projectsMatches);
+                // console.log("\n\Project matches:\n\n");
+                // console.log(projectsMatches);
 
                 // Update DB
                 for(var key in projectsMatches)
@@ -310,23 +310,24 @@ module.exports = {
                     if(projectsMatches.hasOwnProperty(key) && projectsMatches[key] != -1)
                     {
                         Helpers.match_or_update(key, projectsMatches[key], 'No', function(match){
-                            console.log("\n\nMatch:\n\n");
-                            console.log(match);
+                            // console.log("\n\nMatch:\n\n");
+                            // console.log(match);
                             s.project_id = s.highId;
                             s.isMatched = true;
                             //res.redirect('/');
-                            //console.log('after typing match');
+                            // //console.log('after typing match');
                         });
                     }
                 }
 
-                res.render('admin/matching', {
-                    title: "Matching",
-                    studentsInfo: studentsInfo
-                });
+                // res.render('admin/matching', {
+                //     title: "Matching",
+                //     studentsInfo: studentsInfo
+                // });
+                res.redirect('/admin/application-list');
             }).catch(function (error) {
                 //error handling
-                // console.log(error)
+                // // console.log(error)
             });
         });
     },
@@ -342,60 +343,60 @@ module.exports = {
             //                 if(!isStudentMatched)
             //                 {
             //                     Helpers.match_or_update(s.mostId, s.application_id, 'No', function(match){
-            //                         console.log('\nMatch Most:\n');
-            //                         console.log(match);
+            // //                         console.log('\nMatch Most:\n');
+            // //                         console.log(match);
             //                         s.project_id = s.mostId;
             //                         s.isMatched = true;
             //                         //res.redirect('/');
-            //                         //console.log('after typing match');
+            // //                         //console.log('after typing match');
             //                     });
             //                 }
             //                 else { Helpers.isMatchedProject(s.highId, function (isHighProjectMatched) {
             //                     if(!isHighProjectMatched)
             //                     {
             //                         Helpers.match_or_update(s.highId, s.application_id, 'No', function(match){
-            //                             console.log('\nMatch High:\n');
-            //                             console.log(match);
+            // //                             console.log('\nMatch High:\n');
+            // //                             console.log(match);
             //                             s.project_id = s.highId;
             //                             s.isMatched = true;
             //                             //res.redirect('/');
-            //                             //console.log('after typing match');
+            // //                             //console.log('after typing match');
             //                         });
             //                     }
             //                     else {  Helpers.isMatchedProject(s.moderateId, function (isModerateProjectMatched) {
             //                         if(!isModerateProjectMatched)
             //                         {
             //                             Helpers.match_or_update(s.moderateId, s.application_id, 'No', function(match){
-            //                                 console.log('\nMatch Moderate:\n');
-            //                                 console.log(match);
+            // //                                 console.log('\nMatch Moderate:\n');
+            // //                                 console.log(match);
             //                                 s.project_id = s.moderateId;
             //                                 s.isMatched = true;
             //                                 //res.redirect('/');
-            //                                 //console.log('after typing match');
+            // //                                 //console.log('after typing match');
             //                             });
             //                         }
             //                         else {  Helpers.isMatchedProject(s.lowId, function (isLowProjectMatched) {
             //                             if(!isLowProjectMatched)
             //                             {
             //                                 Helpers.match_or_update(s.lowId, s.application_id, 'No', function(match){
-            //                                     console.log('\nMatch Low:\n');
-            //                                     console.log(match);
+            // //                                     console.log('\nMatch Low:\n');
+            // //                                     console.log(match);
             //                                     s.project_id = s.lowId;
             //                                     s.isMatched = true;
             //                                     //res.redirect('/');
-            //                                     //console.log('after typing match');
+            // //                                     //console.log('after typing match');
             //                                 });
             //                             }
             //                             else { Helpers.isMatchedProject(s.leastId, function (isLeastProjectMatched) {
             //                                 if(!isLeastProjectMatched)
             //                                 {
             //                                     Helpers.match_or_update(s.leastId, s.application_id, 'No', function(match){
-            //                                         console.log('\nMatch Least:\n');
-            //                                         console.log(match);
+            // //                                         console.log('\nMatch Least:\n');
+            // //                                         console.log(match);
             //                                         s.project_id = s.leastId;
             //                                         s.isMatched = true;
             //                                         //res.redirect('/');
-            //                                         //console.log('after typing match');
+            // //                                         //console.log('after typing match');
             //                                     });
             //                                 }
             //                             });}
@@ -412,18 +413,18 @@ module.exports = {
         var application_id = req.params.application_id;
         Helpers.isMatchedStudent(application_id, function (matched) {
             if(matched){
-                console.log('Matched');
+                // console.log('Matched');
             }
             else{
-                console.log('Not matched');
+                // console.log('Not matched');
             }
         });
         // If project is already matched, it updates the student. Else creates a new entry
         Helpers.match_or_update(project_id, application_id, 'No', function(match){
-            // console.log('before typing match');
-            // console.log(match);
+            // // console.log('before typing match');
+            // // console.log(match);
             res.redirect('/');
-            // console.log('after typing match');
+            // // console.log('after typing match');
         });
     },
 
@@ -474,8 +475,8 @@ module.exports = {
             for (var i = 0; i < projects.length; i++){
                 // find matched student
                 Helpers.findMatchedStudent(projects[i].id, projects[i].description, function (matched_id, name) {
-                    console.log('matched id for ' + name + ' is ' + matched_id);
-                    console.log('done is ' + done);
+                    // console.log('matched id for ' + name + ' is ' + matched_id);
+                    // console.log('done is ' + done);
 
 
                     models.Student.findOne({
@@ -509,11 +510,11 @@ module.exports = {
 
                         row_data.push(a);
 
-                        // console.log('row data is');
-                        // console.log(row_data);
+                        // // console.log('row data is');
+                        // // console.log(row_data);
                         if (++done == projects.length) {
-                            // console.log('in done');
-                            // console.log(row_data);
+                            // // console.log('in done');
+                            // // console.log(row_data);
                             conf.rows = row_data;
                             var result = nodeExcel.execute(conf);
                             res.setHeader('Content-Type', 'application/vnd.openxmlformats');
@@ -525,22 +526,22 @@ module.exports = {
 
                     }).catch(function (error) {
                         //error handling
-                        // console.log(error)
+                        // // console.log(error)
                     });
 
 
                     // if (++done == 2){
-                    //     console.log('really done');
+                    // //     console.log('really done');
                     // }
                     //     // get matched student data
                 //
                 });
-                console.log(i);
+                // console.log(i);
 
             }
         }).catch(function (error) {
             //error handling
-            // console.log(error)
+            // // console.log(error)
         });
 
         // conf.rows = [
