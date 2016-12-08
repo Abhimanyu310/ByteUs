@@ -53,7 +53,7 @@ $(document).ready(function() {
               $('#gpa'+projectid).text(student.Academics.gpa);
               $('#gender'+projectid).text(student.gender);
               $('#ethnicity'+projectid).text(student.race);
-              $('#previousexperience'+projectid).text(student.prev_research_exp);
+              $('#previousexperience'+projectid).text(student.Academics.prev_research_exp);
               $('#otheremployment'+projectid).text(student.Apprenticeship.prev_application);
               if(student.Apprenticeship.most_interest)
               {  
