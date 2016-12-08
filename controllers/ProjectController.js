@@ -7,6 +7,7 @@ module.exports = {
 
     getProjectList: function(req, res, next){
         models.Project.findAll().then(function(projects) {
+            console.log(projects);
             res.render('project/project-list', {
                 title: 'Project List',
                 header: 'Complete Listing of Discovery Learning Apprenticeships',
@@ -17,6 +18,16 @@ module.exports = {
         }).catch(function (error) {
             //error handling
             // console.log(error)
+        });
+    },
+
+    getProjects: function(req, res, next){
+        models.Project.findAll().then(function(projects) {
+            console.log(projects);
+            res.status(200).json({
+                message: 'Success',
+                projects: projects
+            });
         });
     },
 
