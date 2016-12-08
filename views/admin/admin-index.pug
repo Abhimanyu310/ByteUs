@@ -21,7 +21,6 @@ block content
 			tr.style3
 					th.style3 Project name
 					th.style3 Allotted Student name
-					th.style3 Over write
 					th.style3 Student ID
 					th.style3 Primary Major
 					th.style3 Secondary Major
@@ -43,9 +42,9 @@ block content
 								option(value='', selected='selected') 
 									each application in applications
 										option(value=application.id) #{application.name}
-						td.style3
-							p StudentId
 						if(application)
+							td.style3
+								p #{application.sid}
 							td.style3 
 								p #{application.Academics.primary_major}
 							td.style3 

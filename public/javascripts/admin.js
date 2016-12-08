@@ -3,17 +3,26 @@
 $(document).ready(function() {
 	var setvalues = function(event) {
 		console.log('inside fn');	
-    	var value = this.value;
-	
+    	//var value = $('#projectname').text();
+		var value = 36;
 		console.log(value);
-		$('#Overwrite').prop('checked',true);
 		$.ajax({
           method: 'GET',
-          url: '/application/' + value + '/view/'
+          url: '/project/list/'
         })
-        .done(function(obj) {
-        	var application = obj.application;
-        	console.log(application);
+        .done(function(projectobj) {
+           var projects = projectobj.projects;
+           console.log(projectobj);
+          $.ajax({
+            method: 'GET',
+            url: '/admin/' + value + '/view/'
+          })
+          .done(function(matchobj) {
+            //console.log(obj);
+        	 var matched_id = matchobj.matched_id;
+        	 console.log(matched_id);
+
+          });
        	});
     }
     $('#AllottedStudentName').change(setvalues)
