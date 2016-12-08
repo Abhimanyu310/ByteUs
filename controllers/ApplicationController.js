@@ -11,7 +11,20 @@ module.exports = {
     },
 
     getApplicationDetail: function(req, res, next) {
-
+        var applicationId = req.params.id;
+        models.Student.findOne({
+            where: {id: applicationId},
+            include: [
+                {model: models.StudentContact, as: 'Contact'},
+                {model: models.StudentAcademics, as: 'Academics'},
+                {model: models.StudentApprenticeship, as: 'Apprenticeship'}
+            ]
+        }).then(function (application) {
+            res.status(200).json({
+                message: 'Success',
+                application: application
+            });
+        });
     },
 
     postSearchApplication: function(req, res, next) {

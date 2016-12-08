@@ -6,6 +6,9 @@ block title
 block styles
 	link(rel='stylesheet', href='/stylesheets/admin.css')
 
+block scripts
+	script(type='text/javascript',src='/javascripts/admin.js')
+
 block content
 
 	include ../includes/info-box
@@ -34,15 +37,12 @@ block content
 				each project in projects
 					tr
 						td.style3
-							p #{project.description}
+							p#projectname #{project.description}
 						td.style3 
-							if(application)
-								select.level#allotted_student_name(name='allotted_student_name')
-									option(value='', selected='selected') 
+							select.level#AllottedStudentName(name='AllottedStudentName')
+								option(value='', selected='selected') 
 									each application in applications
 										option(value=application.id) #{application.name}
-						td.style3 
-							input(type='checkbox', name='overwrite', value='Yes'  checked=false)
 						td.style3
 							p StudentId
 						if(application)
