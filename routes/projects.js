@@ -27,6 +27,8 @@ router.post('/form', Helpers.isLoggedInAsFaculty, ProjectController.postCreatePr
 // GET list of projects page
 router.get('/list', ProjectController.getProjectList);
 
+router.get('/viewlist', ProjectController.getProjects);
+
 // GET Project detail
 router.get('/:id/view', ProjectController.getProjectDetail);
 

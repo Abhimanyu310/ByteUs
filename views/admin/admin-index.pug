@@ -17,11 +17,12 @@ block content
 		h1 #{header}
 
 	section
+		a.buttonstyle(href='/admin/export') Export to Spreadsheet
 		table.style3
 			tr.style3
 					th.style3 Project name
 					th.style3 Allotted Student name
-					th.style3 Over write
+					th.style3 Overwrite
 					th.style3 Student ID
 					th.style3 Primary Major
 					th.style3 Secondary Major
@@ -34,44 +35,51 @@ block content
 					th.style3 Other Employment
 					th.style3 Student's Preferences
 			tr.style3
-				each project in projects
-					tr
-						td.style3
-							p#projectname #{project.description}
-						td.style3 
-							select.level#AllottedStudentName(name='AllottedStudentName')
+			each project,i in projects
+				tr
+					td.style4
+						p( id="projectname"+project.id)
+					td.style3 
+							select.level(id="AllottedStudentname"+project.id)
 								option(value='', selected='selected') 
 									each application in applications
 										option(value=application.id) #{application.name}
-						td.style3
-							p StudentId
-						if(application)
-							td.style3 
-								p #{application.Academics.primary_major}
-							td.style3 
-								p #{application.Academics.secondary_major}
-							td.style3 
-								p #{application.Academics.next_fall_level}
-							td.style3 
-								p #{application.Academics.grad_month}/#{application.Academics.grad_year}
-							td.style3 
-								p #{application.Academics.gpa}
-							td.style3 
-								p #{application.gender}
-							td.style3 
-								p #{application.race}
-							td.style3 
-								p #{application.prev_research_exp}
-							td.style3
-								p #{application.Apprenticeship.prev_application}
-							td.style3
-								if(application.Apprenticeship.most_interest)
-									a.buttonstyle(href='/project/'+application.Apprenticeship.most_interest+'/view') Most Interest
-								if(application.Apprenticeship.high_interest)
-									a.buttonstyle(href='/project/'+application.Apprenticeship.high_interest+'/view') High Interest
-								if(application.Apprenticeship.moderate_interest)
-									a.buttonstyle(href='/project/'+application.Apprenticeship.moderate_interest+'/view') Moderate Interest
-								if(application.Apprenticeship.low_interest)
-									a.buttonstyle(href='/project/'+application.Apprenticeship.low_interest+'/view') Low Interest
-								if(application.Apprenticeship.least_interest)
-									a.buttonstyle(href='/project/'+application.Apprenticeship.least_interest+'/view') Least Interest
+					td.style3
+							input(type='checkbox',id="Overwrite"+project.id, name='overwrite', value='Yes'  checked=false)
+					td.style3 
+						p( id="sid"+project.id)
+					td.style3 
+						p( id="primajor"+project.id)
+					td.style3 
+						p( id="secmajor"+project.id)
+					td.style3 
+						p( id="levelinschool"+project.id)
+					td.style3 
+						p( id="graddate"+project.id)
+					td.style3 
+						p( id="gpa"+project.id)
+					td.style3 
+						p( id="gender"+project.id)
+					td.style3 
+						p( id="ethnicity"+project.id)
+					td.style3 
+						p( id="previousexperience"+project.id)
+					td.style3 
+						p( id="otheremployment"+project.id)
+					td.style4
+						table.style3
+							tr
+								td.style4
+									a(href='#' id='mostint'+project.id)
+							tr
+								td.style4
+									a(href='#' id='highint'+project.id)
+							tr
+								td.style4
+									a(href='#' id='modint'+project.id)
+							tr
+								td.style4
+									a(href='#' id='lowint'+project.id)
+							tr
+								td.style4
+									a(href='#' id='leastint'+project.id)

@@ -23,6 +23,8 @@ router.get('/application-list', AdminController.getAllSubmittedProjectsAndApplic
 // Match
 router.get('/match/:project_id/:application_id', AdminController.match);
 
+router.get('/:id/view',AdminController.getMatchedStudent);
+
 
 // Export
 router.get('/export', AdminController.export);

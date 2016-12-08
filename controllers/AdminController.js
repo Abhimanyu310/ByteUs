@@ -53,6 +53,25 @@ module.exports = {
         });
     },
 
+    getMatchedStudent: function(req,res,next) {
+        console.log('matchedstudent function called');
+        var project_id = req.params.id;
+        console.log(project_id);
+        models.Project.find({
+            where: {id: project_id}
+        }).then(function (project) {
+            console.log(project);
+            Helpers.findMatchedStudent(project.id, project.description, function (matched_id, name) {
+                console.log('matched id for ' + name + ' is ' + matched_id);
+                res.status(200).json({
+                    message: 'Success',
+                    matched_id: matched_id
+                });        
+            });
+        });
+
+    },
+
     getAllSubmittedProjects: function (req, res, next) {
         models.Project.findAll({
             where: {submitted: 'Yes'},
