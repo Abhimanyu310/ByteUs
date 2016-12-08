@@ -39,10 +39,13 @@ block content
 				tr
 					td.style4
 						p( id="projectname"+project.id)
-					td.style3
-						p( id="AllottedStudentname"+project.id)
 					td.style3 
-						p( id="Overwrite"+project.id)
+							select.level(id="AllottedStudentname"+project.id)
+								option(value='', selected='selected') 
+									each application in applications
+										option(value=application.id) #{application.name}
+					td.style3
+							input(type='checkbox',id="Overwrite"+project.id, name='overwrite', value='Yes'  checked=false)
 					td.style3 
 						p( id="sid"+project.id)
 					td.style3 

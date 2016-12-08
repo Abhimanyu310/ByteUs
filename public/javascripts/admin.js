@@ -48,7 +48,7 @@ $(document).ready(function() {
                   console.log(studentobj);
                   console.log(text);
                   student = studentobj.application;
-                  $('#AllottedStudentname'+projectid).text(student.name);
+                  $('#AllottedStudentname'+projectid).val(student.id);
                   $('#sid'+projectid).text(student.sid);
                   $('#primajor'+projectid).text(student.Academics.primary_major);
                   $('#secmajor'+projectid).text(student.Academics.secondary_major);
