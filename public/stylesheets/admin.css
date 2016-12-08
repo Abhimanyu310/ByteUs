@@ -177,10 +177,14 @@ fieldset input{
 	border: none;
 	height: 80px;
 }
-#projectname {
+td.style4{
+    padding: 7px;
+    text-align: left;
+    vertical-align: center;
+    text-align: center;
+    border: 1px solid white;
 	text-align: left;
 }
-
 a.buttonstyle {
     background-color:  rgb(0,123,200);
 	color: white;

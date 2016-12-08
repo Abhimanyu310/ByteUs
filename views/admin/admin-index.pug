@@ -18,7 +18,6 @@ block content
 
 	section
 		a.buttonstyle(href='/admin/export') Export to Spreadsheet
-		a.match(href='#') Match
 		table.style3
 			tr.style3
 					th.style3 Project name
@@ -38,33 +37,36 @@ block content
 			tr.style3
 			each project,i in projects
 				tr
+					td.style4
+						p( id="projectname"+project.id)
 					td.style3
-						p( id="projectname"+i) #{project.description} 
-					td.style3
-						p( id="AllottedStudentname"+i)
+						p( id="AllottedStudentname"+project.id)
 					td.style3 
-						p#Overwrite
+						p( id="Overwrite"+project.id)
 					td.style3 
-						p#sid
+						p( id="sid"+project.id)
 					td.style3 
-						p#primajor
+						p( id="primajor"+project.id)
 					td.style3 
-						p#secmajor
+						p( id="secmajor"+project.id)
 					td.style3 
-						p#levelinschool
+						p( id="levelinschool"+project.id)
 					td.style3 
-						p#graddate
+						p( id="graddate"+project.id)
 					td.style3 
-						p#gpa
+						p( id="gpa"+project.id)
 					td.style3 
-						p#gender
+						p( id="gender"+project.id)
 					td.style3 
-						p#ethnicity
+						p( id="ethnicity"+project.id)
 					td.style3 
-						p#previousexperience
+						p( id="previousexperience"+project.id)
 					td.style3 
-						p#otheremployment
-					td.style3 
-						p#preferences
-
-
+						p( id="otheremployment"+project.id)
+					td.style4
+						p( id="preferences"+project.id)
+						a.buttonstyle(href='#' id='mostint'+project.id)
+						a.buttonstyle(href='#' id='highint'+project.id)
+						a.buttonstyle(href='#' id='modint'+project.id)
+						a.buttonstyle(href='#' id='lowint'+project.id)
+						a.buttonstyle(href='#' id='leastint'+project.id)
