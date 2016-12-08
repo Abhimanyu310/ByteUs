@@ -1,9 +1,50 @@
 'use strict';
 
 $(document).ready(function() {
+  var getprojectdetails = function(projectid,pid,prefno)
+  {
+    var text;
+    $.ajax({
+          method: 'GET',
+          url: '/project/viewlist/'
+        })
+        .done(function(projectobj) 
+        {
+           var projects = projectobj.projects;
+           for(var i=0;i<projects.length;i++)
+           {
+              if(projects[i].id==projectid)
+              {
+                text = projects[i].description;
+              }
+           }
+           //console.log(projectid);
+           //console.log(pid);
+           //console.log(text);
+           switch(prefno){
+            case 1:
+              $('#mostint'+pid).text(text);
+              break; 
+            case 2:
+              $('#highint'+pid).text(text);
+              break; 
+            case 3:
+              $('#modint'+pid).text(text);
+              break; 
+            case 4:
+              $('#lowint'+pid).text(text);
+              break; 
+            case 5:
+              $('#leastint'+pid).text(text);
+              break; 
+           }
+           
+        });
+  }
   function findstudentdetail(projectid,student)
   {
              // $('#AllottedStudentname'+projectid).val(student.id);
+             //console.log(student);
               $('#sid'+projectid).text(student.sid);
               $('#primajor'+projectid).text(student.Academics.primary_major);
               $('#secmajor'+projectid).text(student.Academics.secondary_major);
@@ -16,8 +57,8 @@ $(document).ready(function() {
               $('#otheremployment'+projectid).text(student.Apprenticeship.prev_application);
               if(student.Apprenticeship.most_interest)
               {  
+                getprojectdetails(student.Apprenticeship.most_interest,projectid,1);
                 $('#mostint'+projectid).attr("href",'/project/'+student.Apprenticeship.most_interest+'/view');
-                $('#mostint'+projectid).text("Most Int");
               }
               else
               {
@@ -25,8 +66,8 @@ $(document).ready(function() {
               }
               if(student.Apprenticeship.high_interest)
               {  
+                getprojectdetails(student.Apprenticeship.high_interest,projectid,2);
                 $('#highint'+projectid).attr("href",'/project/'+student.Apprenticeship.high_interest+'/view');
-                $('#highint'+projectid).text("High Int");
               }
               else
               {
@@ -34,8 +75,8 @@ $(document).ready(function() {
               }
               if(student.Apprenticeship.moderate_interest)
               {  
+                getprojectdetails(student.Apprenticeship.moderate_interest,projectid,3);
                 $('#modint'+projectid).attr("href",'/project/'+student.Apprenticeship.moderate_interest+'/view');
-                $('#modint'+projectid).text("Mode Int");
               }
               else
               {
@@ -43,8 +84,8 @@ $(document).ready(function() {
               }
               if(student.Apprenticeship.low_interest)
               {  
+                getprojectdetails(student.Apprenticeship.low_interest,projectid,4);
                 $('#lowint'+projectid).attr("href",'/project/'+student.Apprenticeship.low_interest+'/view');
-                $('#lowint'+projectid).text("low Int");
               }
               else
               {
@@ -52,8 +93,8 @@ $(document).ready(function() {
               }
               if(student.Apprenticeship.least_interest)
               {  
+                getprojectdetails(student.Apprenticeship.least_interest,projectid,5);
                 $('#leastint'+projectid).attr("href",'/project/'+student.Apprenticeship.least_interest+'/view');
-                $('#leastint'+projectid).text("least Int");
               }
               else
               {

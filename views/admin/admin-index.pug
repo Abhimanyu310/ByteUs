@@ -67,9 +67,19 @@ block content
 					td.style3 
 						p( id="otheremployment"+project.id)
 					td.style4
-						p( id="preferences"+project.id)
-						a.buttonstyle(href='#' id='mostint'+project.id)
-						a.buttonstyle(href='#' id='highint'+project.id)
-						a.buttonstyle(href='#' id='modint'+project.id)
-						a.buttonstyle(href='#' id='lowint'+project.id)
-						a.buttonstyle(href='#' id='leastint'+project.id)
+						table.style3
+							tr
+								td.style4
+									a(href='#' id='mostint'+project.id)
+							tr
+								td.style4
+									a(href='#' id='highint'+project.id)
+							tr
+								td.style4
+									a(href='#' id='modint'+project.id)
+							tr
+								td.style4
+									a(href='#' id='lowint'+project.id)
+							tr
+								td.style4
+									a(href='#' id='leastint'+project.id)
