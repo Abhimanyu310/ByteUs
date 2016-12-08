@@ -183,9 +183,11 @@ module.exports = {
 
             // TODO: Filter out students who do not meet specific project requirements here
 
-            studentsInfo.forEach(function(student) {
+            studentsInfo.forEach(function(student)
+            {
                 var w = 1.00;
-                switch (student.classStanding) {
+                switch (student.classStanding)
+                {
                     case 'Freshman':
                         w -= 0.20;
                         break;
@@ -203,7 +205,8 @@ module.exports = {
                         w += 0.20;
                         break;
                 }
-                switch (student.race) {
+                switch (student.race)
+                {
                     case 'AIorAN':
                     case 'BorAA':
                     case 'NHorPI':
@@ -228,12 +231,81 @@ module.exports = {
             console.log("\n\nStudent info:\n\n");
             console.log(studentsInfo);
 
-            // Greedy Matching
-            // for i = 0 to n
-            // match top priority if available
-            // else match next priority if available, repeat
-            // if no match, skip
-            // update DB with matches
+            // Greedy match
+            for(var i = 0; i < studentsInfo.length; i++)
+            {
+                var s = studentsInfo[i];
+                Helpers.isMatchedStudent(s.application_id, function (isStudentMatched) {
+                    if(!isStudentMatched)
+                    {
+                        Helpers.isMatchedProject(s.mostId, function (isMostProjectMatched) {
+                            if(!isStudentMatched)
+                            {
+                                Helpers.match_or_update(s.mostId, s.application_id, 'No', function(match){
+                                    console.log('\nMatch Most:\n');
+                                    console.log(match);
+                                    s.project_id = s.mostId;
+                                    s.isMatched = true;
+                                    //res.redirect('/');
+                                    //console.log('after typing match');
+                                });
+                            }
+                            else { Helpers.isMatchedProject(s.highId, function (isHighProjectMatched) {
+                                if(!isHighProjectMatched)
+                                {
+                                    Helpers.match_or_update(s.highId, s.application_id, 'No', function(match){
+                                        console.log('\nMatch High:\n');
+                                        console.log(match);
+                                        s.project_id = s.highId;
+                                        s.isMatched = true;
+                                        //res.redirect('/');
+                                        //console.log('after typing match');
+                                    });
+                                }
+                                else {  Helpers.isMatchedProject(s.moderateId, function (isModerateProjectMatched) {
+                                    if(!isModerateProjectMatched)
+                                    {
+                                        Helpers.match_or_update(s.moderateId, s.application_id, 'No', function(match){
+                                            console.log('\nMatch Moderate:\n');
+                                            console.log(match);
+                                            s.project_id = s.moderateId;
+                                            s.isMatched = true;
+                                            //res.redirect('/');
+                                            //console.log('after typing match');
+                                        });
+                                    }
+                                    else {  Helpers.isMatchedProject(s.lowId, function (isLowProjectMatched) {
+                                        if(!isLowProjectMatched)
+                                        {
+                                            Helpers.match_or_update(s.lowId, s.application_id, 'No', function(match){
+                                                console.log('\nMatch Low:\n');
+                                                console.log(match);
+                                                s.project_id = s.lowId;
+                                                s.isMatched = true;
+                                                //res.redirect('/');
+                                                //console.log('after typing match');
+                                            });
+                                        }
+                                        else { Helpers.isMatchedProject(s.leastId, function (isLeastProjectMatched) {
+                                            if(!isLeastProjectMatched)
+                                            {
+                                                Helpers.match_or_update(s.leastId, s.application_id, 'No', function(match){
+                                                    console.log('\nMatch Least:\n');
+                                                    console.log(match);
+                                                    s.project_id = s.leastId;
+                                                    s.isMatched = true;
+                                                    //res.redirect('/');
+                                                    //console.log('after typing match');
+                                                });
+                                            }
+                                        });}
+                                    });}
+                                });}
+                            });}
+                        });
+                    }
+                });
+            }
 
             res.render('admin/matching', {
                 title: "Matching",
