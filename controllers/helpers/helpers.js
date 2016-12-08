@@ -135,3 +135,18 @@ exports.isMatchedProjectAndStudent = function(project_id, application_id, callba
         }
     });
 };
+
+exports.findMatchedStudent = function(project_id, name, callback){
+    models.Match.findOne({
+        where: {
+            project_id: project_id
+        }
+    }).then(function (match) {
+        if (match) {
+            return callback(match.student_id, name);
+        }
+        else {
+            return callback(0, name);
+        }
+    });
+};
