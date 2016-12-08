@@ -156,165 +156,237 @@ module.exports = {
                 {model: models.StudentApprenticeship, as: 'Apprenticeship'}
             ]
         }).then(function(applications) {
-            console.log('\n\nApplications: ' + applications.length + '\n\n');
-            console.log(applications);
-            
-            // TODO: Filter out matched students here
-
-            // Gather student info for matching
-            var studentsInfo = [];
-            for (var i = 0; i < applications.length; i++)
-            {
-                studentsInfo.push({
-                    application_id: applications[i].id,
-                    project_id:     -1,
-                    isMatched:      false,
-                    weight:         applications[i].Academics.gpa,
-                    classStanding:  applications[i].Academics.next_fall_level,
-                    goldshirt:      applications[i].Academics.goldshirt,
-                    gender:         applications[i].gender,
-                    race:           applications[i].race,
-                    appliedBefore:  applications[i].Apprenticeship.prev_application,
-                    mostId:         applications[i].Apprenticeship.most_interest,
-                    highId:         applications[i].Apprenticeship.high_interest,
-                    moderateId:     applications[i].Apprenticeship.moderate_interest,
-                    lowId:          applications[i].Apprenticeship.low_interest,
-                    leastId:        applications[i].Apprenticeship.least_interest,
-                });
-            }
-
-            // TODO: Filter out students who do not meet specific project requirements here
-
-            studentsInfo.forEach(function(student)
-            {
-                var w = 1.00;
-                switch (student.classStanding)
+            models.Project.findAll({
+                where: {submitted: 'Yes'},
+                include: [
+                    {model: models.FacultyInfo, as: 'Faculty'}
+                ]
+            }).then(function(projects) {
+                // console.log('\n\nApplications: ' + applications.length + '\n\n');
+                // console.log(applications);
+                
+                // Gather project information for matching
+                var projectsMatches = {};
+                for (var i = 0; i < projects.length; i++)
                 {
-                    case 'Freshman':
-                        w -= 0.20;
-                        break;
-                    case 'Sophomore':
-                        w -= 0.10;
-                        break;
-                    case 'Junior':
-                    default:
-                        // no change
-                        break;
-                    case 'Senior':
-                        w += 0.10;
-                        break;
-                    case '5th Year Senior':
-                        w += 0.20;
-                        break;
+                    projectsMatches[projects[i].id] = -1;
                 }
-                switch (student.race)
+
+                // TODO: Filter out matched students here
+
+                // Gather student info for matching
+                var studentsInfo = [];
+                for (var i = 0; i < applications.length; i++)
                 {
-                    case 'AIorAN':
-                    case 'BorAA':
-                    case 'NHorPI':
-                        w += 0.05;
-                        break;
-                    case 'Asian':
-                    case 'Caucasian':
-                    case 'DNW':
-                    default:
-                        // no change
-                        break;
+                    studentsInfo.push({
+                        application_id: applications[i].id,
+                        project_id:     -1,
+                        isMatched:      false,
+                        weight:         applications[i].Academics.gpa,
+                        classStanding:  applications[i].Academics.next_fall_level,
+                        goldshirt:      applications[i].Academics.goldshirt,
+                        gender:         applications[i].gender,
+                        race:           applications[i].race,
+                        appliedBefore:  applications[i].Apprenticeship.prev_application,
+                        mostId:         applications[i].Apprenticeship.most_interest,
+                        highId:         applications[i].Apprenticeship.high_interest,
+                        moderateId:     applications[i].Apprenticeship.moderate_interest,
+                        lowId:          applications[i].Apprenticeship.low_interest,
+                        leastId:        applications[i].Apprenticeship.least_interest,
+                    });
                 }
-                w += (student.goldshirt == 'Yes') ? 0.10 : 0.00;
-                w += (student.gender == 'female' || student.gender == 'Female') ? 0.10 : 0.00;
-                w += (student.appliedBefore == 'Yes') ? 0.05 : 0.00;
-                student.weight *= w;
-            });
 
-            // Sort descending order
-            studentsInfo.sort(function(x,y) { return (x.weight <= y.weight) ? 1 : -1;})
+                // TODO: Filter out students who do not meet specific project requirements here
 
-            console.log("\n\nStudent info:\n\n");
-            console.log(studentsInfo);
-
-            // Greedy match
-            for(var i = 0; i < studentsInfo.length; i++)
-            {
-                var s = studentsInfo[i];
-                Helpers.isMatchedStudent(s.application_id, function (isStudentMatched) {
-                    if(!isStudentMatched)
+                studentsInfo.forEach(function(student)
+                {
+                    var w = 1.00;
+                    switch (student.classStanding)
                     {
-                        Helpers.isMatchedProject(s.mostId, function (isMostProjectMatched) {
-                            if(!isStudentMatched)
-                            {
-                                Helpers.match_or_update(s.mostId, s.application_id, 'No', function(match){
-                                    console.log('\nMatch Most:\n');
-                                    console.log(match);
-                                    s.project_id = s.mostId;
-                                    s.isMatched = true;
-                                    //res.redirect('/');
-                                    //console.log('after typing match');
-                                });
-                            }
-                            else { Helpers.isMatchedProject(s.highId, function (isHighProjectMatched) {
-                                if(!isHighProjectMatched)
-                                {
-                                    Helpers.match_or_update(s.highId, s.application_id, 'No', function(match){
-                                        console.log('\nMatch High:\n');
-                                        console.log(match);
-                                        s.project_id = s.highId;
-                                        s.isMatched = true;
-                                        //res.redirect('/');
-                                        //console.log('after typing match');
-                                    });
-                                }
-                                else {  Helpers.isMatchedProject(s.moderateId, function (isModerateProjectMatched) {
-                                    if(!isModerateProjectMatched)
-                                    {
-                                        Helpers.match_or_update(s.moderateId, s.application_id, 'No', function(match){
-                                            console.log('\nMatch Moderate:\n');
-                                            console.log(match);
-                                            s.project_id = s.moderateId;
-                                            s.isMatched = true;
-                                            //res.redirect('/');
-                                            //console.log('after typing match');
-                                        });
-                                    }
-                                    else {  Helpers.isMatchedProject(s.lowId, function (isLowProjectMatched) {
-                                        if(!isLowProjectMatched)
-                                        {
-                                            Helpers.match_or_update(s.lowId, s.application_id, 'No', function(match){
-                                                console.log('\nMatch Low:\n');
-                                                console.log(match);
-                                                s.project_id = s.lowId;
-                                                s.isMatched = true;
-                                                //res.redirect('/');
-                                                //console.log('after typing match');
-                                            });
-                                        }
-                                        else { Helpers.isMatchedProject(s.leastId, function (isLeastProjectMatched) {
-                                            if(!isLeastProjectMatched)
-                                            {
-                                                Helpers.match_or_update(s.leastId, s.application_id, 'No', function(match){
-                                                    console.log('\nMatch Least:\n');
-                                                    console.log(match);
-                                                    s.project_id = s.leastId;
-                                                    s.isMatched = true;
-                                                    //res.redirect('/');
-                                                    //console.log('after typing match');
-                                                });
-                                            }
-                                        });}
-                                    });}
-                                });}
-                            });}
+                        case 'Freshman':
+                            w -= 0.20;
+                            break;
+                        case 'Sophomore':
+                            w -= 0.10;
+                            break;
+                        case 'Junior':
+                        default:
+                            // no change
+                            break;
+                        case 'Senior':
+                            w += 0.10;
+                            break;
+                        case '5th Year Senior':
+                            w += 0.20;
+                            break;
+                    }
+                    switch (student.race)
+                    {
+                        case 'AIorAN':
+                        case 'BorAA':
+                        case 'NHorPI':
+                            w += 0.05;
+                            break;
+                        case 'Asian':
+                        case 'Caucasian':
+                        case 'DNW':
+                        default:
+                            // no change
+                            break;
+                    }
+                    w += (student.goldshirt == 'Yes') ? 0.10 : 0.00;
+                    w += (student.gender == 'female' || student.gender == 'Female') ? 0.10 : 0.00;
+                    w += (student.appliedBefore == 'Yes') ? 0.05 : 0.00;
+                    student.weight *= w;
+                });
+
+                // Sort descending order
+                studentsInfo.sort(function(x,y) { return (x.weight <= y.weight) ? 1 : -1;})
+
+                console.log("\n\nStudent info:\n\n");
+                console.log(studentsInfo);
+
+                // Greedy match
+                for(var i = 0; i < studentsInfo.length; i++)
+                {
+                    var s = studentsInfo[i];
+                    if(projectsMatches[s.mostId] == -1)
+                    {
+                        projectsMatches[s.mostId] = s.application_id;
+                        s.isMatched = true;
+                        s.project_id = s.mostId;
+                    }
+                    else if (projectsMatches[s.highId] == -1)
+                    {
+                        projectsMatches[s.highId] = s.application_id;
+                        s.isMatched = true;
+                        s.project_id = s.highId;
+                    }
+                    else if (projectsMatches[s.moderateId] == -1)
+                    {
+                        projectsMatches[s.moderateId] = s.application_id;
+                        s.isMatched = true;
+                        s.project_id = s.moderateId;
+                    }
+                    else if (projectsMatches[s.lowId] == -1)
+                    {
+                        projectsMatches[s.lowId] = s.application_id;
+                        s.isMatched = true;
+                        s.project_id = s.lowId;
+                    }
+                    else if (projectsMatches[s.leastId] == -1)
+                    {
+                        projectsMatches[s.leastIdhigh] = s.application_id;
+                        s.isMatched = true;
+                        s.project_id = s.leastId;
+                    }
+                }
+
+                console.log("\n\Project matches:\n\n");
+                console.log(projectsMatches);
+
+                // Update DB
+                for(var key in projectsMatches)
+                {
+                    if(projectsMatches.hasOwnProperty(key) && projectsMatches[key] != -1)
+                    {
+                        Helpers.match_or_update(key, projectsMatches[key], 'No', function(match){
+                            console.log("\n\nMatch:\n\n");
+                            console.log(match);
+                            s.project_id = s.highId;
+                            s.isMatched = true;
+                            //res.redirect('/');
+                            //console.log('after typing match');
                         });
                     }
-                });
-            }
+                }
 
-            res.render('admin/matching', {
-                title: "Matching",
-                studentsInfo: studentsInfo
+                res.render('admin/matching', {
+                    title: "Matching",
+                    studentsInfo: studentsInfo
+                });
+            }).catch(function (error) {
+                //error handling
+                // console.log(error)
             });
         });
     },
+
+            // Greedy match
+            // for(var i = 0; i < studentsInfo.length; i++)
+            // {
+            //     var s = studentsInfo[i];
+            //     Helpers.isMatchedStudent(s.application_id, function (isStudentMatched) {
+            //         if(!isStudentMatched)
+            //         {
+            //             Helpers.isMatchedProject(s.mostId, function (isMostProjectMatched) {
+            //                 if(!isStudentMatched)
+            //                 {
+            //                     Helpers.match_or_update(s.mostId, s.application_id, 'No', function(match){
+            //                         console.log('\nMatch Most:\n');
+            //                         console.log(match);
+            //                         s.project_id = s.mostId;
+            //                         s.isMatched = true;
+            //                         //res.redirect('/');
+            //                         //console.log('after typing match');
+            //                     });
+            //                 }
+            //                 else { Helpers.isMatchedProject(s.highId, function (isHighProjectMatched) {
+            //                     if(!isHighProjectMatched)
+            //                     {
+            //                         Helpers.match_or_update(s.highId, s.application_id, 'No', function(match){
+            //                             console.log('\nMatch High:\n');
+            //                             console.log(match);
+            //                             s.project_id = s.highId;
+            //                             s.isMatched = true;
+            //                             //res.redirect('/');
+            //                             //console.log('after typing match');
+            //                         });
+            //                     }
+            //                     else {  Helpers.isMatchedProject(s.moderateId, function (isModerateProjectMatched) {
+            //                         if(!isModerateProjectMatched)
+            //                         {
+            //                             Helpers.match_or_update(s.moderateId, s.application_id, 'No', function(match){
+            //                                 console.log('\nMatch Moderate:\n');
+            //                                 console.log(match);
+            //                                 s.project_id = s.moderateId;
+            //                                 s.isMatched = true;
+            //                                 //res.redirect('/');
+            //                                 //console.log('after typing match');
+            //                             });
+            //                         }
+            //                         else {  Helpers.isMatchedProject(s.lowId, function (isLowProjectMatched) {
+            //                             if(!isLowProjectMatched)
+            //                             {
+            //                                 Helpers.match_or_update(s.lowId, s.application_id, 'No', function(match){
+            //                                     console.log('\nMatch Low:\n');
+            //                                     console.log(match);
+            //                                     s.project_id = s.lowId;
+            //                                     s.isMatched = true;
+            //                                     //res.redirect('/');
+            //                                     //console.log('after typing match');
+            //                                 });
+            //                             }
+            //                             else { Helpers.isMatchedProject(s.leastId, function (isLeastProjectMatched) {
+            //                                 if(!isLeastProjectMatched)
+            //                                 {
+            //                                     Helpers.match_or_update(s.leastId, s.application_id, 'No', function(match){
+            //                                         console.log('\nMatch Least:\n');
+            //                                         console.log(match);
+            //                                         s.project_id = s.leastId;
+            //                                         s.isMatched = true;
+            //                                         //res.redirect('/');
+            //                                         //console.log('after typing match');
+            //                                     });
+            //                                 }
+            //                             });}
+            //                         });}
+            //                     });}
+            //                 });}
+            //             });
+            //         }
+            //     });
+            // }
 
         match: function (req, res, next) {
         var project_id = req.params.project_id;
